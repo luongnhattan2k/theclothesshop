@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="@drawable/header_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:paddingTop="@dimen/size60dp"
+        android:fontFamily="cursive"
+        android:text="@string/nameshop"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="56dp"
+            android:layout_height="68dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_account_circle_white_24" />
+
+        <TextView
+            android:id="@+id/txtTennguoidung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="9"
+            android:fontFamily="serif-monospace"
+            android:hint="Tên Khách Hàng"
+            android:paddingLeft="@dimen/size10dp"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

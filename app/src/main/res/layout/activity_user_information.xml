@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xam"
+    android:orientation="vertical"
+    tools:context=".ForgotPassword">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/vang_nhat">
+
+        <ImageButton
+            android:id="@+id/ibtnExit"
+            android:layout_width="@dimen/size40dp"
+            android:layout_height="@dimen/size40dp"
+            android:background="@null"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="TODO" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtDangky"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:text="Thông Tin Người Dùng"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/baseline_person_24" />
+
+    <EditText
+        android:id="@+id/edtTaikhoan"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/size30dp"
+        android:layout_marginTop="@dimen/size10dp"
+        android:layout_marginRight="@dimen/size30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:paddingLeft="@dimen/size20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/edtSDT"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/size30dp"
+        android:layout_marginTop="@dimen/size20dp"
+        android:layout_marginRight="@dimen/size30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPersonName"
+        android:paddingLeft="@dimen/size20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/edtMatkhau"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/size30dp"
+        android:layout_marginTop="@dimen/size20dp"
+        android:layout_marginRight="@dimen/size30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/sdt"
+        android:inputType="textPersonName"
+        android:paddingLeft="@dimen/size20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/size30dp"
+        android:layout_marginTop="@dimen/size20dp"
+        android:layout_marginRight="@dimen/size30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="@dimen/size20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/edtDiachi"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center|left|top"
+        android:layout_marginLeft="@dimen/size30dp"
+        android:layout_marginTop="@dimen/size20dp"
+        android:layout_marginRight="@dimen/size30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/diachi"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="@dimen/size20dp"
+        android:paddingTop="@dimen/size20dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/size10dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/btnDangky"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/size30dp"
+            android:backgroundTint="#19CF20"
+            android:hint="Cập Nhật"
+            android:textColorHint="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnHuy"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="60dp"
+            android:backgroundTint="#ED2011"
+            android:hint="Hủy"
+            android:textColorHint="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

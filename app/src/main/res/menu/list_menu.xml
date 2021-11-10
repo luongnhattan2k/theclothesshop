@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="@string/home" />
+
+    </group>
+
+    <item android:title="Danh Mục">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_men"
+                    android:icon="@drawable/baseline_shirt_24"
+                    android:title="@string/men" />
+                <item
+                    android:id="@+id/nav_women"
+                    android:icon="@drawable/baseline_dress_24"
+                    android:title="@string/women" />
+                <item
+                    android:id="@+id/nav_new_born"
+                    android:icon="@drawable/baseline_productnew_24"
+                    android:title="@string/new_born" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/user">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/baseline_profile_24"
+                    android:title="@string/profile" />
+
+                <item
+                    android:id="@+id/nav_setting"
+                    android:icon="@drawable/baseline_settings_24"
+                    android:title="@string/setting" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/baseline_login_24"
+                    android:title="@string/DangNhap" />
+            </group>
+        </menu>
+    </item>
+</menu>

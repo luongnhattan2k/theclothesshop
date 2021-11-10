@@ -1,0 +1,31 @@
+<resources>
+    <string name="username">Tên Tài Khoản</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="repassword">Nhập Lại Mật Khẩu</string>
+    <string name="sdt">Số Điện Thoại</string>
+    <string name="email">Email</string>
+    <string name="date">Ngày Sinh</string>
+    <string name="diachi">Địa Chỉ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="DangNhap">Đăng Nhập</string>
+    <string name="DangKy">Đăng Ký</string>
+    <string name="men">Đồ Nam</string>
+    <string name="women">Đồ Nữ</string>
+    <string name="new_born">Sản Phẩm Mới</string>
+    <string name="profile">Thông Tin Người Dùng</string>
+    <string name="logout">Logout</string>
+    <string name="user">Người Dùng</string>
+    <string name="home">Trang Chủ</string>
+    <string name="gioithieu">Giới Thiệu</string>
+    <string name="lienhe">Liên Hệ</string>
+    <string name="setting">Cài Đặt</string>
+    <string name="remove">Xóa</string>
+    <string name="my_cart">Giỏ Hàng</string>
+    <string name="nameshop">Fashion Shop</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

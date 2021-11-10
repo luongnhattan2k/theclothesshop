@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable-v24/baseline_support_agent_20.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable-v24/curved_background.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable-v24/hamburger_icon.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_account_circle_18.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_account_circle_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_logout_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_phone_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_view_list_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/bo_tron_bon_goc.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/button_custom.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/shape.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/vien_den.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/font/aclonica.xml" value="0.13020833333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_chat_bot.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_contact.xml" value="0.1953125" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_forgotpassword.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_introduct.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_product.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_register.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_subcategory.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_user_information.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/bot_msg.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/content_main.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_contact.xml" value="0.1953125" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_home.xml" value="0.20615384615384616" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_introduce.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_menclothes.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_my_cart.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_new_born.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_user.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_women_clothes.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/gridview_home.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/header.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_layout.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/toolbar.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/user_msg.xml" value="0.1953125" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/menu/list_menu.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/menu/main.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/xml/network_security_config.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/drawable/baseline_chevron_right_18.xml" value="0.22205128205128205" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/drawable/baseline_chevron_right_36.xml" value="0.22205128205128205" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/activity_home.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/activity_login.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/activity_my_cart.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/activity_product.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_home.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_introduce.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_login.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_new_born.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_product.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_setting.xml" value="0.22" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/fragment_user.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/layout/toolbar.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/FinalProject/ClothesShop/app/src/main/res/menu/list_menu.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
