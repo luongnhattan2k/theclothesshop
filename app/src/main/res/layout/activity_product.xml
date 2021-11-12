@@ -138,13 +138,13 @@
             app:srcCompat="@drawable/baseline_home_24"/>
 
         <ImageView
-            android:id="@+id/imgHoTro"
+            android:id="@+id/imgGoGioHang"
             android:layout_width="48dp"
             android:layout_height="@dimen/size50dp"
             android:layout_marginLeft="@dimen/size10dp"
             android:layout_marginTop="14dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/baseline_support_agent_24"/>
+            app:srcCompat="@drawable/baseline_shopping_cart_24" />
 
         <Button
             android:id="@+id/btnThemvaogiohang"

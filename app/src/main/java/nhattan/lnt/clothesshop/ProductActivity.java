@@ -27,7 +27,7 @@ public class ProductActivity extends AppCompatActivity {
     SanPhamDTO sanPhamDTO;
     TextView productName, productPrice, productContent;
     EditText productQuantity;
-    ImageView productImage;
+    ImageView productImage, img_Mycart, img_Home;
     ImageButton ibtn_Exit;
     Button btn_Themgiohang,btn_Thanhtoan;
     int id;
@@ -85,7 +85,22 @@ public class ProductActivity extends AppCompatActivity {
         productImage = (ImageView) findViewById(R.id.product_image);
         productQuantity = (EditText) findViewById(R.id.product_quantity);
         btn_Themgiohang = (Button) findViewById(R.id.btnThemvaogiohang);
+        img_Home = (ImageView) findViewById(R.id.imgTrangChu);
+        img_Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHome();
+            }
+        });
 
+
+        img_Mycart = (ImageView) findViewById(R.id.imgGoGioHang);
+        img_Mycart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getMyCart();
+            }
+        });
 
         ibtn_Exit = findViewById(R.id.ibtnExit);
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +112,16 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
+    private void getHome() {
+        startActivity(new Intent(ProductActivity.this, HomeActivity.class));
+    }
+
+    private void getMyCart() {
+        startActivity(new Intent(ProductActivity.this, MyCartActivity.class));
+    }
+
 
     private void getExit() {
-        Intent iExit = new Intent(ProductActivity.this, HomeActivity.class);
-        startActivity(iExit);
+        startActivity(new Intent(ProductActivity.this, HomeActivity.class));
     }
 }
