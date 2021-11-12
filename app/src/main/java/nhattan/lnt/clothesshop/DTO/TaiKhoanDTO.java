@@ -1,41 +1,30 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class TaiKhoanDTO {
-
     int MATK;
-    int SDT;
-    int MAQUYEN;
     String TENTK;
     String MATKHAU;
-    String NGAYSINH;
+    int SDT;
     String EMAIL;
+    String NGAYSINH;
     String DIACHI;
+    int MAQUYEN;
 
-    public TaiKhoanDTO() {
+    public TaiKhoanDTO(){
+
+    }
+
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI ,int MAQUYEN) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
-        this.NGAYSINH = NGAYSINH;
         this.SDT = SDT;
         this.EMAIL = EMAIL;
+        this.NGAYSINH = NGAYSINH;
         this.DIACHI = DIACHI;
+        this.MAQUYEN = MAQUYEN;
     }
 
-    public String getDIACHI() {
-        return DIACHI;
-    }
-
-    public void setDIACHI(String DIACHI) {
-        this.DIACHI = DIACHI;
-    }
-
-    public String getEMAIL() {
-        return EMAIL;
-    }
-
-    public void setEMAIL(String EMAIL) {
-        this.EMAIL = EMAIL;
-    }
 
     public int getMATK() {
         return MATK;
@@ -43,14 +32,6 @@ public class TaiKhoanDTO {
 
     public void setMATK(int MATK) {
         this.MATK = MATK;
-    }
-
-    public int getMAQUYEN() {
-        return MAQUYEN;
-    }
-
-    public void setMAQUYEN(int MAQUYEN) {
-        this.MAQUYEN = MAQUYEN;
     }
 
     public String getTENTK() {
@@ -69,15 +50,6 @@ public class TaiKhoanDTO {
         this.MATKHAU = MATKHAU;
     }
 
-    public String getNGAYSINH() {
-        return NGAYSINH;
-    }
-
-    public void setNGAYSINH(String NGAYSINH) {
-        this.NGAYSINH = NGAYSINH;
-    }
-
-
     public int getSDT() {
         return SDT;
     }
@@ -86,4 +58,35 @@ public class TaiKhoanDTO {
         this.SDT = SDT;
     }
 
+    public String getEMAIL() {
+        return EMAIL;
+    }
+
+    public void setEMAIL(String EMAIL) {
+        this.EMAIL = EMAIL;
+    }
+
+    public String getNGAYSINH() {
+        return NGAYSINH;
+    }
+
+    public void setNGAYSINH(String NGAYSINH) {
+        this.NGAYSINH = NGAYSINH;
+    }
+
+    public String getDIACHI() {
+        return DIACHI;
+    }
+
+    public void setDIACHI(String DIACHI) {
+        this.DIACHI = DIACHI;
+    }
+
+    public int getMAQUYEN() {
+        return MAQUYEN;
+    }
+
+    public void setMAQUYEN(int MAQUYEN) {
+        this.MAQUYEN = MAQUYEN;
+    }
 }

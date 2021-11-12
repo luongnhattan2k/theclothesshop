@@ -25,6 +25,36 @@ public class Database extends SQLiteOpenHelper {
         return database.rawQuery(sql,null);
     }
 
+    public boolean SPChuaCoTrongGH(int IDTK,int IDSP){
+        Cursor tro = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
+        while (tro.moveToNext()) {
+            return false;
+        }
+        return true;
+    }
+
+    public void SPGH(int IDTK, int IDSP, String TenSP, int Soluong, int thanhtien){
+        if(SPChuaCoTrongGH(IDTK, IDSP)){
+            QueryData("INSERT INTO " + CreateDatabase.tbl_GIOHANG +
+                    " ( "
+                    + CreateDatabase.tbl_GIOHANG_IDTK + " , "
+                    + CreateDatabase.tbl_GIOHANG_IDSP + " , "
+                    + CreateDatabase.tbl_GIOHANG_TENSANPHAM + " , "
+                    + CreateDatabase.tbl_GIOHANG_SOLUONG + " , "
+                    + CreateDatabase.tbl_GIOHANG_THANHTIEN
+                    + " ) VALUES ( " + IDTK + " , " + IDSP+" , '" + TenSP + "' , " + Soluong + " , "
+                    + thanhtien + " ) ");
+        }
+        else {
+            QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
+                    + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + Soluong + " , "
+                    + CreateDatabase.tbl_GIOHANG_THANHTIEN + " = " + CreateDatabase.tbl_GIOHANG_THANHTIEN + " + " + thanhtien
+                    + " WHERE " + CreateDatabase.tbl_GIOHANG_IDTK + " = " + IDTK+ " AND "
+                    + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+            ;
+        }
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 

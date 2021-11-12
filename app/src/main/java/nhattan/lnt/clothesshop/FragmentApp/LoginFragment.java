@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
+import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.ForgotPassword;
 import nhattan.lnt.clothesshop.HomeActivity;
 import nhattan.lnt.clothesshop.R;
@@ -80,10 +81,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     private void setBtn_Login(){
         String sTentaikhoan = edt_TK.getText().toString();
         String sMatkhau = edt_MK.getText().toString();
-        boolean kiemtra = taiKhoanDAO.KiemTraDangNhap(sTentaikhoan, sMatkhau);
+        TaiKhoanDTO kiemtra = taiKhoanDAO.KiemTraDangNhap(sTentaikhoan, sMatkhau);
         mUsername = sTentaikhoan;
 
-        if (kiemtra){
+        if (kiemtra != null){
             Toast.makeText(getActivity(), "Đăng Nhập Thành Công !", Toast.LENGTH_LONG).show();
             Intent iTrangchu = new Intent(getActivity(), HomeActivity.class);
             iTrangchu.putExtra("TenTaiKhoan", edt_TK.getText().toString());

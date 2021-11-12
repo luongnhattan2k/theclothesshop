@@ -32,6 +32,7 @@ import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    public static TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_MEN = 2;
     private static final int FRAGMENT_WOMEN = 3;
@@ -47,7 +48,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private TaiKhoanDTO taiKhoanDTO;
     // Drawer
 
     TextView txt_TenTaiKhoan;

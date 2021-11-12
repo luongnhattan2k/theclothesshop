@@ -1,6 +1,5 @@
 package nhattan.lnt.clothesshop.DAO;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -30,16 +29,29 @@ public class TaiKhoanDAO {
     }
 
 
-    public boolean KiemTraDangNhap(String tendangnhap, String matkhau){
+    public TaiKhoanDTO KiemTraDangNhap(String tendangnhap, String matkhau){
         String truyvan = "SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_TENTAIKHOAN + " = '" + tendangnhap
                 + "' AND " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + matkhau + "'";
 
         Cursor cursor = database.rawQuery(truyvan, null);
-        if (cursor.getCount() != 0){
-            return true;
-        } else {
-            return false;
+        while(cursor.moveToNext()){
+            return new TaiKhoanDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getInt(7)
+            );
         }
+        return null;
+//        if (cursor.getCount() != 0){
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 
 }

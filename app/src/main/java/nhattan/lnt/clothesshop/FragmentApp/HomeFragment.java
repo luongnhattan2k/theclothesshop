@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment{
 
     private View view;
 
-    private static Database database;
+    public static Database database;
     GridView gridView_SanPham;
     ArrayList<SanPhamDTO> sanPhamDTOArrayList;
     SanPhamDAO adapter;
@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment{
     private void GetData() {
         //get data
         Cursor cursor = database.Getdata("SELECT * FROM SANPHAM");
+        sanPhamDTOArrayList.clear();
         while (cursor.moveToNext())
         {
             sanPhamDTOArrayList.add(new SanPhamDTO(

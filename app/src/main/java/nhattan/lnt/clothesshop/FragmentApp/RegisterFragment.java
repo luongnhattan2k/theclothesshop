@@ -22,7 +22,7 @@ import nhattan.lnt.clothesshop.R;
 public class RegisterFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener{
 
     private  View mView;
-    EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email, edt_NhapLaiMatKhau;
+    EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email;
     ImageButton btn_exit;
     Button btn_DangKy;
     TaiKhoanDAO taiKhoanDAO;
@@ -59,6 +59,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
         btn_DangKy.setOnClickListener(this);
         edt_NgaySinh.setOnFocusChangeListener(this);
+
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
     }
 
@@ -81,13 +82,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                 } else if (sEmail == null || sEmail.equals("")) {
                     Toast.makeText(getActivity(), "Vui Lòng Nhập email !", Toast.LENGTH_LONG).show();
                 } else {
-                    TaiKhoanDTO taiKhoanDTO;
-                    taiKhoanDTO = new TaiKhoanDTO();
+                    TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                     taiKhoanDTO.setTENTK(sTaiKhoan);
                     taiKhoanDTO.setMATKHAU(sMatKhau);
-                    taiKhoanDTO.setNGAYSINH(sNgaySinh);
                     taiKhoanDTO.setSDT(sSDT);
                     taiKhoanDTO.setEMAIL(sEmail);
+                    taiKhoanDTO.setNGAYSINH(sNgaySinh);
 
                     long kiemtra = taiKhoanDAO.ThemTaiKhoan(taiKhoanDTO);
                     if (kiemtra != 0){
