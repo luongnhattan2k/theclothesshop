@@ -14,7 +14,7 @@ public class TaiKhoanDTO {
 
     }
 
-    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI ,int MAQUYEN) {
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
@@ -22,7 +22,6 @@ public class TaiKhoanDTO {
         this.EMAIL = EMAIL;
         this.NGAYSINH = NGAYSINH;
         this.DIACHI = DIACHI;
-        this.MAQUYEN = MAQUYEN;
     }
 
 

@@ -4,12 +4,31 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.Database.CreateDatabase;
+import nhattan.lnt.clothesshop.R;
 
-public class TaiKhoanDAO {
+public class TaiKhoanDAO extends BaseAdapter {
     SQLiteDatabase database;
+    private Context context;
+    private int layout;
+    public static List<TaiKhoanDTO> taiKhoanDTOList;
+    int id;
+
+    public void DoAnAdapter(Context context, int layout, List<TaiKhoanDTO> taiKhoanDTOList) {
+        this.context = context;
+        this.layout = layout;
+        this.taiKhoanDTOList = taiKhoanDTOList;
+    }
 
     public TaiKhoanDAO(Context context){
         CreateDatabase createDatabase = new CreateDatabase(context);
@@ -23,6 +42,7 @@ public class TaiKhoanDAO {
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_SDT,taiKhoanDTO.getSDT());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_EMAIL,taiKhoanDTO.getEMAIL());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_NGAYSINH,taiKhoanDTO.getNGAYSINH());
+//        contentValues.put(CreateDatabase.tbl_TAIKHOAN_DIACHI,taiKhoanDTO.getDIACHI());
 
         long kiemtra = database.insert(CreateDatabase.tbl_TAIKHOAN, null, contentValues);
         return kiemtra;
@@ -42,8 +62,7 @@ public class TaiKhoanDAO {
                     cursor.getInt(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6),
-                    cursor.getInt(7)
+                    cursor.getString(6)
             );
         }
         return null;
@@ -54,4 +73,53 @@ public class TaiKhoanDAO {
 //        }
     }
 
+    @Override
+    public int getCount() {
+        return taiKhoanDTOList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    private class ViewHolder{
+        EditText edtTentaikhoan, edtMatkhau, edtSdt, edtEmail, edtDiachi;
+
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+        if(view ==null )
+        {
+            holder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(layout,null);
+            holder.edtTentaikhoan = (EditText) view.findViewById(R.id.edtTaikhoan);
+            holder.edtMatkhau = (EditText) view.findViewById(R.id.edtMatkhau);
+            holder.edtSdt = (EditText) view.findViewById(R.id.edtSdt);
+            holder.edtEmail = (EditText) view.findViewById(R.id.edtEmail);
+            holder.edtDiachi = (EditText) view.findViewById(R.id.edtDiachi);
+            view.setTag(holder);
+
+        }
+        else
+        {
+            holder = (ViewHolder) view.getTag();
+        }
+        TaiKhoanDTO taiKhoanDTO = taiKhoanDTOList.get(i);
+        holder.edtTentaikhoan.setText(taiKhoanDTO.getTENTK());
+        holder.edtMatkhau.setText(taiKhoanDTO.getMATKHAU());
+        holder.edtSdt.setText(taiKhoanDTO.getSDT());
+        holder.edtEmail.setText(taiKhoanDTO.getEMAIL());
+        holder.edtDiachi.setText(taiKhoanDTO.getDIACHI());
+        id = taiKhoanDTO.getMATK();
+        return view;
+    }
 }

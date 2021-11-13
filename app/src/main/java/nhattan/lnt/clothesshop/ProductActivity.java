@@ -48,7 +48,7 @@ public class ProductActivity extends AppCompatActivity {
                 int SL = Integer.parseInt(productQuantity.getText().toString());
                 sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
                 HomeFragment.database.SPGH(
-                        taiKhoanDTO.getMATK(),
+                        HomeActivity.taiKhoanDTO.getMATK(),
                         sanPhamDTO.getMaSP(),
                         sanPhamDTO.getTenSP(),
                         SL,

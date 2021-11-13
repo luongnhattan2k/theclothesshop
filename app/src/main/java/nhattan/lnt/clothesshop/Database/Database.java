@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
@@ -55,7 +56,20 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    @Override
+    public void UPDATE(String tentaikhoan,String matkhau, int sdt, String email, String diachi, int Id) {
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE TAIKHOAN SET TENTAIKHOAN = ? , MATKHAU = ?, SDT = ?, EMAIL = ?, DIACHI = ? WHERE IDTAIKHOAN=" + Id;
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, tentaikhoan);
+        statement.bindString(2, matkhau);
+        statement.bindDouble(3, sdt);
+        statement.bindString(4, email);
+        statement.bindString(5, diachi);
+
+    }
+        @Override
     public void onCreate(SQLiteDatabase db) {
 
     }
