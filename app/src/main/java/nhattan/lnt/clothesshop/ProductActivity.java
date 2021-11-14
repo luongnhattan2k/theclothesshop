@@ -64,7 +64,7 @@ public class ProductActivity extends AppCompatActivity {
                 );
                 Toast.makeText(ProductActivity.this," Đã thêm vào giỏ hàng" + SL,Toast.LENGTH_LONG).show();
                 Intent iGiohang = new Intent(ProductActivity.this, HomeActivity.class);
-                iGiohang.putExtra("Trang", R.id.nav_profile);
+                iGiohang.putExtra("Trang", R.id.nav_mycart);
 
                 startActivity(iGiohang);
             }

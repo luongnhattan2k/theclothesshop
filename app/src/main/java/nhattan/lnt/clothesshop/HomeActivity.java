@@ -63,9 +63,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Intent intent = getIntent();
         int GioHangFra = intent.getIntExtra("Trang", R.id.nav_home);
-        if(GioHangFra == R.id.nav_profile){
+        if(GioHangFra == R.id.nav_mycart){
             navigationView.setCheckedItem(GioHangFra);
-            replaceFragment(new UserFragment());
+            replaceFragment(new MyCartFragment());
         }
 
         HienThiTen();
