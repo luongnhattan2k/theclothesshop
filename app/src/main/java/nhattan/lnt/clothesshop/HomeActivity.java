@@ -105,9 +105,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         View view = navigationView.inflateHeaderView(R.layout.header);
         txt_TenTaiKhoan = view.findViewById(R.id.txtTennguoidung);
 
-        Intent intent = getIntent();
-        String TenTaiKhoan = intent.getStringExtra("TenTaiKhoan");
-        txt_TenTaiKhoan.setText(TenTaiKhoan);
+        txt_TenTaiKhoan.setText(Login.taiKhoanDTO.getTENTK());
         txt_TenTaiKhoan.setTextColor(Color.WHITE);
     }
 

@@ -18,6 +18,7 @@ import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.ForgotPassword;
 import nhattan.lnt.clothesshop.HomeActivity;
+import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
@@ -85,9 +86,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         mUsername = sTentaikhoan;
 
         if (kiemtra != null){
+            Login.taiKhoanDTO = kiemtra;
             Toast.makeText(getActivity(), "Đăng Nhập Thành Công !", Toast.LENGTH_LONG).show();
             Intent iTrangchu = new Intent(getActivity(), HomeActivity.class);
-            iTrangchu.putExtra("TenTaiKhoan", edt_TK.getText().toString());
+
             startActivity(iTrangchu);
         } else {
             Toast.makeText(getActivity(), "Đăng Nhập Thất Bại !", Toast.LENGTH_LONG).show();

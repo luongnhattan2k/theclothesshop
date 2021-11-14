@@ -46,6 +46,13 @@ public class Database extends SQLiteOpenHelper {
                     + CreateDatabase.tbl_GIOHANG_THANHTIEN
                     + " ) VALUES ( " + IDTK + " , " + null + " , " + IDSP+" , '" + TenSP + "' , " + Soluong + " , "
                     + thanhtien + " ) ");
+
+            SQLiteDatabase database = getWritableDatabase();
+            String sql = "UPDATE GIOHANG SET HINHANH = ? WHERE IDTK="+ IDTK + " AND IDSP=" + IDSP ;
+            SQLiteStatement statement = database.compileStatement(sql);
+            statement.clearBindings();
+            statement.bindBlob(1,hinh);
+            statement.executeInsert();
         }
         else {
             QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
@@ -71,7 +78,7 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void _IMAGE(byte[] hinh){
+    public void INSERT_IMAGE(byte[] hinh){
         SQLiteDatabase database = getWritableDatabase();
         String sql = "INSERT INTO GIOHANG VALUES(null,?,null,null,null,null,null,null)";
         SQLiteStatement statement = database.compileStatement(sql);
