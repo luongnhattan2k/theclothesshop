@@ -55,13 +55,13 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_CHITIETHOADON_TONGTIEN = "TONGTIEN";
 
     public static String tbl_GIOHANG_IDGIOHANG = "IDGIOHANG";
-    public static String tbl_GIOHANG_IDHOADON = "IDHOADON";
     public static String tbl_GIOHANG_IDSP = "IDSP";
     public static String tbl_GIOHANG_TENSANPHAM = "TENSANPHAM";
     public static String tbl_GIOHANG_IDTK = "IDTK";
     public static String tbl_GIOHANG_SOLUONG = "SOLUONG";
     public static String tbl_GIOHANG_THANHTIEN = "THANHTIEN";
     public static String tbl_GIOHANG_GHICHU = "GHICHU";
+    public static String tbl_GIOHANG_HINHANH = "HINHANH";
 
     public static String tbl_GOPY_IDGOPY = "IDGOPY";
     public static String tbl_GOPY_IDTK = "IDTK";
@@ -84,7 +84,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_QUYEN_TENQUYEN + " TEXT )";
 
         String SANPHAM = "CREATE TABLE " + tbl_SANPHAM + "(" + tbl_SANPHAM_IDSP + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_SANPHAM_HINHANH + " TEXT, "+ tbl_SANPHAM_TENSANPHAM + " TEXT , " + tbl_SANPHAM_GIA + " INTEGER , "
+                + tbl_SANPHAM_HINHANH + " BLOB, "+ tbl_SANPHAM_TENSANPHAM + " TEXT , " + tbl_SANPHAM_GIA + " INTEGER , "
                 + tbl_SANPHAM_SOLUONG + " INTEGER, " + tbl_SANPHAM_MOTA + " TEXT, " + tbl_SANPHAM_IDDANHMUC + " INTEGER, "
                 + tbl_SANPHAM_IDSP_NEW + " INTEGER )";
 
@@ -99,7 +99,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_CHITIETHOADON_IDSANPHAM + " INTEGER, " + tbl_CHITIETHOADON_TENTAIKHOAN + " TEXT, " + tbl_CHITIETHOADON_TONGTIEN + " INTEGER )";
 
         String GIOHANG = "CREATE TABLE " + tbl_GIOHANG + "(" + tbl_GIOHANG_IDGIOHANG + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_GIOHANG_IDHOADON + " INTEGER, " + tbl_GIOHANG_IDSP + " INTEGER, " + tbl_GIOHANG_TENSANPHAM + " TEXT, "
+                + tbl_GIOHANG_HINHANH + " BLOB, " + tbl_GIOHANG_IDSP + " INTEGER, " + tbl_GIOHANG_TENSANPHAM + " TEXT, "
                 + tbl_GIOHANG_IDTK + " INTEGER, " + tbl_GIOHANG_SOLUONG + " INTEGER, " + tbl_GIOHANG_THANHTIEN + " INTEGER, "
                 + tbl_GIOHANG_GHICHU + " TEXT )";
 

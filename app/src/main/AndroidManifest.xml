@@ -21,9 +21,6 @@
             android:name=".IntroductActivity"
             android:exported="true" />
         <activity
-            android:name=".MyCartActivity"
-            android:exported="true" />
-        <activity
             android:name=".UserInformationActivity"
             android:exported="true" />
         <activity

@@ -15,12 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
+import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.LoginFragment;
 import nhattan.lnt.clothesshop.FragmentApp.RegisterFragment;
 import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
 
 public class Login extends AppCompatActivity{
 
+    public static TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
     TextView login_btn, signup_btn;
     ImageButton ibtn_Exit;
 

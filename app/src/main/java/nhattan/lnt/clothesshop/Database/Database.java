@@ -34,16 +34,17 @@ public class Database extends SQLiteOpenHelper {
         return true;
     }
 
-    public void SPGH(int IDTK, int IDSP, String TenSP, int Soluong, int thanhtien){
+    public void SPGH(int IDTK, byte[] hinh, int IDSP, String TenSP, int Soluong, int thanhtien){
         if(SPChuaCoTrongGH(IDTK, IDSP)){
             QueryData("INSERT INTO " + CreateDatabase.tbl_GIOHANG +
                     " ( "
                     + CreateDatabase.tbl_GIOHANG_IDTK + " , "
+                    + CreateDatabase.tbl_GIOHANG_HINHANH + " , "
                     + CreateDatabase.tbl_GIOHANG_IDSP + " , "
                     + CreateDatabase.tbl_GIOHANG_TENSANPHAM + " , "
                     + CreateDatabase.tbl_GIOHANG_SOLUONG + " , "
                     + CreateDatabase.tbl_GIOHANG_THANHTIEN
-                    + " ) VALUES ( " + IDTK + " , " + IDSP+" , '" + TenSP + "' , " + Soluong + " , "
+                    + " ) VALUES ( " + IDTK + " , " + null + " , " + IDSP+" , '" + TenSP + "' , " + Soluong + " , "
                     + thanhtien + " ) ");
         }
         else {
@@ -69,6 +70,18 @@ public class Database extends SQLiteOpenHelper {
         statement.bindString(5, diachi);
 
     }
+
+    public void _IMAGE(byte[] hinh){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO GIOHANG VALUES(null,?,null,null,null,null,null,null)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,hinh);
+
+        statement.executeInsert();
+    }
+
         @Override
     public void onCreate(SQLiteDatabase db) {
 

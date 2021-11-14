@@ -1,13 +1,13 @@
 package nhattan.lnt.clothesshop;
 
-import static nhattan.lnt.clothesshop.HomeActivity.taiKhoanDTO;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
-import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
-import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
+import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -45,17 +46,27 @@ public class ProductActivity extends AppCompatActivity {
         btn_Themgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) productImage.getDrawable();
+                Bitmap bitmap = bitmapDrawable.getBitmap();
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                byte[] hinhAnh = byteArray.toByteArray();
+
                 int SL = Integer.parseInt(productQuantity.getText().toString());
                 sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
                 HomeFragment.database.SPGH(
-                        HomeActivity.taiKhoanDTO.getMATK(),
+                        Login.taiKhoanDTO.getMATK(),
+                        hinhAnh,
                         sanPhamDTO.getMaSP(),
                         sanPhamDTO.getTenSP(),
                         SL,
                         SL * sanPhamDTO.getGiaSP()
                 );
                 Toast.makeText(ProductActivity.this," Đã thêm vào giỏ hàng" + SL,Toast.LENGTH_LONG).show();
-                startActivity(new Intent(ProductActivity.this, MyCartActivity.class));
+                Intent iGiohang = new Intent(ProductActivity.this, HomeActivity.class);
+                iGiohang.putExtra("Trang", R.id.nav_profile);
+
+                startActivity(iGiohang);
             }
         });
 
@@ -117,7 +128,7 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void getMyCart() {
-        startActivity(new Intent(ProductActivity.this, MyCartActivity.class));
+        startActivity(new Intent(ProductActivity.this, HomeActivity.class));
     }
 
 

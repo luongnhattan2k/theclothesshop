@@ -23,7 +23,7 @@
                 android:id="@+id/edtSearch"
                 android:layout_width="200dp"
                 android:layout_height="@dimen/size30dp"
-                android:layout_marginRight="@dimen/size20dp"
+                android:layout_marginRight="@dimen/size30dp"
                 android:layout_gravity="center"
                 android:background="@drawable/bo_tron_bon_goc"
                 android:paddingLeft="@dimen/size10dp"
@@ -34,20 +34,13 @@
                 android:hint="Tìm kiếm..."
                 android:textSize="14dp"/>
 
-            <ImageView
-                android:id="@+id/imgGiohang"
-                android:layout_width="@dimen/size30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="5dp"
-                app:srcCompat="@drawable/baseline_shopping_cart_24" />
 
             <ImageView
                 android:id="@+id/imgThongBao"
                 android:layout_width="@dimen/size30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="right"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="15dp"
                 app:srcCompat="@drawable/baseline_notifications_24" />
 
         </androidx.appcompat.widget.Toolbar>

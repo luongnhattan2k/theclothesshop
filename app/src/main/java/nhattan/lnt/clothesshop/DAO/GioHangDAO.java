@@ -2,6 +2,8 @@ package nhattan.lnt.clothesshop.DAO;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +21,12 @@ import nhattan.lnt.clothesshop.R;
 public class GioHangDAO extends BaseAdapter {
     SQLiteDatabase database;
 
-    private Context context;
+    private Fragment context;
     private int layout;
     public static List<GioHangDTO> sanPhamGioHangList;
     int id;
 
-    public GioHangDAO(Context context, int layout, List<GioHangDTO> sanPhamGioHangList) {
+    public GioHangDAO(Fragment context, int layout, List<GioHangDTO> sanPhamGioHangList) {
         this.context = context;
         this.layout = layout;
         this.sanPhamGioHangList = sanPhamGioHangList;
@@ -58,12 +60,12 @@ public class GioHangDAO extends BaseAdapter {
         if (convertView == null){
             holder = new ViewHolder();
             LayoutInflater inflater;
-            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            inflater = (LayoutInflater) context.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
             holder.txt_TenSP = (TextView) convertView.findViewById(R.id.txtTensp);
             holder.txt_GiaSP = (TextView) convertView.findViewById(R.id.txtThanhtien);
             holder.txt_SLSP = (TextView) convertView.findViewById(R.id.txtSoluong) ;
-//            holder.img_HinhAnh = (ImageView) view.findViewById(R.id.imageHinhCustom);
+            holder.img_HinhAnh = (ImageView) convertView.findViewById(R.id.imageHinhCustom);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -75,10 +77,10 @@ public class GioHangDAO extends BaseAdapter {
         holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()) );
         id = gioHang.getIDGIOHANG();
 
-//        // chuyen byte[] -> ve bitmap
-//        byte[] hinhAnh = sanPhamDTO.getImageSP();
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
-//        holder.img_HinhAnh.setImageBitmap(bitmap);
+        // chuyen byte[] -> ve bitmap
+        byte[] hinhAnh = gioHang.getImageSP();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
+        holder.img_HinhAnh.setImageBitmap(bitmap);
 
         return convertView;
     }

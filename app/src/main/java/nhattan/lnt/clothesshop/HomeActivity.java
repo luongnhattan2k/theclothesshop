@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
+import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
 import nhattan.lnt.clothesshop.FragmentApp.NewBornFragment;
@@ -32,13 +33,13 @@ import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_MEN = 2;
     private static final int FRAGMENT_WOMEN = 3;
     private static final int FRAGMENT_NEWBORN = 4;
     private static final int FRAGMENT_PROFILE = 5;
-    private static final int FRAGMENT_SETTING = 6;
+    private static final int FRAGMENT_MYCART = 6;
+    private static final int FRAGMENT_SETTING = 7;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -59,9 +60,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         AnhXa();
+
+        Intent intent = getIntent();
+        int GioHangFra = intent.getIntExtra("Trang", R.id.nav_home);
+        if(GioHangFra == R.id.nav_profile){
+            navigationView.setCheckedItem(GioHangFra);
+            replaceFragment(new UserFragment());
+        }
+
         HienThiTen();
     }
-
 
     @SuppressLint("RestrictedApi")
     private void AnhXa() {
@@ -150,6 +158,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             if (FRAGMENT_PROFILE != currentFragment) {
                 replaceFragment(new UserFragment());
                 currentFragment = FRAGMENT_PROFILE;
+            }
+        }else if (id == R.id.nav_mycart) {
+            if (FRAGMENT_MYCART != currentFragment) {
+                replaceFragment(new MyCartFragment());
+                currentFragment = FRAGMENT_MYCART;
             }
         }else if (id == R.id.nav_setting) {
             if (FRAGMENT_SETTING != currentFragment) {

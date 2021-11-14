@@ -44,11 +44,11 @@ public class UserInformationActivity extends AppCompatActivity {
 
     private void GetData() {
         //get data
-        String tentaikhoan = HomeActivity.taiKhoanDTO.getTENTK();
-        String matkhau = HomeActivity.taiKhoanDTO.getMATKHAU();
-        int sdt = HomeActivity.taiKhoanDTO.getSDT();
-        String email = HomeActivity.taiKhoanDTO.getEMAIL();
-        String diachi = HomeActivity.taiKhoanDTO.getDIACHI();
+        String tentaikhoan = Login.taiKhoanDTO.getTENTK();
+        String matkhau = Login.taiKhoanDTO.getMATKHAU();
+        int sdt = Login.taiKhoanDTO.getSDT();
+        String email = Login.taiKhoanDTO.getEMAIL();
+        String diachi = Login.taiKhoanDTO.getDIACHI();
 
         edt_Taikhoan.setText(tentaikhoan);
         edt_Matkhau.setText(matkhau);
