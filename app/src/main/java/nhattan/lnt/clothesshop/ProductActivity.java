@@ -62,9 +62,9 @@ public class ProductActivity extends AppCompatActivity {
                         SL,
                         SL * sanPhamDTO.getGiaSP()
                 );
-                Toast.makeText(ProductActivity.this," Đã thêm vào giỏ hàng" + SL,Toast.LENGTH_LONG).show();
+                Toast.makeText(ProductActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_LONG).show();
                 Intent iGiohang = new Intent(ProductActivity.this, HomeActivity.class);
-                iGiohang.putExtra("Trang", R.id.nav_mycart);
+                iGiohang.putExtra("ThemGioHang", R.id.nav_mycart);
 
                 startActivity(iGiohang);
             }

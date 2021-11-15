@@ -55,8 +55,9 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/size20dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="@dimen/size60dp"
+        android:layout_marginRight="@dimen/size20dp"
         android:backgroundTint="@color/vang_nhat"
         android:src="@drawable/baseline_phone_24"
         tools:ignore="SpeakableTextPresentCheck" />

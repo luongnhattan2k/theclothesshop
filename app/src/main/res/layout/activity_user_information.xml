@@ -60,21 +60,6 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/edtMatkhau"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/size30dp"
-        android:layout_marginTop="@dimen/size20dp"
-        android:layout_marginRight="@dimen/size30dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPersonName"
-        android:paddingLeft="@dimen/size20dp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
         android:id="@+id/edtSdt"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -107,7 +92,7 @@
     <EditText
         android:id="@+id/edtDiachi"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="150dp"
         android:gravity="center|left|top"
         android:layout_marginLeft="@dimen/size30dp"
         android:layout_marginTop="@dimen/size20dp"
@@ -129,7 +114,7 @@
 
         <Button
             android:id="@+id/btnCapnhat"
-            android:layout_width="150dp"
+            android:layout_width="110dp"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:layout_gravity="center"

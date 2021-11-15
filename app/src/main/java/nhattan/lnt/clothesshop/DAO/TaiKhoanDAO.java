@@ -49,6 +49,7 @@ public class TaiKhoanDAO extends BaseAdapter {
     }
 
 
+
     public TaiKhoanDTO KiemTraDangNhap(String tendangnhap, String matkhau){
         String truyvan = "SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_TENTAIKHOAN + " = '" + tendangnhap
                 + "' AND " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + matkhau + "'";

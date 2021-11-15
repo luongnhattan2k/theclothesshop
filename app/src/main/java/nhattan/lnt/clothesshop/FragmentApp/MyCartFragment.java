@@ -1,5 +1,6 @@
 package nhattan.lnt.clothesshop.FragmentApp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -88,9 +89,10 @@ public class MyCartFragment extends Fragment {
         if (Login.taiKhoanDTO.getMATK() == -1)
         {
             Toast.makeText(getActivity(), "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getActivity(), Login.class));
         }else if (sanPhamArrayList.isEmpty()){
             Toast.makeText(getActivity(), "Bạn chưa mua hàng !", Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getActivity(), "id cua may la : "+ Login.taiKhoanDTO.getMATK(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(), "id cua may la : "+ Login.taiKhoanDTO.getMATK(), Toast.LENGTH_LONG).show();
     }
 }

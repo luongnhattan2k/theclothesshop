@@ -130,19 +130,19 @@
 
         <ImageView
             android:id="@+id/imgTrangChu"
-            android:layout_width="48dp"
-            android:layout_height="@dimen/size50dp"
+            android:layout_width="@dimen/size30dp"
+            android:layout_height="@dimen/size30dp"
             android:layout_marginLeft="@dimen/size10dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="22dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/baseline_home_24"/>
 
         <ImageView
             android:id="@+id/imgGoGioHang"
-            android:layout_width="48dp"
-            android:layout_height="@dimen/size50dp"
+            android:layout_width="@dimen/size30dp"
+            android:layout_height="@dimen/size30dp"
             android:layout_marginLeft="@dimen/size10dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="22dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/baseline_shopping_cart_24" />
 
