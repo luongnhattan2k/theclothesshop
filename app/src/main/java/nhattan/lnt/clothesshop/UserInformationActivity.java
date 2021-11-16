@@ -10,8 +10,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
+import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
+import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 
 public class UserInformationActivity extends AppCompatActivity {
 
@@ -50,6 +55,21 @@ public class UserInformationActivity extends AppCompatActivity {
         });
 
         btn_Capnhat = findViewById(R.id.btnCapnhat);
+        btn_Capnhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                TaiKhoanDTO taiKhoanDTO = TaiKhoanDAO.taiKhoanDTOList.get(id);
+                HomeFragment.database.UPDATE(
+                        edt_Taikhoan.getText().toString().trim(),
+                        Integer.parseInt(edt_Sdt.getText().toString().trim()),
+                        edt_Email.getText().toString().trim(),
+                        edt_Diachi.getText().toString().trim(),
+                        Login.taiKhoanDTO.getMATK()
+                );
+                Toast.makeText(UserInformationActivity.this,"Cập nhật thành công !", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(UserInformationActivity.this, HomeActivity.class));
+            }
+        });
 
     }
 

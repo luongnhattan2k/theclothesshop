@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import nhattan.lnt.clothesshop.ChangePasswordActivity;
 import nhattan.lnt.clothesshop.ChatBotActivity;
 import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
@@ -74,6 +75,7 @@ public class UserFragment extends Fragment implements View.OnClickListener{
     }
 
     private void setOnClick_DoiMatKhau() {
+        startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
     }
 
     private void setOnClick_ThongTinNguoiDung() {
