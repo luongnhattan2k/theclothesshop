@@ -86,7 +86,7 @@ public class SanPhamDAO extends BaseAdapter {
 
         SanPhamDTO sanPhamDTO = sanPhamDTOList.get(i);
         holder.txt_TenSP.setText(sanPhamDTO.getTenSP());
-        holder.txt_GiaSP.setText(String.valueOf(sanPhamDTO.getGiaSP()));
+        holder.txt_GiaSP.setText(String.valueOf(sanPhamDTO.getGiaSP()) + " VNĐ");
         id = sanPhamDTO.getMaSP();
 
         // chuyen byte[] -> ve bitmap

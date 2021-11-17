@@ -83,7 +83,7 @@ public class ProductActivity extends AppCompatActivity {
 
         productName.setText(ten);
         productContent.setText(mota);
-        productPrice.setText(gia);
+        productPrice.setText(gia + " VNĐ");
         byte[] hinhAnh = sanPhamDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         productImage.setImageBitmap(bitmap);
