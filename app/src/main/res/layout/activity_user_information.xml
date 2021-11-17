@@ -25,7 +25,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txtDangky"
+        android:id="@+id/txtThongTinNguoiDung"
         android:layout_width="350dp"
         android:layout_height="58dp"
         android:gravity="center"
@@ -81,7 +81,8 @@
             android:background="@color/white"
             android:ems="10"
             android:hint="@string/sdt"
-            android:inputType="textPersonName"
+            android:inputType="phone"
+            android:maxLength="10"
             android:paddingLeft="@dimen/size20dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -125,7 +126,7 @@
             android:background="@color/white"
             android:ems="10"
             android:hint="@string/diachi"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:paddingLeft="@dimen/size20dp"
             android:paddingTop="@dimen/size20dp"
             tools:ignore="SpeakableTextPresentCheck" />

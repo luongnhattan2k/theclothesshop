@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:background="@color/xam"
     android:elevation="5dp"
     android:padding="2dp"
     android:orientation="vertical"
@@ -22,6 +22,128 @@
             android:background="@null"
             app:srcCompat="?attr/actionModeCloseDrawable"
             tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtGopY"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="Góp Ý"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtTaikhoangopy"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size20dp"
+                android:layout_marginRight="@dimen/size30dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="@string/username"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/size20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtSdtgopy"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size20dp"
+                android:layout_marginRight="@dimen/size30dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="@string/sdt"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/size20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtNoidunggopy"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size20dp"
+                android:layout_marginRight="@dimen/size30dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Nhập nội dung ..."
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/size20dp"
+                android:paddingTop="@dimen/size20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <Button
+                android:id="@+id/btnGopy"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size20dp"
+                android:backgroundTint="#19CF20"
+                android:hint="Gửi"
+                android:textColorHint="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnThoatgopy"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/size20dp"
+                android:layout_marginLeft="60dp"
+                android:backgroundTint="#ED2011"
+                android:hint="Thoát"
+                android:textColorHint="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
