@@ -17,11 +17,23 @@
 
         <ImageButton
             android:id="@+id/ibtnExit"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/size50dp"
+            android:layout_height="@dimen/size50dp"
             android:background="@null"
             app:srcCompat="?attr/actionModeCloseDrawable"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Giới Thiệu"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
 
     </LinearLayout>
 

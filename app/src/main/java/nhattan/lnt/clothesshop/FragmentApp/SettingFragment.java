@@ -38,8 +38,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 
     private void AnhXa() {
         txt_Gioithieu = view.findViewById(R.id.txtGioiThieu);
-        txt_Lienhe = view.findViewById(R.id.txtLienHe);
-        txt_Trogiup = view.findViewById(R.id.txtTrogiup);
+        txt_Lienhe = view.findViewById(R.id.txtGopy);
+        txt_Trogiup = view.findViewById(R.id.txtHotrokhachhang);
 
         txt_Gioithieu.setOnClickListener(this);
         txt_Lienhe.setOnClickListener(this);
@@ -53,10 +53,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             case R.id.txtGioiThieu:
                 setOnClick_GioiThieu();
                 ;break;
-            case R.id.txtLienHe:
+            case R.id.txtGopy:
                 setOnClick_LienHe();
                 ;break;
-            case R.id.txtTrogiup:
+            case R.id.txtHotrokhachhang:
                 setOnClick_TroGiup();
                 ;break;
 

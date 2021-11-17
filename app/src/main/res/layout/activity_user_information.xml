@@ -15,27 +15,26 @@
 
         <ImageButton
             android:id="@+id/ibtnExit"
-            android:layout_width="@dimen/size40dp"
-            android:layout_height="@dimen/size40dp"
+            android:layout_width="@dimen/size50dp"
+            android:layout_height="@dimen/size50dp"
             android:background="@null"
             app:srcCompat="?attr/actionModeCloseDrawable"
             tools:ignore="SpeakableTextPresentCheck"
             android:contentDescription="TODO" />
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Thông Tin Người Dùng"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtThongTinNguoiDung"
-        android:layout_width="350dp"
-        android:layout_height="58dp"
-        android:gravity="center"
-        android:text="Thông Tin Người Dùng"
-        android:fontFamily="serif"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        />
 
     <ImageView
         android:id="@+id/imageView"

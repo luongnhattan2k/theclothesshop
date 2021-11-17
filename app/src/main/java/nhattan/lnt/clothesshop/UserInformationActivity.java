@@ -38,6 +38,7 @@ public class UserInformationActivity extends AppCompatActivity {
         GetData();
     }
 
+
     private void Anhxa() {
         edt_Taikhoan = findViewById(R.id.edtTaikhoan);
         edt_Sdt = findViewById(R.id.edtSdt);
@@ -58,7 +59,6 @@ public class UserInformationActivity extends AppCompatActivity {
         btn_Capnhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TaiKhoanDTO taiKhoanDTO = TaiKhoanDAO.taiKhoanDTOList.get(id);
                 HomeFragment.database.UPDATE(
                         edt_Taikhoan.getText().toString().trim(),
                         Integer.parseInt(edt_Sdt.getText().toString().trim()),
@@ -66,8 +66,9 @@ public class UserInformationActivity extends AppCompatActivity {
                         edt_Diachi.getText().toString().trim(),
                         Login.taiKhoanDTO.getMATK()
                 );
+                GetData();
                 Toast.makeText(UserInformationActivity.this,"Cập nhật thành công !", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(UserInformationActivity.this, HomeActivity.class));
+//                startActivity(new Intent(UserInformationActivity.this, Login.class));
             }
         });
 
@@ -75,10 +76,12 @@ public class UserInformationActivity extends AppCompatActivity {
 
     private void GetData() {
         //get data
-        String tentaikhoan = Login.taiKhoanDTO.getTENTK();
-        int sdt = Login.taiKhoanDTO.getSDT();
-        String email = Login.taiKhoanDTO.getEMAIL();
-        String diachi = Login.taiKhoanDTO.getDIACHI();
+        int id = Login.taiKhoanDTO.getMATK();
+        TaiKhoanDTO taiKhoanDTO = HomeFragment.database.Load(id);
+        String tentaikhoan = taiKhoanDTO.getTENTK();
+        int sdt = taiKhoanDTO.getSDT();
+        String email = taiKhoanDTO.getEMAIL();
+        String diachi = taiKhoanDTO.getDIACHI();
 
         edt_Taikhoan.setText(tentaikhoan);
         edt_Sdt.setText(String.valueOf(sdt));

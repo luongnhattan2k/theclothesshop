@@ -68,7 +68,7 @@ public class ChatBotActivity extends AppCompatActivity {
         chatsRV = findViewById(R.id.idRVChats);
         sendMsgIB = findViewById(R.id.idIBSend);
         userMsgEdt = findViewById(R.id.idEdtMessage);
-        img_Exit = findViewById(R.id.imgExit);
+        img_Exit = findViewById(R.id.ibtnExit);
 
         // below line is to initialize our request queue.
         mRequestQueue = Volley.newRequestQueue(ChatBotActivity.this);

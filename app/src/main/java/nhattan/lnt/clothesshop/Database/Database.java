@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
+import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
+
 public class Database extends SQLiteOpenHelper {
 
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -86,6 +88,36 @@ public class Database extends SQLiteOpenHelper {
         statement.clearBindings();
 
         statement.bindBlob(1,hinh);
+
+        statement.executeInsert();
+    }
+
+    public TaiKhoanDTO Load(int IDTK)
+    {
+        Cursor cursor = Getdata("SELECT * FROM TAIKHOAN WHERE IDTAIKHOAN = " + IDTK );
+        while (cursor.moveToNext()) {
+            return new TaiKhoanDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6)
+            );
+        }
+        return null;
+
+    }
+    public void INSERT_GOPY(String tentaikhoan, int sdt, String noidung){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO GOPY VALUES(null,?,?,?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, tentaikhoan);
+        statement.bindDouble(2, sdt);
+        statement.bindString(3, noidung);
 
         statement.executeInsert();
     }

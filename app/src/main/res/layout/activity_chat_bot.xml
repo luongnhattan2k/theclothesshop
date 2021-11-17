@@ -5,22 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size20dp"
-        android:layout_weight="1"
-        android:background="@color/vang_nhat"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/vang_nhat">
 
-        <ImageView
-            android:id="@+id/imgExit"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
+        <ImageButton
+            android:id="@+id/ibtnExit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Hỗ Trợ Khách Hàng"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
+
     </LinearLayout>
 
     <!--recycler view to display our chats-->
@@ -28,37 +39,36 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVChats"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_weight="9"
-        android:layout_marginTop="@dimen/size10dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:id="@+id/idLLMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="5">
+        android:layout_gravity="center|bottom"
+        android:orientation="horizontal">
 
         <!--edit text to enter message-->
         <EditText
             android:id="@+id/idEdtMessage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:hint="Enter Message"
-            android:minHeight="48dp"
+            android:minHeight="60dp"
             android:paddingLeft="20dp"/>
 
         <!--button to send message-->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/idIBSend"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/teal_200"
+            android:gravity="right"
+            android:layout_marginLeft="@dimen/size10dp"
+            android:layout_marginRight="@dimen/size10dp"
+            android:backgroundTint="@color/vang_nhat"
             android:src="@android:drawable/ic_menu_send"
             tools:ignore="SpeakableTextPresentCheck" />
 

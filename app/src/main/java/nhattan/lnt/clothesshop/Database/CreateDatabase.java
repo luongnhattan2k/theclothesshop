@@ -64,7 +64,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_GIOHANG_HINHANH = "HINHANH";
 
     public static String tbl_GOPY_IDGOPY = "IDGOPY";
-    public static String tbl_GOPY_IDTK = "IDTK";
+    public static String tbl_GOPY_TENTAIKHOAN = "TENTAIKHOAN";
     public static String tbl_GOPY_SDT = "SDT";
     public static String tbl_GOPY_NOIDUNG = "NOIDUNG";
 
@@ -104,7 +104,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_GIOHANG_GHICHU + " TEXT )";
 
         String GOPY = "CREATE TABLE " + tbl_GOPY + "(" + tbl_GOPY_IDGOPY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_GOPY_IDTK + " INTEGER, " + tbl_GOPY_SDT + " INTEGER, " + tbl_GOPY_NOIDUNG + " TEXT )";
+                + tbl_GOPY_TENTAIKHOAN + " TEXT, " + tbl_GOPY_SDT + " INTEGER, " + tbl_GOPY_NOIDUNG + " TEXT )";
 
         db.execSQL(TAIKHOAN);
         db.execSQL(QUYEN);

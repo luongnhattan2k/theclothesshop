@@ -31,7 +31,7 @@
 
 
         <TextView
-            android:id="@+id/txtLienHe"
+            android:id="@+id/txtGopy"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1.1"
@@ -39,14 +39,14 @@
             android:paddingLeft="@dimen/size20dp"
             android:gravity="center|left"
             android:background="@color/white"
-            android:text="Liên Hệ"
+            android:text="Góp Ý"
             android:textSize="16dp"
             android:textColor="@color/black"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
 
         <TextView
-            android:id="@+id/txtTrogiup"
+            android:id="@+id/txtHotrokhachhang"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1.1"
@@ -54,7 +54,7 @@
             android:paddingLeft="@dimen/size20dp"
             android:gravity="center|left"
             android:background="@color/white"
-            android:text="Trợ Giúp"
+            android:text="Hỗ Trợ Khách Hàng"
             android:textSize="16dp"
             android:textColor="@color/black"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
