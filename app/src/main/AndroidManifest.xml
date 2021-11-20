@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".TransactionHistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProductionActivity"
             android:exported="true" />
         <activity

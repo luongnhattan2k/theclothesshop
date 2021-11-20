@@ -18,6 +18,7 @@ import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.ProductActivity;
+import nhattan.lnt.clothesshop.ProductionActivity;
 import nhattan.lnt.clothesshop.R;
 
 public class MenClothesFragment extends Fragment {
@@ -52,7 +53,7 @@ public class MenClothesFragment extends Fragment {
         gridView_SanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int id, long l) {
-                Intent intent = new Intent(getActivity(), ProductActivity.class);
+                Intent intent = new Intent(getActivity(), ProductionActivity.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }

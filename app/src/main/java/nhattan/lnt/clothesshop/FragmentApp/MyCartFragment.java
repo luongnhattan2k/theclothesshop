@@ -30,6 +30,7 @@ import nhattan.lnt.clothesshop.DAO.GioHangDAO;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.Login;
+import nhattan.lnt.clothesshop.OrderActivity;
 import nhattan.lnt.clothesshop.R;
 
 
@@ -73,7 +74,8 @@ public class MyCartFragment extends Fragment {
         btn_Dathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showdialog();
+//                showdialog();
+                startActivity(new Intent(getActivity(), OrderActivity.class));
             }
         });
 
@@ -94,51 +96,51 @@ public class MyCartFragment extends Fragment {
         txt_Tongtien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(tong) + " VNĐ"));
     }
 
-    private void showdialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_dathang,null);
-        final EditText diachi = view.findViewById(R.id.diachi_thanhtoan);
-        final EditText ghichu= view.findViewById(R.id.ghichu_thanhtoan);
-
-        builder.setView(view);
-        builder.setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                int idcthd;
-
-                if(HomeFragment.database.HoaDonChuaCoTrongHD()){
-                    idcthd = 1;
-                }
-                else {
-                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC LIMIT 1 OFFSET 1");
-                    cursor.moveToNext();
-                    idcthd = cursor.getInt(0) + 1;
-                }
-                Toast.makeText(getActivity(), "ssssss" + idcthd, Toast.LENGTH_SHORT).show();
-
-                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size();position++)
-                {
-                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
-                    HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
-                    HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
-
-                }
-                HomeFragment.database.INSERT_HOADON(tong,idcthd,diachi.getText().toString(),ghichu.getText().toString(),Login.taiKhoanDTO.getMATK());
-                HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
-                GetData();
-                Tongtien();
-            }
-        }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getActivity(),"ssssss",Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.show();
-    }
+//    private void showdialog() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//
+//        LayoutInflater inflater = getLayoutInflater();
+//        View view = inflater.inflate(R.layout.dialog_dathang,null);
+//        final EditText DiaChi = view.findViewById(R.id.edtDiachigiaohang);
+//        final EditText GhiChu = view.findViewById(R.id.edtGhichu);
+//
+//        builder.setView(view);
+//        builder.setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                int idcthd;
+//
+//                if(HomeFragment.database.HoaDonChuaCoTrongHD()){
+//                    idcthd = 1;
+//                }
+//                else {
+//                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC LIMIT 1 OFFSET 1");
+//                    cursor.moveToNext();
+//                    idcthd = cursor.getInt(0) + 1;
+//                }
+//                Toast.makeText(getActivity(), "Đặt hàng thành công !" + idcthd, Toast.LENGTH_LONG).show();
+//
+//                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size();position++)
+//                {
+//                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
+//                    HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
+//                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
+//                    HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
+//
+//                }
+//                HomeFragment.database.INSERT_HOADON(tong,idcthd,DiaChi.getText().toString(),GhiChu.getText().toString(),Login.taiKhoanDTO.getMATK());
+//                HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
+//                GetData();
+//                Tongtien();
+//            }
+//        }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                Toast.makeText(getActivity(),"Bạn vừa từ chối đặt hàng !",Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        builder.show();
+//    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xam"
+    android:elevation="5dp"
+    android:padding="2dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/vang_nhat">
+
+        <ImageButton
+            android:id="@+id/ibtnExit"
+            android:layout_width="@dimen/size50dp"
+            android:layout_height="@dimen/size50dp"
+            android:background="@null"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Kiểm tra"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_danhsachsp_dathang"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtDiachigiaohang"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/size30dp"
+            android:layout_marginTop="@dimen/size20dp"
+            android:layout_marginRight="@dimen/size30dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Nhập địa chỉ giao hàng"
+            android:inputType="textPersonName"
+            android:paddingLeft="@dimen/size20dp"
+            android:paddingTop="@dimen/size20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtGhichu"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="@dimen/size30dp"
+            android:layout_marginTop="@dimen/size20dp"
+            android:layout_marginRight="@dimen/size30dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Nhập nội dung ghi chú"
+            android:inputType="textPersonName"
+            android:paddingLeft="@dimen/size20dp"
+            android:paddingTop="@dimen/size20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>
