@@ -18,14 +18,14 @@ import nhattan.lnt.clothesshop.R;
 
 public class HoaDonDAO extends BaseAdapter {
 
-    private Fragment context;
+    private Context context;
     private int layout;
     public static List<HoaDonDTO> ListHoaDon;
     int id;
 
 
 
-    public HoaDonDAO(Fragment context, int layout, List<HoaDonDTO> ListHoaDon) {
+    public HoaDonDAO(Context context, int layout, List<HoaDonDTO> ListHoaDon) {
         this.context = context;
         this.layout = layout;
         this.ListHoaDon = ListHoaDon;
@@ -63,7 +63,7 @@ public class HoaDonDAO extends BaseAdapter {
         if (view == null){
             holder = new GioHangDAO.ViewHolder();
             LayoutInflater inflater;
-            inflater = (LayoutInflater) context.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txt_TenSP = (TextView) view.findViewById(R.id.txtTensp);
             holder.txt_GiaSP = (TextView) view.findViewById(R.id.txtThanhtien);

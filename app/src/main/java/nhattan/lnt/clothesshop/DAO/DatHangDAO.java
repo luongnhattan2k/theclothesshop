@@ -15,28 +15,28 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
+import nhattan.lnt.clothesshop.DTO.DatHangDTO;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.R;
 
-public class GioHangDAO extends BaseAdapter {
+public class DatHangDAO extends BaseAdapter {
     SQLiteDatabase database;
 
-    private Context context1;
-    private Fragment context;
+    private Context context;
     private int layout;
-    public static List<GioHangDTO> sanPhamGioHangList;
+    public static List<DatHangDTO> datHangDTOS;
     int id;
 
-
-    public GioHangDAO(Fragment context, int layout, List<GioHangDTO> sanPhamGioHangList) {
+    public DatHangDAO(Context context, int layout, List<DatHangDTO> datHangDTOS) {
         this.context = context;
         this.layout = layout;
-        this.sanPhamGioHangList = sanPhamGioHangList;
+        this.datHangDTOS = datHangDTOS;
     }
+
 
     @Override
     public int getCount() {
-        return sanPhamGioHangList.size();
+        return datHangDTOS.size();
     }
 
     @Override
@@ -57,12 +57,12 @@ public class GioHangDAO extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        DatHangDAO.ViewHolder holder;
 
         if (convertView == null){
-            holder = new ViewHolder();
+            holder = new DatHangDAO.ViewHolder();
             LayoutInflater inflater;
-            inflater = (LayoutInflater) context.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
             holder.txt_TenSP = (TextView) convertView.findViewById(R.id.txtTensp);
             holder.txt_GiaSP = (TextView) convertView.findViewById(R.id.txtThanhtien);
@@ -70,17 +70,17 @@ public class GioHangDAO extends BaseAdapter {
             holder.img_HinhAnh = (ImageView) convertView.findViewById(R.id.imageHinhCustom);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (DatHangDAO.ViewHolder) convertView.getTag();
         }
 
-        GioHangDTO gioHang = sanPhamGioHangList.get(position);
-        holder.txt_TenSP.setText(gioHang.getTENSANPHAM());
-        holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
-        holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()) );
-        id = gioHang.getIDGIOHANG();
+        DatHangDTO datHangDTO = datHangDTOS.get(position);
+        holder.txt_TenSP.setText(datHangDTO.getTENSANPHAM());
+        holder.txt_GiaSP.setText(String.valueOf(datHangDTO.getTHANHTIEN()) + " VNĐ" );
+        holder.txt_SLSP.setText(String.valueOf(datHangDTO.getSOLUONG()) );
+        id = datHangDTO.getIDGIOHANG();
 
         // chuyen byte[] -> ve bitmap
-        byte[] hinhAnh = gioHang.getImageSP();
+        byte[] hinhAnh = datHangDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         holder.img_HinhAnh.setImageBitmap(bitmap);
 

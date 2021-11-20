@@ -56,7 +56,7 @@ public class ProductionActivity extends AppCompatActivity {
         spnCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ProductionActivity.this, categoryDAO.getItem(position).getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ProductionActivity.this, "Bạn chọn size " + categoryDAO.getItem(position).getName(), Toast.LENGTH_LONG).show();
             }
 
             @Override

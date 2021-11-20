@@ -68,7 +68,7 @@ public class UserInformationActivity extends AppCompatActivity {
                 );
                 GetData();
                 Toast.makeText(UserInformationActivity.this,"Cập nhật thành công !", Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(UserInformationActivity.this, Login.class));
+                startActivity(new Intent(UserInformationActivity.this, HomeActivity.class));
             }
         });
 

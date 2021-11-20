@@ -16,7 +16,7 @@
         android:background="@color/vang_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExit"
+            android:id="@+id/ibtnExitdathang"
             android:layout_width="@dimen/size50dp"
             android:layout_height="@dimen/size50dp"
             android:background="@null"
@@ -37,52 +37,109 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10dp"
+        android:gravity="center"
+        android:text="Thông Tin Đơn Hàng"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        />
+
     <ListView
         android:id="@+id/listview_danhsachsp_dathang"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="250dp"
+        android:layout_marginTop="@dimen/size10dp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtDiachigiaohang"
+        <Spinner
+            android:id="@+id/spn_category_dathang"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/size50dp"
             android:layout_marginLeft="@dimen/size30dp"
-            android:layout_marginTop="@dimen/size20dp"
+            android:layout_marginTop="@dimen/size10dp"
             android:layout_marginRight="@dimen/size30dp"
             android:background="@color/white"
-            android:ems="10"
-            android:hint="Nhập địa chỉ giao hàng"
-            android:inputType="textPersonName"
-            android:paddingLeft="@dimen/size20dp"
-            android:paddingTop="@dimen/size20dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edtGhichu"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="@dimen/size30dp"
-            android:layout_marginTop="@dimen/size20dp"
-            android:layout_marginRight="@dimen/size30dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="Nhập nội dung ghi chú"
-            android:inputType="textPersonName"
-            android:paddingLeft="@dimen/size20dp"
-            android:paddingTop="@dimen/size20dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/edtDiachigiaohang"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size10dp"
+                android:layout_marginRight="@dimen/size30dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Nhập địa chỉ giao hàng"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/size20dp"
+                android:paddingTop="@dimen/size20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtGhichu"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:layout_marginTop="@dimen/size10dp"
+                android:layout_marginRight="@dimen/size30dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Nhập nội dung ghi chú"
+                android:inputType="textPersonName"
+                android:paddingLeft="@dimen/size20dp"
+                android:paddingTop="@dimen/size20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size30dp"
+            android:background="@color/vang_nhat">
+
+            <TextView
+                android:id="@+id/txtTongtiendathang"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/size20dp"
+                android:text=" "
+                android:textSize="15dp"/>
+
+            <Button
+                android:id="@+id/btnDathangkt"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#4D8C9EFF"
+                android:text="Đặt Hàng"
+                android:textColor="@color/black"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
