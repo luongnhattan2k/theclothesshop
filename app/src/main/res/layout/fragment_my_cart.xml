@@ -16,30 +16,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_weight="1"
         android:gravity="center|bottom"
         android:background="@color/xam">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtTongtien"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
             android:paddingLeft="@dimen/size20dp"
-            android:text="Tổng tiền: "
-            android:textSize="@dimen/size20dp"/>
+            android:text=" "
+            android:textSize="15dp"/>
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="30dp"
+            android:id="@+id/btnDathang"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="#4D8C9EFF"
-            android:text="Thanh Toán"
+            android:text="Đặt Hàng"
             android:textColor="@color/black"
-            android:textSize="10dp"/>
+            android:textSize="15dp"/>
 
     </LinearLayout>
 

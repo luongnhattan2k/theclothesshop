@@ -179,38 +179,4 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/motachitiet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size20dp"
-        android:gravity="center|top"
-        android:text="Mô Tả Chi Tiết"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/size20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/size10dp"
-            app:srcCompat="@drawable/header_background" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/size10dp"
-            app:srcCompat="@drawable/header_background" />
-
-    </LinearLayout>
-
 </LinearLayout>

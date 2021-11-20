@@ -42,8 +42,6 @@ import android.os.Bundle;
 
 public class ChatBotActivity extends AppCompatActivity {
 
-    // creating variables for our
-    // widgets in xml file.
     private RecyclerView chatsRV;
     private ImageButton sendMsgIB;
     private ImageView img_Exit;
@@ -51,11 +49,7 @@ public class ChatBotActivity extends AppCompatActivity {
     private final String USER_KEY = "user";
     private final String BOT_KEY = "bot";
 
-    // creating a variable for
-    // our volley request queue.
     private RequestQueue mRequestQueue;
-
-    // creating a variable for array list and adapter class.
     private ArrayList<ChatsModal> chatsModalArrayList;
     private ChatRVAdapter chatRVAdapter;
 
@@ -108,7 +102,7 @@ public class ChatBotActivity extends AppCompatActivity {
         chatsModalArrayList.add(new ChatsModal(message, USER_KEY));
         chatRVAdapter.notifyDataSetChanged();
 
-        String url = "http://api.brainshop.ai/get?bid=160564&key=DZDqBwRAsjpq8RI4&uid=[uid]&msg="+message;
+        String url ="http://api.brainshop.ai/get?bid=161490&key=3WU5A0rd8Zshm82z&uid=[uid]&msg="+message;
         String BASE_URL = "http://api.brainshop.ai/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)

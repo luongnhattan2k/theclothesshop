@@ -1,18 +1,30 @@
 package nhattan.lnt.clothesshop.FragmentApp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DAO.GioHangDAO;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
@@ -28,6 +40,9 @@ public class MyCartFragment extends Fragment {
     ArrayList<GioHangDTO> sanPhamArrayList;
     GioHangDAO adapter;
     Database database;
+    Button btn_Dathang;
+    TextView txt_Tongtien;
+    int tong;
 
     public MyCartFragment() {
         // Required empty public constructor
@@ -45,27 +60,124 @@ public class MyCartFragment extends Fragment {
         //        database.QueryData("CREATE TABLE IF NOT EXISTS DoAn(Id INTEGER PRIMARY KEY AUTOINCREMENT" +
 //                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
 
+        AnhXa();
         Listview_SanPham = (ListView) view.findViewById(R.id.listview_danhsachsp_gohang);
 
         sanPhamArrayList = new ArrayList<>();
         adapter = new GioHangDAO(MyCartFragment.this, R.layout.product_mycart, sanPhamArrayList);
         Listview_SanPham.setAdapter(adapter);
-//        Listview_SanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(getActivity(), Products_information_activity.class);
-//
-//
-//                intent.putExtra("id",i);
-//                startActivity(intent);
-//
-//            }
-//        });
         registerForContextMenu(Listview_SanPham);
 
         GetData();
 
+        btn_Dathang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showdialog();
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        Tongtien();
+        super.onStart();
+    }
+
+    private void Tongtien() {
+        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( THANHTIEN ) FROM GIOHANG WHERE IDTK = "
+                + Login.taiKhoanDTO.getMATK());
+        cursor.moveToNext();
+        tong = cursor.getInt(0);
+        txt_Tongtien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(tong) + " VNĐ"));
+    }
+
+    private void showdialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_dathang,null);
+        final EditText diachi = view.findViewById(R.id.diachi_thanhtoan);
+        final EditText ghichu= view.findViewById(R.id.ghichu_thanhtoan);
+
+        builder.setView(view);
+        builder.setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int idcthd;
+
+                if(HomeFragment.database.HoaDonChuaCoTrongHD()){
+                    idcthd = 1;
+                }
+                else {
+                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC LIMIT 1 OFFSET 1");
+                    cursor.moveToNext();
+                    idcthd = cursor.getInt(0) + 1;
+                }
+                Toast.makeText(getActivity(), "ssssss" + idcthd, Toast.LENGTH_SHORT).show();
+
+                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size();position++)
+                {
+                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
+                    HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
+                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
+                    HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
+
+                }
+                HomeFragment.database.INSERT_HOADON(tong,idcthd,diachi.getText().toString(),ghichu.getText().toString(),Login.taiKhoanDTO.getMATK());
+                HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
+                GetData();
+                Tongtien();
+            }
+        }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getActivity(),"ssssss",Toast.LENGTH_LONG).show();
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu_content, menu);
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        switch (item.getItemId())
+        {
+            case R.id.menu_edit_item:
+
+
+                return true;
+            case R.id.menu_delete_item:
+
+                GioHangDTO gioHang = GioHangDAO.sanPhamGioHangList.get(info.position);
+                HomeFragment.database.DELETE_GIOHANG(
+                        gioHang.getIDSP(),
+                        gioHang.getIDTK()
+                );
+
+                Toast.makeText(getActivity(),"Xóa thành công",Toast.LENGTH_LONG).show();
+                GetData();
+                Tongtien();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void AnhXa() {
+        txt_Tongtien = (TextView) view.findViewById(R.id.txtTongtien);
+        btn_Dathang= (Button) view.findViewById(R.id.btnDathang);
     }
 
     private void GetData() {
@@ -93,6 +205,5 @@ public class MyCartFragment extends Fragment {
         }else if (sanPhamArrayList.isEmpty()){
             Toast.makeText(getActivity(), "Bạn chưa mua hàng !", Toast.LENGTH_LONG).show();
         }
-//        Toast.makeText(getActivity(), "id cua may la : "+ Login.taiKhoanDTO.getMATK(), Toast.LENGTH_LONG).show();
     }
 }

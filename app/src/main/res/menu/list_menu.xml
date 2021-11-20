@@ -12,6 +12,10 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
+                    android:id="@+id/nav_new_born"
+                    android:icon="@drawable/baseline_productnew_24"
+                    android:title="@string/new_born" />
+                <item
                     android:id="@+id/nav_men"
                     android:icon="@drawable/baseline_shirt_24"
                     android:title="@string/men" />
@@ -19,10 +23,7 @@
                     android:id="@+id/nav_women"
                     android:icon="@drawable/baseline_dress_24"
                     android:title="@string/women" />
-                <item
-                    android:id="@+id/nav_new_born"
-                    android:icon="@drawable/baseline_productnew_24"
-                    android:title="@string/new_born" />
+
             </group>
         </menu>
     </item>

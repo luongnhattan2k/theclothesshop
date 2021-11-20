@@ -28,6 +28,17 @@ public class Database extends SQLiteOpenHelper {
         return database.rawQuery(sql,null);
     }
 
+    public void DELETE_GIOHANG(int IDSP, int IDTK){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "DELETE  FROM GIOHANG WHERE IDSP = "+ IDSP + " AND IDTK= " + IDTK  ;
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+
+        statement.executeInsert();
+    }
+
+
     public boolean SPChuaCoTrongGH(int IDTK,int IDSP){
         Cursor tro = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
         while (tro.moveToNext()) {
@@ -35,6 +46,53 @@ public class Database extends SQLiteOpenHelper {
         }
         return true;
     }
+
+    public boolean HoaDonChuaCoTrongHD(){
+        Cursor tro = Getdata("SELECT IDCTHOADON FROM CHITIETHOADON " );
+        while (tro.moveToNext()) {
+            return false;
+            // DA CO TON TAI TRONG HOA DON
+        }
+        return true;
+        // CHUA ID HOA DON
+    }
+
+    public void INSERT_HOADON(int TONGTIEN, int IDCTHOADON, String GHICHU, String DIACHI, int IDTK)
+    {
+        QueryData("INSERT INTO " + CreateDatabase.tbl_HOADON +
+                " ( "
+                + CreateDatabase.tbl_HOADON_TONGTIEN + " , "
+                + CreateDatabase.tbl_HOADON_IDCTHOADON + " , "
+                + CreateDatabase.tbl_HOADON_GHICHU+ " , "
+                + CreateDatabase.tbl_HOADON_DIACHI + " , "
+                + CreateDatabase.tbl_HOADON_IDTAIKHOAN +
+                " ) VALUES ( " + TONGTIEN + " , " + IDCTHOADON + " , '" + GHICHU + "' , '" + DIACHI + "' , " + IDTK + " ) ");
+    }
+
+    public void INSERT_CTHOADON(int IDCTHOADON,int IDTK, int IDSP, String TenSP, int Soluong, int thanhtien)
+    {
+        QueryData("INSERT INTO " + CreateDatabase.tbl_CHITIETHOADON +
+                " ( "
+                + CreateDatabase.tbl_CHITIETHOADON_IDCTHOADON + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_IDSANPHAM + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_IDTAIKHOAN+ " , "
+                + CreateDatabase.tbl_CHITIETHOADON_TENSANPHAM + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_SOLUONG + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_TONGTIEN
+                + " ) VALUES ( " + IDCTHOADON +" , " + IDSP + " , " + IDTK+" , '" + TenSP + "' , " + Soluong + " , "
+                + thanhtien + " ) ");
+    }
+
+    public void DELETE_GIOHANG(int IDTK){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "DELETE  FROM GIOHANG WHERE IDTK = "+ IDTK ;
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+
+        statement.executeInsert();
+    }
+
 
     public void SPGH(int IDTK, byte[] hinh, int IDSP, String TenSP, int Soluong, int thanhtien){
         if(SPChuaCoTrongGH(IDTK, IDSP)){
@@ -109,6 +167,7 @@ public class Database extends SQLiteOpenHelper {
         return null;
 
     }
+
     public void INSERT_GOPY(String tentaikhoan, int sdt, String noidung){
         SQLiteDatabase database = getWritableDatabase();
         String sql = "INSERT INTO GOPY VALUES(null,?,?,?)";
@@ -120,6 +179,26 @@ public class Database extends SQLiteOpenHelper {
         statement.bindString(3, noidung);
 
         statement.executeInsert();
+    }
+
+    public void UPDATE_SOLUONG(int IDSP,int Soluong)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_SANPHAM + " SET "
+                + CreateDatabase.tbl_SANPHAM_SOLUONG + " = "+CreateDatabase.tbl_SANPHAM_SOLUONG + " - " + Soluong +
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+        ;
+    }
+
+    public void UPDATE_MATKHAU(String matkhau, int Id) {
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE TAIKHOAN SET MATKHAU = ? WHERE IDTAIKHOAN=" + Id;
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, matkhau);
+
+        statement.executeUpdateDelete();
+//        statement.executeInsert();
     }
 
         @Override
