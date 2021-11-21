@@ -111,7 +111,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idcthd = 0;
+                int idcthd;
                 String diachi =  edt_Diachigiaohang.getText().toString();
                 String ghichu = edt_Ghichu.getText().toString();
 
@@ -119,11 +119,13 @@ public class OrderActivity extends AppCompatActivity {
                     idcthd = 1;
                 }
                 else {
-                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC LIMIT 1 OFFSET 1");
+                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC");
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
+                    GetData();
                 }
-                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !" + idcthd, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(OrderActivity.this, HomeActivity.class));
 
                 for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
@@ -136,8 +138,10 @@ public class OrderActivity extends AppCompatActivity {
                 }
                 HomeFragment.database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
                 HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
-                GetData();
+//                GetData();
                 Tongtien();
+
+
             }
         });
 
