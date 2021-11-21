@@ -94,62 +94,66 @@
             app:layout_constraintTop_toBottomOf="@+id/product_name"
             tools:ignore="MissingConstraints" />
 
+
         <ImageView
             android:id="@+id/imgXoasl"
-            android:layout_width="@dimen/size30dp"
-            android:layout_height="@dimen/size30dp"
-            android:layout_marginStart="58dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="38dp"
+            android:layout_width="@dimen/size20dp"
+            android:layout_height="@dimen/size20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="39dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/product_quantity"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_content"
+            app:layout_constraintVertical_bias="0.444"
             app:srcCompat="@drawable/baseline_remove_24"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/product_quantity"
-            android:layout_width="@dimen/size30dp"
-            android:layout_height="@dimen/size30dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="38dp"
+            android:layout_width="@dimen/size20dp"
+            android:layout_height="@dimen/size20dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="39dp"
             android:gravity="center"
             android:text="1"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgThemsl"
-            app:layout_constraintStart_toEndOf="@+id/imgXoasl"
+            app:layout_constraintTop_toBottomOf="@+id/product_content"
             tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imgThemsl"
-            android:layout_width="@dimen/size30dp"
-            android:layout_height="@dimen/size30dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="38dp"
+            android:layout_width="@dimen/size20dp"
+            android:layout_height="@dimen/size20dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="39dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnThemvaogiohang"
-            app:layout_constraintStart_toEndOf="@+id/product_quantity"
+            app:layout_constraintTop_toBottomOf="@+id/product_content"
+            app:layout_constraintVertical_bias="0.444"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="MissingConstraints" />
 
-
         <Button
             android:id="@+id/btnThemvaogiohang"
-            android:layout_width="150dp"
-            android:layout_height="68dp"
-            android:layout_marginStart="19dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="9dp"
             android:layout_marginBottom="25dp"
             android:backgroundTint="@color/xam"
             android:text="Thêm vào giỏ hàng"
             android:textColor="@color/black"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgThemsl"
+            app:layout_constraintEnd_toStartOf="@+id/btnMuangay"
             app:layout_constraintTop_toBottomOf="@+id/product_content"
             tools:ignore="MissingConstraints" />
 
@@ -192,6 +196,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btnMuangay"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="@color/xam"
+            android:text="Mua Ngay"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_content"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

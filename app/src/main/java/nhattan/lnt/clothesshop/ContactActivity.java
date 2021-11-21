@@ -49,7 +49,7 @@ public class ContactActivity extends AppCompatActivity {
                         Integer.parseInt(edt_Sdt.getText().toString().trim()),
                         edt_NoiDunggopy.getText().toString().trim()
                 );
-                Toast.makeText(ContactActivity.this, "Gửi góp ý thành công !", Toast.LENGTH_LONG).show();
+                Toast.makeText(ContactActivity.this, "Gửi góp ý thành công !", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(ContactActivity.this, HomeActivity.class));
             }
         });
@@ -58,7 +58,7 @@ public class ContactActivity extends AppCompatActivity {
         btn_Thoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContactActivity.this, HomeActivity.class));
+                onBackPressed();
             }
         });
 
@@ -66,7 +66,7 @@ public class ContactActivity extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContactActivity.this, HomeActivity.class));
+                onBackPressed();
             }
         });
     }

@@ -24,14 +24,9 @@ public class IntroductActivity extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getExit();
+                onBackPressed();
             }
         });
     }
 
-    private void getExit()
-    {
-        Intent iExit = new Intent(IntroductActivity.this, HomeActivity.class);
-        startActivity(iExit);
-    }
 }

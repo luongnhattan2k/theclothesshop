@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private int currentFragment = FRAGMENT_HOME;
 
+    public static TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
 
     // Drawer
     private DrawerLayout drawerLayout;
@@ -71,6 +72,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         HienThiTen();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(taiKhoanDTO.getMATK() == -1){
+            @SuppressLint("ResourceType")
+            MenuItem item = findViewById(R.menu.list_menu);
+
+        }else {
+            @SuppressLint("ResourceType")
+            MenuItem item = findViewById(R.menu.list_menu);
+            taiKhoanDTO = new TaiKhoanDTO();
+            Intent intent = new Intent();
+        }
     }
 
     @SuppressLint("RestrictedApi")

@@ -21,9 +21,7 @@ public class ForgotPassword extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ForgotPassword.this, Login.class);
-
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }

@@ -19,6 +19,7 @@ import nhattan.lnt.clothesshop.ChangePasswordActivity;
 import nhattan.lnt.clothesshop.ChatBotActivity;
 import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
+import nhattan.lnt.clothesshop.TransactionHistoryActivity;
 import nhattan.lnt.clothesshop.UserInformationActivity;
 
 
@@ -72,6 +73,7 @@ public class UserFragment extends Fragment implements View.OnClickListener{
     }
 
     private void setOnClick_LichSuGiaoDich() {
+        startActivity(new Intent(getActivity(), TransactionHistoryActivity.class));
     }
 
     private void setOnClick_DoiMatKhau() {

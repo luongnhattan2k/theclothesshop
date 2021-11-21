@@ -36,6 +36,7 @@ public class OrderActivity extends AppCompatActivity {
 
     ListView Listview_Kiemtra;
     ArrayList<DatHangDTO> datHangDTOS;
+    ArrayList<GioHangDTO> gioHangDTOArrayList;
     DatHangDAO adapter;
     Database database;
     Button btn_Dathangkt;
@@ -66,7 +67,7 @@ public class OrderActivity extends AppCompatActivity {
         spnCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(OrderActivity.this, "Bạn chọn hình thức giao hàng " + categoryDAO.getItem(position).getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(OrderActivity.this, "Bạn chọn hình thức giao hàng " + categoryDAO.getItem(position).getName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -110,7 +111,9 @@ public class OrderActivity extends AppCompatActivity {
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idcthd;
+                int idcthd = 0;
+                String diachi =  edt_Diachigiaohang.getText().toString();
+                String ghichu = edt_Ghichu.getText().toString();
 
                 if(HomeFragment.database.HoaDonChuaCoTrongHD()){
                     idcthd = 1;
@@ -120,9 +123,10 @@ public class OrderActivity extends AppCompatActivity {
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
                 }
-                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !" + idcthd, Toast.LENGTH_LONG).show();
+                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(OrderActivity.this, HomeActivity.class));
 
-                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size();position++)
+                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
                 {
                     GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
                     HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
@@ -130,7 +134,7 @@ public class OrderActivity extends AppCompatActivity {
                     HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
 
                 }
-                HomeFragment.database.INSERT_HOADON(tong,idcthd,edt_Diachigiaohang.getText().toString(),edt_Ghichu.getText().toString(),Login.taiKhoanDTO.getMATK());
+                HomeFragment.database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
                 HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
                 GetData();
                 Tongtien();
@@ -141,7 +145,7 @@ public class OrderActivity extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OrderActivity.this, HomeActivity.class));
+                onBackPressed();
             }
         });
     }
@@ -150,6 +154,7 @@ public class OrderActivity extends AppCompatActivity {
         //get data
         Cursor cursor = database.Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + Login.taiKhoanDTO.getMATK());
         datHangDTOS.clear();
+//        gioHangDTOArrayList.clear();
         while (cursor.moveToNext())
         {
             datHangDTOS.add(new DatHangDTO(

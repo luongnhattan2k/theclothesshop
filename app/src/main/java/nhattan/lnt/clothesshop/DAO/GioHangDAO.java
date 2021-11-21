@@ -27,7 +27,6 @@ public class GioHangDAO extends BaseAdapter {
     public static List<GioHangDTO> sanPhamGioHangList;
     int id;
 
-
     public GioHangDAO(Fragment context, int layout, List<GioHangDTO> sanPhamGioHangList) {
         this.context = context;
         this.layout = layout;

@@ -122,7 +122,7 @@ public class MyCartFragment extends Fragment {
                         gioHang.getIDTK()
                 );
 
-                Toast.makeText(getActivity(),"Xóa thành công",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Xóa thành công",Toast.LENGTH_SHORT).show();
                 GetData();
                 Tongtien();
                 return true;
@@ -156,10 +156,10 @@ public class MyCartFragment extends Fragment {
 
         if (Login.taiKhoanDTO.getMATK() == -1)
         {
-            Toast.makeText(getActivity(), "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), Login.class));
         }else if (sanPhamArrayList.isEmpty()){
-            Toast.makeText(getActivity(), "Bạn chưa mua hàng !", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Bạn chưa mua hàng !", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -34,12 +34,13 @@ public class ProductionActivity extends AppCompatActivity {
 
     SanPhamDTO sanPhamDTO;
     TextView productName, productPrice, productContent, productQuantity;
-    ImageView productImage;
+    ImageView productImage, img_Them, img_Tru;
     ImageButton ibtn_Exit;
-    Button btn_Themgiohang;
+    Button btn_Themgiohang, btn_Muangay;
     int id;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
+    int SLM = 0;
 
 
     @Override
@@ -53,10 +54,11 @@ public class ProductionActivity extends AppCompatActivity {
 
         categoryDAO = new CategoryDAO(this, R.layout.item_selected, getListCategort());
         spnCategory.setAdapter(categoryDAO);
+
         spnCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ProductionActivity.this, "Bạn chọn size " + categoryDAO.getItem(position).getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ProductionActivity.this, "Bạn chọn size " + categoryDAO.getItem(position).getName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -66,6 +68,7 @@ public class ProductionActivity extends AppCompatActivity {
         });
 
         GetData();
+        SuKien();
     }
 
     private List<CategoryDTO> getListCategort() {
@@ -82,7 +85,7 @@ public class ProductionActivity extends AppCompatActivity {
 
     private void GetData() {
         //get data
-        SanPhamDTO sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+        sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
         String gia = "" + sanPhamDTO.getGiaSP();
@@ -103,14 +106,45 @@ public class ProductionActivity extends AppCompatActivity {
         productImage = findViewById(R.id.product_image);
         productQuantity = findViewById(R.id.product_quantity);
         spnCategory = findViewById(R.id.spn_category);
-
+        img_Them = findViewById(R.id.imgThemsl);
+        img_Tru = findViewById(R.id.imgXoasl);
+        btn_Muangay = findViewById(R.id.btnMuangay);
         btn_Themgiohang = findViewById(R.id.btnThemvaogiohang);
-        btn_Themgiohang.setOnClickListener(new View.OnClickListener() {
+        ibtn_Exit = findViewById(R.id.ibtnExit);
+
+    }
+
+    private void SuKien(){
+        img_Them.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                SLM = Integer.parseInt(productQuantity.getText().toString());
+                if (SLM < sanPhamDTO.getSl_SP()){
+                    SLM += 1;
+                    productQuantity.setText(String.valueOf(SLM));
+                }
+            }
+        });
+
+        img_Tru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SLM = Integer.parseInt(productQuantity.getText().toString());
+                if (SLM >= 2){
+                    SLM -= 1;
+                    productQuantity.setText(String.valueOf(SLM));
+                } else {
+                    Toast.makeText(ProductionActivity.this, "Không thể giảm số lượng được nữa !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_Muangay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if (Login.taiKhoanDTO.getMATK() == -1)
                 {
-                    Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ProductionActivity.this, Login.class));
                 }else {
                     BitmapDrawable bitmapDrawable = (BitmapDrawable) productImage.getDrawable();
@@ -129,7 +163,38 @@ public class ProductionActivity extends AppCompatActivity {
                             SL,
                             SL * sanPhamDTO.getGiaSP()
                     );
-                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_SHORT).show();
+                    Intent iGiohang = new Intent(ProductionActivity.this, OrderActivity.class);
+                    startActivity(iGiohang);
+                }
+            }
+        });
+
+        btn_Themgiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Login.taiKhoanDTO.getMATK() == -1)
+                {
+                    Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ProductionActivity.this, Login.class));
+                }else {
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) productImage.getDrawable();
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
+                    ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                    byte[] hinhAnh = byteArray.toByteArray();
+
+                    int SL = Integer.parseInt(productQuantity.getText().toString());
+                    sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+                    HomeFragment.database.SPGH(
+                            Login.taiKhoanDTO.getMATK(),
+                            hinhAnh,
+                            sanPhamDTO.getMaSP(),
+                            sanPhamDTO.getTenSP(),
+                            SL,
+                            SL * sanPhamDTO.getGiaSP()
+                    );
+                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_SHORT).show();
                     Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
                     iGiohang.putExtra("ThemGioHang", R.id.nav_mycart);
 
@@ -138,18 +203,12 @@ public class ProductionActivity extends AppCompatActivity {
             }
         });
 
-        ibtn_Exit = findViewById(R.id.ibtnExit);
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getExit();
+                onBackPressed();
             }
         });
-
     }
 
-
-    private void getExit() {
-        startActivity(new Intent(ProductionActivity.this, HomeActivity.class));
-    }
 }

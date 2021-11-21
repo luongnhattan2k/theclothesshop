@@ -62,22 +62,20 @@ public class ChangePasswordActivity extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iExit = new Intent(ChangePasswordActivity.this, HomeActivity.class);
-                iExit.putExtra("ExitUser", R.id.nav_profile);
-                startActivity(iExit);
+                onBackPressed();
             }
         });
     }
 
     public void messenge (String messenge){
-        Toast.makeText(ChangePasswordActivity.this, messenge, Toast.LENGTH_LONG).show();
+        Toast.makeText(ChangePasswordActivity.this, messenge, Toast.LENGTH_SHORT).show();
     }
 
     private void GetData() {
 
         if (Login.taiKhoanDTO.getMATK() == -1)
         {
-            Toast.makeText(this, "Bạn chưa đăng nhập !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bạn chưa đăng nhập !", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Login.class));
         }
     }

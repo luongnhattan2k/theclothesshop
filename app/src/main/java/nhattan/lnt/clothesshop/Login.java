@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity{
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getExit();
+                onBackPressed();
             }
         });
 
@@ -78,13 +78,6 @@ public class Login extends AppCompatActivity{
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.log_sign_layout, registerFragment);
         transaction.commit();
-    }
-
-
-    private void getExit()
-    {
-        Intent iExit = new Intent(Login.this, HomeActivity.class);
-        startActivity(iExit);
     }
 
 }

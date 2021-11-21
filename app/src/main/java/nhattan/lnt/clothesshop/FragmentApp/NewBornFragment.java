@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.Database;
-import nhattan.lnt.clothesshop.ProductActivity;
 import nhattan.lnt.clothesshop.ProductionActivity;
 import nhattan.lnt.clothesshop.R;
 

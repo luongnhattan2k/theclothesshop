@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.R;
@@ -21,7 +24,7 @@ public class HoaDonDAO extends BaseAdapter {
     private Context context;
     private int layout;
     public static List<HoaDonDTO> ListHoaDon;
-    int id;
+    int id,idcthd;
 
 
 
@@ -48,40 +51,37 @@ public class HoaDonDAO extends BaseAdapter {
     }
 
     static class ViewHolder{
-        TextView txt_TenSP, txt_GiaSP, txt_SLSP,txt_count;
-        ImageView img_HinhAnh;
-        ImageButton btncong,btntru;
-
+        TextView txtTongTien,txtdiachi,txtghichu;
+        ListView listView;
     }
-
 
     @Override
     public View getView(int i, View view, ViewGroup parent) {
 
-        GioHangDAO.ViewHolder holder;
+        HoaDonDAO.ViewHolder holder;
 
         if (view == null){
-            holder = new GioHangDAO.ViewHolder();
+            holder = new HoaDonDAO.ViewHolder();
             LayoutInflater inflater;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            holder.txt_TenSP = (TextView) view.findViewById(R.id.txtTensp);
-            holder.txt_GiaSP = (TextView) view.findViewById(R.id.txtThanhtien);
-            holder.txt_SLSP = (TextView) view.findViewById(R.id.txtSoluong) ;
-            holder.img_HinhAnh = (ImageView) view.findViewById(R.id.imageHinhCustom);
+            holder.txtTongTien = (TextView) view.findViewById(R.id.txtTongtienhoadon);
+            holder.txtdiachi = (TextView) view.findViewById(R.id.txtDiachi);
+            holder.txtghichu = (TextView) view.findViewById(R.id.txtGhichu);
+            holder.listView = (ListView) view.findViewById(R.id.lv_lichsugiaodich);
             view.setTag(holder);
         } else {
-            holder = (GioHangDAO.ViewHolder) view.getTag();
+            holder = (HoaDonDAO.ViewHolder) view.getTag();
         }
 
         HoaDonDTO hoaDon = ListHoaDon.get(i);
 
-//        holder.txt_TenSP.setText(hoaDon.getIDHOADON());
-//        holder.txt_GiaSP.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
-//        holder.txt_SLSP.setText(String.valueOf(hoaDon.getDIACHI()) );
-//        id = gioHang.getIDGIOHANG();
 
-
+        holder.txtTongTien.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
+        holder.txtdiachi.setText(hoaDon.getDIACHI());
+        holder.txtghichu.setText(hoaDon.getGHICHU());
+        id = hoaDon.getIDHOADON();
+        idcthd = hoaDon.getIDCTHOADON();
 
         return view;
     }

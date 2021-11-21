@@ -42,7 +42,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_DANHMUCSANPHAM_TENDANHMUC = "TENDANHMUC";
 
     public static String tbl_HOADON_IDHOADON = "IDHOADON";
-    public static String tbl_HOADON_IDCTHOADON = "IDCTHHOADON;";
+    public static String tbl_HOADON_IDCTHOADON = "IDCTHOADON";
     public static String tbl_HOADON_IDTAIKHOAN = "IDTAIKHOAN";
     public static String tbl_HOADON_TONGTIEN = "TONGTIEN";
     public static String tbl_HOADON_DIACHI = "DIACHI";
@@ -93,7 +93,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_DANHMUCSANPHAM_TENDANHMUC + " TEXT )";
 
         String HOADON = "CREATE TABLE " + tbl_HOADON + "(" + tbl_HOADON_IDHOADON + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_HOADON_IDCTHOADON + " INTEGER, " + tbl_HOADON_IDTAIKHOAN + " INTEGER, " + tbl_HOADON_TONGTIEN + " INTEGER, "
+                + tbl_HOADON_IDTAIKHOAN + " INTEGER, " + tbl_HOADON_IDCTHOADON + " INTEGER, " + tbl_HOADON_TONGTIEN + " INTEGER, "
                 + tbl_HOADON_DIACHI + " TEXT, " + tbl_HOADON_GHICHU + " TEXT )";
 
         String CTHOADON = "CREATE TABLE " + tbl_CHITIETHOADON + "(" + tbl_CHITIETHOADON_IDCTHOADON + " INTEGER, "

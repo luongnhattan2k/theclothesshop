@@ -13,7 +13,7 @@
         android:background="@color/vang_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExitlichsugiaodich"
+            android:id="@+id/ibtnExitchitiethoadon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
@@ -28,14 +28,14 @@
             android:layout_weight="1"
             android:paddingLeft="@dimen/size20dp"
             android:gravity="center|left"
-            android:text="Lịch sử giao dịch"
+            android:text="Chi tiết hóa đơn"
             android:textSize="@dimen/size20dp"
             android:textStyle="bold"/>
 
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lv_lichsugiaodich"
+        android:id="@+id/lv_chitiethoadon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -78,7 +78,7 @@ public class ChatBotActivity extends AppCompatActivity {
         img_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChatBotActivity.this, HomeActivity.class));
+                onBackPressed();
             }
         });
 

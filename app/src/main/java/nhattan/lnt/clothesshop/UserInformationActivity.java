@@ -49,9 +49,7 @@ public class UserInformationActivity extends AppCompatActivity {
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iExit = new Intent(UserInformationActivity.this, HomeActivity.class);
-                iExit.putExtra("ExitUser", R.id.nav_profile);
-                startActivity(iExit);
+                onBackPressed();
             }
         });
 

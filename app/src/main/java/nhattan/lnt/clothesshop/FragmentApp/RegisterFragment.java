@@ -75,12 +75,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                 int sSDT = Integer.parseInt(edt_SDT.getText().toString());
                 String sEmail = edt_Email.getText().toString();
 
-                if (sTaiKhoan == null || sTaiKhoan.equals("")){
-                    Toast.makeText(getActivity(), "Vui Lòng Nhập Tài Khoản !", Toast.LENGTH_LONG).show();
-                } else if (sMatKhau == null || sMatKhau.equals("")) {
-                    Toast.makeText(getActivity(), "Vui Lòng Nhập Mật Khẩu !", Toast.LENGTH_LONG).show();
-                } else if (sEmail == null || sEmail.equals("")) {
-                    Toast.makeText(getActivity(), "Vui Lòng Nhập email !", Toast.LENGTH_LONG).show();
+                if (sTaiKhoan == null || sTaiKhoan.isEmpty()){
+                    Toast.makeText(getActivity(), "Vui Lòng Nhập Tài Khoản !", Toast.LENGTH_SHORT).show();
+                } else if (sMatKhau == null || sMatKhau.isEmpty()) {
+                    Toast.makeText(getActivity(), "Vui Lòng Nhập Mật Khẩu !", Toast.LENGTH_SHORT).show();
+                } else if (sEmail == null || sEmail.isEmpty()) {
+                    Toast.makeText(getActivity(), "Vui Lòng Nhập email !", Toast.LENGTH_SHORT).show();
                 } else {
                     TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                     taiKhoanDTO.setTENTK(sTaiKhoan);
@@ -91,11 +91,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
                     long kiemtra = taiKhoanDAO.ThemTaiKhoan(taiKhoanDTO);
                     if (kiemtra != 0){
-                        Toast.makeText(getActivity(), "Đăng Ký Thành Công !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Đăng Ký Thành Công !", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), Login.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getActivity(), "Đăng Ký Thất Bại !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Đăng Ký Thất Bại !", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;

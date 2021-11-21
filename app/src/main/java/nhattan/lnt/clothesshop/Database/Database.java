@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
+import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 
 public class Database extends SQLiteOpenHelper {
@@ -57,16 +58,16 @@ public class Database extends SQLiteOpenHelper {
         // CHUA ID HOA DON
     }
 
-    public void INSERT_HOADON(int TONGTIEN, int IDCTHOADON, String GHICHU, String DIACHI, int IDTK)
+    public void INSERT_HOADON(int IDTK, int IDCTHOADON, int TONGTIEN, String DIACHI, String GHICHU)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_HOADON +
                 " ( "
-                + CreateDatabase.tbl_HOADON_TONGTIEN + " , "
+                + CreateDatabase.tbl_HOADON_IDTAIKHOAN + " , "
                 + CreateDatabase.tbl_HOADON_IDCTHOADON + " , "
-                + CreateDatabase.tbl_HOADON_GHICHU+ " , "
+                + CreateDatabase.tbl_HOADON_TONGTIEN + " , "
                 + CreateDatabase.tbl_HOADON_DIACHI + " , "
-                + CreateDatabase.tbl_HOADON_IDTAIKHOAN +
-                " ) VALUES ( " + TONGTIEN + " , " + IDCTHOADON + " , '" + GHICHU + "' , '" + DIACHI + "' , " + IDTK + " ) ");
+                + CreateDatabase.tbl_HOADON_GHICHU +
+                " ) VALUES ( '" + IDTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + DIACHI + "', '" + GHICHU + "') ");
     }
 
     public void INSERT_CTHOADON(int IDCTHOADON,int IDTK, int IDSP, String TenSP, int Soluong, int thanhtien)
@@ -79,8 +80,8 @@ public class Database extends SQLiteOpenHelper {
                 + CreateDatabase.tbl_CHITIETHOADON_TENSANPHAM + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_SOLUONG + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_TONGTIEN
-                + " ) VALUES ( " + IDCTHOADON +" , " + IDSP + " , " + IDTK+" , '" + TenSP + "' , " + Soluong + " , "
-                + thanhtien + " ) ");
+                + " ) VALUES ( '" + IDCTHOADON + "', '" + IDSP + "', '" + IDTK+ "', '" + TenSP + "' , '" + Soluong + "', '"
+                + thanhtien + "') ");
     }
 
     public void DELETE_GIOHANG(int IDTK){
@@ -201,6 +202,22 @@ public class Database extends SQLiteOpenHelper {
 //        statement.executeInsert();
     }
 
+    public SanPhamDTO SANPHAM(int IDSP){
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDSP = " + IDSP );
+        while (cursor.moveToNext()) {
+            return new SanPhamDTO(
+                    cursor.getInt(0),
+                    cursor.getBlob(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5)
+            );
+
+        }
+        return null;
+    }
+
         @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -210,6 +227,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 
 
 }
