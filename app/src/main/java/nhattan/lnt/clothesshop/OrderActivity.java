@@ -122,26 +122,22 @@ public class OrderActivity extends AppCompatActivity {
                     Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC");
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
+                    for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
+                    {
+                        GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
+                        HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
+                                themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
+                        HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
+
+                    }
+                    HomeFragment.database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
+                    HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
                     GetData();
+                    Tongtien();
                 }
-
+                Intent iHome = new Intent(OrderActivity.this, HomeActivity.class);
                 Toast.makeText(OrderActivity.this, "Đặt hàng thành công !" + idcthd, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(OrderActivity.this, HomeActivity.class));
-
-                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
-                {
-                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
-                    HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
-                    HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
-
-                }
-                HomeFragment.database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
-                HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
-//                GetData();
-                Tongtien();
-
-
+                startActivity(iHome);
             }
         });
 

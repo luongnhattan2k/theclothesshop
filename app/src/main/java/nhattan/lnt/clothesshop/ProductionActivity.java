@@ -147,25 +147,7 @@ public class ProductionActivity extends AppCompatActivity {
                     Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ProductionActivity.this, Login.class));
                 }else {
-                    BitmapDrawable bitmapDrawable = (BitmapDrawable) productImage.getDrawable();
-                    Bitmap bitmap = bitmapDrawable.getBitmap();
-                    ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
-                    byte[] hinhAnh = byteArray.toByteArray();
-
-                    int SL = Integer.parseInt(productQuantity.getText().toString());
-                    sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
-                    HomeFragment.database.SPGH(
-                            Login.taiKhoanDTO.getMATK(),
-                            hinhAnh,
-                            sanPhamDTO.getMaSP(),
-                            sanPhamDTO.getTenSP(),
-                            SL,
-                            SL * sanPhamDTO.getGiaSP()
-                    );
-                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_SHORT).show();
-                    Intent iGiohang = new Intent(ProductionActivity.this, OrderActivity.class);
-                    startActivity(iGiohang);
+                    startActivity(new Intent(ProductionActivity.this, OrderActivity.class));
                 }
             }
         });

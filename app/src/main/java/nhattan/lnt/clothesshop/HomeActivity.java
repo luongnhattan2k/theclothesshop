@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +33,8 @@ import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
 import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    static final float END_SCALE = 0.7f;
 
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_MEN = 2;
@@ -76,18 +79,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onStart() {
-        super.onStart();
-
-        if(taiKhoanDTO.getMATK() == -1){
-            @SuppressLint("ResourceType")
-            MenuItem item = findViewById(R.menu.list_menu);
-
+        Menu menu = navigationView.getMenu();
+        if(Login.taiKhoanDTO.getMATK() == -1){
+            menu.findItem(R.id.nav_logout).setVisible(false);
         }else {
-            @SuppressLint("ResourceType")
-            MenuItem item = findViewById(R.menu.list_menu);
-            taiKhoanDTO = new TaiKhoanDTO();
-            Intent intent = new Intent();
+            menu.findItem(R.id.nav_logging).setVisible(false);
         }
+        super.onStart();
     }
 
     @SuppressLint("RestrictedApi")
@@ -118,7 +116,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         // Drawer
 
         replaceFragment(new HomeFragment());
+
+//        animateNavigation();
+
     }
+
+//    private void animateNavigation() {
+//        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+//            @Override
+//            public void onDrawerSlide(View drawerView, float slideOffset) {
+//                final float diffScaleOffset = slideOffset * (0);
+//                final float offsetScale = 1 + diffScaleOffset;
+//                drawerLayout.setScaleX(offsetScale);
+//                drawerLayout.setScaleX(offsetScale);
+//
+//                final float xOffset = drawerView.getWidth() * slideOffset;
+//                final float xOffsetDiff = drawerLayout.getWidth() * diffScaleOffset / 2;
+//                final float xTranslation = xOffset - xOffsetDiff;
+//                drawerLayout.setTranslationX(xTranslation);
+//
+//            }
+//        });
+//    }
 
     private void HienThiTen() {
         View view = navigationView.inflateHeaderView(R.layout.header);
@@ -142,7 +161,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_logout) {
+        if (id == R.id.nav_logging) {
             SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("Remember", "Failed");
@@ -151,6 +170,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             startActivity(new Intent(this, Login.class));
             finish();
+        }else if (id == R.id.nav_logout){
+            Intent intent = new Intent(this, HomeActivity.class);
+            Login.taiKhoanDTO = new TaiKhoanDTO();
+            startActivity(intent);
         }else if (id == R.id.nav_home) {
             if (FRAGMENT_HOME != currentFragment) {
                 replaceFragment(new HomeFragment());
