@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/xam"
-    android:elevation="5dp"
-    android:padding="2dp"
-    android:orientation="vertical"
-    app:cardCornerRadius="10dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
