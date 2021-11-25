@@ -33,10 +33,9 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         IDCTHOADON = intent.getIntExtra("IDCT",1);
-//        Toast.makeText(TransactionHistoryDetailsActivity.this, "ssss : " + IDCTHOADON, Toast.LENGTH_SHORT).show();
 
         AnhXa();
-        lv_Chitiethoadon = (ListView) findViewById(R.id.lv_chitiethoadon);
+        lv_Chitiethoadon = findViewById(R.id.lv_chitiethoadon);
 
         ctHoaDonDTOArrayList = new ArrayList<>();
         adapter = new CTHoaDonDAO(TransactionHistoryDetailsActivity.this, R.layout.list_transaction_history_details, ctHoaDonDTOArrayList);

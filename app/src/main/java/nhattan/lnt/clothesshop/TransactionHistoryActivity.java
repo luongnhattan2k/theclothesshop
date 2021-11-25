@@ -34,7 +34,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
 
         HomeFragment.database = new Database(TransactionHistoryActivity.this,"ClothesDatabase",null,2);
         AnhXa();
-        lv_Lichsugiaodich = (ListView) findViewById(R.id.lv_lichsugiaodich);
+        lv_Lichsugiaodich = findViewById(R.id.lv_lichsugiaodich);
 
         hoaDonArrayList = new ArrayList<>();
         adapter = new HoaDonDAO(TransactionHistoryActivity.this, R.layout.list_trasaction_history, hoaDonArrayList);

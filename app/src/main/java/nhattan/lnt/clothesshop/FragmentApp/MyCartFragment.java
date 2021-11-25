@@ -62,7 +62,7 @@ public class MyCartFragment extends Fragment {
 //                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
 
         AnhXa();
-        Listview_SanPham = (ListView) view.findViewById(R.id.listview_danhsachsp_gohang);
+        Listview_SanPham = view.findViewById(R.id.listview_danhsachsp_gohang);
 
         sanPhamArrayList = new ArrayList<>();
         adapter = new GioHangDAO(MyCartFragment.this, R.layout.product_mycart, sanPhamArrayList);
@@ -74,7 +74,6 @@ public class MyCartFragment extends Fragment {
         btn_Dathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                showdialog();
                 startActivity(new Intent(getActivity(), OrderActivity.class));
             }
         });
@@ -132,8 +131,8 @@ public class MyCartFragment extends Fragment {
     }
 
     private void AnhXa() {
-        txt_Tongtien = (TextView) view.findViewById(R.id.txtTongtien);
-        btn_Dathang= (Button) view.findViewById(R.id.btnDathang);
+        txt_Tongtien = view.findViewById(R.id.txtTongtien);
+        btn_Dathang= view.findViewById(R.id.btnDathang);
     }
 
     private void GetData() {

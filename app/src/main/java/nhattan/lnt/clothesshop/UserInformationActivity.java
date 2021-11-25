@@ -28,7 +28,6 @@ public class UserInformationActivity extends AppCompatActivity {
     private Button btn_Capnhat;
     private ImageButton ibtn_Exit;
     private boolean isEnabled;
-    Database database;
     int id;
 
     @Override

@@ -21,7 +21,7 @@ import nhattan.lnt.clothesshop.R;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener{
 
-    private  View mView;
+    private  View view;
     EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email;
     ImageButton btn_exit;
     Button btn_DangKy;
@@ -42,20 +42,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mView = inflater.inflate(R.layout.fragment_register, container, false);
+        view = inflater.inflate(R.layout.fragment_register, container, false);
 
         AnhXa();
 
-        return mView;
+        return view;
     }
 
     private void AnhXa() {
-        edt_TaiKhoan = mView.findViewById(R.id.edtTaikhoan);
-        edt_MatKhau = mView.findViewById(R.id.edtMatkhau);
-        edt_NgaySinh = mView.findViewById(R.id.edtNgaySinh);
-        edt_SDT = mView.findViewById(R.id.edtSDT);
-        edt_Email = mView.findViewById(R.id.edtEmail);
-        btn_DangKy = mView.findViewById(R.id.btnDangky);
+        edt_TaiKhoan = view.findViewById(R.id.edtTaikhoan);
+        edt_MatKhau = view.findViewById(R.id.edtMatkhau);
+        edt_NgaySinh = view.findViewById(R.id.edtNgaySinh);
+        edt_SDT = view.findViewById(R.id.edtSDT);
+        edt_Email = view.findViewById(R.id.edtEmail);
+        btn_DangKy = view.findViewById(R.id.btnDangky);
 
         btn_DangKy.setOnClickListener(this);
         edt_NgaySinh.setOnFocusChangeListener(this);

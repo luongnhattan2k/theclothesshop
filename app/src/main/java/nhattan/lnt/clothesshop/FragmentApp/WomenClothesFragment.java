@@ -41,10 +41,8 @@ public class WomenClothesFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_women_clothes, container, false);
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
-//        database.QueryData("CREATE TABLE IF NOT EXISTS DoAn(Id INTEGER PRIMARY KEY AUTOINCREMENT" +
-//                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
 
-        gridView_SanPham = (GridView) view.findViewById(R.id.gridviewSanPham);
+        gridView_SanPham = view.findViewById(R.id.gridviewSanPham);
         sanPhamDTOArrayList = new ArrayList<>();
         adapter = new SanPhamDAO(WomenClothesFragment.this, R.layout.product_layout, sanPhamDTOArrayList);
         gridView_SanPham.setAdapter(adapter);

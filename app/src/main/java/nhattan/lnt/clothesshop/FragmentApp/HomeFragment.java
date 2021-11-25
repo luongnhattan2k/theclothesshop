@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment{
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
 
-        gridView_SanPham = (GridView) view.findViewById(R.id.gridviewSanPham);
+        gridView_SanPham = view.findViewById(R.id.gridviewSanPham);
         sanPhamDTOArrayList = new ArrayList<>();
         adapter = new SanPhamDAO(HomeFragment.this, R.layout.product_layout, sanPhamDTOArrayList);
         gridView_SanPham.setAdapter(adapter);

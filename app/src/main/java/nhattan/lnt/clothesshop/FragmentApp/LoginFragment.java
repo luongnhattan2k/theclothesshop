@@ -23,7 +23,7 @@ import nhattan.lnt.clothesshop.R;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
-    private View mView;
+    private View view;
     TextView txt_DangKy, txt_QuenMK;
     Button btn_DangNhap;
     EditText edt_TK, edt_MK;
@@ -45,19 +45,19 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_login, container, false);
+        view = inflater.inflate(R.layout.fragment_login, container, false);
 
         AnhXa();
 
-        return mView;
+        return view;
     }
 
     private void AnhXa() {
-        txt_DangKy = mView.findViewById(R.id.txtDangky);
-        txt_QuenMK = mView.findViewById(R.id.txtQuenmk);
-        btn_DangNhap = mView.findViewById(R.id.btnDangnhap);
-        edt_TK = mView.findViewById(R.id.edtTaikhoan);
-        edt_MK = mView.findViewById(R.id.edtMatkhau);
+        txt_DangKy = view.findViewById(R.id.txtDangky);
+        txt_QuenMK = view.findViewById(R.id.txtQuenmk);
+        btn_DangNhap = view.findViewById(R.id.btnDangnhap);
+        edt_TK = view.findViewById(R.id.edtTaikhoan);
+        edt_MK = view.findViewById(R.id.edtMatkhau);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         btn_DangNhap.setOnClickListener(this);
