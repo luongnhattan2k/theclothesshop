@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     // Drawer
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private LinearLayout contentView;
     private Toolbar toolbar;
     private FloatingActionButton fab;
     // Drawer
@@ -72,8 +74,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             replaceFragment(new MyCartFragment());
         }
 
-
-
         HienThiTen();
     }
 
@@ -93,6 +93,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         // Drawer
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.home_nav_view);
+        contentView = findViewById(R.id.content_View);
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
 
@@ -117,27 +118,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         replaceFragment(new HomeFragment());
 
-//        animateNavigation();
+        animateNavigation();
 
     }
 
-//    private void animateNavigation() {
-//        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-//            @Override
-//            public void onDrawerSlide(View drawerView, float slideOffset) {
-//                final float diffScaleOffset = slideOffset * (0);
-//                final float offsetScale = 1 + diffScaleOffset;
-//                drawerLayout.setScaleX(offsetScale);
-//                drawerLayout.setScaleX(offsetScale);
-//
-//                final float xOffset = drawerView.getWidth() * slideOffset;
-//                final float xOffsetDiff = drawerLayout.getWidth() * diffScaleOffset / 2;
-//                final float xTranslation = xOffset - xOffsetDiff;
-//                drawerLayout.setTranslationX(xTranslation);
-//
-//            }
-//        });
-//    }
+    private void animateNavigation() {
+        drawerLayout.setScrimColor(getResources().getColor(R.color.vang_nhat));
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                final float diffScaleOffset = slideOffset * (1 - END_SCALE);
+                final float offsetScale = 1 - diffScaleOffset;
+                contentView.setScaleX(offsetScale);
+                contentView.setScaleX(offsetScale);
+
+                final float xOffset = drawerView.getWidth() * slideOffset;
+                final float xOffsetDiff = contentView.getWidth() * diffScaleOffset / 2;
+                final float xTranslation = xOffset - xOffsetDiff;
+                contentView.setTranslationX(xTranslation);
+
+            }
+        });
+    }
 
     private void HienThiTen() {
         View view = navigationView.inflateHeaderView(R.layout.header);

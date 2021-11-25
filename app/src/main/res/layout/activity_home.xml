@@ -9,10 +9,6 @@
     tools:context=".HomeActivity"
     tools:openDrawer="start">
 
-    <include layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_nav_view"
         android:layout_width="wrap_content"
@@ -20,5 +16,19 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/list_menu"/>
+
+    <LinearLayout
+        android:id="@+id/content_View"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

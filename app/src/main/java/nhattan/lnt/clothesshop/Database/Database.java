@@ -17,6 +17,10 @@ public class Database extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    public Database(Context context) {
+        super(context,"ClothesDatabase",null,2);
+    }
+
     // Truy vấn không trả kết quả: INSERT, CREATE, UPDATE, DELETE, ...
     public void QueryData(String sql){
         SQLiteDatabase database = getWritableDatabase();
@@ -125,16 +129,15 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    public void UPDATE(String tentaikhoan, int sdt, String email, String diachi, int Id) {
+    public void UPDATE_TAIKHOAN(int sdt, String email, String diachi, int Id) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE TAIKHOAN SET TENTAIKHOAN = ? , SDT = ?, EMAIL = ?, DIACHI = ? WHERE IDTAIKHOAN=" + Id;
+        String sql = "UPDATE TAIKHOAN SET SDT = ?, EMAIL = ?, DIACHI = ? WHERE IDTAIKHOAN=" + Id;
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
-        statement.bindString(1, tentaikhoan);
-        statement.bindDouble(2, sdt);
-        statement.bindString(3, email);
-        statement.bindString(4, diachi);
+        statement.bindDouble(1, sdt);
+        statement.bindString(2, email);
+        statement.bindString(3, diachi);
 
         statement.executeUpdateDelete();
 //        statement.executeInsert();
@@ -216,6 +219,32 @@ public class Database extends SQLiteOpenHelper {
 
         }
         return null;
+    }
+
+    // region Tài Khoản
+    public void CapNhatMatKhau(int IDTAIKHOAN, String MATKHAU){
+        QueryData("UPDATE " + CreateDatabase.tbl_TAIKHOAN + " SET " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + MATKHAU + "' WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = " + IDTAIKHOAN);
+    }
+
+    public boolean isMatKhau(int IDTAIKHOAN, String MATKHAU){
+        Cursor tro = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = " + IDTAIKHOAN + " AND " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + MATKHAU + "'");
+        while (tro.moveToNext()){
+            return true;
+        }
+        return false;
+    }
+
+    public void CapNhatTaiKhoan(int IDTAIKHOAN, int SDT, String EMAIL, String DIACHI){
+        QueryData("UPDATE " + CreateDatabase.tbl_TAIKHOAN + " SET " + CreateDatabase.tbl_TAIKHOAN_SDT + " = '" + SDT + "', " + CreateDatabase.tbl_TAIKHOAN_EMAIL + " = '" + EMAIL +
+                "' , " + CreateDatabase.tbl_TAIKHOAN_DIACHI + " = '" + DIACHI + "' WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = '" + IDTAIKHOAN +"'");
+    }
+
+    public boolean isTonTaiTK(String IDTAIKHOAN){
+        Cursor tro = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = '" + IDTAIKHOAN + "'");
+        while (tro.moveToNext()){
+            return true;
+        }
+        return false;
     }
 
         @Override
