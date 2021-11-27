@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="66dp"
+    android:background="@color/xam"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:gravity="center"
+        android:text="Quản Lý Sản Phẩm"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/size10dp"
+            android:text="Danh Mục: "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size20dp"/>
+
+        <Spinner
+            android:id="@+id/spn_qlsanpham"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size10dp"
+        android:backgroundTint="@color/vang_nhat"
+        android:text="Thêm Sản Phẩm Mới"
+        android:textSize="@dimen/size20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recV_DanhSachSanPham"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size10dp"
+        android:numColumns="2"/>
+
+
+</LinearLayout>

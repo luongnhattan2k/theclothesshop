@@ -74,11 +74,11 @@ public class ProductionActivity extends AppCompatActivity {
     private List<CategoryDTO> getListCategort() {
         List<CategoryDTO> list = new ArrayList<>();
 
-        list.add(new CategoryDTO("S"));
-        list.add(new CategoryDTO("M"));
-        list.add(new CategoryDTO("L"));
-        list.add(new CategoryDTO("XL"));
-        list.add(new CategoryDTO("2XL"));
+        list.add(new CategoryDTO("S", "1"));
+        list.add(new CategoryDTO("M", "2"));
+        list.add(new CategoryDTO("L", "3"));
+        list.add(new CategoryDTO("XL", "4"));
+        list.add(new CategoryDTO("2XL", "5"));
 
         return list;
     }

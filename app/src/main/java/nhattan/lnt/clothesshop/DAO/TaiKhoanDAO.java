@@ -63,7 +63,8 @@ public class TaiKhoanDAO extends BaseAdapter {
                     cursor.getInt(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6)
+                    cursor.getString(6),
+                    cursor.getString(7)
             );
         }
         return null;

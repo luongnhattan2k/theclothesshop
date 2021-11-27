@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".Manager.CapNhat_SanPham"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".TransactionHistoryDetailsActivity"
             android:exported="true" />
         <activity
@@ -51,7 +57,7 @@
             android:name=".Login"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Manager.HomeManager"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

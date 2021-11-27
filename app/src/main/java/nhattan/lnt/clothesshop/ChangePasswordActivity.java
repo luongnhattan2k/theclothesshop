@@ -18,7 +18,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
     ImageButton ibtn_Exit;
     EditText edt_Matkhauhientai, edt_Matkhaumoi, edt_Nhaplaimatkhaumoi;
     Button btn_Doimatkhau, btn_Huy;
-    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +42,16 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     if(HomeFragment.database.isMatKhau(Login.taiKhoanDTO.getMATK(), edt_Matkhauhientai.getText().toString())){
                         if(edt_Matkhaumoi.getText().toString().equals(edt_Nhaplaimatkhaumoi.getText().toString())){
                             HomeFragment.database.CapNhatMatKhau(Login.taiKhoanDTO.getMATK(), edt_Matkhaumoi.getText().toString());
-                            Toast.makeText(ChangePasswordActivity.this,"Đổi mật khẩu thành công !",Toast.LENGTH_LONG).show();
+                            messenge("Đổi mật khẩu thành công !");
                             onBackPressed();
                         } else {
-                            Toast.makeText(ChangePasswordActivity.this, "Mật khẩu mới không trùng khớp !", Toast.LENGTH_SHORT).show();
+                            messenge("Mật khẩu mới không trùng khớp !");
                         }
                     } else {
-                        Toast.makeText(ChangePasswordActivity.this, "Nhập mật khẩu cũ không đúng !", Toast.LENGTH_SHORT).show();
+                        messenge("Nhập mật khẩu cũ không đúng !");
                     }
                 } else {
-                    Toast.makeText(ChangePasswordActivity.this, "Nhập dữ liệu chưa đủ !", Toast.LENGTH_SHORT).show();
+                    messenge("Nhập dữ liệu chưa đủ !");
                 }
 
             }

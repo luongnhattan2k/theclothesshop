@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_quanly_sanpham"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Quản Lý Sản Phẩm" />
+
+        <item
+            android:id="@+id/nav_quanly_taikhoan"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Quản Lý Tài Khoản" />
+
+        <item
+            android:id="@+id/nav_logging_manager"
+            android:icon="@drawable/baseline_login_24"
+            android:title="@string/DangNhap" />
+        <item
+            android:id="@+id/nav_logout_manager"
+            android:icon="@drawable/baseline_login_24"
+            android:title="Đăng Xuất" />
+    </group>
+</menu>

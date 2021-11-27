@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteStatement;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 
@@ -45,16 +47,16 @@ public class Database extends SQLiteOpenHelper {
 
 
     public boolean SPChuaCoTrongGH(int IDTK,int IDSP){
-        Cursor tro = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
-        while (tro.moveToNext()) {
+        Cursor cursor = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
+        while (cursor.moveToNext()) {
             return false;
         }
         return true;
     }
 
     public boolean HoaDonChuaCoTrongHD(){
-        Cursor tro = Getdata("SELECT IDCTHOADON FROM CHITIETHOADON " );
-        while (tro.moveToNext()) {
+        Cursor cursor = Getdata("SELECT IDCTHOADON FROM CHITIETHOADON " );
+        while (cursor.moveToNext()) {
             return false;
             // DA CO TON TAI TRONG HOA DON
         }
@@ -129,30 +131,7 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    public void UPDATE_TAIKHOAN(int sdt, String email, String diachi, int Id) {
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE TAIKHOAN SET SDT = ?, EMAIL = ?, DIACHI = ? WHERE IDTAIKHOAN=" + Id;
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
 
-        statement.bindDouble(1, sdt);
-        statement.bindString(2, email);
-        statement.bindString(3, diachi);
-
-        statement.executeUpdateDelete();
-//        statement.executeInsert();
-    }
-
-    public void INSERT_IMAGE(byte[] hinh){
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO GIOHANG VALUES(null,?,null,null,null,null,null,null)";
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-
-        statement.bindBlob(1,hinh);
-
-        statement.executeInsert();
-    }
 
     public TaiKhoanDTO Load(int IDTK)
     {
@@ -165,7 +144,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6)
+                    cursor.getString(6),
+                    cursor.getString(7)
             );
         }
         return null;
@@ -193,17 +173,6 @@ public class Database extends SQLiteOpenHelper {
         ;
     }
 
-    public void UPDATE_MATKHAU(String matkhau, int Id) {
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE TAIKHOAN SET MATKHAU = ? WHERE IDTAIKHOAN=" + Id;
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-
-        statement.bindString(1, matkhau);
-
-        statement.executeUpdateDelete();
-//        statement.executeInsert();
-    }
 
     public SanPhamDTO SANPHAM(int IDSP){
         Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDSP = " + IDSP );
@@ -214,7 +183,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(2),
                     cursor.getInt(3),
                     cursor.getInt(4),
-                    cursor.getString(5)
+                    cursor.getString(5),
+                    cursor.getInt(6)
             );
 
         }
@@ -227,8 +197,8 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean isMatKhau(int IDTAIKHOAN, String MATKHAU){
-        Cursor tro = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = " + IDTAIKHOAN + " AND " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + MATKHAU + "'");
-        while (tro.moveToNext()){
+        Cursor cursor = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = " + IDTAIKHOAN + " AND " + CreateDatabase.tbl_TAIKHOAN_MATKHAU + " = '" + MATKHAU + "'");
+        while (cursor.moveToNext()){
             return true;
         }
         return false;
@@ -240,12 +210,91 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean isTonTaiTK(String IDTAIKHOAN){
-        Cursor tro = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = '" + IDTAIKHOAN + "'");
-        while (tro.moveToNext()){
+        Cursor cursor = Getdata("SELECT * FROM " + CreateDatabase.tbl_TAIKHOAN + " WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = '" + IDTAIKHOAN + "'");
+        while (cursor.moveToNext()){
             return true;
         }
         return false;
     }
+    // end
+
+    //region Video
+    public ArrayList<SanPhamDTO> QuanLySaNPham(String IDDANHMUC){
+        ArrayList<SanPhamDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDDANHMUC = '" + IDDANHMUC + "'");
+        while (cursor.moveToNext()){
+            list.add(new SanPhamDTO(
+                    cursor.getInt(0),
+                    cursor.getBlob(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6)
+            ));
+        }
+        return list;
+    }
+
+    public boolean isTonTaiSanPham(String IDSP){
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDVD = '" + IDSP + "'");
+        while (cursor.moveToNext()){
+            return true;
+        }
+        return false;
+    }
+
+    public void XoaVideo(int IDSP){
+        QueryData("DELETE FROM SANPHAM WHERE IDSP = '" + IDSP + "'");
+    }
+
+    public SanPhamDTO TTSANPHAM(String IDSP){
+        Cursor cursor = Getdata("SELECT * FROM VIDEO WHERE IDVD = '" + IDSP + "'");
+        while (cursor.moveToNext()){
+            return new SanPhamDTO(
+                    cursor.getInt(0),
+                    cursor.getBlob(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6)
+            );
+        }
+        return null;
+    }
+
+    public void CapNhatSanPham(int IDSP,String BACKGROUND,String TENSANPHAM, int GIA, int SL, String MOTA, int IDDANHMUC){
+        QueryData("UPDATE SANPHAM SET HINHANH = '" + BACKGROUND + "' , TENSANPHAM = '" + TENSANPHAM
+                + "' , GIA ='" + GIA + "', SOLUONG = '" + SL + "', MOTA = '" + MOTA + "', IDDANHMUC = '" + IDDANHMUC
+                + "'  WHERE IDSP = '" + IDSP + "'");
+    }
+
+    public void TaoVideo(int IDSP,String BACKGROUND,String TENSANPHAM, int GIA, int SL, String MOTA, int IDDANHMUC){
+
+        QueryData("INSERT INTO SANPHAM(IDSP, HINHANH, TENSANPHAM, GIA, SOLUONG, MOTA, IDDANH, SPNEW) VALUES ('" +
+                IDSP + "','" + BACKGROUND + "','" + TENSANPHAM + "','" +  GIA + "','" + SL + "','" +  MOTA
+                + "','" + IDDANHMUC + "'," + 1 + " )");
+    }
+
+
+    public ArrayList<SanPhamDTO> SanPhamTheoDanhMuc(String IDDANHMUC){
+        ArrayList<SanPhamDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDDANHMUC");
+        while(cursor.moveToNext()){
+            list.add(new SanPhamDTO(
+                    cursor.getInt(0),
+                    cursor.getBlob(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6)
+            ));
+        }
+        return list;
+    }
+    // endregion
 
         @Override
     public void onCreate(SQLiteDatabase db) {

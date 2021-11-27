@@ -82,8 +82,8 @@ public class OrderActivity extends AppCompatActivity {
     private List<CategoryDTO> getListCategort() {
         List<CategoryDTO> list = new ArrayList<>();
 
-        list.add(new CategoryDTO("Giao hàng nhanh - Free Ship"));
-        list.add(new CategoryDTO("Giao hàng tiết kiệm - Free Ship"));
+        list.add(new CategoryDTO("Giao hàng nhanh - Free Ship", "1"));
+        list.add(new CategoryDTO("Giao hàng tiết kiệm - Free Ship","2"));
 
         return list;
     }
