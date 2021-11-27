@@ -1,8 +1,10 @@
 package nhattan.lnt.clothesshop.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
@@ -145,7 +147,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7)
+                    cursor.getInt(7)
             );
         }
         return null;
@@ -184,7 +186,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(3),
                     cursor.getInt(4),
                     cursor.getString(5),
-                    cursor.getInt(6)
+                    cursor.getInt(6),
+                    cursor.getInt(7)
             );
 
         }
@@ -230,26 +233,27 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(3),
                     cursor.getInt(4),
                     cursor.getString(5),
-                    cursor.getInt(6)
+                    cursor.getInt(6),
+                    cursor.getInt(7)
             ));
         }
         return list;
     }
 
-    public boolean isTonTaiSanPham(String IDSP){
-        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDVD = '" + IDSP + "'");
+    public boolean isTonTaiSanPham(int IDSP){
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDSP = '" + IDSP + "'");
         while (cursor.moveToNext()){
             return true;
         }
         return false;
     }
 
-    public void XoaVideo(int IDSP){
+    public void XoaSanPham(int IDSP){
         QueryData("DELETE FROM SANPHAM WHERE IDSP = '" + IDSP + "'");
     }
 
-    public SanPhamDTO TTSANPHAM(String IDSP){
-        Cursor cursor = Getdata("SELECT * FROM VIDEO WHERE IDVD = '" + IDSP + "'");
+    public SanPhamDTO TTSANPHAM(int IDSP){
+        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDSP = '" + IDSP + "'");
         while (cursor.moveToNext()){
             return new SanPhamDTO(
                     cursor.getInt(0),
@@ -258,42 +262,67 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(3),
                     cursor.getInt(4),
                     cursor.getString(5),
-                    cursor.getInt(6)
+                    cursor.getInt(6),
+                    cursor.getInt(7)
             );
         }
         return null;
     }
 
-    public void CapNhatSanPham(int IDSP,String BACKGROUND,String TENSANPHAM, int GIA, int SL, String MOTA, int IDDANHMUC){
-        QueryData("UPDATE SANPHAM SET HINHANH = '" + BACKGROUND + "' , TENSANPHAM = '" + TENSANPHAM
+    public void CapNhatSanPham(int IDSP, byte[] BACKGROUND, String TENSANPHAM, int GIA, int SL, String MOTA, int IDDANHMUC){
+        QueryData("UPDATE SANPHAM SET TENSANPHAM = '" + TENSANPHAM
                 + "' , GIA ='" + GIA + "', SOLUONG = '" + SL + "', MOTA = '" + MOTA + "', IDDANHMUC = '" + IDDANHMUC
                 + "'  WHERE IDSP = '" + IDSP + "'");
+
+        String sql = "UPDATE SANPHAM SET HINHANH = ? WHERE IDSP= " + IDSP ;
+        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,BACKGROUND);
+        statement.executeInsert();
     }
 
-    public void TaoVideo(int IDSP,String BACKGROUND,String TENSANPHAM, int GIA, int SL, String MOTA, int IDDANHMUC){
 
-        QueryData("INSERT INTO SANPHAM(IDSP, HINHANH, TENSANPHAM, GIA, SOLUONG, MOTA, IDDANH, SPNEW) VALUES ('" +
-                IDSP + "','" + BACKGROUND + "','" + TENSANPHAM + "','" +  GIA + "','" + SL + "','" +  MOTA
-                + "','" + IDDANHMUC + "'," + 1 + " )");
+
+    public void ThemSanPham(byte[] hinh, String ten, int  Gia, int soluong, String mota, int danhmuc, int spmoi ) throws SQLiteException {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new  ContentValues();
+        cv.put(CreateDatabase.tbl_SANPHAM_HINHANH, hinh);
+        cv.put(CreateDatabase.tbl_SANPHAM_TENSANPHAM, ten);
+        cv.put(CreateDatabase.tbl_SANPHAM_GIA, Gia);
+        cv.put(CreateDatabase.tbl_SANPHAM_IDDANHMUC, danhmuc);
+        cv.put(CreateDatabase.tbl_SANPHAM_SOLUONG, soluong);
+        cv.put(CreateDatabase.tbl_SANPHAM_MOTA, mota);
+        cv.put(CreateDatabase.tbl_SANPHAM_IDSP_NEW, spmoi);
+
+
+        database.insert( CreateDatabase.tbl_SANPHAM, null, cv );
+
     }
 
+    public void UPDATE_SANPHAM(String ten,byte[] hinh,int SOLUONG,int  GIA,int IDDANHMUC,int SPNEW, int IDSP ){
 
-    public ArrayList<SanPhamDTO> SanPhamTheoDanhMuc(String IDDANHMUC){
-        ArrayList<SanPhamDTO> list = new ArrayList<>();
-        Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDDANHMUC");
-        while(cursor.moveToNext()){
-            list.add(new SanPhamDTO(
-                    cursor.getInt(0),
-                    cursor.getBlob(1),
-                    cursor.getString(2),
-                    cursor.getInt(3),
-                    cursor.getInt(4),
-                    cursor.getString(5),
-                    cursor.getInt(6)
-            ));
-        }
-        return list;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("TENSANPHAM", ten);
+        values.put("GIA", GIA);
+        values.put("SOLUONG", SOLUONG);
+        values.put("IDDANHMUC", IDDANHMUC);
+        values.put("SPNEW", SPNEW);
+
+        sqLiteDatabase.update("SANPHAM",values,"IDSP =" + IDSP,null);
+
+
+        String sql = "UPDATE SANPHAM SET HINHANH = ? WHERE IDSP="+ IDSP ;
+        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,hinh);
+        statement.executeInsert();
     }
+
     // endregion
 
         @Override
@@ -305,7 +334,4 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
-
-
 }

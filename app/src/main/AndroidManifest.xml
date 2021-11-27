@@ -5,6 +5,7 @@
     <!-- permissions for internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".Manager.Them_SanPham"
+            android:exported="true" />
+        <activity
             android:name=".Manager.CapNhat_SanPham"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Manager.HomeManager"
             android:exported="true" />
         <activity
             android:name=".TransactionHistoryDetailsActivity"
@@ -57,7 +61,7 @@
             android:name=".Login"
             android:exported="true" />
         <activity
-            android:name=".Manager.HomeManager"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,8 +1,5 @@
 package nhattan.lnt.clothesshop.DAO;
 
-import static java.security.AccessController.getContext;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -16,13 +13,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.CreateDatabase;
-import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.HomeActivity;
 import nhattan.lnt.clothesshop.R;
 
 public class SanPhamDAO extends BaseAdapter {

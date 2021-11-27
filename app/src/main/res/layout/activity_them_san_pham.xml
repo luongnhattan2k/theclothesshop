@@ -12,7 +12,7 @@
         android:background="@color/vang_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExitcapnhatsp"
+            android:id="@+id/ibtnExitthemsp"
             android:layout_width="@dimen/size50dp"
             android:layout_height="@dimen/size50dp"
             android:background="@null"
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:paddingLeft="@dimen/size20dp"
             android:gravity="center|left"
-            android:text="Cập Nhật Sản Phẩm"
+            android:text="Thêm Sản Phẩm"
             android:textSize="@dimen/size20dp"
             android:textStyle="bold"/>
 
@@ -44,29 +44,13 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/img_Hinhanh"
+                android:id="@+id/img_Hinhanh_Add"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_gravity="center"
                 tools:srcCompat="@drawable/logo" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size10dp">
-
-                <EditText
-                    android:id="@+id/edtIDSP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="ID Sản Phẩm"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -74,7 +58,7 @@
                 android:layout_margin="@dimen/size10dp">
 
                 <EditText
-                    android:id="@+id/edtTensanpham"
+                    android:id="@+id/edtTensanpham_Add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -91,7 +75,7 @@
                 android:layout_margin="@dimen/size10dp">
 
                 <EditText
-                    android:id="@+id/edtGia"
+                    android:id="@+id/edtGia_Add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -107,7 +91,7 @@
                 android:layout_margin="@dimen/size10dp">
 
                 <EditText
-                    android:id="@+id/edtSL"
+                    android:id="@+id/edtSL_Add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -123,7 +107,7 @@
                 android:layout_margin="@dimen/size10dp">
 
                 <EditText
-                    android:id="@+id/edtMota"
+                    android:id="@+id/edtMota_Add"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:ems="10"
@@ -139,7 +123,7 @@
                 android:layout_margin="@dimen/size10dp">
 
                 <EditText
-                    android:id="@+id/edtDanhmuc"
+                    android:id="@+id/edtDanhmuc_Add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -151,13 +135,13 @@
 
 
             <Button
-                android:id="@+id/btnCapNhatSP"
+                android:id="@+id/btnThemSP"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/size20dp"
                 android:backgroundTint="@color/teal_200"
-                android:text="Cập Nhật " />
+                android:text="Thêm" />
 
         </LinearLayout>
 

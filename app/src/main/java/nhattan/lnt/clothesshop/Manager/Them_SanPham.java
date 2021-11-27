@@ -26,15 +26,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.Database;
+import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.R;
 
-public class CapNhat_SanPham extends AppCompatActivity {
-    EditText edt_Idsp ,edt_Tensanpham, edt_Gia, edt_Soluong, edt_Mota, edt_Danhmuc;
-    ImageView img_HinhAnh;
-    ImageButton ibtn_Exit;
-    Button btn_CapNhatSP;
+public class Them_SanPham extends AppCompatActivity {
+    EditText edtTensanpham_add, edtGia_add, edtSoluong_add, edtMota_add, edtDanhmuc_add;
+    ImageView img_HinhAnh_add;
+    ImageButton ibtn_Exit_add;
+    Button btnThemSP;
     private boolean isEnabled;
     Database database;
     final int REQUEST_CODE_CAMERA=123;
@@ -43,102 +43,77 @@ public class CapNhat_SanPham extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cap_nhat_san_pham);
+        setContentView(R.layout.activity_them_san_pham);
 
         AnhXa();
 
-        Intent iCapNhat = getIntent();
-        int IDSANPHAM = iCapNhat.getIntExtra("IDSANPHAM", 1);
-
-        if (String.valueOf(IDSANPHAM) == null){
-            return;
-        }
-        SanPhamDTO sanPhamDTO = database.TTSANPHAM(IDSANPHAM);
-
-        edt_Idsp.setText(String.valueOf(IDSANPHAM));
-        edt_Idsp.setEnabled(false);
-        edt_Tensanpham.setText(sanPhamDTO.getTenSP());
-        edt_Gia.setText(String.valueOf(sanPhamDTO.getGiaSP()));
-        edt_Soluong.setText(String.valueOf(sanPhamDTO.getSl_SP()));
-        edt_Mota.setText(sanPhamDTO.getMotaSP());
-        edt_Danhmuc.setText(String.valueOf(sanPhamDTO.getID_DANHMUC()));
-        byte[] hinhAnh = sanPhamDTO.getImageSP();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
-        img_HinhAnh.setImageBitmap(bitmap);
-    }
-
-    private void enableControl(){
-        img_HinhAnh.setEnabled(isEnabled);
-        edt_Tensanpham.setEnabled(isEnabled);
-        edt_Gia.setEnabled(isEnabled);
-        edt_Soluong.setEnabled(isEnabled);
-        edt_Mota.setEnabled(isEnabled);
-        edt_Danhmuc.setEnabled(isEnabled);
     }
 
 
     private void AnhXa() {
         database = new Database(this);
-        img_HinhAnh = findViewById(R.id.img_Hinhanh);
-        edt_Idsp = findViewById(R.id.edtIDSP);
-        edt_Tensanpham = findViewById(R.id.edtTensanpham);
-        edt_Gia = findViewById(R.id.edtGia);
-        edt_Soluong = findViewById(R.id.edtSL);
-        edt_Mota = findViewById(R.id.edtMota);
-        edt_Danhmuc = findViewById(R.id.edtDanhmuc);
-        ibtn_Exit = findViewById(R.id.ibtnExitcapnhatsp);
-        btn_CapNhatSP = findViewById(R.id.btnCapNhatSP);
-        enableControl();
+        img_HinhAnh_add = findViewById(R.id.img_Hinhanh_Add);
+        edtTensanpham_add = findViewById(R.id.edtTensanpham_Add);
+        edtGia_add = findViewById(R.id.edtGia_Add);
+        edtSoluong_add = findViewById(R.id.edtSL_Add);
+        edtMota_add = findViewById(R.id.edtMota_Add);
+        edtDanhmuc_add = findViewById(R.id.edtDanhmuc_Add);
+        ibtn_Exit_add = findViewById(R.id.ibtnExitthemsp);
+        btnThemSP = findViewById(R.id.btnThemSP);
 
-        registerForContextMenu(img_HinhAnh);
-        img_HinhAnh.setOnClickListener(new View.OnClickListener() {
+        registerForContextMenu(img_HinhAnh_add);
+        img_HinhAnh_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                img_HinhAnh.showContextMenu();
+                img_HinhAnh_add.showContextMenu();
             }
         });
 
-
-        ibtn_Exit.setOnClickListener(new View.OnClickListener() {
+        ibtn_Exit_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        btn_CapNhatSP.setOnClickListener(new View.OnClickListener() {
+        btnThemSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isEnabled = !isEnabled;
-                enableControl();
-                if (isEnabled){
-                    btn_CapNhatSP.setText("Lưu");
-                }
-                else{
-                    btn_CapNhatSP.setText("Cập nhật");
-                    int IDSP = Integer.parseInt(edt_Idsp.getText().toString());
-                    BitmapDrawable bitmapDrawable = (BitmapDrawable) img_HinhAnh.getDrawable();
-                    Bitmap bitmap = bitmapDrawable.getBitmap();
-                    ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
-                    byte[] hinhAnh = byteArray.toByteArray();
-                    String TenSanPham = edt_Tensanpham.getText().toString();
-                    int Gia = Integer.parseInt(edt_Gia.getText().toString());
-                    int SoLuong = Integer.parseInt(edt_Soluong.getText().toString());
-                    String MoTa = edt_Mota.getText().toString();
-                    int DanhMuc = Integer.parseInt(edt_Danhmuc.getText().toString());
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) img_HinhAnh_add.getDrawable();
+                Bitmap bitmap = bitmapDrawable.getBitmap();
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                byte[] hinhAnh = byteArray.toByteArray();
 
-                    if (edt_Tensanpham.getText().length() != 0 && edt_Gia.getText().length() != 0 && edt_Soluong.getText().length() != 0
-                            && edt_Mota.getText().length() != 0 && edt_Danhmuc.getText().length() !=0) {
-                        database.CapNhatSanPham(IDSP, hinhAnh, TenSanPham, Gia, SoLuong, MoTa, DanhMuc);
-                        Toast.makeText(CapNhat_SanPham.this, "Cập Nhật Sản Phẩm Thành Công !", Toast.LENGTH_SHORT).show();
-                        onBackPressed();
-                    } else {
-                        Toast.makeText(CapNhat_SanPham.this, "Cập Nhật Sản Phẩm Thất Bại !", Toast.LENGTH_SHORT).show();
-                    }
+                String TenSanPham = edtTensanpham_add.getText().toString().trim();
+                int Gia = Integer.parseInt(edtGia_add.getText().toString().trim());
+                int SoLuong = Integer.parseInt(edtSoluong_add.getText().toString().trim());
+                String MoTa = edtMota_add.getText().toString().trim();
+                int DanhMuc = Integer.parseInt(edtDanhmuc_add.getText().toString().trim());
+                int SpNew = 1;
+
+                if (edtTensanpham_add.getText().length() != 0 && edtGia_add.getText().length() != 0 && edtSoluong_add.getText().length() != 0
+                        && edtMota_add.getText().length() != 0 && edtDanhmuc_add.getText().length() !=0) {
+//                    database.ThemSanPham(hinhAnh, TenSanPham, Gia, SoLuong, MoTa, DanhMuc, SpNew);
+
+                    HomeFragment.database.ThemSanPham(
+                            hinhAnh,
+                            TenSanPham,
+                            Gia,
+                            SoLuong,
+                            MoTa,
+                            DanhMuc,
+                            SpNew
+                    );
+
+                    Toast.makeText(Them_SanPham.this, "Thêm Sản Phẩm Thành Công !", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                } else {
+                    Toast.makeText(Them_SanPham.this, "Thêm Sản Phẩm Thất Bại !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
     }
 
     @Override
@@ -151,7 +126,7 @@ public class CapNhat_SanPham extends AppCompatActivity {
                     startActivityForResult(intent,REQUEST_CODE_CAMERA);
                 }else
                 {
-                    Toast.makeText(CapNhat_SanPham.this,"Không cho phép mở Camera", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Them_SanPham.this,"Không cho phép mở Camera", Toast.LENGTH_LONG).show();
                 }
                 break;
             case REQUEST_CODE_FOLDER:
@@ -162,7 +137,7 @@ public class CapNhat_SanPham extends AppCompatActivity {
                     startActivityForResult(intent,REQUEST_CODE_FOLDER);
                 }else
                 {
-                    Toast.makeText(CapNhat_SanPham.this," Không cho phép mở folder", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Them_SanPham.this," Không cho phép mở folder", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -174,7 +149,7 @@ public class CapNhat_SanPham extends AppCompatActivity {
         if(requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            img_HinhAnh.setImageBitmap(bitmap);
+            img_HinhAnh_add.setImageBitmap(bitmap);
         }
         if(requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null)
         {
@@ -182,7 +157,7 @@ public class CapNhat_SanPham extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                img_HinhAnh.setImageBitmap(bitmap);
+                img_HinhAnh_add.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

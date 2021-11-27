@@ -76,7 +76,8 @@ public class MenClothesFragment extends Fragment {
                     cursor.getInt(3),
                     cursor.getInt(4),
                     cursor.getString(5),
-                    cursor.getInt(6)
+                    cursor.getInt(6),
+                    cursor.getInt(7)
             ));
         }
         adapter.notifyDataSetChanged();

@@ -8,13 +8,13 @@ public class TaiKhoanDTO {
     String EMAIL;
     String NGAYSINH;
     String DIACHI;
-    String QUYEN;
+    int QUYEN;
 
     public TaiKhoanDTO(){
         this.MATK = -1;
     }
 
-    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI, String QUYEN) {
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI, int QUYEN) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
@@ -82,11 +82,11 @@ public class TaiKhoanDTO {
         this.DIACHI = DIACHI;
     }
 
-    public String getQUYEN() {
+    public int getQUYEN() {
         return QUYEN;
     }
 
-    public void setQUYEN(String MAQUYEN) {
-        this.QUYEN = MAQUYEN;
+    public void setQUYEN(int QUYEN) {
+        this.QUYEN = QUYEN;
     }
 }

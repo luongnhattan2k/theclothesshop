@@ -88,14 +88,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         if (kiemtra != null){
             Login.taiKhoanDTO = kiemtra;
-            Toast.makeText(getActivity(), "Đăng Nhập Thành Công ! " + kiemtra.getQUYEN(), Toast.LENGTH_SHORT).show();
-            if (kiemtra.getQUYEN() == "ADMIN"){
-//                startActivity(new Intent(getActivity(), HomeActivity.class));
+            Toast.makeText(getActivity(), "Đăng Nhập Thành Công ! " + Login.taiKhoanDTO.getQUYEN(), Toast.LENGTH_SHORT).show();
+            if (Login.taiKhoanDTO.getQUYEN() == 1){
                 startActivity(new Intent(getActivity(), HomeManager.class));
             } else {
                 startActivity(new Intent(getActivity(), HomeActivity.class));
-//                startActivity(new Intent(getActivity(), HomeManager.class));
-
             }
         } else {
             Toast.makeText(getActivity(), "Đăng Nhập Thất Bại !", Toast.LENGTH_SHORT).show();

@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.Manager.CapNhat_SanPham;
+import nhattan.lnt.clothesshop.Manager.Them_SanPham;
 import nhattan.lnt.clothesshop.R;
 
 public class Quanly_Sanpham extends Fragment {
@@ -40,6 +42,7 @@ public class Quanly_Sanpham extends Fragment {
     ArrayList<SanPhamDTO> listSanpham;
     ArrayList<CategoryDTO> listCategory;
     QuanLySanPhamAdapter adapter;
+    Button btnThemspmoi;
     private Toolbar toolbar;
     private View view;
 
@@ -78,9 +81,22 @@ public class Quanly_Sanpham extends Fragment {
             }
         });
 
+        btnThemspmoi = view.findViewById(R.id.btnThemspmoi);
+        btnThemspmoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Them_SanPham.class));
+            }
+        });
+
         return view;
     }
 
+    @Override
+    public void onStart() {
+        Load();
+        super.onStart();
+    }
 
     private void Load() {
         listSanpham.clear();
@@ -109,9 +125,10 @@ public class Quanly_Sanpham extends Fragment {
         }
         switch (item.getItemId()) {
             case R.id.iSua:
-                Intent iCapnhat = new Intent(getActivity(), CapNhat_SanPham.class);
-                iCapnhat.putExtra("IDVD", listSanpham.get(position).getMaSP());
-                startActivity(iCapnhat);
+                Intent iCapnhatsp = new Intent(getActivity(), CapNhat_SanPham.class);
+                iCapnhatsp.putExtra("IDSANPHAM", listSanpham.get(position).getMaSP());
+                startActivity(iCapnhatsp);
+//                Toast.makeText(getActivity(), "ádasd" + listSanpham.get(position).getMaSP(), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.iXoa:
                 sanPhamDTO = listSanpham.get(position);
@@ -129,7 +146,7 @@ public class Quanly_Sanpham extends Fragment {
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                database.XoaVideo(sanPhamDTO.getMaSP());
+                database.XoaSanPham(sanPhamDTO.getMaSP());
 //                getActivity().onBackPressed();
                 Load();
                 Toast.makeText(getActivity(), "Bạn vừa xóa " + sanPhamDTO.getTenSP(), Toast.LENGTH_SHORT).show();

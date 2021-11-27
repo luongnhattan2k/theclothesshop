@@ -1,6 +1,5 @@
 package nhattan.lnt.clothesshop.ADAPTER;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.ContextMenu;
@@ -18,10 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
-import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.Manager.HomeManager;
 import nhattan.lnt.clothesshop.R;
-import com.squareup.picasso.Picasso;
 
 public class QuanLySanPhamAdapter extends RecyclerView.Adapter<QuanLySanPhamAdapter.Viewholder>{
     ArrayList<SanPhamDTO> listSanPham;
@@ -56,9 +52,6 @@ public class QuanLySanPhamAdapter extends RecyclerView.Adapter<QuanLySanPhamAdap
         byte[] hinhAnh = sanPhamDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         holder.img_Hinhanh.setImageBitmap(bitmap);
-//        Picasso.with(context.getActivity()).load(String.valueOf(bitmap));
-//                .placeholder(R.drawable.logo)
-//                .error(R.drawable.logo).into(holder.img_Hinhanh);
         holder.txt_Tensp.setText(sanPhamDTO.getTenSP());
         holder.txt_Giasp.setText(String.valueOf(sanPhamDTO.getGiaSP()) + " VND");
 

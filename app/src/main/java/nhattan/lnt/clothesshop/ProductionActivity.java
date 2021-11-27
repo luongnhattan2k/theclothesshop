@@ -7,11 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -21,14 +19,12 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 
 public class ProductionActivity extends AppCompatActivity {
 
@@ -100,10 +96,10 @@ public class ProductionActivity extends AppCompatActivity {
     }
 
     private void Anhxa() {
-        productName = findViewById(R.id.product_name);
+        productName = findViewById(R.id.product_name_ct);
         productContent = findViewById(R.id.product_content);
-        productPrice = findViewById(R.id.product_price);
-        productImage = findViewById(R.id.product_image);
+        productPrice = findViewById(R.id.product_price_ct);
+        productImage = findViewById(R.id.product_image_ct);
         productQuantity = findViewById(R.id.product_quantity);
         spnCategory = findViewById(R.id.spn_category);
         img_Them = findViewById(R.id.imgThemsl);

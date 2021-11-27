@@ -46,6 +46,7 @@
 
 
     <Button
+        android:id="@+id/btnThemspmoi"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/size60dp"
         android:layout_gravity="center"
