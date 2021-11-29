@@ -46,7 +46,7 @@ public class OrderActivity extends AppCompatActivity {
     int tong;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
-
+    int idcthd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +91,7 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         Tongtien();
+        GetData();
         super.onStart();
     }
 
@@ -111,32 +112,32 @@ public class OrderActivity extends AppCompatActivity {
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idcthd;
+
                 String diachi =  edt_Diachigiaohang.getText().toString();
                 String ghichu = edt_Ghichu.getText().toString();
 
-                if(HomeFragment.database.HoaDonChuaCoTrongHD()){
+                if(database.HoaDonChuaCoTrongHD()){
                     idcthd = 1;
                 }
                 else {
-                    Cursor cursor = HomeFragment.database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC");
+                    Cursor cursor = database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC");
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
-                    for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
-                    {
-                        GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
-                        HomeFragment.database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                                themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
-                        HomeFragment.database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
-
-                    }
-                    HomeFragment.database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
-                    HomeFragment.database.DELETE_GIOHANG(Login.taiKhoanDTO.getMATK());
-                    GetData();
-                    Tongtien();
                 }
+                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
+                {
+                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
+                    database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
+                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
+                    database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
+                }
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
+                database.DELETE_GIOHANGALL(Login.taiKhoanDTO.getMATK());
+                GetData();
+                Tongtien();
                 Intent iHome = new Intent(OrderActivity.this, HomeActivity.class);
                 Toast.makeText(OrderActivity.this, "Đặt hàng thành công !" + idcthd, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(OrderActivity.this, " ssss : " + idcthd , Toast.LENGTH_SHORT).show();
                 startActivity(iHome);
             }
         });

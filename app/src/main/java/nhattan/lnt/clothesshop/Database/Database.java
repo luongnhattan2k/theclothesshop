@@ -92,9 +92,9 @@ public class Database extends SQLiteOpenHelper {
                 + thanhtien + "') ");
     }
 
-    public void DELETE_GIOHANG(int IDTK){
+    public void DELETE_GIOHANGALL(int IDTK){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "DELETE  FROM GIOHANG WHERE IDTK = "+ IDTK ;
+        String sql = "DELETE  FROM GIOHANG WHERE IDTK = "+ IDTK;
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 

@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tên Tài Khoản"
-                    android:inputType="number"
+                    android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="#050505"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:hint="Mật Khẩu"
-                    android:inputType="date"
+                    android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="#050505"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:hint="Số Điện Thoại"
-                    android:inputType="date"
+                    android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="#050505"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -140,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:hint="Địa Chỉ"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="#050505"
                     tools:ignore="SpeakableTextPresentCheck" />
