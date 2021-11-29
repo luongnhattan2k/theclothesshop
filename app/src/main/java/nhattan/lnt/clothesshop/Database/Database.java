@@ -143,11 +143,12 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
-                    cursor.getInt(3),
-                    cursor.getString(4),
+                    cursor.getBlob(3),
+                    cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getInt(7)
+                    cursor.getString(7),
+                    cursor.getInt(8)
             );
         }
         return null;
@@ -219,6 +220,62 @@ public class Database extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public ArrayList<TaiKhoanDTO> QuanLyTaiKhoan(int QUYEN){
+        ArrayList<TaiKhoanDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM TAIKHOAN WHERE QUYEN >=" + QUYEN);
+        while (cursor.moveToNext()){
+            list.add(new TaiKhoanDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getInt(8)
+            ));
+        }
+        return list;
+    }
+
+    public void XoaTK(int IDTAIKHOAN){
+        QueryData("DELETE FROM TAIKHOAN WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
+    }
+
+    public TaiKhoanDTO TTTaiKhoan(int IDTAIKHOAN){
+        Cursor cursor = Getdata("SELECT * FROM TAIKHOAN WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
+        while (cursor.moveToNext()){
+            return new TaiKhoanDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getInt(8)
+            );
+        }
+        return null;
+    }
+
+    public void CapNhatTaiKhoan_ADMIN(int IDTAIKHOAN, String TENTAIKHOAN, String MATKHAU, byte[] BACKGROUND, int SDT, String EMAIL, String NGAYSINH, String DIACHI, int QUYEN){
+        QueryData("UPDATE TAIKHOAN SET TENTAIKHOAN = '" + TENTAIKHOAN + "' , MATKHAU ='" + MATKHAU + "', SDT = '" + SDT
+                + "', EMAIL = '" + EMAIL + "', NGAYSINH = '" + NGAYSINH + "', DIACHI = '" + DIACHI
+                + "', QUYEN = '" + QUYEN + "'  WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
+
+        String sql = "UPDATE TAIKHOAN SET HINHANH = ? WHERE IDTAIKHOAN= " + IDTAIKHOAN ;
+        SQLiteDatabase database = getWritableDatabase();
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,BACKGROUND);
+        statement.executeInsert();
+    }
+    // endregion
     // end
 
     //region Video

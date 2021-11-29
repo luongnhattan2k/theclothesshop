@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Manager.FragmentManager.Quanly_Taikhoan">
+    android:paddingTop="66dp"
+    android:background="@color/xam"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:gravity="center"
+        android:text="Quản Lý Tài Khoản"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recV_DanhSachTaikhoan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_margin="20dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spn_qlvideo" />
+</LinearLayout>

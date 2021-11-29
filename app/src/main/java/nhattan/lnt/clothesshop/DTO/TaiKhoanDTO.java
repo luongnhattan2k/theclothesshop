@@ -4,6 +4,7 @@ public class TaiKhoanDTO {
     int MATK;
     String TENTK;
     String MATKHAU;
+    byte[] HINHANH;
     int SDT;
     String EMAIL;
     String NGAYSINH;
@@ -14,10 +15,13 @@ public class TaiKhoanDTO {
         this.MATK = -1;
     }
 
-    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, int SDT, String EMAIL, String NGAYSINH,String DIACHI, int QUYEN) {
+
+
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, byte[] HINHANH, int SDT, String EMAIL, String NGAYSINH, String DIACHI, int QUYEN) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
+        this.HINHANH = HINHANH;
         this.SDT = SDT;
         this.EMAIL = EMAIL;
         this.NGAYSINH = NGAYSINH;
@@ -88,5 +92,13 @@ public class TaiKhoanDTO {
 
     public void setQUYEN(int QUYEN) {
         this.QUYEN = QUYEN;
+    }
+
+    public byte[] getHINHANH() {
+        return HINHANH;
+    }
+
+    public void setHINHANH(byte[] HINHANH) {
+        this.HINHANH = HINHANH;
     }
 }

@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Giá"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Số Lượng"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Danh Mục"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
