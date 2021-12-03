@@ -50,6 +50,24 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/edtNhaplaimatkhau"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Nhập Lại Mật Khẩu"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/size20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
             android:id="@+id/edtNgaySinh"
             android:layout_width="match_parent"
             android:layout_height="55dp"

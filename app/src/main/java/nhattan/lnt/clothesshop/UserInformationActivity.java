@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
@@ -27,6 +29,7 @@ public class UserInformationActivity extends AppCompatActivity {
     private EditText edt_Taikhoan, edt_Sdt, edt_Email, edt_Diachi;
     private Button btn_Capnhat;
     private ImageButton ibtn_Exit;
+    private CircleImageView cimg_Hinhdaidien;
     private boolean isEnabled;
     int id;
 
@@ -49,6 +52,7 @@ public class UserInformationActivity extends AppCompatActivity {
         edt_Sdt = findViewById(R.id.edtSdt);
         edt_Email = findViewById(R.id.edtEmail);
         edt_Diachi = findViewById(R.id.edtDiachi);
+        cimg_Hinhdaidien = findViewById(R.id.imgHinhDaiDien);
 
         ibtn_Exit = findViewById(R.id.ibtnExit);
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +111,13 @@ public class UserInformationActivity extends AppCompatActivity {
             edt_Email.setText(email);
             edt_Diachi.setText(diachi);
             edt_Taikhoan.setEnabled(false);
+            if (Login.taiKhoanDTO.getHINHANH() == null){
+                cimg_Hinhdaidien.setImageResource(R.drawable.baseline_person_24);
+            } else {
+                byte[] hinhAnh = Login.taiKhoanDTO.getHINHANH();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
+                cimg_Hinhdaidien.setImageBitmap(bitmap);
+            }
         }
     }
 }

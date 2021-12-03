@@ -62,8 +62,6 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
 
         AnhXa();
 
-        Intent intent = getIntent();
-
         HienThiTen();
     }
 
@@ -151,7 +149,7 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
             startActivity(new Intent(this, Login.class));
             finish();
         }else if (id == R.id.nav_logout_manager){
-            Intent intent = new Intent(this, HomeManager.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             Login.taiKhoanDTO = new TaiKhoanDTO();
             startActivity(intent);
         }else if (id == R.id.nav_quanly_sanpham) {

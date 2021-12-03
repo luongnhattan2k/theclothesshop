@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".TimKiem"
+            android:exported="true" />
+        <activity
             android:name=".Manager.CapNhat_TaiKhoan"
             android:exported="true" />
         <activity

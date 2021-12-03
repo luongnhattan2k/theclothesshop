@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private int currentFragment = FRAGMENT_HOME;
 
     public static TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
-
+    EditText edtSearch;
     // Drawer
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -75,6 +76,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
         HienThiTen();
+        edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, TimKiem.class));
+            }
+        });
     }
 
     @Override
@@ -96,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         contentView = findViewById(R.id.content_View);
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
-
+        edtSearch = findViewById(R.id.edtSearch);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

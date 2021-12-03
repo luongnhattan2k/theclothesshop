@@ -36,12 +36,14 @@
     </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="350dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/baseline_person_24" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgHinhDaiDien"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:layout_marginTop="@dimen/size10dp"
+        android:src="@drawable/baseline_person_24"
+        android:layout_gravity="center"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

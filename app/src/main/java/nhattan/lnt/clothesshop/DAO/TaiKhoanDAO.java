@@ -42,7 +42,7 @@ public class TaiKhoanDAO extends BaseAdapter {
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_SDT,taiKhoanDTO.getSDT());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_EMAIL,taiKhoanDTO.getEMAIL());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_NGAYSINH,taiKhoanDTO.getNGAYSINH());
-//        contentValues.put(CreateDatabase.tbl_TAIKHOAN_DIACHI,taiKhoanDTO.getDIACHI());
+        contentValues.put(CreateDatabase.tbl_TAIKHOAN_QUYEN,"1");
 
         long kiemtra = database.insert(CreateDatabase.tbl_TAIKHOAN, null, contentValues);
         return kiemtra;

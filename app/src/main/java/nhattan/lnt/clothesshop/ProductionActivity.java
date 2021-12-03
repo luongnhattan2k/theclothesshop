@@ -32,7 +32,7 @@ public class ProductionActivity extends AppCompatActivity {
     TextView productName, productPrice, productContent, productQuantity;
     ImageView productImage, img_Them, img_Tru;
     ImageButton ibtn_Exit;
-    Button btn_Themgiohang, btn_Muangay;
+    Button btn_Themgiohang;
     int id;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
@@ -104,7 +104,6 @@ public class ProductionActivity extends AppCompatActivity {
         spnCategory = findViewById(R.id.spn_category);
         img_Them = findViewById(R.id.imgThemsl);
         img_Tru = findViewById(R.id.imgXoasl);
-        btn_Muangay = findViewById(R.id.btnMuangay);
         btn_Themgiohang = findViewById(R.id.btnThemvaogiohang);
         ibtn_Exit = findViewById(R.id.ibtnExit);
 
@@ -131,19 +130,6 @@ public class ProductionActivity extends AppCompatActivity {
                     productQuantity.setText(String.valueOf(SLM));
                 } else {
                     Toast.makeText(ProductionActivity.this, "Không thể giảm số lượng được nữa !", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        btn_Muangay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Login.taiKhoanDTO.getMATK() == -1)
-                {
-                    Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ProductionActivity.this, Login.class));
-                }else {
-                    startActivity(new Intent(ProductionActivity.this, OrderActivity.class));
                 }
             }
         });

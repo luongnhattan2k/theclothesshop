@@ -22,7 +22,7 @@ import nhattan.lnt.clothesshop.R;
 public class RegisterFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener{
 
     private  View view;
-    EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email;
+    EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email, edt_Nhaplaimatkhau;
     ImageButton btn_exit;
     Button btn_DangKy;
     TaiKhoanDAO taiKhoanDAO;
@@ -52,6 +52,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     private void AnhXa() {
         edt_TaiKhoan = view.findViewById(R.id.edtTaikhoan);
         edt_MatKhau = view.findViewById(R.id.edtMatkhau);
+        edt_Nhaplaimatkhau = view.findViewById(R.id.edtNhaplaimatkhau);
         edt_NgaySinh = view.findViewById(R.id.edtNgaySinh);
         edt_SDT = view.findViewById(R.id.edtSDT);
         edt_Email = view.findViewById(R.id.edtEmail);
@@ -71,8 +72,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             case R.id.btnDangky:
                 String sTaiKhoan = edt_TaiKhoan.getText().toString();
                 String sMatKhau = edt_MatKhau.getText().toString();
+                String sNhapLaiMatKhau = edt_Nhaplaimatkhau.getText().toString();
                 String sNgaySinh = edt_NgaySinh.getText().toString();
-                int sSDT = Integer.parseInt(edt_SDT.getText().toString());
+                String sSDT = edt_SDT.getText().toString();
                 String sEmail = edt_Email.getText().toString();
 
                 if (sTaiKhoan == null || sTaiKhoan.isEmpty()){
@@ -81,11 +83,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                     Toast.makeText(getActivity(), "Vui Lòng Nhập Mật Khẩu !", Toast.LENGTH_SHORT).show();
                 } else if (sEmail == null || sEmail.isEmpty()) {
                     Toast.makeText(getActivity(), "Vui Lòng Nhập email !", Toast.LENGTH_SHORT).show();
+                } else if (!sMatKhau.equals(sNhapLaiMatKhau)){
+                    Toast.makeText(getActivity(), "Mật khẩu không trùng khớp !", Toast.LENGTH_SHORT).show();
+                } else if (sSDT.length() < 9 || sSDT.isEmpty()) {
+                    Toast.makeText(getActivity(), "Vui lòng kiểm tra lại số điện thoại !", Toast.LENGTH_SHORT).show();
                 } else {
                     TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                     taiKhoanDTO.setTENTK(sTaiKhoan);
                     taiKhoanDTO.setMATKHAU(sMatKhau);
-                    taiKhoanDTO.setSDT(sSDT);
+                    taiKhoanDTO.setSDT(Integer.parseInt(sSDT));
                     taiKhoanDTO.setEMAIL(sEmail);
                     taiKhoanDTO.setNGAYSINH(sNgaySinh);
 

@@ -3,13 +3,18 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_quanly_sanpham"
-            android:icon="@drawable/baseline_home_24"
+            android:icon="@drawable/baseline_checkroom_24"
             android:title="Quản Lý Sản Phẩm" />
 
         <item
             android:id="@+id/nav_quanly_taikhoan"
-            android:icon="@drawable/baseline_home_24"
+            android:icon="@drawable/baseline_manage_accounts_24"
             android:title="Quản Lý Tài Khoản" />
+
+        <item
+            android:id="@+id/nav_quanly_hoadon"
+            android:icon="@drawable/baseline_receipt_24"
+            android:title="Quản Lý Hóa Đơn" />
 
         <item
             android:id="@+id/nav_logging_manager"

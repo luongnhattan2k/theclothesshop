@@ -85,6 +85,7 @@
             android:layout_marginTop="96dp"
             android:gravity="center|left"
             android:paddingLeft="@dimen/size30dp"
+            android:paddingRight="@dimen/size10dp"
             android:text="Mô tả"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -132,7 +133,7 @@
             android:layout_width="@dimen/size20dp"
             android:layout_height="@dimen/size20dp"
             android:layout_marginTop="26dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginBottom="39dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnThemvaogiohang"
@@ -143,18 +144,19 @@
 
         <Button
             android:id="@+id/btnThemvaogiohang"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="25dp"
             android:backgroundTint="@color/xam"
             android:text="Thêm vào giỏ hàng"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnMuangay"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_content"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -196,22 +198,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/btnMuangay"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="25dp"
-            android:backgroundTint="@color/xam"
-            android:text="Mua Ngay"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_content"
-            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

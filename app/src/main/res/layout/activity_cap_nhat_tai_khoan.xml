@@ -7,6 +7,32 @@
     android:background="#EDF1F3"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/vang_nhat">
+
+        <ImageButton
+            android:id="@+id/ibtnExit"
+            android:layout_width="@dimen/size50dp"
+            android:layout_height="@dimen/size50dp"
+            android:background="@null"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Thông Tin Người Dùng"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
