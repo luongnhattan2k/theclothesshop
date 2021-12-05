@@ -3,6 +3,8 @@ package nhattan.lnt.clothesshop;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
@@ -58,7 +61,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton fab;
     // Drawer
 
-    TextView txt_TenTaiKhoan;
+    private TextView txt_TenTaiKhoan;
+    private CircleImageView cimg_User;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -151,9 +155,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void HienThiTen() {
         View view = navigationView.inflateHeaderView(R.layout.header);
         txt_TenTaiKhoan = view.findViewById(R.id.txtTennguoidung);
+        cimg_User = view.findViewById(R.id.cimgUser);
 
         txt_TenTaiKhoan.setText(Login.taiKhoanDTO.getTENTK());
         txt_TenTaiKhoan.setTextColor(Color.WHITE);
+
+        if (Login.taiKhoanDTO.getHINHANH() == null){
+            cimg_User.setImageResource(R.drawable.baseline_account_circle_white_24);
+        } else {
+            byte[] hinhAnh = Login.taiKhoanDTO.getHINHANH();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
+            cimg_User.setImageBitmap(bitmap);
+        }
     }
 
     @Override

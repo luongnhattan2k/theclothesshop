@@ -32,6 +32,8 @@ import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
 import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 import nhattan.lnt.clothesshop.HomeActivity;
 import nhattan.lnt.clothesshop.Login;
+import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Gopy;
+import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_HoaDon;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Sanpham;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Taikhoan;
 import nhattan.lnt.clothesshop.R;
@@ -42,7 +44,8 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
 
     private static final int FRAGMENT_QL_SANPHAM = 1;
     private static final int FRAGMENT_QL_TAIKHOAN = 2;
-    private static final int FRAGMENT_WOMEN = 3;
+    private static final int FRAGMENT_QL_HOADON = 3;
+    private static final int FRAGMENT_QL_GOPY = 4;
 
     private int currentFragment = FRAGMENT_QL_SANPHAM;
 
@@ -161,6 +164,16 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
             if (FRAGMENT_QL_TAIKHOAN != currentFragment) {
                 replaceFragment(new Quanly_Taikhoan());
                 currentFragment = FRAGMENT_QL_TAIKHOAN;
+            }
+        }else if (id == R.id.nav_quanly_hoadon) {
+            if (FRAGMENT_QL_HOADON != currentFragment) {
+                replaceFragment(new Quanly_HoaDon());
+                currentFragment = FRAGMENT_QL_HOADON;
+            }
+        }else if (id == R.id.nav_quanly_gopy) {
+            if (FRAGMENT_QL_GOPY != currentFragment) {
+                replaceFragment(new Quanly_Gopy());
+                currentFragment = FRAGMENT_QL_GOPY;
             }
         }
 

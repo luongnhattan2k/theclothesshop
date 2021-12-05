@@ -156,7 +156,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnHuy"
+            android:id="@+id/btnHuyCN"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_weight="1"

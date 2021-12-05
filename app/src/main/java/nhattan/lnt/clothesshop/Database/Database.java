@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import nhattan.lnt.clothesshop.DTO.GopYDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 
@@ -208,9 +209,17 @@ public class Database extends SQLiteOpenHelper {
         return false;
     }
 
-    public void CapNhatTaiKhoan(int IDTAIKHOAN, int SDT, String EMAIL, String DIACHI){
+    public void CapNhatTaiKhoan(int IDTAIKHOAN,byte[] HINHANH, int SDT, String EMAIL, String DIACHI){
         QueryData("UPDATE " + CreateDatabase.tbl_TAIKHOAN + " SET " + CreateDatabase.tbl_TAIKHOAN_SDT + " = '" + SDT + "', " + CreateDatabase.tbl_TAIKHOAN_EMAIL + " = '" + EMAIL +
                 "' , " + CreateDatabase.tbl_TAIKHOAN_DIACHI + " = '" + DIACHI + "' WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = '" + IDTAIKHOAN +"'");
+
+        String sql = "UPDATE TAIKHOAN SET HINHANH = ? WHERE IDTAIKHOAN= " + IDTAIKHOAN ;
+        SQLiteDatabase database = getWritableDatabase();
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,HINHANH);
+        statement.executeInsert();
     }
 
     public boolean isTonTaiTK(String IDTAIKHOAN){
@@ -381,6 +390,33 @@ public class Database extends SQLiteOpenHelper {
     }
 
     // endregion
+
+    public ArrayList<GopYDTO> QuanLyGopY(){
+        ArrayList<GopYDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM GOPY");
+        while (cursor.moveToNext()){
+            list.add(new GopYDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getString(3)
+            ));
+        }
+        return list;
+    }
+
+    public GopYDTO TTGOPY(int IDGY){
+        Cursor cursor = Getdata("SELECT * FROM GOPY WHERE IDGOPY = '" + IDGY + "'");
+        while (cursor.moveToNext()){
+            return new GopYDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getString(3)
+            );
+        }
+        return null;
+    }
 
         @Override
     public void onCreate(SQLiteDatabase db) {

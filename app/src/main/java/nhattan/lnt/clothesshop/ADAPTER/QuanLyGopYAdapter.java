@@ -14,14 +14,16 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import nhattan.lnt.clothesshop.DTO.GopYDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
-import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
 
-public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAdapter.Viewholder>{
-    ArrayList<TaiKhoanDTO> listTaiKhoan;
+public class QuanLyGopYAdapter extends RecyclerView.Adapter<QuanLyGopYAdapter.Viewholder>{
+    ArrayList<GopYDTO> listGopy;
     Fragment context;
     public static int position;
 
@@ -33,32 +35,30 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
         this.position = position;
     }
 
-    public QuanLyTaiKhoanAdapter( Fragment context,ArrayList<TaiKhoanDTO> listTaiKhoan) {
-        this.listTaiKhoan = listTaiKhoan;
+    public QuanLyGopYAdapter( Fragment context,ArrayList<GopYDTO> listGopy) {
+        this.listGopy = listGopy;
         this.context = context;
     }
 
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_manage_user,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_manage_gopy,parent,false);
 
         return new Viewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        TaiKhoanDTO taiKhoan = listTaiKhoan.get(position);
+        GopYDTO gopYDTO = listGopy.get(position);
 
-        if (Login.taiKhoanDTO.getHINHANH() == null){
-            holder.imgV_Hinh_qlTaikhoan.setImageResource(R.drawable.logo);
-        } else {
-            // chuyen byte[] -> ve bitmap
-            byte[] hinhAnh = taiKhoan.getHINHANH();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
-            holder.imgV_Hinh_qlTaikhoan.setImageBitmap(bitmap);
-        }
-        holder.txtV_Tentaikhoan_qlTaikhoan.setText(taiKhoan.getTENTK());
+//        Picasso.with(context.getActivity()).load()
+//        .placeholder(R.drawable.logo)
+//        .error(R.drawable.logo).into(holder.imgV_Hinh_qlgopy);
+        holder.imgV_Hinh_qlgopy.setImageResource(R.drawable.logo);
+        holder.txtV_Tentaikhoan_qlgopy.setText(gopYDTO.getTENTK());
+        holder.txtV_Noidung_qlgopy.setText(gopYDTO.getNOIDUNG());
+
         holder.itemView .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,29 +82,30 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
 
     @Override
     public int getItemCount() {
-        if(listTaiKhoan != null){
-            return listTaiKhoan.size();
+        if(listGopy != null){
+            return listGopy.size();
         }
         return 0;
     }
 
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
-        ImageView imgV_Hinh_qlTaikhoan;
-        TextView txtV_Tentaikhoan_qlTaikhoan;
-        CardView viewholder_qltaikhoan;
+        TextView txtV_Tentaikhoan_qlgopy, txtV_Noidung_qlgopy;
+        ImageView imgV_Hinh_qlgopy;
+        CardView viewholder_qlgopy;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            txtV_Tentaikhoan_qlTaikhoan = itemView.findViewById(R.id.txtV_Noidung_qltaikhoan);
-            imgV_Hinh_qlTaikhoan = itemView.findViewById(R.id.imgV_Hinh_qltaikhoan);
-            viewholder_qltaikhoan = itemView.findViewById(R.id.viewholder_qltaikhoan);
+            txtV_Tentaikhoan_qlgopy = itemView.findViewById(R.id.txtV_Tentaikhoan_qlgopy);
+            txtV_Noidung_qlgopy = itemView.findViewById(R.id.txtV_Noidung_qlgopy);
+            imgV_Hinh_qlgopy = itemView.findViewById(R.id.imgV_Hinh_qlgopy);
+            viewholder_qlgopy = itemView.findViewById(R.id.viewholder_qlgopy);
 
             itemView.setOnCreateContextMenuListener(this);
 
-            viewholder_qltaikhoan.setOnClickListener(new View.OnClickListener() {
+            viewholder_qlgopy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    viewholder_qltaikhoan.showContextMenu();
+                    viewholder_qlgopy.showContextMenu();
                 }
             });
         }
@@ -113,9 +114,9 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             menu.add(menu.NONE, R.id.iSua,
-                    menu.NONE, "Sửa Thông Tin Tài Khoản");
+                    menu.NONE, "Xem thông tin bài góp ý");
             menu.add(menu.NONE, R.id.iXoa,
-                    menu.NONE, "Xóa Tài Khoản");
+                    menu.NONE, "Xóa bài góp ý");
         }
     }
 }

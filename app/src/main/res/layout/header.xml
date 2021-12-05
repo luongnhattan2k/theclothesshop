@@ -25,12 +25,12 @@
         android:orientation="horizontal"
         android:weightSum="10">
 
-        <ImageView
-            android:id="@+id/imgUser"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cimgUser"
             android:layout_width="56dp"
             android:layout_height="68dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/baseline_account_circle_white_24" />
+            android:src="@drawable/baseline_account_circle_white_24"/>
 
         <TextView
             android:id="@+id/txtTennguoidung"

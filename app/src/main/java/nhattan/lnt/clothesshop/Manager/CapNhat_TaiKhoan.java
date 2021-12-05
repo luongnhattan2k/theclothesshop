@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +28,7 @@ import java.io.InputStream;
 import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.Database.Database;
+import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
 
 public class CapNhat_TaiKhoan extends AppCompatActivity {
@@ -36,6 +38,8 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
     Button btnCAPNHAT_QLTK;
     CircleImageView img_HINHANH_QLTK;
     Database database;
+    ImageButton ibtnExit_qltk;
+
     //    private Account account;
     private boolean isEnabled;
     final int REQUEST_CODE_CAMERA=123;
@@ -57,9 +61,6 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
 
         edtIDTK_QLTK.setText(String.valueOf(IDTK));
         edtIDTK_QLTK.setEnabled(false);
-        byte[] hinhAnh = taiKhoan.getHINHANH();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
-        img_HINHANH_QLTK.setImageBitmap(bitmap);
         edtTENTK_QLTK.setText(taiKhoan.getTENTK());
         edtTENTK_QLTK.setEnabled(false);
         edtMATKHAU_QLTK.setText(taiKhoan.getMATKHAU());
@@ -69,6 +70,13 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtQUYEN_QLTK.setText(String.valueOf(taiKhoan.getQUYEN()));
         edtEMAIL_QLTK.setText(taiKhoan.getEMAIL());
 
+        if (Login.taiKhoanDTO.getHINHANH() == null){
+            img_HINHANH_QLTK.setImageResource(R.drawable.baseline_account_circle_24);
+        } else {
+            byte[] hinhAnh = taiKhoan.getHINHANH();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
+            img_HINHANH_QLTK.setImageBitmap(bitmap);
+        }
     }
 
     private void enableControl(){
@@ -99,6 +107,14 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 img_HINHANH_QLTK.showContextMenu();
+            }
+        });
+
+        ibtnExit_qltk = findViewById(R.id.ibtnExit_qltk);
+        ibtnExit_qltk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 

@@ -13,7 +13,7 @@
         android:background="@color/vang_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExit"
+            android:id="@+id/ibtnExit_qltk"
             android:layout_width="@dimen/size50dp"
             android:layout_height="@dimen/size50dp"
             android:background="@null"
