@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import nhattan.lnt.clothesshop.ADAPTER.SearchAdapter;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.CategoryDTO;
@@ -33,11 +34,22 @@ public class ProductionActivity extends AppCompatActivity {
     ImageView productImage, img_Them, img_Tru;
     ImageButton ibtn_Exit;
     Button btn_Themgiohang;
-    int id;
+    int id, idtk;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int SLM = 0;
 
+
+    @Override
+    protected void onStart() {
+        if(idtk==2){
+            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+        }else
+        {
+            sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+        }
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,7 @@ public class ProductionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getIntExtra("id",1);
+        idtk = intent.getIntExtra("idtk",2);
         Anhxa();
 
         categoryDAO = new CategoryDAO(this, R.layout.item_selected, getListCategort());
@@ -67,6 +80,8 @@ public class ProductionActivity extends AppCompatActivity {
         SuKien();
     }
 
+
+
     private List<CategoryDTO> getListCategort() {
         List<CategoryDTO> list = new ArrayList<>();
 
@@ -80,8 +95,14 @@ public class ProductionActivity extends AppCompatActivity {
     }
 
     private void GetData() {
+        if(idtk==2){
+            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+        }else
+        {
+            sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+        }
+
         //get data
-        sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
         String gia = "" + sanPhamDTO.getGiaSP();
@@ -149,7 +170,13 @@ public class ProductionActivity extends AppCompatActivity {
                     byte[] hinhAnh = byteArray.toByteArray();
 
                     int SL = Integer.parseInt(productQuantity.getText().toString());
-                    sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+
+                    if(idtk==2){
+                        sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+                    }else
+                    {
+                        sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+                    }
                     HomeFragment.database.SPGH(
                             Login.taiKhoanDTO.getMATK(),
                             hinhAnh,

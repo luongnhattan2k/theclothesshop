@@ -14,12 +14,13 @@ public class SanPhamDTO {
     public SanPhamDTO() {
 
     }
-    public SanPhamDTO(int maSP, byte[] imageSP, String tenSP, int giaSP, int sl_SP) {
+    public SanPhamDTO(int maSP, byte[] imageSP, String tenSP, int giaSP, int sl_SP, String motaSP) {
         MaSP = maSP;
         ImageSP = imageSP;
         TenSP = tenSP;
         GiaSP = giaSP;
         Sl_SP = sl_SP;
+        this.MotaSP = motaSP;
     }
     public SanPhamDTO(int maSP, byte[] imageSP, String tenSP, int giaSP, int sl_SP, String motaSP, int ID_DANHMUC, int SP_New) {
         this.MaSP = maSP;

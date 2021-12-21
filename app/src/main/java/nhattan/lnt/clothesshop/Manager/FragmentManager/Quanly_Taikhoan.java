@@ -102,7 +102,7 @@ public class Quanly_Taikhoan extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 database.XoaTK(taiKhoanDTO.getMATK());
                 Toast.makeText(getContext(), "Xóa thành công !", Toast.LENGTH_SHORT).show();
-                getActivity().onBackPressed();
+                Load();
             }
         });
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

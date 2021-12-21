@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".HomeActivity"
-    tools:openDrawer="start">
+    >
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_nav_view"
@@ -20,15 +20,15 @@
     <LinearLayout
         android:id="@+id/content_View"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+        </include>
 
     </LinearLayout>
-
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

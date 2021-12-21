@@ -8,13 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@color/vang_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExitdathang"
+            android:id="@+id/ibtnExitSearch"
             android:layout_width="@dimen/size50dp"
             android:layout_height="@dimen/size50dp"
+            android:layout_gravity="center"
             android:background="@null"
             app:srcCompat="?attr/actionModeCloseDrawable"
             tools:ignore="SpeakableTextPresentCheck"
@@ -23,26 +24,41 @@
 
         <EditText
             android:id="@+id/edt_tk"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:hint="Nhập từ khóa"/>
+            android:layout_width="200dp"
+            android:layout_height="@dimen/size30dp"
+            android:layout_marginLeft="@dimen/size30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bo_tron_bon_goc"
+            android:paddingLeft="@dimen/size10dp"
+            android:paddingRight="5dp"
+            android:ems="10"
+            android:drawableRight="@drawable/baseline_search_24"
+            android:inputType="textPersonName"
+            android:hint="Tìm kiếm..."
+            android:textSize="14dp"/>
 
         <ImageButton
-            android:id="@+id/img_search_Tk"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/baseline_search_24"
+            android:id="@+id/ibtn_speaktext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_mic_24"
+            android:background="@null"/>
+
+        <ImageButton
+            android:id="@+id/img_bell"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_notifications_24"
             android:background="@null"/>
 
     </LinearLayout>
 
-
-
-    <ListView
-        android:id="@+id/listview_tk"
+    <GridView
+        android:id="@+id/gv_timkiem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:background="#FFFFFF" />
+        android:layout_marginTop="@dimen/size10dp"
+        android:numColumns="2"/>
 </LinearLayout>

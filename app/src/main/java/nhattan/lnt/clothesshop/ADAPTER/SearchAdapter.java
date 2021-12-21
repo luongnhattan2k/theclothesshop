@@ -49,7 +49,7 @@ public class SearchAdapter extends BaseAdapter {
 
 
     static class ViewHolder{
-        TextView txt_TenSP, txt_GiaSP,txtSL;
+        TextView txt_TenSP, txt_GiaSP;
         ImageView img_HinhAnh;
     }
 
@@ -64,10 +64,9 @@ public class SearchAdapter extends BaseAdapter {
             LayoutInflater inflater;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            holder.txt_TenSP = (TextView) view.findViewById(R.id.TenSP_TK);
-            holder.txt_GiaSP = (TextView) view.findViewById(R.id.GiaSP_TK);
-            holder.txtSL = view.findViewById(R.id.SLSP_TK);
-            holder.img_HinhAnh = (ImageView) view.findViewById(R.id.imgHinh_TK);
+            holder.txt_TenSP = (TextView) view.findViewById(R.id.product_name);
+            holder.txt_GiaSP = (TextView) view.findViewById(R.id.product_price);
+            holder.img_HinhAnh = (ImageView) view.findViewById(R.id.product_image);
             view.setTag(holder);
         } else {
             holder = (SearchAdapter.ViewHolder) view.getTag();
@@ -77,7 +76,6 @@ public class SearchAdapter extends BaseAdapter {
         String gia = String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP())) + " VNĐ";
         holder.txt_TenSP.setText(sanPhamDTO.getTenSP());
         holder.txt_GiaSP.setText(gia);
-        holder.txtSL.setText("Sản Phẩm : " + String.valueOf(sanPhamDTO.getSl_SP()));
         id = sanPhamDTO.getMaSP();
 
         // chuyen byte[] -> ve bitmap

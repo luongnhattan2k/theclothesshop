@@ -74,7 +74,7 @@ public class Quanly_Gopy extends Fragment {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = -1;
         try {
-            position = QuanLyTaiKhoanAdapter.getPosition();
+            position = QuanLyGopYAdapter.getPosition();
         } catch (Exception e) {
             Log.d("TAG", e.getLocalizedMessage(), e);
             return super.onContextItemSelected(item);
@@ -102,9 +102,9 @@ public class Quanly_Gopy extends Fragment {
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                database.XoaTK(gopYDTO.getIDGY());
+                database.XoaGY(gopYDTO.getIDGY());
                 Toast.makeText(getContext(), "Xóa thành công !", Toast.LENGTH_SHORT).show();
-                getActivity().onBackPressed();
+                Load();
             }
         });
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

@@ -418,6 +418,10 @@ public class Database extends SQLiteOpenHelper {
         return null;
     }
 
+    public void XoaGY(int IDGY){
+        QueryData("DELETE FROM GOPY WHERE IDGOPY = '" + IDGY + "'");
+    }
+
         @Override
     public void onCreate(SQLiteDatabase db) {
 
