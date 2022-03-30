@@ -5,12 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -51,7 +47,7 @@ public class HoaDonDAO extends BaseAdapter {
     }
 
     static class ViewHolder{
-        TextView txtTongTien,txtdiachi,txtghichu;
+        TextView txtTongTien,txtNgaydat,txtMahoadon;
         ListView listView;
     }
 
@@ -66,8 +62,8 @@ public class HoaDonDAO extends BaseAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtTongTien = (TextView) view.findViewById(R.id.txtTongtienhoadon);
-            holder.txtdiachi = (TextView) view.findViewById(R.id.txtDiachi);
-            holder.txtghichu = (TextView) view.findViewById(R.id.txtGhichu);
+            holder.txtNgaydat = (TextView) view.findViewById(R.id.txtNgaydathoadon);
+            holder.txtMahoadon = (TextView) view.findViewById(R.id.txtMahoadon);
             holder.listView = (ListView) view.findViewById(R.id.lv_lichsugiaodich);
             view.setTag(holder);
         } else {
@@ -76,10 +72,9 @@ public class HoaDonDAO extends BaseAdapter {
 
         HoaDonDTO hoaDon = ListHoaDon.get(i);
 
-
-        holder.txtTongTien.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
-        holder.txtdiachi.setText(hoaDon.getDIACHI());
-        holder.txtghichu.setText(hoaDon.getGHICHU());
+        holder.txtMahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDon.getIDHOADON());
+        holder.txtNgaydat.setText("Ngày đặt: " + hoaDon.getNGAYDAT());
+        holder.txtTongTien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
         id = hoaDon.getIDHOADON();
         idcthd = hoaDon.getIDCTHOADON();
 

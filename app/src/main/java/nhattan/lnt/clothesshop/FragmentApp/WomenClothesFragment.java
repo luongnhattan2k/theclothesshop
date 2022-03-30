@@ -42,7 +42,7 @@ public class WomenClothesFragment extends Fragment {
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
 
-        gridView_SanPham = view.findViewById(R.id.gridviewSanPham);
+        gridView_SanPham = view.findViewById(R.id.gridviewSanPham_nu);
         sanPhamDTOArrayList = new ArrayList<>();
         adapter = new SanPhamDAO(WomenClothesFragment.this, R.layout.product_layout, sanPhamDTOArrayList);
         gridView_SanPham.setAdapter(adapter);
@@ -63,7 +63,7 @@ public class WomenClothesFragment extends Fragment {
 
     private void GetData() {
         //get data
-        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE IDDANHMUC = 2");
+        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE GT = 2");
         while (cursor.moveToNext())
         {
             sanPhamDTOArrayList.add(new SanPhamDTO(
@@ -74,7 +74,9 @@ public class WomenClothesFragment extends Fragment {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             ));
         }
         adapter.notifyDataSetChanged();

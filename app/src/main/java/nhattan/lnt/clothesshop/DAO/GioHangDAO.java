@@ -8,24 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
+import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
+import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
+import nhattan.lnt.clothesshop.ProductionActivity;
 import nhattan.lnt.clothesshop.R;
 
 public class GioHangDAO extends BaseAdapter {
-    SQLiteDatabase database;
 
-    private Context context1;
     private Fragment context;
     private int layout;
     public static List<GioHangDTO> sanPhamGioHangList;
     int id;
+    SanPhamDTO sanPhamDTO;
+    int SLM = 0;
 
     public GioHangDAO(Fragment context, int layout, List<GioHangDTO> sanPhamGioHangList) {
         this.context = context;
@@ -51,6 +57,8 @@ public class GioHangDAO extends BaseAdapter {
     static class ViewHolder{
         TextView txt_TenSP, txt_GiaSP, txt_SLSP;
         ImageView img_HinhAnh;
+        ImageButton img_Themslsp, img_Truslsp;
+        CheckBox checkBox;
     }
 
 
@@ -63,10 +71,14 @@ public class GioHangDAO extends BaseAdapter {
             LayoutInflater inflater;
             inflater = (LayoutInflater) context.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
-            holder.txt_TenSP = (TextView) convertView.findViewById(R.id.txtTensp);
-            holder.txt_GiaSP = (TextView) convertView.findViewById(R.id.txtThanhtien);
-            holder.txt_SLSP = (TextView) convertView.findViewById(R.id.txtSoluong) ;
-            holder.img_HinhAnh = (ImageView) convertView.findViewById(R.id.imageHinhCustom);
+            holder.txt_TenSP = convertView.findViewById(R.id.txtTensp);
+            holder.txt_GiaSP = convertView.findViewById(R.id.txtThanhtien);
+            holder.txt_SLSP = convertView.findViewById(R.id.txtSoluong) ;
+            holder.img_HinhAnh = convertView.findViewById(R.id.imageHinhCustom);
+            holder.img_Themslsp = convertView.findViewById(R.id.img_Themslsp_gh);
+            holder.img_Truslsp = convertView.findViewById(R.id.img_Truslsp_gh);
+            holder.checkBox = convertView.findViewById(R.id.checkBox);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

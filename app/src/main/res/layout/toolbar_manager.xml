@@ -15,7 +15,7 @@
             android:id="@+id/toolbar_manager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/vang_nhat"
+            android:background="@color/xanh_nhat"
             android:elevation="4dp"
             app:navigationIcon="@drawable/hamburger_icon" >
 

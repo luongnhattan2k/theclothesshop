@@ -58,9 +58,6 @@ public class MyCartFragment extends Fragment {
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
 
-        //        database.QueryData("CREATE TABLE IF NOT EXISTS DoAn(Id INTEGER PRIMARY KEY AUTOINCREMENT" +
-//                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
-
         AnhXa();
         Listview_SanPham = view.findViewById(R.id.listview_danhsachsp_gohang);
 

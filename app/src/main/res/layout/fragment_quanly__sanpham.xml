@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="66dp"
-    android:background="@color/xam"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_height="@dimen/size60dp"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/size10dp"
-        android:backgroundTint="@color/vang_nhat"
+        android:backgroundTint="@color/xanh_nhat"
         android:text="Thêm Sản Phẩm Mới"
         android:textSize="@dimen/size20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -63,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/size10dp"
+        android:layout_marginLeft="@dimen/size10dp"
         android:numColumns="2"/>
 
 

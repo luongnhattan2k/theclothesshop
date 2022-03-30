@@ -34,6 +34,9 @@ import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
 import nhattan.lnt.clothesshop.FragmentApp.NewBornFragment;
+import nhattan.lnt.clothesshop.FragmentApp.SpAoKhoacFragment;
+import nhattan.lnt.clothesshop.FragmentApp.SpAoThunFragment;
+import nhattan.lnt.clothesshop.FragmentApp.SpSoMiFragment;
 import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
 import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 
@@ -44,10 +47,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_MEN = 2;
     private static final int FRAGMENT_WOMEN = 3;
-    private static final int FRAGMENT_NEWBORN = 4;
-    private static final int FRAGMENT_PROFILE = 5;
-    private static final int FRAGMENT_MYCART = 6;
-    private static final int FRAGMENT_SETTING = 7;
+    private static final int FRAGMENT_AOTHUN = 4;
+    private static final int FRAGMENT_AOKHOAC = 5;
+    private static final int FRAGMENT_AOSOMI = 6;
+    private static final int FRAGMENT_NEWBORN = 7;
+    private static final int FRAGMENT_PROFILE = 8;
+    private static final int FRAGMENT_MYCART = 9;
+    private static final int FRAGMENT_SETTING = 10;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -106,15 +112,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.home_nav_view);
         contentView = findViewById(R.id.content_View);
         toolbar = findViewById(R.id.toolbar);
-        fab = findViewById(R.id.fab);
         edtSearch = findViewById(R.id.edtSearch);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Hotline: 0342.171.558 \nEmail: luongnhattan2k@gmail.com", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         setSupportActionBar(toolbar);
 
@@ -134,7 +132,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void animateNavigation() {
-        drawerLayout.setScrimColor(getResources().getColor(R.color.vang_nhat));
+        drawerLayout.setScrimColor(getResources().getColor(R.color.xanh_nhat));
         drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -211,10 +209,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new WomenClothesFragment());
                 currentFragment = FRAGMENT_WOMEN;
             }
-        }else if (id == R.id.nav_new_born) {
-            if (FRAGMENT_NEWBORN != currentFragment) {
-                replaceFragment(new NewBornFragment());
-                currentFragment = FRAGMENT_NEWBORN;
+        }else if (id == R.id.nav_Aothun) {
+            if (FRAGMENT_AOTHUN != currentFragment) {
+                replaceFragment(new SpAoThunFragment());
+                currentFragment = FRAGMENT_AOTHUN;
+            }
+        }else if (id == R.id.nav_Aokhoac) {
+            if (FRAGMENT_AOKHOAC != currentFragment) {
+                replaceFragment(new SpAoKhoacFragment());
+                currentFragment = FRAGMENT_AOKHOAC;
+            }
+        }else if (id == R.id.nav_Aosomi) {
+            if (FRAGMENT_AOSOMI != currentFragment) {
+                replaceFragment(new SpSoMiFragment());
+                currentFragment = FRAGMENT_AOSOMI;
             }
         }else if (id == R.id.nav_profile) {
             if (FRAGMENT_PROFILE != currentFragment) {

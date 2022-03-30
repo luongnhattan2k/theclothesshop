@@ -8,21 +8,29 @@
 
     </group>
 
-    <item android:title="Danh Mục">
+    <item android:title="Danh Mục Sản Phẩm">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_new_born"
-                    android:icon="@drawable/baseline_productnew_24"
-                    android:title="@string/new_born" />
-                <item
                     android:id="@+id/nav_men"
-                    android:icon="@drawable/baseline_shirt_24"
+                    android:icon="@drawable/baseline_product_vest_24"
                     android:title="@string/men" />
                 <item
                     android:id="@+id/nav_women"
                     android:icon="@drawable/baseline_dress_24"
                     android:title="@string/women" />
+                <item
+                    android:id="@+id/nav_Aothun"
+                    android:icon="@drawable/baseline_product_aothun_24"
+                    android:title="Áo Thun" />
+                <item
+                    android:id="@+id/nav_Aokhoac"
+                    android:icon="@drawable/baseline_product_jeans_24"
+                    android:title="Áo Khoác" />
+                <item
+                    android:id="@+id/nav_Aosomi"
+                    android:icon="@drawable/baseline_shirt_24"
+                    android:title="Sơ Mi" />
 
             </group>
         </menu>

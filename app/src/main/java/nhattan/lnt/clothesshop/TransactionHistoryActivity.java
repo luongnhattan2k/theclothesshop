@@ -1,7 +1,5 @@
 package nhattan.lnt.clothesshop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -74,10 +74,12 @@ public class TransactionHistoryActivity extends AppCompatActivity {
             hoaDonArrayList.add(new HoaDonDTO(
                     cursor.getInt(0),
                     cursor.getInt(1),
-                    cursor.getInt(2),
+                    cursor.getString(2),
                     cursor.getInt(3),
-                    cursor.getString(4),
-                    cursor.getString(5)
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7)
 
             ));
         }

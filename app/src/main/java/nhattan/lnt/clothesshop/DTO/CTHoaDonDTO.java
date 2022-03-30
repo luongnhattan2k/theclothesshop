@@ -1,17 +1,25 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class CTHoaDonDTO {
-    int IDCTHOADON, IDSANPHAM,IDTAIKHOAN;
-    String TENSANPHAM;
-    int SOLUONG,THANHTIEN;
+    int IDCTHOADON, IDSANPHAM,IDTAIKHOAN,SOLUONG,THANHTIEN,TONGHOADON;
+    String TENSANPHAM, NGAYDAT, GHICHU, TENTAIKHOAN, DIACHI;
 
-    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENSANPHAM, int SOLUONG, int THANHTIEN) {
+    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENTAIKHOAN, String TENSANPHAM, String NGAYDAT, int SOLUONG, int THANHTIEN, int TONGHOADON, String GHICHU, String DIACHI) {
         this.IDCTHOADON = IDCTHOADON;
         this.IDSANPHAM = IDSANPHAM;
         this.IDTAIKHOAN = IDTAIKHOAN;
+        this.TENTAIKHOAN = TENTAIKHOAN;
         this.TENSANPHAM = TENSANPHAM;
+        this.NGAYDAT = NGAYDAT;
         this.SOLUONG = SOLUONG;
         this.THANHTIEN = THANHTIEN;
+        this.TONGHOADON = TONGHOADON;
+        this.GHICHU = GHICHU;
+        this.DIACHI = DIACHI;
+    }
+
+    public CTHoaDonDTO() {
+
     }
 
     public int getIDCTHOADON() {
@@ -60,5 +68,45 @@ public class CTHoaDonDTO {
 
     public void setTHANHTIEN(int THANHTIEN) {
         this.THANHTIEN = THANHTIEN;
+    }
+
+    public String getNGAYDAT() {
+        return NGAYDAT;
+    }
+
+    public void setNGAYDAT(String NGAYDAT) {
+        this.NGAYDAT = NGAYDAT;
+    }
+
+    public String getGHICHU() {
+        return GHICHU;
+    }
+
+    public void setGHICHU(String GHICHU) {
+        this.GHICHU = GHICHU;
+    }
+
+    public String getTENTAIKHOAN() {
+        return TENTAIKHOAN;
+    }
+
+    public void setTENTAIKHOAN(String TENTAIKHOAN) {
+        this.TENTAIKHOAN = TENTAIKHOAN;
+    }
+
+    public int getTONGHOADON() {
+        return TONGHOADON;
+    }
+
+    public void setTONGHOADON(int TONGHOADON) {
+        this.TONGHOADON = TONGHOADON;
+    }
+
+    public String getDIACHI() {
+        return DIACHI;
+    }
+
+    public void setDIACHI(String DIACHI) {
+        this.DIACHI = DIACHI;
     }
 }

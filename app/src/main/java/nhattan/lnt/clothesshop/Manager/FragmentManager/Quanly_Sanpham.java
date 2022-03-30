@@ -3,15 +3,6 @@ package nhattan.lnt.clothesshop.Manager.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -21,6 +12,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -174,8 +173,9 @@ public class Quanly_Sanpham extends Fragment {
     private ArrayList<CategoryDTO> getListCategort() {
         ArrayList<CategoryDTO> list = new ArrayList<>();
 
-        list.add(new CategoryDTO("Nam","1"));
-        list.add(new CategoryDTO("Nữ","2"));
+        list.add(new CategoryDTO("Áo Thun","1"));
+        list.add(new CategoryDTO("Áo Khác","2"));
+        list.add(new CategoryDTO("Áo Sơ Mi","3"));
 
         return list;
     }

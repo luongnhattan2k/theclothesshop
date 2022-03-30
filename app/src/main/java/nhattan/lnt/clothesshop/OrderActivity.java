@@ -1,7 +1,5 @@
 package nhattan.lnt.clothesshop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -15,7 +13,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -23,14 +24,11 @@ import java.util.Locale;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.DatHangDAO;
 import nhattan.lnt.clothesshop.DAO.GioHangDAO;
-import nhattan.lnt.clothesshop.DAO.HoaDonDAO;
 import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.DatHangDTO;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
-import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -38,7 +36,7 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<DatHangDTO> datHangDTOS;
     ArrayList<GioHangDTO> gioHangDTOArrayList;
     DatHangDAO adapter;
-    Database database;
+    public static Database database;
     Button btn_Dathangkt;
     ImageButton ibtn_Exit;
     TextView txt_Tongtiendathang;
@@ -55,6 +53,7 @@ public class OrderActivity extends AppCompatActivity {
         database = new Database(OrderActivity.this,"ClothesDatabase",null,2);
 
         AnhXa();
+        NgayHienTai();
         Listview_Kiemtra = (ListView) findViewById(R.id.listview_danhsachsp_dathang);
 
         datHangDTOS = new ArrayList<>();
@@ -77,6 +76,10 @@ public class OrderActivity extends AppCompatActivity {
         });
 
         GetData();
+    }
+
+    private void NgayHienTai() {
+
     }
 
     private List<CategoryDTO> getListCategort() {
@@ -108,6 +111,29 @@ public class OrderActivity extends AppCompatActivity {
         txt_Tongtiendathang = findViewById(R.id.txtTongtiendathang);
         edt_Diachigiaohang = findViewById(R.id.edtDiachigiaohang);
         edt_Ghichu = findViewById(R.id.edtGhichu);
+        TextView tdate = findViewById(R.id.edtNgayDat);
+
+        Thread t = new Thread() {
+            @Override
+            public void run () {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                long date = System.currentTimeMillis();
+                                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                                String dateString = sdf.format(date);
+                                tdate.setText(dateString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e ) { }
+            }
+        };
+        t.start();
+
         btn_Dathangkt= findViewById(R.id.btnDathangkt);
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +141,7 @@ public class OrderActivity extends AppCompatActivity {
 
                 String diachi =  edt_Diachigiaohang.getText().toString();
                 String ghichu = edt_Ghichu.getText().toString();
+                String ngaydat = tdate.getText().toString();
 
                 if(database.HoaDonChuaCoTrongHD()){
                     idcthd = 1;
@@ -127,16 +154,16 @@ public class OrderActivity extends AppCompatActivity {
                 for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
                 {
                     GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
-                    database.INSERT_CTHOADON(idcthd, themhoadon.getIDTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN());
+                    database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
+                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), tong, ghichu, diachi);
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
-                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), idcthd, tong, diachi, ghichu);
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, tong, ngaydat, diachi, ghichu);
                 database.DELETE_GIOHANGALL(Login.taiKhoanDTO.getMATK());
                 GetData();
                 Tongtien();
                 Intent iHome = new Intent(OrderActivity.this, HomeActivity.class);
-                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !" + idcthd, Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderActivity.this, "Đặt hàng thành công !", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(OrderActivity.this, " ssss : " + idcthd , Toast.LENGTH_SHORT).show();
                 startActivity(iHome);
             }
@@ -149,6 +176,8 @@ public class OrderActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 
     private void GetData() {

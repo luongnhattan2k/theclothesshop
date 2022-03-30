@@ -6,10 +6,20 @@
     android:layout_marginTop="56dp"
     tools:context=".FragmentApp.HomeFragment">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImageSilde"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/size10dp"
+        android:paddingStart="@dimen/size60dp"
+        android:paddingEnd="@dimen/size60dp" />
+
     <GridView
         android:id="@+id/gridviewSanPham"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="210dp"
+        android:background="@color/white"
         android:numColumns="2"/>
 
 </FrameLayout>

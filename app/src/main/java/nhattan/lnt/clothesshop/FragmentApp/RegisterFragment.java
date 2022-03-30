@@ -19,10 +19,10 @@ import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
 
 
-public class RegisterFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener{
+public class RegisterFragment extends Fragment implements View.OnClickListener{
 
     private  View view;
-    EditText edt_TaiKhoan, edt_MatKhau, edt_NgaySinh, edt_SDT, edt_Email, edt_Nhaplaimatkhau;
+    EditText edt_TaiKhoan, edt_MatKhau, edt_SDT, edt_Email, edt_Nhaplaimatkhau;
     ImageButton btn_exit;
     Button btn_DangKy;
     TaiKhoanDAO taiKhoanDAO;
@@ -50,16 +50,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void AnhXa() {
-        edt_TaiKhoan = view.findViewById(R.id.edtTaikhoan);
-        edt_MatKhau = view.findViewById(R.id.edtMatkhau);
-        edt_Nhaplaimatkhau = view.findViewById(R.id.edtNhaplaimatkhau);
-        edt_NgaySinh = view.findViewById(R.id.edtNgaySinh);
-        edt_SDT = view.findViewById(R.id.edtSDT);
-        edt_Email = view.findViewById(R.id.edtEmail);
+        edt_TaiKhoan = view.findViewById(R.id.edtTaikhoan_dk);
+        edt_MatKhau = view.findViewById(R.id.edtMatkhau_dk);
+        edt_Nhaplaimatkhau = view.findViewById(R.id.edtNhaplaimatkhau_dk);
+        edt_SDT = view.findViewById(R.id.edtSdt_dk);
+        edt_Email = view.findViewById(R.id.edtEmail_dk);
         btn_DangKy = view.findViewById(R.id.btnDangky);
 
         btn_DangKy.setOnClickListener(this);
-        edt_NgaySinh.setOnFocusChangeListener(this);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
     }
@@ -70,10 +68,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         int id = view.getId();
         switch (id) {
             case R.id.btnDangky:
+                TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                 String sTaiKhoan = edt_TaiKhoan.getText().toString();
                 String sMatKhau = edt_MatKhau.getText().toString();
                 String sNhapLaiMatKhau = edt_Nhaplaimatkhau.getText().toString();
-                String sNgaySinh = edt_NgaySinh.getText().toString();
                 String sSDT = edt_SDT.getText().toString();
                 String sEmail = edt_Email.getText().toString();
 
@@ -87,13 +85,13 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                     Toast.makeText(getActivity(), "Mật khẩu không trùng khớp !", Toast.LENGTH_SHORT).show();
                 } else if (sSDT.length() < 9 || sSDT.isEmpty()) {
                     Toast.makeText(getActivity(), "Vui lòng kiểm tra lại số điện thoại !", Toast.LENGTH_SHORT).show();
+                } else if (sTaiKhoan == taiKhoanDTO.getTENTK()) {
+                    Toast.makeText(getActivity(), "Tài khoản đã được đăng ký !", Toast.LENGTH_SHORT).show();
                 } else {
-                    TaiKhoanDTO taiKhoanDTO = new TaiKhoanDTO();
                     taiKhoanDTO.setTENTK(sTaiKhoan);
                     taiKhoanDTO.setMATKHAU(sMatKhau);
                     taiKhoanDTO.setSDT(Integer.parseInt(sSDT));
                     taiKhoanDTO.setEMAIL(sEmail);
-                    taiKhoanDTO.setNGAYSINH(sNgaySinh);
 
                     long kiemtra = taiKhoanDAO.ThemTaiKhoan(taiKhoanDTO);
                     if (kiemtra != 0){
@@ -105,19 +103,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                     }
                 }
                 break;
-        }
-    }
-
-    @Override
-    public void onFocusChange(View view, boolean hasFocus) {
-        int id = view.getId();
-        switch (id){
-            case R.id.edtNgaySinh:
-                if (hasFocus){
-                    DatePickerFragment datePickerFragment = new DatePickerFragment();
-                    datePickerFragment.show(getFragmentManager(), "Ngày Sinh");
-                }
-                ;break;
         }
     }
 }

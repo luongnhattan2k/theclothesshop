@@ -11,12 +11,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-
 import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.DatHangDTO;
-import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.R;
 
 public class DatHangDAO extends BaseAdapter {
@@ -75,8 +72,8 @@ public class DatHangDAO extends BaseAdapter {
 
         DatHangDTO datHangDTO = datHangDTOS.get(position);
         holder.txt_TenSP.setText(datHangDTO.getTENSANPHAM());
-        holder.txt_GiaSP.setText(String.valueOf(datHangDTO.getTHANHTIEN()) + " VNĐ" );
-        holder.txt_SLSP.setText(String.valueOf(datHangDTO.getSOLUONG()) );
+        holder.txt_GiaSP.setText("Giá: " + String.valueOf(datHangDTO.getTHANHTIEN()) + " VNĐ" );
+        holder.txt_SLSP.setText("Sl: " + String.valueOf(datHangDTO.getSOLUONG()) );
         id = datHangDTO.getIDGIOHANG();
 
         // chuyen byte[] -> ve bitmap

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="66dp"
-    android:background="@color/xam"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <TextView
@@ -25,9 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spn_qlvideo" />
+        android:layout_marginBottom="1dp" />
+
 </LinearLayout>

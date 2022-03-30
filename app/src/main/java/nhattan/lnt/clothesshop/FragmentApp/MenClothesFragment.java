@@ -45,7 +45,7 @@ public class MenClothesFragment extends Fragment {
 //        database.QueryData("CREATE TABLE IF NOT EXISTS DoAn(Id INTEGER PRIMARY KEY AUTOINCREMENT" +
 //                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
 
-        gridView_SanPham = view.findViewById(R.id.gridviewSanPham);
+        gridView_SanPham = view.findViewById(R.id.gridviewSanPham_nam);
         sanPhamDTOArrayList = new ArrayList<>();
         adapter = new SanPhamDAO(MenClothesFragment.this, R.layout.product_layout, sanPhamDTOArrayList);
         gridView_SanPham.setAdapter(adapter);
@@ -66,7 +66,7 @@ public class MenClothesFragment extends Fragment {
 
     private void GetData() {
         //get data
-        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE IDDANHMUC = 1");
+        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE GT = 1");
         while (cursor.moveToNext())
         {
             sanPhamDTOArrayList.add(new SanPhamDTO(
@@ -77,7 +77,9 @@ public class MenClothesFragment extends Fragment {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             ));
         }
         adapter.notifyDataSetChanged();

@@ -44,7 +44,7 @@ public class NewBornFragment extends Fragment {
 
         gridView_SanPham =  view.findViewById(R.id.gridviewSanPham);
         sanPhamDTOArrayList = new ArrayList<>();
-        adapter = new SanPhamDAO(NewBornFragment.this, R.layout.product_layout, sanPhamDTOArrayList);
+        adapter = new SanPhamDAO(NewBornFragment.this, R.layout.product_layout_moi, sanPhamDTOArrayList);
         gridView_SanPham.setAdapter(adapter);
         gridView_SanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,6 +55,7 @@ public class NewBornFragment extends Fragment {
             }
         });
         registerForContextMenu(gridView_SanPham);
+
 
         GetData();
 
@@ -74,7 +75,9 @@ public class NewBornFragment extends Fragment {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             ));
         }
         adapter.notifyDataSetChanged();

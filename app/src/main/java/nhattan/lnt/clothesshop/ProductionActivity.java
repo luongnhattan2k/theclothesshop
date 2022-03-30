@@ -185,7 +185,7 @@ public class ProductionActivity extends AppCompatActivity {
                             SL,
                             SL * sanPhamDTO.getGiaSP()
                     );
-                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng" + " " + SL,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
                     Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
                     iGiohang.putExtra("ThemGioHang", R.id.nav_mycart);
 

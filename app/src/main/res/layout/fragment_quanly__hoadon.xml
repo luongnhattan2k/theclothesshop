@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Manager.FragmentManager.Quanly">
+    android:paddingTop="66dp"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:gravity="center"
+        android:text="Quản Lý Hóa Đơn"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/size10dp"
+            android:layout_marginRight="@dimen/size10dp"
+            android:text="Ngày: "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size20dp"/>
+
+        <TextView
+            android:id="@+id/txtNgaydathang"
+            android:layout_width="220dp"
+            android:layout_height="@dimen/size40dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btnChonngaydat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size10dp"
+            android:text="Chọn ngày"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recV_DanhSachSanPham"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="@dimen/size10dp"
+        android:numColumns="2"/>
 
-</FrameLayout>
+
+</LinearLayout>

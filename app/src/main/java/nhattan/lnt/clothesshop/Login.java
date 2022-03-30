@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
+import nhattan.lnt.clothesshop.DTO.CTHoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.LoginFragment;
 import nhattan.lnt.clothesshop.FragmentApp.RegisterFragment;
@@ -38,7 +39,7 @@ public class Login extends AppCompatActivity{
     private void AnhXa() {
         login_btn = findViewById(R.id.login);
         signup_btn = findViewById(R.id.signup);
-        ibtn_Exit = findViewById(R.id.ibtnExit);
+        ibtn_Exit = findViewById(R.id.ibtnExit_login);
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,7 @@ public class Login extends AppCompatActivity{
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                startActivity(new Intent(Login.this, HomeActivity.class));
             }
         });
 

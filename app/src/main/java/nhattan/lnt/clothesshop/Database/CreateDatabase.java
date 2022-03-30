@@ -23,7 +23,6 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_TAIKHOAN_HINHANH = "HINHANH";
     public static String tbl_TAIKHOAN_SDT = "SDT";
     public static String tbl_TAIKHOAN_EMAIL = "EMAIL";
-    public static String tbl_TAIKHOAN_NGAYSINH = "NGAYSINH";
     public static String tbl_TAIKHOAN_DIACHI = "DIACHI";
     public static String tbl_TAIKHOAN_QUYEN = "QUYEN";
 
@@ -45,16 +44,23 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_HOADON_IDHOADON = "IDHOADON";
     public static String tbl_HOADON_IDCTHOADON = "IDCTHOADON";
     public static String tbl_HOADON_IDTAIKHOAN = "IDTAIKHOAN";
+    public static String tbl_HOADON_TENTAIKHOAN = "TENTAIKHOAN";
     public static String tbl_HOADON_TONGTIEN = "TONGTIEN";
     public static String tbl_HOADON_DIACHI = "DIACHI";
+    public static String tbl_HOADON_NGAYDAT = "NGAYDAT";
     public static String tbl_HOADON_GHICHU = "GHICHU";
 
     public static String tbl_CHITIETHOADON_IDCTHOADON = "IDCTHOADON";
     public static String tbl_CHITIETHOADON_IDTAIKHOAN = "IDTAIKHOAN";
+    public static String tbl_CHITIETHOADON_TENTAIKHOAN = "TENTAIKHOAN";
     public static String tbl_CHITIETHOADON_IDSANPHAM = "IDSANPHAM";
     public static String tbl_CHITIETHOADON_TENSANPHAM = "TENSANPHAM";
+    public static String tbl_CHITIETHOADON_NGAYDAT = "NGAYDAT";
     public static String tbl_CHITIETHOADON_SOLUONG = "SOLUONG";
-    public static String tbl_CHITIETHOADON_TONGTIEN = "TONGTIEN";
+    public static String tbl_CHITIETHOADON_THANHTIEN = "THANHTIEN";
+    public static String tbl_CHITIETHOADON_TONGHOADON = "TONGHOADON";
+    public static String tbl_CHITIETHOADON_GHICHU = "GHICHU";
+    public static String tbl_CHITIETHOADON_DIACHI = "DIACHI";
 
     public static String tbl_GIOHANG_IDGIOHANG = "IDGIOHANG";
     public static String tbl_GIOHANG_IDSP = "IDSP";
@@ -79,8 +85,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String TAIKHOAN = "CREATE TABLE " + tbl_TAIKHOAN + " (" + tbl_TAIKHOAN_IDTK + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_TAIKHOAN_TENTAIKHOAN + " TEXT , " + tbl_TAIKHOAN_MATKHAU + " TEXT, " + tbl_TAIKHOAN_HINHANH + " BLOB, " + tbl_TAIKHOAN_SDT + " INTEGER, "
-                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_NGAYSINH + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, "
-                + tbl_TAIKHOAN_QUYEN + " INTEGER )";
+                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, " + tbl_TAIKHOAN_QUYEN + " INTEGER )";
 
         String QUYEN = "CREATE TABLE " + tbl_QUYEN + "(" + tbl_QUYEN_IDQUYEN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_QUYEN_TENQUYEN + " TEXT )";
@@ -94,12 +99,13 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_DANHMUCSANPHAM_TENDANHMUC + " TEXT )";
 
         String HOADON = "CREATE TABLE " + tbl_HOADON + "(" + tbl_HOADON_IDHOADON + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_HOADON_IDTAIKHOAN + " INTEGER, " + tbl_HOADON_IDCTHOADON + " INTEGER, " + tbl_HOADON_TONGTIEN + " INTEGER, "
-                + tbl_HOADON_DIACHI + " TEXT, " + tbl_HOADON_GHICHU + " TEXT )";
+                + tbl_HOADON_IDTAIKHOAN + " INTEGER, " + tbl_HOADON_TENTAIKHOAN + " TEXT, " + tbl_HOADON_IDCTHOADON + " INTEGER, " + tbl_HOADON_TONGTIEN + " INTEGER, "
+                + tbl_HOADON_DIACHI + " TEXT," + tbl_HOADON_NGAYDAT + " DATE, " + tbl_HOADON_GHICHU + " TEXT )";
 
         String CTHOADON = "CREATE TABLE " + tbl_CHITIETHOADON + "(" + tbl_CHITIETHOADON_IDCTHOADON + " INTEGER, "
-                + tbl_CHITIETHOADON_IDSANPHAM + " INTEGER, " + tbl_CHITIETHOADON_IDTAIKHOAN + " TEXT, " + tbl_CHITIETHOADON_TENSANPHAM + " TEXT, "
-                + tbl_CHITIETHOADON_SOLUONG + " INTEGER, " + tbl_CHITIETHOADON_TONGTIEN + " INTEGER )";
+                + tbl_CHITIETHOADON_IDSANPHAM + " INTEGER, " + tbl_CHITIETHOADON_IDTAIKHOAN + " INTEGER, " + tbl_CHITIETHOADON_TENTAIKHOAN + " TEXT, " + tbl_CHITIETHOADON_TENSANPHAM + " TEXT, "
+                + tbl_CHITIETHOADON_NGAYDAT + " DATE, " + tbl_CHITIETHOADON_SOLUONG + " INTEGER, " + tbl_CHITIETHOADON_GHICHU + " TEXT, "
+                + tbl_CHITIETHOADON_THANHTIEN + " INTEGER ," + tbl_CHITIETHOADON_TONGHOADON + " INTEGER ," + tbl_CHITIETHOADON_GHICHU + " TEXT," + tbl_CHITIETHOADON_DIACHI + " TEXT)";
 
         String GIOHANG = "CREATE TABLE " + tbl_GIOHANG + "(" + tbl_GIOHANG_IDGIOHANG + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_GIOHANG_HINHANH + " BLOB, " + tbl_GIOHANG_IDSP + " INTEGER, " + tbl_GIOHANG_TENSANPHAM + " TEXT, "

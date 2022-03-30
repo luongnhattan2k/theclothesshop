@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import nhattan.lnt.clothesshop.DTO.CTHoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.GopYDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
@@ -67,30 +68,37 @@ public class Database extends SQLiteOpenHelper {
         // CHUA ID HOA DON
     }
 
-    public void INSERT_HOADON(int IDTK, int IDCTHOADON, int TONGTIEN, String DIACHI, String GHICHU)
+    public void INSERT_HOADON(int IDTK,String TenTK, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String DIACHI, String GHICHU)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_HOADON +
                 " ( "
                 + CreateDatabase.tbl_HOADON_IDTAIKHOAN + " , "
+                + CreateDatabase.tbl_HOADON_TENTAIKHOAN + " , "
                 + CreateDatabase.tbl_HOADON_IDCTHOADON + " , "
                 + CreateDatabase.tbl_HOADON_TONGTIEN + " , "
+                + CreateDatabase.tbl_HOADON_NGAYDAT + " , "
                 + CreateDatabase.tbl_HOADON_DIACHI + " , "
                 + CreateDatabase.tbl_HOADON_GHICHU +
-                " ) VALUES ( '" + IDTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + DIACHI + "', '" + GHICHU + "') ");
+                " ) VALUES ('" + IDTK + "', '" + TenTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + NGAYDAT + "', '" + DIACHI + "', '" + GHICHU + "') ");
     }
 
-    public void INSERT_CTHOADON(int IDCTHOADON,int IDTK, int IDSP, String TenSP, int Soluong, int thanhtien)
+    public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, int tonghoadon, String ghichu, String diachi)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_CHITIETHOADON +
                 " ( "
                 + CreateDatabase.tbl_CHITIETHOADON_IDCTHOADON + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_IDSANPHAM + " , "
-                + CreateDatabase.tbl_CHITIETHOADON_IDTAIKHOAN+ " , "
+                + CreateDatabase.tbl_CHITIETHOADON_IDTAIKHOAN + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_TENTAIKHOAN+ " , "
                 + CreateDatabase.tbl_CHITIETHOADON_TENSANPHAM + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_NGAYDAT + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_SOLUONG + " , "
-                + CreateDatabase.tbl_CHITIETHOADON_TONGTIEN
-                + " ) VALUES ( '" + IDCTHOADON + "', '" + IDSP + "', '" + IDTK+ "', '" + TenSP + "' , '" + Soluong + "', '"
-                + thanhtien + "') ");
+                + CreateDatabase.tbl_CHITIETHOADON_THANHTIEN + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_TONGHOADON + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_GHICHU + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_DIACHI
+                + " ) VALUES ( '" + IDCTHOADON + "', '" + IDSP + "', '" + IDTK + "', '" + TenTK + "', '" + TenSP + "' , '" + NgayDat + "' , '" + Soluong + "', '"
+                + thanhtien + "', '" + tonghoadon + "','" + ghichu + "', '" + diachi + "') ");
     }
 
     public void DELETE_GIOHANGALL(int IDTK){
@@ -134,6 +142,27 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
+    public CTHoaDonDTO LoadCTHD(int IDCTHOADON)
+    {
+        Cursor cursor = Getdata("SELECT * FROM CHITIETHOADON WHERE IDCTHOADON = " + IDCTHOADON );
+        while (cursor.moveToNext()) {
+            return new CTHoaDonDTO(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getInt(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getString(9),
+                    cursor.getString(10)
+            );
+        }
+        return null;
+
+    }
 
 
     public TaiKhoanDTO Load(int IDTK)
@@ -148,8 +177,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getInt(8)
+                    cursor.getInt(7)
             );
         }
         return null;
@@ -189,7 +217,9 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             );
 
         }
@@ -242,8 +272,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getInt(8)
+                    cursor.getInt(7)
             ));
         }
         return list;
@@ -264,16 +293,15 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getInt(8)
+                    cursor.getInt(7)
             );
         }
         return null;
     }
 
-    public void CapNhatTaiKhoan_ADMIN(int IDTAIKHOAN, String TENTAIKHOAN, String MATKHAU, byte[] BACKGROUND, int SDT, String EMAIL, String NGAYSINH, String DIACHI, int QUYEN){
+    public void CapNhatTaiKhoan_ADMIN(int IDTAIKHOAN, String TENTAIKHOAN, String MATKHAU, byte[] BACKGROUND, int SDT, String EMAIL, String DIACHI, int QUYEN){
         QueryData("UPDATE TAIKHOAN SET TENTAIKHOAN = '" + TENTAIKHOAN + "' , MATKHAU ='" + MATKHAU + "', SDT = '" + SDT
-                + "', EMAIL = '" + EMAIL + "', NGAYSINH = '" + NGAYSINH + "', DIACHI = '" + DIACHI
+                + "', EMAIL = '" + EMAIL + "', DIACHI = '" + DIACHI
                 + "', QUYEN = '" + QUYEN + "'  WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
 
         String sql = "UPDATE TAIKHOAN SET HINHANH = ? WHERE IDTAIKHOAN= " + IDTAIKHOAN ;
@@ -300,7 +328,9 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             ));
         }
         return list;
@@ -329,7 +359,9 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8),
+                    cursor.getInt(9)
             );
         }
         return null;

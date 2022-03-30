@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/vang_nhat"
+            android:background="@color/xanh_nhat"
             android:elevation="4dp"
             app:navigationIcon="@drawable/hamburger_icon" >
 
@@ -50,16 +50,5 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="@dimen/size60dp"
-        android:layout_marginRight="@dimen/size20dp"
-        android:backgroundTint="@color/vang_nhat"
-        android:src="@drawable/baseline_phone_24"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

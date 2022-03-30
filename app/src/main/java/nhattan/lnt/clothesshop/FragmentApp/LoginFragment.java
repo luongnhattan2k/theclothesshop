@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +27,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     TextView txt_DangKy, txt_QuenMK;
     Button btn_DangNhap;
     EditText edt_TK, edt_MK;
-    ImageButton ibtn_exit;
     TaiKhoanDAO taiKhoanDAO;
     String mUsername = "";
 
@@ -56,9 +54,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     private void AnhXa() {
         txt_DangKy = view.findViewById(R.id.txtDangky);
         txt_QuenMK = view.findViewById(R.id.txtQuenmk);
-        btn_DangNhap = view.findViewById(R.id.btnDangnhap);
-        edt_TK = view.findViewById(R.id.edtTaikhoan);
-        edt_MK = view.findViewById(R.id.edtMatkhau);
+        btn_DangNhap = view.findViewById(R.id.btnDangNhap);
+        edt_TK = view.findViewById(R.id.edtTaikhoan_dn);
+        edt_MK = view.findViewById(R.id.edtMatkhau_dn);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         btn_DangNhap.setOnClickListener(this);
@@ -70,13 +68,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.btnDangnhap:
+            case R.id.btnDangNhap:
                 setBtn_Login();
-                ;break;
-
-            case R.id.txtQuenmk:
-                setTxt_QuenMK();
-                ;break;
+                break;
         }
     }
 
@@ -88,7 +82,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         if (kiemtra != null){
             Login.taiKhoanDTO = kiemtra;
-            Toast.makeText(getActivity(), "Đăng Nhập Thành Công ! " + Login.taiKhoanDTO.getQUYEN(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Đăng Nhập Thành Công ! ", Toast.LENGTH_SHORT).show();
             if (Login.taiKhoanDTO.getQUYEN() == 0){
                 startActivity(new Intent(getActivity(), HomeManager.class));
             } else {
@@ -101,11 +95,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     public String getUsername() {
         return mUsername;
-    }
-
-    private void setTxt_QuenMK(){
-        Intent iQuenmk = new Intent(getActivity(), ForgotPassword.class);
-        startActivity(iQuenmk);
     }
 
 }

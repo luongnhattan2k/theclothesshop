@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -41,7 +40,6 @@ public class TaiKhoanDAO extends BaseAdapter {
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_MATKHAU,taiKhoanDTO.getMATKHAU());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_SDT,taiKhoanDTO.getSDT());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_EMAIL,taiKhoanDTO.getEMAIL());
-        contentValues.put(CreateDatabase.tbl_TAIKHOAN_NGAYSINH,taiKhoanDTO.getNGAYSINH());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_QUYEN,"1");
 
         long kiemtra = database.insert(CreateDatabase.tbl_TAIKHOAN, null, contentValues);
@@ -64,8 +62,7 @@ public class TaiKhoanDAO extends BaseAdapter {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getInt(8)
+                    cursor.getInt(7)
             );
         }
         return null;
@@ -105,7 +102,7 @@ public class TaiKhoanDAO extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             holder.edtTentaikhoan = (EditText) view.findViewById(R.id.edtTaikhoan);
-            holder.edtMatkhau = (EditText) view.findViewById(R.id.edtMatkhau);
+            holder.edtMatkhau = (EditText) view.findViewById(R.id.edtMatkhau_dk);
             holder.edtSdt = (EditText) view.findViewById(R.id.edtSdt);
             holder.edtEmail = (EditText) view.findViewById(R.id.edtEmail);
             holder.edtDiachi = (EditText) view.findViewById(R.id.edtDiachi);

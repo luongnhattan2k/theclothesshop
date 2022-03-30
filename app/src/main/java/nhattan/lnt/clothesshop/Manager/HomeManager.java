@@ -45,7 +45,8 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
     private static final int FRAGMENT_QL_SANPHAM = 1;
     private static final int FRAGMENT_QL_TAIKHOAN = 2;
     private static final int FRAGMENT_QL_HOADON = 3;
-    private static final int FRAGMENT_QL_GOPY = 4;
+    private static final int FRAGMENT_QL_THONGKE = 4;
+    private static final int FRAGMENT_QL_GOPY = 5;
 
     private int currentFragment = FRAGMENT_QL_SANPHAM;
 
@@ -103,7 +104,7 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
     }
 
     private void animateNavigation() {
-        drawerLayout.setScrimColor(getResources().getColor(R.color.vang_nhat));
+        drawerLayout.setScrimColor(getResources().getColor(R.color.xanh_nhat));
         drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -169,6 +170,11 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
             if (FRAGMENT_QL_HOADON != currentFragment) {
                 replaceFragment(new Quanly_HoaDon());
                 currentFragment = FRAGMENT_QL_HOADON;
+            }
+        }else if (id == R.id.nav_quanly_thongke) {
+            if (FRAGMENT_QL_THONGKE != currentFragment) {
+                replaceFragment(new Quanly_HoaDon());
+                currentFragment = FRAGMENT_QL_THONGKE;
             }
         }else if (id == R.id.nav_quanly_gopy) {
             if (FRAGMENT_QL_GOPY != currentFragment) {

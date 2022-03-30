@@ -4,35 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/details_bg_main"
     android:orientation="vertical"
     tools:context=".Login">
 
-    <ImageButton
-        android:id="@+id/ibtnExit"
-        android:layout_width="@dimen/size40dp"
-        android:layout_height="@dimen/size40dp"
-        android:background="@null"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@drawable/logo" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <ImageButton
+            android:id="@+id/ibtnExit_login"
+            android:layout_width="@dimen/size40dp"
+            android:layout_height="@dimen/size40dp"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/curved_background"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:background="@drawable/custom_background"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/size10dp"
             android:gravity="center"
             android:layout_weight="0.1"
             android:orientation="horizontal">
@@ -46,9 +60,9 @@
                 android:fontFamily="serif"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="@string/DangNhap"
+                android:text="Đăng Nhập"
                 android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/signup"
@@ -58,9 +72,9 @@
                 android:gravity="center"
                 android:fontFamily="serif"
                 android:textStyle="bold"
-                android:text="@string/DangKy"
+                android:text="Đăng Ký"
                 android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

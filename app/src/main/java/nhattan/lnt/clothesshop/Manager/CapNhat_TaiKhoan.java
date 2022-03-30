@@ -66,7 +66,6 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtMATKHAU_QLTK.setText(taiKhoan.getMATKHAU());
         edtSDT_QLTK.setText(String.valueOf(taiKhoan.getSDT()));
         edtDIACHI_QLTK.setText(taiKhoan.getDIACHI());
-        edtNGAYSINH_QLTK.setText(taiKhoan.getNGAYSINH());
         edtQUYEN_QLTK.setText(String.valueOf(taiKhoan.getQUYEN()));
         edtEMAIL_QLTK.setText(taiKhoan.getEMAIL());
 
@@ -84,7 +83,6 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtMATKHAU_QLTK.setEnabled(isEnabled);
         edtSDT_QLTK.setEnabled(isEnabled);
         edtEMAIL_QLTK.setEnabled(isEnabled);
-        edtNGAYSINH_QLTK.setEnabled(isEnabled);
         edtDIACHI_QLTK.setEnabled(isEnabled);
         edtQUYEN_QLTK.setEnabled(isEnabled);
     }
@@ -94,7 +92,6 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         img_HINHANH_QLTK = findViewById(R.id.img_user_ql_taikhoan);
         edtIDTK_QLTK = findViewById(R.id.edt_idtk_ql_taikhoan);
         edtTENTK_QLTK = findViewById(R.id.edt_tentaikhoan_ql_taikhoan);
-        edtNGAYSINH_QLTK = findViewById(R.id.edt_ngaythangnamsinh_ql_taikhoan);
         edtMATKHAU_QLTK= findViewById(R.id.edt_matkhau_ql_taikhoan);
         edtSDT_QLTK = findViewById(R.id.edt_sdt_ql_taikhoan);
         edtEMAIL_QLTK = findViewById(R.id.edt_mail_ql_taikhoan);
@@ -143,11 +140,10 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
                     String matkhau = edtMATKHAU_QLTK.getText().toString();
                     int quyen = Integer.parseInt(edtQUYEN_QLTK.getText().toString());
                     String diachi = edtDIACHI_QLTK.getText().toString();
-                    String ngaysinh = edtNGAYSINH_QLTK.getText().toString();
 
-                    if (edtSDT_QLTK.getText().length() != 0 && edtEMAIL_QLTK.getText().length() != 0 && edtNGAYSINH_QLTK.getText().length() != 0
+                    if (edtSDT_QLTK.getText().length() != 0 && edtEMAIL_QLTK.getText().length() != 0
                             && edtMATKHAU_QLTK.getText().length() != 0 && edtDIACHI_QLTK.getText().length() !=0 && edtQUYEN_QLTK.getText().length() !=0) {
-                        database.CapNhatTaiKhoan_ADMIN(idtk, tentaikhoan, matkhau, hinhAnh, sdt, email, ngaysinh, diachi, quyen);
+                        database.CapNhatTaiKhoan_ADMIN(idtk, tentaikhoan, matkhau, hinhAnh, sdt, email, diachi, quyen);
                         Toast.makeText(CapNhat_TaiKhoan.this, "Đã lưu tài khoản !", Toast.LENGTH_SHORT).show();
                         onBackPressed();
                     } else {

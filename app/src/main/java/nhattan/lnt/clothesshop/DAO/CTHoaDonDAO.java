@@ -7,18 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.CTHoaDonDTO;
-import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.R;
@@ -56,6 +52,7 @@ public class CTHoaDonDAO extends BaseAdapter {
     static class ViewHolder{
         TextView txt_TenSP, txt_Tongtien, txt_SLSP;
         ImageView img_HinhAnh;
+        TextView txt_Tonghoadon, txt_Tennguoidat, txt_Ngaydat, txt_Noidungghichu;
 
     }
 
@@ -81,8 +78,8 @@ public class CTHoaDonDAO extends BaseAdapter {
         CTHoaDonDTO ctHoaDonDTO = ListCTHoaDon.get(i);
 
         holder.txt_TenSP.setText(ctHoaDonDTO.getTENSANPHAM());
-        holder.txt_SLSP.setText(String.valueOf(ctHoaDonDTO.getSOLUONG()));
-        holder.txt_Tongtien.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
+        holder.txt_SLSP.setText("Sl: " + String.valueOf(ctHoaDonDTO.getSOLUONG()));
+        holder.txt_Tongtien.setText("Thành tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
         id = ctHoaDonDTO.getIDCTHOADON();
 
         SanPhamDTO sanPhamDTO = HomeFragment.database.SANPHAM(ctHoaDonDTO.getIDSANPHAM());

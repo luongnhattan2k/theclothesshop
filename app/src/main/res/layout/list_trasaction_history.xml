@@ -22,37 +22,37 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtTongtienhoadon"
+            android:id="@+id/txtMahoadon"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center|left"
             android:paddingLeft="@dimen/size20dp"
-            android:text="Tổng tiền"
+            android:text="Mã hóa đơn:"
             android:textSize="14sp"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/txtDiachi"
+            android:id="@+id/txtNgaydathoadon"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:gravity="center|left"
             android:inputType="text"
             android:paddingLeft="@dimen/size20dp"
-            android:text="Địa chỉ"
+            android:text="Ngày đặt:"
             android:textColor="@color/black"
             android:textSize="14sp"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/txtGhichu"
+            android:id="@+id/txtTongtienhoadon"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:gravity="center|left"
             android:inputType="text"
             android:paddingLeft="@dimen/size20dp"
-            android:text="Ghi chú"
+            android:text="Tổng tiền hóa đơn:"
             android:textColor="@color/black"
             android:textSize="14sp"
             tools:ignore="TouchTargetSizeCheck" />

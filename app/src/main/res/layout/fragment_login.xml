@@ -11,39 +11,43 @@
     tools:context=".FragmentApp.LoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="Tài khoản"
+        app:startIconDrawable="@drawable/baseline_person_24"
+        app:helperText="Yêu cầu *"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
-        <EditText
-            android:id="@+id/edtTaikhoan"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTaikhoan_dn"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/white"
-            android:drawablePadding="0dp"
-            android:ems="10"
-            android:hint="@string/username"
-            android:inputType="textPersonName"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content"
+            android:maxLength="20"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
+        android:layout_marginTop="@dimen/size10dp"
+        app:passwordToggleEnabled="true"
+        android:hint="Mật khẩu"
+        app:startIconDrawable="@drawable/baseline_lock_24"
+        app:helperText="Yêu cầu *"
+        app:counterEnabled="true"
+        app:counterMaxLength="50">
 
-        <EditText
-            android:id="@+id/edtMatkhau"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMatkhau_dn"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="@dimen/size10dp"
-            android:background="@color/white"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content"
+            android:maxLength="50"
+            android:password="true"
+            tools:ignore="Deprecated" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/size20dp">
+        android:layout_marginTop="@dimen/size10dp">
 
         <CheckBox
             android:id="@+id/cbLuumk"
@@ -77,16 +81,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnDangnhap"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:id="@+id/btnDangNhap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_gravity="center"
-        android:hint="@string/DangNhap"
+        android:background="@drawable/button_bg"
+        android:text="Đăng Nhập"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:textColorHint="@color/black"
-        android:backgroundTint="@color/xam" />
+        />
 
 
 </LinearLayout>
