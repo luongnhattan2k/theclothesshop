@@ -1,26 +1,17 @@
 package nhattan.lnt.clothesshop.FragmentApp;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -43,6 +34,7 @@ public class MyCartFragment extends Fragment {
     Database database;
     Button btn_Dathang;
     TextView txt_Tongtien;
+
     int tong;
 
     public MyCartFragment() {
@@ -90,41 +82,6 @@ public class MyCartFragment extends Fragment {
         cursor.moveToNext();
         tong = cursor.getInt(0);
         txt_Tongtien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(tong) + " VNĐ"));
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.menu_content, menu);
-
-        super.onCreateContextMenu(menu, v, menuInfo);
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
-        switch (item.getItemId())
-        {
-            case R.id.menu_edit_item:
-
-
-                return true;
-            case R.id.menu_delete_item:
-
-                GioHangDTO gioHang = GioHangDAO.sanPhamGioHangList.get(info.position);
-                HomeFragment.database.DELETE_GIOHANG(
-                        gioHang.getIDSP(),
-                        gioHang.getIDTK()
-                );
-
-                Toast.makeText(getActivity(),"Xóa thành công",Toast.LENGTH_SHORT).show();
-                GetData();
-                Tongtien();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
     }
 
     private void AnhXa() {

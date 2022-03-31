@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="56dp"
+    android:layout_marginTop="58dp"
     android:orientation="vertical"
     tools:context=".FragmentApp.MyCartFragment">
 
@@ -11,6 +11,8 @@
         android:id="@+id/listview_danhsachsp_gohang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="1" />
 
 

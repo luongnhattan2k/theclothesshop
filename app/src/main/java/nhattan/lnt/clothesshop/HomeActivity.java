@@ -25,15 +25,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
+import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
-import nhattan.lnt.clothesshop.FragmentApp.NewBornFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoKhoacFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoThunFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpSoMiFragment;
@@ -79,7 +77,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         AnhXa();
 
         Intent intent = getIntent();
-        int GioHangFra = intent.getIntExtra("ThemGioHang", R.id.nav_home);
+        int GioHangFra = intent.getIntExtra("DenGioHang", R.id.nav_home);
         if(GioHangFra == R.id.nav_mycart){
             navigationView.setCheckedItem(GioHangFra);
             replaceFragment(new MyCartFragment());

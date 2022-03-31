@@ -1,93 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="@dimen/size50dp"
-        android:layout_height="100dp"
-        android:layout_weight="@null"/>
-
-    <ImageView
-        android:padding="10dp"
-        android:id="@+id/imageHinhCustom"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:src="@drawable/logo"
-        />
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/product_giohang">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtTensp"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center|left"
-            android:paddingLeft="@dimen/size20dp"
-            android:text="Tên Sản Phẩm"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="@dimen/size30dp"
+            android:layout_height="100dp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:padding="10dp"
+            android:id="@+id/imageHinhCustom"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo"
+            />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="@dimen/size20dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/img_Truslsp_gh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/baseline_remove_24"
-                android:background="@null"/>
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtSoluong"
+                android:id="@+id/txtTensp"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginLeft="@dimen/size10dp"
-                android:layout_marginRight="@dimen/size10dp"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Tên Sản Phẩm"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/size20dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/img_Truslsp_gh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:src="@drawable/baseline_remove_24"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txtSoluong"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/size10dp"
+                    android:layout_marginRight="@dimen/size10dp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text="Số lượng"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <ImageButton
+                    android:id="@+id/img_Themslsp_gh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:src="@drawable/baseline_add_24"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtThanhtien"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
                 android:inputType="text"
-                android:text="Số lượng"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Thành Tiền"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <ImageButton
-                android:id="@+id/img_Themslsp_gh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:src="@drawable/baseline_add_24"/>
-
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtThanhtien"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center|left"
-            android:inputType="text"
-            android:paddingLeft="@dimen/size20dp"
-            android:text="Thành Tiền"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:ignore="TouchTargetSizeCheck" />
+        <ImageView
+            android:padding="10dp"
+            android:id="@+id/img_Xoasp_gh"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_delete_gh"
+            android:layout_width="@dimen/size30dp"
+            android:layout_height="@dimen/size30dp"
+            android:src="@drawable/ic_baseline_close_24"
+            />
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

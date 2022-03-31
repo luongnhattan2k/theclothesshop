@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,13 +27,13 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
         return position;
     }
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     public QuanLyHoaDonAdapter( Fragment context,ArrayList<HoaDonDTO> listHoaDon) {
         this.listHoaDon = listHoaDon;
         this.context = context;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
     }
 
     @NonNull
@@ -41,7 +41,7 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_quanly_hoadon,parent,false);
 
-        return new QuanLyHoaDonAdapter.Viewholder(view);
+        return new Viewholder(view);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
 
         holder.img_Hinhanh.setImageResource(R.drawable.logo);
         holder.txt_Mahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDonDTO.getIDHOADON());
-        holder.txt_Ngaydat.setText(hoaDonDTO.getNGAYDAT());
-        holder.txt_Tongtien.setText(String.valueOf(hoaDonDTO.getTONGTIEN()) + " VND");
+        holder.txt_Ngaydat.setText("Ngày đặt: " + hoaDonDTO.getNGAYDAT());
+        holder.txt_Tongtien.setText("Tổng tiền: " + String.valueOf(hoaDonDTO.getTONGTIEN()) + " VND");
 
         holder.itemView .setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         ImageView img_Hinhanh;
         TextView txt_Mahoadon, txt_Ngaydat, txt_Tongtien;
-        LinearLayout product_hoadon;
+        CardView product_hoadon;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -97,10 +97,10 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.add(menu.NONE, R.id.iSua,
-                    menu.NONE, "Sửa Sản Phẩm");
-            menu.add(menu.NONE, R.id.iXoa,
-                    menu.NONE, "Xóa Sản Phẩm");
+            menu.add(menu.NONE, R.id.iXemhd,
+                    menu.NONE, "Xem hóa đơn");
+            menu.add(menu.NONE, R.id.iXoahd,
+                    menu.NONE, "Xóa hóa đơn");
         }
     }
 }

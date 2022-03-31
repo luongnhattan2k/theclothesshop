@@ -1,7 +1,8 @@
 package nhattan.lnt.clothesshop.DAO;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -14,14 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
-import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
-import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
-import nhattan.lnt.clothesshop.ProductionActivity;
+import nhattan.lnt.clothesshop.Database.Database;
+import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
+import nhattan.lnt.clothesshop.HomeActivity;
 import nhattan.lnt.clothesshop.R;
 
 public class GioHangDAO extends BaseAdapter {
@@ -30,7 +32,8 @@ public class GioHangDAO extends BaseAdapter {
     private int layout;
     public static List<GioHangDTO> sanPhamGioHangList;
     int id;
-    SanPhamDTO sanPhamDTO;
+    Database database;
+    GioHangDTO gioHangDTO;
     int SLM = 0;
 
     public GioHangDAO(Fragment context, int layout, List<GioHangDTO> sanPhamGioHangList) {
@@ -56,7 +59,7 @@ public class GioHangDAO extends BaseAdapter {
 
     static class ViewHolder{
         TextView txt_TenSP, txt_GiaSP, txt_SLSP;
-        ImageView img_HinhAnh;
+        ImageView img_HinhAnh, img_Xoasp_gh;
         ImageButton img_Themslsp, img_Truslsp;
         CheckBox checkBox;
     }
@@ -75,6 +78,7 @@ public class GioHangDAO extends BaseAdapter {
             holder.txt_GiaSP = convertView.findViewById(R.id.txtThanhtien);
             holder.txt_SLSP = convertView.findViewById(R.id.txtSoluong) ;
             holder.img_HinhAnh = convertView.findViewById(R.id.imageHinhCustom);
+            holder.img_Xoasp_gh = convertView.findViewById(R.id.img_Xoasp_gh);
             holder.img_Themslsp = convertView.findViewById(R.id.img_Themslsp_gh);
             holder.img_Truslsp = convertView.findViewById(R.id.img_Truslsp_gh);
             holder.checkBox = convertView.findViewById(R.id.checkBox);
@@ -88,6 +92,43 @@ public class GioHangDAO extends BaseAdapter {
         holder.txt_TenSP.setText(gioHang.getTENSANPHAM());
         holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
         holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()) );
+
+        holder.img_Xoasp_gh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context.getActivity());
+                builder.setTitle("Thông Báo");
+                builder.setMessage("Bạn có chắc muốn xóa nó hay không ?");
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HomeFragment.database.XoaSPGH(gioHang.getIDGIOHANG());
+                        Toast.makeText(context.getContext(), "Xóa thành công !", Toast.LENGTH_SHORT).show();
+                        Intent iGiohang = new Intent(context.getActivity(), HomeActivity.class);
+                        iGiohang.putExtra("DenGioHang", R.id.nav_mycart);
+                        context.startActivity(iGiohang);
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
         id = gioHang.getIDGIOHANG();
 
         // chuyen byte[] -> ve bitmap
@@ -97,4 +138,5 @@ public class GioHangDAO extends BaseAdapter {
 
         return convertView;
     }
+
 }

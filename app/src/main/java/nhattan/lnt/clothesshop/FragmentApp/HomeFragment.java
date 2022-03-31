@@ -3,6 +3,12 @@ package nhattan.lnt.clothesshop.FragmentApp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -10,13 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +33,11 @@ public class HomeFragment extends Fragment{
     private View view;
 
     public static Database database;
-    GridView gridView_SanPham;
+    GridView gridView_SanPham_new, gridView_SanPham_hot;
     ViewPager2 viewPagerBackground;
     Handler sliderHandler = new Handler();
-    ArrayList<SanPhamDTO> sanPhamDTOArrayList;
-    SanPhamDAO adapter;
+    ArrayList<SanPhamDTO> sanPhamDTOArrayList_new, sanPhamDTOArrayList_hot;
+    SanPhamDAO adapter_new, adapter_hot;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,11 +51,11 @@ public class HomeFragment extends Fragment{
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
 
-        gridView_SanPham = view.findViewById(R.id.gridviewSanPham);
-        sanPhamDTOArrayList = new ArrayList<>();
-        adapter = new SanPhamDAO(HomeFragment.this, R.layout.product_layout_moi, sanPhamDTOArrayList);
-        gridView_SanPham.setAdapter(adapter);
-        gridView_SanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView_SanPham_new = view.findViewById(R.id.gridviewSanPham_new);
+        sanPhamDTOArrayList_new = new ArrayList<>();
+        adapter_new = new SanPhamDAO(HomeFragment.this, R.layout.product_layout_moi, sanPhamDTOArrayList_new);
+        gridView_SanPham_new.setAdapter(adapter_new);
+        gridView_SanPham_new.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int id, long l) {
                 Intent intent = new Intent(getActivity(), ProductionActivity.class);
@@ -64,9 +63,24 @@ public class HomeFragment extends Fragment{
                 startActivity(intent);
             }
         });
-        registerForContextMenu(gridView_SanPham);
+        registerForContextMenu(gridView_SanPham_new);
 
-        GetData();
+//        gridView_SanPham_hot = view.findViewById(R.id.gridviewSanPham_hot);
+//        sanPhamDTOArrayList_hot = new ArrayList<>();
+//        adapter_hot = new SanPhamDAO(HomeFragment.this, R.layout.product_layout_hot, sanPhamDTOArrayList_hot);
+//        gridView_SanPham_hot.setAdapter(adapter_hot);
+//        gridView_SanPham_hot.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int id, long l) {
+//                Intent intent = new Intent(getActivity(), ProductionActivity.class);
+//                intent.putExtra("id", id);
+//                startActivity(intent);
+//            }
+//        });
+//        registerForContextMenu(gridView_SanPham_hot);
+
+        GetData_New();
+        GetData_Hot();
 
         //Start Auto Scroll background
         viewPagerBackground = view.findViewById(R.id.viewPagerImageSilde);
@@ -131,13 +145,13 @@ public class HomeFragment extends Fragment{
 
     }
 
-    private void GetData() {
+    private void GetData_New() {
         //get data
-        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM");
-        sanPhamDTOArrayList.clear();
+        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE SPNEW = 1");
+        sanPhamDTOArrayList_new.clear();
         while (cursor.moveToNext())
         {
-            sanPhamDTOArrayList.add(new SanPhamDTO(
+            sanPhamDTOArrayList_new.add(new SanPhamDTO(
                     cursor.getInt(0),
                     cursor.getBlob(1),
                     cursor.getString(2),
@@ -150,6 +164,28 @@ public class HomeFragment extends Fragment{
                     cursor.getInt(9)
             ));
         }
-        adapter.notifyDataSetChanged();
+        adapter_new.notifyDataSetChanged();
+    }
+
+    private void GetData_Hot() {
+        //get data
+//        Cursor cursor = database.Getdata("SELECT * FROM SANPHAM WHERE SPHOT = 1");
+//        sanPhamDTOArrayList_hot.clear();
+//        while (cursor.moveToNext())
+//        {
+//            sanPhamDTOArrayList_hot.add(new SanPhamDTO(
+//                    cursor.getInt(0),
+//                    cursor.getBlob(1),
+//                    cursor.getString(2),
+//                    cursor.getInt(3),
+//                    cursor.getInt(4),
+//                    cursor.getString(5),
+//                    cursor.getInt(6),
+//                    cursor.getInt(7),
+//                    cursor.getInt(8),
+//                    cursor.getInt(9)
+//            ));
+//        }
+//        adapter_hot.notifyDataSetChanged();
     }
 }

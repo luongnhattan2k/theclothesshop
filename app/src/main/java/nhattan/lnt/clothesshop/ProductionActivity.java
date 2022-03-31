@@ -1,7 +1,5 @@
 package nhattan.lnt.clothesshop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -187,8 +187,7 @@ public class ProductionActivity extends AppCompatActivity {
                     );
                     Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
                     Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
-                    iGiohang.putExtra("ThemGioHang", R.id.nav_mycart);
-
+                    iGiohang.putExtra("DenGioHang", R.id.nav_mycart);
                     startActivity(iGiohang);
                 }
             }

@@ -14,11 +14,23 @@
         android:paddingStart="@dimen/size60dp"
         android:paddingEnd="@dimen/size60dp" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="215dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="cursive"
+        android:text="Sản phẩm mới"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <GridView
-        android:id="@+id/gridviewSanPham"
+        android:id="@+id/gridviewSanPham_new"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="245dp"
         android:background="@color/white"
         android:numColumns="2"/>
 

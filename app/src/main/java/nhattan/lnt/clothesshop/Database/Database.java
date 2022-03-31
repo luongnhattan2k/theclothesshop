@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import nhattan.lnt.clothesshop.DTO.CTHoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.GopYDTO;
+import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 
@@ -37,16 +38,6 @@ public class Database extends SQLiteOpenHelper {
     public Cursor Getdata(String sql) {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql,null);
-    }
-
-    public void DELETE_GIOHANG(int IDSP, int IDTK){
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "DELETE  FROM GIOHANG WHERE IDSP = "+ IDSP + " AND IDTK= " + IDTK  ;
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-
-
-        statement.executeInsert();
     }
 
 
@@ -331,6 +322,43 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(7),
                     cursor.getInt(8),
                     cursor.getInt(9)
+            ));
+        }
+        return list;
+    }
+
+    public void XoaHD(int IDTHOADON){
+        QueryData("DELETE FROM HOADON WHERE IDHOADON = '" + IDTHOADON + "'");
+    }
+
+    public void XoaSPGH(int IDGIOHANG){
+        QueryData("DELETE  FROM GIOHANG WHERE IDGIOHANG = '"+ IDGIOHANG + "'");
+    }
+
+    public void DELETE_GIOHANG(int IDSP, int IDTK){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "DELETE  FROM GIOHANG WHERE IDSP = "+ IDSP + " AND IDTK= " + IDTK  ;
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+
+        statement.executeInsert();
+    }
+
+    //region Video
+    public ArrayList<HoaDonDTO> QuanLyHoaDon(){
+        ArrayList<HoaDonDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM HOADON");
+        while (cursor.moveToNext()){
+            list.add(new HoaDonDTO(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7)
             ));
         }
         return list;

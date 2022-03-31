@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TransactionHistoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xanh_nhat">
+
+        <ImageButton
+            android:id="@+id/ibtnExitchitiethoadon_ql"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Chi tiết hóa đơn"
+            android:textSize="@dimen/size20dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_chitiethoadon_ql"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Thông Tin Đơn Hàng"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/txtMahoadon_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mã hóa đơn: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt1"
+                tools:ignore="MissingConstraints" >
+
+                <EditText
+                    android:id="@+id/txtTennguoidat_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tên người đặt: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt2"
+                tools:ignore="MissingConstraints"  >
+
+                <EditText
+                    android:id="@+id/txtNgaydat_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Ngày đặt hàng: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt3"
+                tools:ignore="MissingConstraints"  >
+
+                <EditText
+                    android:id="@+id/txtTonghoadon_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Tổng hóa đơn: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt4"
+                tools:ignore="MissingConstraints"  >
+
+                <EditText
+                    android:id="@+id/txtDiachidathang_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Địa chỉ: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt5"
+                tools:ignore="MissingConstraints" >
+
+                <EditText
+                    android:id="@+id/txtNoidungghichu_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Nội dung ghi chú: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

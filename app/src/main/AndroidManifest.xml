@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".Manager.Chitiethoadon_manager"
+            android:exported="true" />
+        <activity
             android:name=".Manager.Xem_GopY"
             android:exported="true" />
         <activity

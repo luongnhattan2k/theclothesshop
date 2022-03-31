@@ -37,10 +37,13 @@
             android:textSize="@dimen/size20dp"/>
 
         <TextView
-            android:id="@+id/txtNgaydathang"
-            android:layout_width="220dp"
+            android:id="@+id/txtNgaydathang_ql"
+            android:layout_width="160dp"
             android:layout_height="@dimen/size40dp"
-            android:layout_gravity="center"/>
+            android:paddingLeft="@dimen/size10dp"
+            android:layout_gravity="center"
+            android:gravity="center|left"
+            android:text="ngày"/>
 
         <Button
             android:id="@+id/btnChonngaydat"
@@ -53,7 +56,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recV_DanhSachSanPham"
+        android:id="@+id/recV_DanhSachSanPham_qlhd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/size10dp"
