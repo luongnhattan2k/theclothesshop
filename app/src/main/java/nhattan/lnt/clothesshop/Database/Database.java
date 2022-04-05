@@ -92,9 +92,9 @@ public class Database extends SQLiteOpenHelper {
                 + thanhtien + "', '" + tonghoadon + "','" + ghichu + "', '" + diachi + "') ");
     }
 
-    public void DELETE_GIOHANGALL(int IDTK){
+    public void DELETE_GIOHANGALL(int IDGIOHANG){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "DELETE  FROM GIOHANG WHERE IDTK = "+ IDTK;
+        String sql = "DELETE  FROM GIOHANG WHERE IDGIOHANG = "+ IDGIOHANG;
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
@@ -131,6 +131,22 @@ public class Database extends SQLiteOpenHelper {
                     + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
             ;
         }
+    }
+
+    public void UPDATE_GIOHANG_THEM(int IDSP)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
+                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + 1 +
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+        ;
+    }
+
+    public void UPDATE_GIOHANG_TRU(int IDSP)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
+                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " - " + 1 +
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+        ;
     }
 
     public CTHoaDonDTO LoadCTHD(int IDCTHOADON)

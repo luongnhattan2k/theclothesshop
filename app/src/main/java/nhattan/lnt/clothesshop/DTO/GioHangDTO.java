@@ -20,6 +20,9 @@ public class GioHangDTO {
         this.THANHTIEN = THANHTIEN;
     }
 
+    public GioHangDTO(){
+        this.IDGIOHANG = -1;
+    }
 
     public int getIDGIOHANG() {
         return IDGIOHANG;

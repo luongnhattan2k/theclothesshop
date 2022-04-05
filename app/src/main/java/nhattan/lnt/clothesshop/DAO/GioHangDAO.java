@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,9 +19,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import nhattan.lnt.clothesshop.DTO.EventBus.TinhTongEvent;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
+import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.HomeActivity;
@@ -31,7 +37,9 @@ public class GioHangDAO extends BaseAdapter {
     private Fragment context;
     private int layout;
     public static List<GioHangDTO> sanPhamGioHangList;
+    public static List<GioHangDTO> mangmuahang = new ArrayList<>();
     int id;
+    SanPhamDTO sanPhamDTO;
     Database database;
     GioHangDTO gioHangDTO;
     int SLM = 0;
@@ -57,11 +65,13 @@ public class GioHangDAO extends BaseAdapter {
         return 0;
     }
 
+
+
     static class ViewHolder{
         TextView txt_TenSP, txt_GiaSP, txt_SLSP;
         ImageView img_HinhAnh, img_Xoasp_gh;
         ImageButton img_Themslsp, img_Truslsp;
-        CheckBox checkBox;
+        CheckBox checkBox_Muahang;
     }
 
 
@@ -81,7 +91,7 @@ public class GioHangDAO extends BaseAdapter {
             holder.img_Xoasp_gh = convertView.findViewById(R.id.img_Xoasp_gh);
             holder.img_Themslsp = convertView.findViewById(R.id.img_Themslsp_gh);
             holder.img_Truslsp = convertView.findViewById(R.id.img_Truslsp_gh);
-            holder.checkBox = convertView.findViewById(R.id.checkBox);
+            holder.checkBox_Muahang = convertView.findViewById(R.id.checkBox);
 
             convertView.setTag(holder);
         } else {
@@ -91,7 +101,56 @@ public class GioHangDAO extends BaseAdapter {
         GioHangDTO gioHang = sanPhamGioHangList.get(position);
         holder.txt_TenSP.setText(gioHang.getTENSANPHAM());
         holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
-        holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()) );
+        holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+        holder.img_Truslsp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (gioHang.getSOLUONG() > 1) {
+                    int soluongmoi = gioHang.getSOLUONG() - 1;
+                    gioHang.setSOLUONG(soluongmoi);
+                }
+                holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
+                holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+                EventBus.getDefault().postSticky(new TinhTongEvent());
+                HomeFragment.database.UPDATE_GIOHANG_TRU(
+                        gioHang.getIDSP()
+                );
+            }
+        });
+        holder.img_Themslsp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (gioHang.getSOLUONG() < 11) {
+                    int soluongmoi = gioHang.getSOLUONG() + 1;
+                    gioHang.setSOLUONG(soluongmoi);
+                }
+                holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
+                holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+                EventBus.getDefault().postSticky(new TinhTongEvent());
+                HomeFragment.database.UPDATE_GIOHANG_THEM(
+                        gioHang.getIDSP()
+                );
+            }
+        });
+
+
+
+        holder.checkBox_Muahang.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mangmuahang.add(gioHang);
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+                } else {
+                    for (int i =0; i < mangmuahang.size(); i++) {
+                        if (mangmuahang.get(i).getIDSP() == gioHang.getIDSP()) {
+                            mangmuahang.remove(i);
+                            EventBus.getDefault().postSticky(new TinhTongEvent());
+                        }
+                    }
+                }
+            }
+        });
 
         holder.img_Xoasp_gh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +171,6 @@ public class GioHangDAO extends BaseAdapter {
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing
                         dialog.dismiss();
                     }
                 });
@@ -128,7 +185,6 @@ public class GioHangDAO extends BaseAdapter {
                 alert.show();
             }
         });
-
         id = gioHang.getIDGIOHANG();
 
         // chuyen byte[] -> ve bitmap
@@ -136,7 +192,7 @@ public class GioHangDAO extends BaseAdapter {
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         holder.img_HinhAnh.setImageBitmap(bitmap);
 
+
         return convertView;
     }
-
 }

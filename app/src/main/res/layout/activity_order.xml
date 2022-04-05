@@ -44,17 +44,7 @@
         android:textStyle="bold"
         />
 
-
-    <ListView
-        android:id="@+id/listview_danhsachsp_dathang"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginLeft="@dimen/size30dp"
-        android:layout_marginRight="@dimen/size30dp"
-        android:background="@color/white"
-        android:layout_marginTop="@dimen/size10dp" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -63,21 +53,29 @@
         <Spinner
             android:id="@+id/spn_category_dathang"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size50dp"
-            android:layout_marginLeft="@dimen/size30dp"
-            android:layout_marginTop="@dimen/size10dp"
-            android:layout_marginRight="@dimen/size30dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
             android:background="@color/white"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_input_ngaydathang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spn_category_dathang">
 
             <EditText
                 android:id="@+id/edtNgayDat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -92,13 +90,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_input_diachigiaohang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_input_ngaydathang">
 
             <EditText
                 android:id="@+id/edtDiachigiaohang"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -113,13 +116,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_input_ghichu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_input_diachigiaohang">
 
             <EditText
                 android:id="@+id/edtGhichu"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -135,9 +143,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/size30dp"
-            android:background="@color/xanh_nhat">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/xanh_nhat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/txtTongtiendathang"
@@ -147,20 +158,21 @@
                 android:gravity="center|left"
                 android:paddingLeft="@dimen/size20dp"
                 android:text=" "
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/btnDathangkt"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="#4D8C9EFF"
                 android:text="Đặt Hàng"
                 android:textColor="@color/black"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -28,7 +28,6 @@ import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.DatHangDTO;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.Database.Database;
-import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -36,15 +35,17 @@ public class OrderActivity extends AppCompatActivity {
     ArrayList<DatHangDTO> datHangDTOS;
     ArrayList<GioHangDTO> gioHangDTOArrayList;
     DatHangDAO adapter;
+    GioHangDAO gioHangDAO;
     public static Database database;
     Button btn_Dathangkt;
     ImageButton ibtn_Exit;
     TextView txt_Tongtiendathang;
     EditText edt_Diachigiaohang, edt_Ghichu;
-    int tong;
+    int Tongtiensp = 0;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int idcthd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +55,6 @@ public class OrderActivity extends AppCompatActivity {
 
         AnhXa();
         NgayHienTai();
-        Listview_Kiemtra = (ListView) findViewById(R.id.listview_danhsachsp_dathang);
-
-        datHangDTOS = new ArrayList<>();
-        adapter = new DatHangDAO(OrderActivity.this, R.layout.product_oder, datHangDTOS);
-        Listview_Kiemtra.setAdapter(adapter);
-        registerForContextMenu(Listview_Kiemtra);
 
         categoryDAO = new CategoryDAO(this, R.layout.item_selected, getListCategort());
         spnCategory.setAdapter(categoryDAO);
@@ -99,11 +94,15 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     private void Tongtien() {
-        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( THANHTIEN ) FROM GIOHANG WHERE IDTK = "
-                + Login.taiKhoanDTO.getMATK());
-        cursor.moveToNext();
-        tong = cursor.getInt(0);
-        txt_Tongtiendathang.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(tong) + " VNĐ"));
+//        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( THANHTIEN ) FROM GIOHANG WHERE IDTK = "
+//                + Login.taiKhoanDTO.getMATK());
+//        cursor.moveToNext();
+//        tong = cursor.getInt(0);
+
+        for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
+            Tongtiensp = Tongtiensp + (gioHangDAO.mangmuahang.get(i).getTHANHTIEN()* gioHangDAO.mangmuahang.get(i).getSOLUONG());
+        }
+        txt_Tongtiendathang.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tongtiensp) + " VNĐ"));
     }
 
     private void AnhXa() {
@@ -151,17 +150,21 @@ public class OrderActivity extends AppCompatActivity {
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
                 }
-                for (int position = 0; position<GioHangDAO.sanPhamGioHangList.size(); position++)
+                for (int position = 0; position<gioHangDAO.mangmuahang.size(); position++)
                 {
-                    GioHangDTO themhoadon = GioHangDAO.sanPhamGioHangList.get(position);
+                    GioHangDTO themhoadon = gioHangDAO.mangmuahang.get(position);
                     database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), tong, ghichu, diachi);
+                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Tongtiensp, ghichu, diachi);
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
-                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, tong, ngaydat, diachi, ghichu);
-                database.DELETE_GIOHANGALL(Login.taiKhoanDTO.getMATK());
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Tongtiensp, ngaydat, diachi, ghichu);
+                for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
+                    database.DELETE_GIOHANGALL(gioHangDAO.mangmuahang.get(i).getIDGIOHANG());
+                }
+
                 GetData();
                 Tongtien();
+                gioHangDAO.mangmuahang.clear();
                 Intent iHome = new Intent(OrderActivity.this, HomeActivity.class);
                 Toast.makeText(OrderActivity.this, "Đặt hàng thành công !", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(OrderActivity.this, " ssss : " + idcthd , Toast.LENGTH_SHORT).show();
@@ -181,24 +184,6 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     private void GetData() {
-        //get data
-        Cursor cursor = database.Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + Login.taiKhoanDTO.getMATK());
-        datHangDTOS.clear();
-//        gioHangDTOArrayList.clear();
-        while (cursor.moveToNext())
-        {
-            datHangDTOS.add(new DatHangDTO(
-                    cursor.getInt(0),
-                    cursor.getBlob(1),
-                    cursor.getInt(2),
-                    cursor.getString(3),
-                    cursor.getInt(4),
-                    cursor.getInt(5),
-                    cursor.getInt(6)
-            ));
-        }
-        adapter.notifyDataSetChanged();
-
         String Diachi = Login.taiKhoanDTO.getDIACHI();
         edt_Diachigiaohang.setText(Diachi);
     }

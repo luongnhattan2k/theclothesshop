@@ -65,8 +65,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton fab;
     // Drawer
 
-    private TextView txt_TenTaiKhoan;
-    private CircleImageView cimg_User;
+     TextView txt_TenTaiKhoan;
+     CircleImageView cimg_User;
 
     @SuppressLint("RestrictedApi")
     @Override

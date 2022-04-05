@@ -13,11 +13,16 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DAO.GioHangDAO;
+import nhattan.lnt.clothesshop.DTO.EventBus.TinhTongEvent;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.Login;
@@ -31,6 +36,7 @@ public class MyCartFragment extends Fragment {
     ListView Listview_SanPham;
     ArrayList<GioHangDTO> sanPhamArrayList;
     GioHangDAO adapter;
+    GioHangDTO gioHangDTO;
     Database database;
     Button btn_Dathang;
     TextView txt_Tongtien;
@@ -63,7 +69,13 @@ public class MyCartFragment extends Fragment {
         btn_Dathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), OrderActivity.class));
+                if (adapter.isEmpty()) {
+                    Toast.makeText(getActivity(), "Giỏ hàng chưa có sản phẩm. Vui lòng thêm sản phẩm vào giỏ !", Toast.LENGTH_SHORT).show();
+                } else if (adapter.mangmuahang.isEmpty()){
+                    Toast.makeText(getActivity(), "Bạn chưa chọn sản phẩm để đặt hàng !", Toast.LENGTH_SHORT).show();
+                } else {
+                    startActivity(new Intent(getActivity(), OrderActivity.class));
+                }
             }
         });
 
@@ -73,15 +85,35 @@ public class MyCartFragment extends Fragment {
     @Override
     public void onStart() {
         Tongtien();
+        adapter.mangmuahang.clear();
         super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void eventTinhTien (TinhTongEvent event){
+        if (event != null) {
+            Tongtien();
+        }
     }
 
     private void Tongtien() {
-        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( THANHTIEN ) FROM GIOHANG WHERE IDTK = "
-                + Login.taiKhoanDTO.getMATK());
-        cursor.moveToNext();
-        tong = cursor.getInt(0);
-        txt_Tongtien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(tong) + " VNĐ"));
+//        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( THANHTIEN ) FROM GIOHANG WHERE IDTK = "
+//                + Login.taiKhoanDTO.getMATK());
+//        cursor.moveToNext();
+//        tong = cursor.getInt(0);
+
+        long Tongtiensp = 0;
+        for (int i = 0; i < adapter.mangmuahang.size(); i++) {
+            Tongtiensp = Tongtiensp + (adapter.mangmuahang.get(i).getTHANHTIEN()* adapter.mangmuahang.get(i).getSOLUONG());
+        }
+        txt_Tongtien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tongtiensp) + " VNĐ"));
     }
 
     private void AnhXa() {
@@ -111,7 +143,7 @@ public class MyCartFragment extends Fragment {
         {
             Toast.makeText(getActivity(), "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), Login.class));
-        }else if (sanPhamArrayList.isEmpty()){
+        } else if (sanPhamArrayList.isEmpty()){
             Toast.makeText(getActivity(), "Bạn chưa mua hàng !", Toast.LENGTH_SHORT).show();
         }
     }

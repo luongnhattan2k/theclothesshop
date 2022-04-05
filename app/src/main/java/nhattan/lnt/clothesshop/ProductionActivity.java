@@ -183,7 +183,7 @@ public class ProductionActivity extends AppCompatActivity {
                             sanPhamDTO.getMaSP(),
                             sanPhamDTO.getTenSP(),
                             SL,
-                            SL * sanPhamDTO.getGiaSP()
+                            sanPhamDTO.getGiaSP()
                     );
                     Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
                     Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
