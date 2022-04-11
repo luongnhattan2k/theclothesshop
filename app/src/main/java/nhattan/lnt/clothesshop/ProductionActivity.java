@@ -25,7 +25,6 @@ import java.util.List;
 
 import nhattan.lnt.clothesshop.ADAPTER.SearchAdapter;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
-import nhattan.lnt.clothesshop.DAO.GioHangDAO;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
@@ -43,18 +42,8 @@ public class ProductionActivity extends AppCompatActivity {
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int SLM = 0;
+    String size = "S";
 
-
-    @Override
-    protected void onStart() {
-        if(idtk==2){
-            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
-        }else
-        {
-            sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
-        }
-        super.onStart();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +60,17 @@ public class ProductionActivity extends AppCompatActivity {
 
         GetData();
         SuKien();
+    }
+
+    @Override
+    protected void onStart() {
+        if(idtk==2){
+            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
+        }else
+        {
+            sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+        }
+        super.onStart();
     }
 
     private List<CategoryDTO> getListCategort() {
@@ -105,6 +105,7 @@ public class ProductionActivity extends AppCompatActivity {
         byte[] hinhAnh = sanPhamDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         productImage.setImageBitmap(bitmap);
+
     }
 
     private void Anhxa() {
@@ -115,9 +116,6 @@ public class ProductionActivity extends AppCompatActivity {
         spnCategory = findViewById(R.id.spn_category);
         btn_Themgiohang = findViewById(R.id.btnThemvaogiohang);
         ibtn_Exit = findViewById(R.id.ibtnExit);
-        if (GioHangDAO.sanPhamGioHangList == null) {
-            GioHangDAO.sanPhamGioHangList = new ArrayList<>();
-        }
 
     }
 
@@ -164,7 +162,7 @@ public class ProductionActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(ProductionActivity.this, "Bạn chọn size " + categoryDAO.getItem(position).getName(), Toast.LENGTH_SHORT).show();
-
+                        size = categoryDAO.getItem(position).getName();
                     }
 
                     @Override
@@ -201,42 +199,41 @@ public class ProductionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (Login.taiKhoanDTO.getMATK() == -1)
-                            {
-                                Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ProductionActivity.this, Login.class));
+                        {
+                            Toast.makeText(ProductionActivity.this, "Bạn hãy đăng nhập để có thể mua hàng !", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ProductionActivity.this, Login.class));
+                        } else {
+                            BitmapDrawable bitmapDrawable = (BitmapDrawable) img_sanpham_sheet.getDrawable();
+                            Bitmap bitmap = bitmapDrawable.getBitmap();
+                            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                            byte[] hinhAnh_sheet = byteArray.toByteArray();
+
+                            int SL = Integer.parseInt(txt_Soluongsanpham_sheet.getText().toString());
+
+                            if(idtk==2){
+                                sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
                             } else {
-                                BitmapDrawable bitmapDrawable = (BitmapDrawable) img_sanpham_sheet.getDrawable();
-                                Bitmap bitmap = bitmapDrawable.getBitmap();
-                                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                                bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
-                                byte[] hinhAnh_sheet = byteArray.toByteArray();
+                                sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+                            }
 
-                                int SL = Integer.parseInt(txt_Soluongsanpham_sheet.getText().toString());
+                            HomeFragment.database.SPGH(
+                                    Login.taiKhoanDTO.getMATK(),
+                                    hinhAnh_sheet,
+                                    sanPhamDTO.getMaSP(),
+                                    sanPhamDTO.getTenSP(),
+                                    SL,
+                                    sanPhamDTO.getGiaSP(),
+                                    size
+                            );
 
-                                if(idtk==2){
-                                    sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
-                                } else {
-                                    sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
-                                }
-
-                                HomeFragment.database.SPGH(
-                                        Login.taiKhoanDTO.getMATK(),
-                                        hinhAnh_sheet,
-                                        sanPhamDTO.getMaSP(),
-                                        sanPhamDTO.getTenSP(),
-                                        SL,
-                                        sanPhamDTO.getGiaSP(),
-                                        "S"
-                                );
-
-                                Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
-                                Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
-                                iGiohang.putExtra("DenGioHang", R.id.nav_mycart);
-                                startActivity(iGiohang);
+                            Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
+                            Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
+                            iGiohang.putExtra("DenGioHang", R.id.nav_mycart);
+                            startActivity(iGiohang);
                         }
                     }
                 });
-
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
             }
