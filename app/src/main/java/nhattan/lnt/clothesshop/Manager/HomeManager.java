@@ -1,14 +1,5 @@
 package nhattan.lnt.clothesshop.Manager;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,17 +10,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.navigation.NavigationView;
 
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
-import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
-import nhattan.lnt.clothesshop.FragmentApp.NewBornFragment;
-import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
-import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
-import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 import nhattan.lnt.clothesshop.HomeActivity;
 import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Gopy;
@@ -170,11 +162,6 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
             if (FRAGMENT_QL_HOADON != currentFragment) {
                 replaceFragment(new Quanly_HoaDon());
                 currentFragment = FRAGMENT_QL_HOADON;
-            }
-        }else if (id == R.id.nav_quanly_thongke) {
-            if (FRAGMENT_QL_THONGKE != currentFragment) {
-                replaceFragment(new Quanly_HoaDon());
-                currentFragment = FRAGMENT_QL_THONGKE;
             }
         }else if (id == R.id.nav_quanly_gopy) {
             if (FRAGMENT_QL_GOPY != currentFragment) {

@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,8 +34,7 @@ public class Quanly_HoaDon extends Fragment {
     HoaDonDTO hoaDonDTO;
     ArrayList<HoaDonDTO> listHoaDon;
     QuanLyHoaDonAdapter adapter;
-    TextView txt_Ngaydathang;
-    Button btn_Chonngay;
+    Button btn_Thongkedoanhthu;
 
 
 
@@ -131,8 +129,7 @@ public class Quanly_HoaDon extends Fragment {
     }
 
     private void AnhXa() {
-        txt_Ngaydathang = view.findViewById(R.id.txtNgaydathang_ql);
-        btn_Chonngay = view.findViewById(R.id.btnChonngaydat);
+        btn_Thongkedoanhthu = view.findViewById(R.id.btnThongkedoanhthu);
         recV_DanhSachSanPham_qlhd = view.findViewById(R.id.recV_DanhSachSanPham_qlhd);
 
     }

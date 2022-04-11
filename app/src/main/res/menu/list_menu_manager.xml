@@ -17,11 +17,6 @@
             android:title="Quản Lý Hóa Đơn" />
 
         <item
-            android:id="@+id/nav_quanly_thongke"
-            android:icon="@drawable/baseline_receipt_24"
-            android:title="Quản Lý Thống Kê" />
-
-        <item
             android:id="@+id/nav_quanly_gopy"
             android:icon="@drawable/baseline_contact_support_24"
             android:title="Quản Lý Góp Ý" />
