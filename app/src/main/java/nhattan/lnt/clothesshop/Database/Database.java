@@ -41,8 +41,16 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public boolean SPChuaCoTrongGH(int IDTK,int IDSP){
+    public boolean SPChuaCoTrongGH(int IDTK, int IDSP){
         Cursor cursor = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
+        while (cursor.moveToNext()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean SPDaCoTrongGH(int IDTK, int IDSP, String SIZE){
+        Cursor cursor = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP + " AND SIZE = '" + SIZE +"'" );
         while (cursor.moveToNext()) {
             return false;
         }
@@ -124,13 +132,32 @@ public class Database extends SQLiteOpenHelper {
             statement.clearBindings();
             statement.bindBlob(1,hinh);
             statement.executeInsert();
-        }
-        else {
+
+        } else if (SPDaCoTrongGH(IDTK, IDSP, size)){
+            QueryData("INSERT INTO " + CreateDatabase.tbl_GIOHANG +
+                    " ( "
+                    + CreateDatabase.tbl_GIOHANG_IDTK + " , "
+                    + CreateDatabase.tbl_GIOHANG_HINHANH + " , "
+                    + CreateDatabase.tbl_GIOHANG_IDSP + " , "
+                    + CreateDatabase.tbl_GIOHANG_TENSANPHAM + " , "
+                    + CreateDatabase.tbl_GIOHANG_SOLUONG + " , "
+                    + CreateDatabase.tbl_GIOHANG_THANHTIEN + " , "
+                    + CreateDatabase.tbl_GIOHANG_SIZE
+                    + " ) VALUES ( " + IDTK + " , " + null + " , " + IDSP + " , '" + TenSP + "' , " + Soluong + " , "
+                    + thanhtien + ", '" + size + "' ) ");
+
+            SQLiteDatabase database = getWritableDatabase();
+            String sql = "UPDATE GIOHANG SET HINHANH = ? WHERE IDTK="+ IDTK + " AND IDSP=" + IDSP + " AND SIZE= '" + size + "'";
+            SQLiteStatement statement = database.compileStatement(sql);
+            statement.clearBindings();
+            statement.bindBlob(1,hinh);
+            statement.executeInsert();
+
+        } else {
             QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
                     + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + Soluong
-                    + " WHERE " + CreateDatabase.tbl_GIOHANG_IDTK + " = " + IDTK+ " AND "
-                    + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
-            ;
+                    + " WHERE " + CreateDatabase.tbl_GIOHANG_IDTK + " = " + IDTK+ " AND " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP + " AND "
+                    + CreateDatabase.tbl_GIOHANG_SIZE + " = '" + size + "'");
         }
     }
 
@@ -142,19 +169,19 @@ public class Database extends SQLiteOpenHelper {
         ;
     }
 
-    public void UPDATE_GIOHANG_THEM(int IDSP)
+    public void UPDATE_GIOHANG_THEM(int IDSP, String SIZE)
     {
         QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
                 + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + 1 +
-                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP + " AND " + CreateDatabase.tbl_GIOHANG_SIZE + " = '" + SIZE + "'")
         ;
     }
 
-    public void UPDATE_GIOHANG_TRU(int IDSP)
+    public void UPDATE_GIOHANG_TRU(int IDSP, String SIZE)
     {
         QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
                 + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " - " + 1 +
-                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP + " AND " + CreateDatabase.tbl_GIOHANG_SIZE + " = '" + SIZE + "'")
         ;
     }
 

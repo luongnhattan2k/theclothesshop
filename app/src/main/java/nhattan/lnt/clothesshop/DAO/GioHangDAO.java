@@ -111,28 +111,37 @@ public class GioHangDAO extends BaseAdapter {
                 if (gioHang.getSOLUONG() > 1) {
                     int soluongmoi = gioHang.getSOLUONG() - 1;
                     gioHang.setSOLUONG(soluongmoi);
+
+                    holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
+                    holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+                    HomeFragment.database.UPDATE_GIOHANG_TRU(
+                            gioHang.getIDSP(),
+                            gioHang.getSIZE()
+                    );
+                } else {
+                    Toast.makeText(context.getActivity(), "Không thể giảm số lượng được nữa !", Toast.LENGTH_SHORT).show();
                 }
-                holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
-                holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
-                EventBus.getDefault().postSticky(new TinhTongEvent());
-                HomeFragment.database.UPDATE_GIOHANG_TRU(
-                        gioHang.getIDSP()
-                );
             }
         });
         holder.img_Themslsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (gioHang.getSOLUONG() < 11) {
+                if (gioHang.getSOLUONG() < 10) {
                     int soluongmoi = gioHang.getSOLUONG() + 1;
                     gioHang.setSOLUONG(soluongmoi);
+
+                    holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
+                    holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+                    HomeFragment.database.UPDATE_GIOHANG_THEM(
+                            gioHang.getIDSP(),
+                            gioHang.getSIZE()
+                    );
+                } else {
+                    Toast.makeText(context.getActivity(), "Đã quá số lượng cho phép mua !", Toast.LENGTH_SHORT).show();
                 }
-                holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
-                holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
-                EventBus.getDefault().postSticky(new TinhTongEvent());
-                HomeFragment.database.UPDATE_GIOHANG_THEM(
-                        gioHang.getIDSP()
-                );
+
             }
         });
 

@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="@dimen/size20dp"
+                android:layout_marginLeft="17dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -62,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/txtSoluong_gh"
-                    android:layout_width="match_parent"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/size10dp"
                     android:layout_marginRight="@dimen/size10dp"
