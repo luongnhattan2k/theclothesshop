@@ -73,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
                 " ) VALUES ('" + IDTK + "', '" + TenTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + NGAYDAT + "', '" + DIACHI + "', '" + GHICHU + "') ");
     }
 
-    public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, int tonghoadon, String ghichu, String diachi)
+    public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, int tonghoadon, String ghichu, String diachi, String size)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_CHITIETHOADON +
                 " ( "
@@ -87,9 +87,10 @@ public class Database extends SQLiteOpenHelper {
                 + CreateDatabase.tbl_CHITIETHOADON_THANHTIEN + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_TONGHOADON + " , "
                 + CreateDatabase.tbl_CHITIETHOADON_GHICHU + " , "
-                + CreateDatabase.tbl_CHITIETHOADON_DIACHI
+                + CreateDatabase.tbl_CHITIETHOADON_DIACHI + " , "
+                + CreateDatabase.tbl_CHITIETHOADON_SIZE
                 + " ) VALUES ( '" + IDCTHOADON + "', '" + IDSP + "', '" + IDTK + "', '" + TenTK + "', '" + TenSP + "' , '" + NgayDat + "' , '" + Soluong + "', '"
-                + thanhtien + "', '" + tonghoadon + "','" + ghichu + "', '" + diachi + "') ");
+                + thanhtien + "', '" + tonghoadon + "','" + ghichu + "', '" + diachi + "', '" + size + "') ");
     }
 
     public void DELETE_GIOHANGALL(int IDGIOHANG){
@@ -172,7 +173,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(7),
                     cursor.getInt(8),
                     cursor.getString(9),
-                    cursor.getString(10)
+                    cursor.getString(10),
+                    cursor.getString(11)
             );
         }
         return null;

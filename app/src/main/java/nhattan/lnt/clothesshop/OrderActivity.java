@@ -154,7 +154,7 @@ public class OrderActivity extends AppCompatActivity {
                 {
                     GioHangDTO themhoadon = gioHangDAO.mangmuahang.get(position);
                     database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Tongtiensp, ghichu, diachi);
+                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Tongtiensp, ghichu, diachi, themhoadon.getSIZE());
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
                 database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Tongtiensp, ngaydat, diachi, ghichu);

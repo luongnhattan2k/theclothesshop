@@ -2,9 +2,12 @@ package nhattan.lnt.clothesshop.DTO;
 
 public class CTHoaDonDTO {
     int IDCTHOADON, IDSANPHAM,IDTAIKHOAN,SOLUONG,THANHTIEN,TONGHOADON;
-    String TENSANPHAM, NGAYDAT, GHICHU, TENTAIKHOAN, DIACHI;
+    String TENSANPHAM, NGAYDAT, GHICHU, TENTAIKHOAN, DIACHI, SIZE;
 
-    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENTAIKHOAN, String TENSANPHAM, String NGAYDAT, int SOLUONG, int THANHTIEN, int TONGHOADON, String GHICHU, String DIACHI) {
+
+
+    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENTAIKHOAN, String TENSANPHAM, String NGAYDAT, int SOLUONG,
+                       int THANHTIEN, int TONGHOADON, String GHICHU, String DIACHI, String SIZE) {
         this.IDCTHOADON = IDCTHOADON;
         this.IDSANPHAM = IDSANPHAM;
         this.IDTAIKHOAN = IDTAIKHOAN;
@@ -16,6 +19,7 @@ public class CTHoaDonDTO {
         this.TONGHOADON = TONGHOADON;
         this.GHICHU = GHICHU;
         this.DIACHI = DIACHI;
+        this.SIZE = SIZE;
     }
 
     public CTHoaDonDTO() {
@@ -108,5 +112,13 @@ public class CTHoaDonDTO {
 
     public void setDIACHI(String DIACHI) {
         this.DIACHI = DIACHI;
+    }
+
+    public String getSIZE() {
+        return SIZE;
+    }
+
+    public void setSIZE(String SIZE) {
+        this.SIZE = SIZE;
     }
 }

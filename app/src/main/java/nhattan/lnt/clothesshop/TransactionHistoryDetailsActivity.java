@@ -69,7 +69,8 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
                     cursor.getInt(7),
                     cursor.getInt(8),
                     cursor.getString(9),
-                    cursor.getString(10)
+                    cursor.getString(10),
+                    cursor.getString(11)
             ));
         }
         adapter.notifyDataSetChanged();

@@ -135,7 +135,7 @@ public class MyCartFragment extends Fragment {
                     cursor.getInt(4),
                     cursor.getInt(5),
                     cursor.getInt(6),
-                    cursor.getString(7)
+                    cursor.getString(8)
             ));
         }
         adapter.notifyDataSetChanged();

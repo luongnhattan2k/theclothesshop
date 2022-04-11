@@ -50,7 +50,7 @@ public class CTHoaDonDAO extends BaseAdapter {
     }
 
     static class ViewHolder{
-        TextView txt_TenSP, txt_Tongtien, txt_SLSP;
+        TextView txt_TenSP, txt_Tongtien, txt_SLSP, txt_Size;
         ImageView img_HinhAnh;
         TextView txt_Tonghoadon, txt_Tennguoidat, txt_Ngaydat, txt_Noidungghichu;
 
@@ -66,10 +66,12 @@ public class CTHoaDonDAO extends BaseAdapter {
             LayoutInflater inflater;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            holder.txt_TenSP = (TextView) view.findViewById(R.id.txtTenchitiet);
-            holder.txt_SLSP = (TextView) view.findViewById(R.id.txtSoluongchitiet);
-            holder.txt_Tongtien = (TextView) view.findViewById(R.id.txtThanhtienchitiet);
-            holder.img_HinhAnh = (ImageView) view.findViewById(R.id.imgHinhchitiet);
+            holder.txt_TenSP =  view.findViewById(R.id.txtTenchitiet);
+            holder.txt_SLSP =  view.findViewById(R.id.txtSoluongchitiet);
+            holder.txt_Tongtien =  view.findViewById(R.id.txtThanhtienchitiet);
+            holder.img_HinhAnh =  view.findViewById(R.id.imgHinhchitiet);
+            holder.txt_Size =  view.findViewById(R.id.txtSizechitiet);
+
             view.setTag(holder);
         } else {
             holder = (CTHoaDonDAO.ViewHolder) view.getTag();
@@ -79,7 +81,8 @@ public class CTHoaDonDAO extends BaseAdapter {
 
         holder.txt_TenSP.setText(ctHoaDonDTO.getTENSANPHAM());
         holder.txt_SLSP.setText("Sl: " + String.valueOf(ctHoaDonDTO.getSOLUONG()));
-        holder.txt_Tongtien.setText("Thành tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
+        holder.txt_Tongtien.setText("Giá: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
+        holder.txt_Size.setText(ctHoaDonDTO.getSIZE());
         id = ctHoaDonDTO.getIDCTHOADON();
 
         SanPhamDTO sanPhamDTO = HomeFragment.database.SANPHAM(ctHoaDonDTO.getIDSANPHAM());
