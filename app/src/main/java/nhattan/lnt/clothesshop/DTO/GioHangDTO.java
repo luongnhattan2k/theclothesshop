@@ -2,15 +2,11 @@ package nhattan.lnt.clothesshop.DTO;
 
 public class GioHangDTO {
 
-    int IDGIOHANG;
+    int IDGIOHANG, IDSP, IDTK, SOLUONG, THANHTIEN;
     byte[] ImageSP;
-    int IDSP;
-    String TENSANPHAM;
-    int IDTK;
-    int SOLUONG;
-    int THANHTIEN;
+    String TENSANPHAM, SIZE;
 
-    public GioHangDTO(int IDGIOHANG, byte[] imageSP, int IDSP, String TENSANPHAM, int IDTK, int SOLUONG, int THANHTIEN) {
+    public GioHangDTO(int IDGIOHANG, byte[] imageSP, int IDSP, String TENSANPHAM, int IDTK, int SOLUONG, int THANHTIEN, String SIZE) {
         this.IDGIOHANG = IDGIOHANG;
         this.ImageSP = imageSP;
         this.IDSP = IDSP;
@@ -18,6 +14,7 @@ public class GioHangDTO {
         this.IDTK = IDTK;
         this.SOLUONG = SOLUONG;
         this.THANHTIEN = THANHTIEN;
+        this.SIZE = SIZE;
     }
 
     public GioHangDTO(){
@@ -78,5 +75,13 @@ public class GioHangDTO {
 
     public void setImageSP(byte[] imageSP) {
         ImageSP = imageSP;
+    }
+
+    public String getSIZE() {
+        return SIZE;
+    }
+
+    public void setSIZE(String SIZE) {
+        this.SIZE = SIZE;
     }
 }

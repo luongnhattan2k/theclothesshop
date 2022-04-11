@@ -103,7 +103,7 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public void SPGH(int IDTK, byte[] hinh, int IDSP, String TenSP, int Soluong, int thanhtien){
+    public void SPGH(int IDTK, byte[] hinh, int IDSP, String TenSP, int Soluong, int thanhtien, String size){
         if(SPChuaCoTrongGH(IDTK, IDSP)){
             QueryData("INSERT INTO " + CreateDatabase.tbl_GIOHANG +
                     " ( "
@@ -112,9 +112,10 @@ public class Database extends SQLiteOpenHelper {
                     + CreateDatabase.tbl_GIOHANG_IDSP + " , "
                     + CreateDatabase.tbl_GIOHANG_TENSANPHAM + " , "
                     + CreateDatabase.tbl_GIOHANG_SOLUONG + " , "
-                    + CreateDatabase.tbl_GIOHANG_THANHTIEN
-                    + " ) VALUES ( " + IDTK + " , " + null + " , " + IDSP+" , '" + TenSP + "' , " + Soluong + " , "
-                    + thanhtien + " ) ");
+                    + CreateDatabase.tbl_GIOHANG_THANHTIEN + " , "
+                    + CreateDatabase.tbl_GIOHANG_SIZE
+                    + " ) VALUES ( " + IDTK + " , " + null + " , " + IDSP + " , '" + TenSP + "' , " + Soluong + " , "
+                    + thanhtien + ", '" + size + "' ) ");
 
             SQLiteDatabase database = getWritableDatabase();
             String sql = "UPDATE GIOHANG SET HINHANH = ? WHERE IDTK="+ IDTK + " AND IDSP=" + IDSP ;
@@ -125,12 +126,19 @@ public class Database extends SQLiteOpenHelper {
         }
         else {
             QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
-                    + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + Soluong + " , "
-                    + CreateDatabase.tbl_GIOHANG_THANHTIEN + " = " + CreateDatabase.tbl_GIOHANG_THANHTIEN + " + " + thanhtien
+                    + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + Soluong
                     + " WHERE " + CreateDatabase.tbl_GIOHANG_IDTK + " = " + IDTK+ " AND "
                     + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
             ;
         }
+    }
+
+    public void UPDATE_GIOHANG(int IDSP, int SL)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
+                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + SL +
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+        ;
     }
 
     public void UPDATE_GIOHANG_THEM(int IDSP)

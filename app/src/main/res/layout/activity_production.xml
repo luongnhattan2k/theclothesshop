@@ -96,56 +96,11 @@
             tools:ignore="MissingConstraints" />
 
 
-        <ImageView
-            android:id="@+id/imgXoasl"
-            android:layout_width="@dimen/size20dp"
-            android:layout_height="@dimen/size20dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="39dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/product_quantity"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_content"
-            app:layout_constraintVertical_bias="0.444"
-            app:srcCompat="@drawable/baseline_remove_24"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/product_quantity"
-            android:layout_width="@dimen/size20dp"
-            android:layout_height="@dimen/size20dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginBottom="39dp"
-            android:gravity="center"
-            android:text="1"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgThemsl"
-            app:layout_constraintTop_toBottomOf="@+id/product_content"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/imgThemsl"
-            android:layout_width="@dimen/size20dp"
-            android:layout_height="@dimen/size20dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="39dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnThemvaogiohang"
-            app:layout_constraintTop_toBottomOf="@+id/product_content"
-            app:layout_constraintVertical_bias="0.444"
-            app:srcCompat="@drawable/baseline_add_24"
-            tools:ignore="MissingConstraints" />
-
         <Button
             android:id="@+id/btnThemvaogiohang"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="25dp"
@@ -155,6 +110,7 @@
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_content"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="MissingConstraints" />

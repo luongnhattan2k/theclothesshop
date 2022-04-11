@@ -21,7 +21,7 @@
 
         <ImageView
             android:padding="10dp"
-            android:id="@+id/imageHinhCustom"
+            android:id="@+id/imageHinhCustom_gh"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_weight="1"
@@ -35,7 +35,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtTensp"
+                android:id="@+id/txtTensp_gh"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center|left"
@@ -61,9 +61,9 @@
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <TextView
-                    android:id="@+id/txtSoluong"
+                    android:id="@+id/txtSoluong_gh"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/size10dp"
                     android:layout_marginRight="@dimen/size10dp"
                     android:gravity="center"
@@ -82,10 +82,34 @@
                     android:src="@drawable/baseline_add_24"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/size10dp"
+                    android:layout_marginRight="@dimen/size10dp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=","
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txt_Sizesanpham_gh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size10dp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text="Size"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
             </LinearLayout>
 
             <TextView
-                android:id="@+id/txtThanhtien"
+                android:id="@+id/txtThanhtien_gh"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"

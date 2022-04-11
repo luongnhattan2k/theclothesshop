@@ -68,7 +68,7 @@ public class GioHangDAO extends BaseAdapter {
 
 
     static class ViewHolder{
-        TextView txt_TenSP, txt_GiaSP, txt_SLSP;
+        TextView txt_TenSP, txt_GiaSP, txt_SLSP, txt_Size;
         ImageView img_HinhAnh, img_Xoasp_gh;
         ImageButton img_Themslsp, img_Truslsp;
         CheckBox checkBox_Muahang;
@@ -84,10 +84,11 @@ public class GioHangDAO extends BaseAdapter {
             LayoutInflater inflater;
             inflater = (LayoutInflater) context.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
-            holder.txt_TenSP = convertView.findViewById(R.id.txtTensp);
-            holder.txt_GiaSP = convertView.findViewById(R.id.txtThanhtien);
-            holder.txt_SLSP = convertView.findViewById(R.id.txtSoluong) ;
-            holder.img_HinhAnh = convertView.findViewById(R.id.imageHinhCustom);
+            holder.txt_TenSP = convertView.findViewById(R.id.txtTensp_gh);
+            holder.txt_GiaSP = convertView.findViewById(R.id.txtThanhtien_gh);
+            holder.txt_SLSP = convertView.findViewById(R.id.txtSoluong_gh) ;
+            holder.txt_Size = convertView.findViewById(R.id.txt_Sizesanpham_gh) ;
+            holder.img_HinhAnh = convertView.findViewById(R.id.imageHinhCustom_gh);
             holder.img_Xoasp_gh = convertView.findViewById(R.id.img_Xoasp_gh);
             holder.img_Themslsp = convertView.findViewById(R.id.img_Themslsp_gh);
             holder.img_Truslsp = convertView.findViewById(R.id.img_Truslsp_gh);
@@ -100,8 +101,10 @@ public class GioHangDAO extends BaseAdapter {
 
         GioHangDTO gioHang = sanPhamGioHangList.get(position);
         holder.txt_TenSP.setText(gioHang.getTENSANPHAM());
-        holder.txt_GiaSP.setText(String.valueOf(gioHang.getTHANHTIEN()) + " VNĐ" );
         holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
+        holder.txt_Size.setText(gioHang.getSIZE());
+        holder.txt_GiaSP.setText(gioHang.getTHANHTIEN() + " VNĐ" );
+
         holder.img_Truslsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
