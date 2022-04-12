@@ -22,6 +22,7 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/baseline_view_list_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/bo_tron_bon_goc.xml" value="0.22552083333333334" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.22552083333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/bottom_sheet_qlhd.xml" value="0.22552083333333334" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/button_custom.xml" value="0.22552083333333334" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/button_custom_1.xml" value="0.22552083333333334" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/drawable/curved_background.xml" value="0.22552083333333334" />
@@ -63,6 +64,7 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/bot_msg.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/content_main.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/content_main_manager.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/dialog_custom_qlhd.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/dialog_dathang.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_contact.xml" value="0.1953125" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_home.xml" value="0.22" />
@@ -74,7 +76,7 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quan_ly__gop_y.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__gopy.xml" value="0.209375" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__hoadon.xml" value="0.4407766990291262" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__hoadon.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__sanpham.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__taikhoan.xml" value="0.1953125" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/fragment_quanly__thong_ke.xml" value="0.209375" />
@@ -90,7 +92,8 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/header_manager.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/item_category.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/item_selected.xml" value="0.25" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.67" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/layout_bottom_sheet_qlhd.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_quanly_hoadon.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_transaction_history_details.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_trasaction_history.xml" value="0.209375" />

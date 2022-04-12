@@ -1,22 +1,16 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class TaiKhoanDTO {
-    int MATK;
-    String TENTK;
-    String MATKHAU;
+    int MATK,QUYEN,SDT,SLM;
+    String TENTK,MATKHAU,EMAIL,DIACHI;
     byte[] HINHANH;
-    int SDT;
-    String EMAIL;
-    String DIACHI;
-    int QUYEN;
 
     public TaiKhoanDTO(){
         this.MATK = -1;
     }
 
 
-
-    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, byte[] HINHANH, int SDT, String EMAIL, String DIACHI, int QUYEN) {
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, byte[] HINHANH, int SDT, String EMAIL, String DIACHI, int QUYEN, int SLM) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
@@ -25,6 +19,7 @@ public class TaiKhoanDTO {
         this.EMAIL = EMAIL;
         this.DIACHI = DIACHI;
         this.QUYEN = QUYEN;
+        this.SLM = SLM;
     }
 
 
@@ -90,5 +85,13 @@ public class TaiKhoanDTO {
 
     public void setHINHANH(byte[] HINHANH) {
         this.HINHANH = HINHANH;
+    }
+
+    public int getSLM() {
+        return SLM;
+    }
+
+    public void setSLM(int SLM) {
+        this.SLM = SLM;
     }
 }

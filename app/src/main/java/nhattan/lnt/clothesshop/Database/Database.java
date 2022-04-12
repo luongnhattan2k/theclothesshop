@@ -221,7 +221,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8)
             );
         }
         return null;
@@ -316,7 +317,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8)
             ));
         }
         return list;
@@ -337,7 +339,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getInt(7)
+                    cursor.getInt(7),
+                    cursor.getInt(8)
             );
         }
         return null;

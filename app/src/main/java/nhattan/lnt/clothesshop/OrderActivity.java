@@ -122,7 +122,7 @@ public class OrderActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                 String dateString = sdf.format(date);
                                 tdate.setText(dateString);
                             }
