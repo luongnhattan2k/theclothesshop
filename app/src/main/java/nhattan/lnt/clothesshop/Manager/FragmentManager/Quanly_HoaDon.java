@@ -45,7 +45,7 @@ public class Quanly_HoaDon extends Fragment {
     HoaDonDTO hoaDonDTO;
     ArrayList<HoaDonDTO> listHoaDon;
     QuanLyHoaDonAdapter adapter;
-    Button btn_Thongkedoanhthu, btn_Thoatthongke;
+    Button btn_Thongkedoanhthu, btn_Thoatthongke, btn_Chonngay_qlhd;
     String strNgay = null;
     TextView txt_Tongtienthongke, txt_Ngaythongke;
     int Doanhthu;
@@ -139,6 +139,15 @@ public class Quanly_HoaDon extends Fragment {
         alert.show();
     }
 
+    private void Tongdoanhthu() {
+        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NGAYDAT = '"
+                + strNgay + "'");
+        cursor.moveToNext();
+        Doanhthu = cursor.getInt(0);
+
+        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
+    }
+
     private void AnhXa() {
         recV_DanhSachSanPham_qlhd = view.findViewById(R.id.recV_DanhSachSanPham_qlhd);
         btn_Thongkedoanhthu = view.findViewById(R.id.btnThongkedoanhthu);
@@ -151,49 +160,29 @@ public class Quanly_HoaDon extends Fragment {
                         R.layout.layout_bottom_sheet_qlhd, getActivity().findViewById(R.id.bottomSheetContainer_qlhd)
                 );
 
-                TextView txt_Hienthingay_qlhd = bottomSheetView.findViewById(R.id.txt_Hienthingay_qlhd);
-//                TextView txt_Hienthithang_qlhd = bottomSheetView.findViewById(R.id.txt_Hienthithang_qlhd);
-//                TextView txt_Hienthinam_qlhd = bottomSheetView.findViewById(R.id.txt_Hienthinam_qlhd);
-                Button btn_Chonngay_qlhd = bottomSheetView.findViewById(R.id.btn_Chonngay_qlhd);
-                Button btn_Xacnhan_Chonngay_qlhd = bottomSheetView.findViewById(R.id.btn_Xacnhan_Chonngay_qlhd);
-//                Button btn_Chonthang_qlhd = bottomSheetView.findViewById(R.id.btn_Chonthang_qlhd);
-//                Button btn_Xacnhan_Chonthang_qlhd = bottomSheetView.findViewById(R.id.btn_Xacnhan_Chonthang_qlhd);
-//                Button btn_Chonnam_qlhd = bottomSheetView.findViewById(R.id.btn_Chonnam_qlhd);
-//                Button btn_Xacnhan_Chonnam_qlhd = bottomSheetView.findViewById(R.id.btn_Xacnhan_Chonnam_qlhd);
+                Button btn_Thongketheongay_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheongay_qlhd);
+                Button btn_Thongketheothang_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheothang_qlhd);
+                Button btn_Thongketheonam_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheonam_qlhd);
 
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                btn_Chonngay_qlhd.setOnClickListener(new View.OnClickListener() {
+                btn_Thongketheonam_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                Calendar chonNgay = Calendar.getInstance();
-                                chonNgay.set(year, month, dayOfMonth);
-                                strNgay = simpleDateFormat.format(chonNgay.getTime());
-                                txt_Hienthingay_qlhd.setText(strNgay);
-                            }
-                        }, year, month, day );
-                        datePickerDialog.show();
+                        DialogThongkeThang();
                     }
                 });
 
-                btn_Xacnhan_Chonngay_qlhd.setOnClickListener(new View.OnClickListener() {
+                btn_Thongketheothang_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (strNgay == null) {
-                            Toast.makeText(getActivity(), "Hãy chọn ngày cần thống kê ! ", Toast.LENGTH_SHORT).show();
-                        } else {
-//                            Toast.makeText(getActivity(), "Ngày: " + strNgay, Toast.LENGTH_SHORT).show();
-                            DialogThongke();
-                            Tongdoanhthu();
-                        }
+                        DialogThongkeThang();
+                    }
+                });
 
+
+                btn_Thongketheongay_qlhd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogThongkeNgay();
                     }
                 });
 
@@ -205,34 +194,57 @@ public class Quanly_HoaDon extends Fragment {
 
     }
 
-    private void Tongdoanhthu() {
-        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NGAYDAT = '"
-                + strNgay + "'");
-        cursor.moveToNext();
-        Doanhthu = cursor.getInt(0);
 
-        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
+
+    private void DialogThongkeThang() {
+        Dialog dialog_thang = new Dialog(getActivity());
+        dialog_thang.setContentView(R.layout.dialog_custom_qlhd_2);
+
+
+        dialog_thang.show();
     }
 
-    private void DialogThongke() {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_custom_qlhd);
+    private void DialogThongkeNgay() {
+        Dialog dialog_ngay = new Dialog(getActivity());
+        dialog_ngay.setContentView(R.layout.dialog_custom_qlhd);
 
-        txt_Ngaythongke = dialog.findViewById(R.id.txt_Ngaythongke);
-        txt_Tongtienthongke = dialog.findViewById(R.id.txt_Tongtienthongke);
-        btn_Thoatthongke = dialog.findViewById(R.id.btn_Thoatthongke);
+        txt_Ngaythongke = dialog_ngay.findViewById(R.id.txt_Ngaythongke);
+        txt_Tongtienthongke = dialog_ngay.findViewById(R.id.txt_Tongtienthongke);
+        btn_Thoatthongke = dialog_ngay.findViewById(R.id.btn_Thoatthongke);
+        btn_Chonngay_qlhd = dialog_ngay.findViewById(R.id.btn_Chonngay_qlhd);
 
-        txt_Ngaythongke.setText(strNgay);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        btn_Chonngay_qlhd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        Calendar chonNgay = Calendar.getInstance();
+                        chonNgay.set(year, month, dayOfMonth);
+                        strNgay = simpleDateFormat.format(chonNgay.getTime());
+                        txt_Ngaythongke.setText(strNgay);
+                        Tongdoanhthu();
+                    }
+                }, year, month, day );
+                datePickerDialog.show();
+            }
+        });
 
         btn_Thoatthongke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.cancel();
-                dialog.dismiss();
+                dialog_ngay.cancel();
+                dialog_ngay.dismiss();
             }
         });
 
-        dialog.show();
+        dialog_ngay.show();
     }
 
 

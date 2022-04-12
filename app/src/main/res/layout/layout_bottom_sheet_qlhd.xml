@@ -23,75 +23,40 @@
         android:layout_marginBottom="@dimen/size10dp"
         android:background="@color/xam"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp" >
 
-        <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/size10dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="@dimen/size10dp"
-                android:gravity="center|left"
-                android:padding="@dimen/size10dp"
-                android:text="Thống kê theo ngày:"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/txt_Hienthingay_qlhd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size40dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center|left"
-                android:padding="@dimen/size10dp"
-                android:text="Chọn ngày .." />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/size10dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/btn_Chonngay_qlhd"
-                android:layout_width="100dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:text="Chọn ngày"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btn_Xacnhan_Chonngay_qlhd"
-                android:layout_width="100dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:backgroundTint="#2AF107"
-                android:text="Xác nhận"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+    <Button
+        android:id="@+id/btn_Thongketheongay_qlhd"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="@dimen/size10dp"
-        android:background="@color/xam"/>
+        android:layout_gravity="center"
+        android:backgroundTint="@color/xanh_nhat"
+        android:text="Thống kê theo ngày"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_Thongketheothang_qlhd"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/xanh_nhat"
+        android:text="Thống kê theo tháng"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_Thongketheonam_qlhd"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/xanh_nhat"
+        android:text="Thống kê theo năm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="12sp" />
+
+
 
 </LinearLayout>
