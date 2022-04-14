@@ -25,64 +25,19 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/size10dp"
             android:gravity="left"
-            android:text="Từ ngày:"
+            android:text="Nhập tháng:"
             android:textStyle="bold"
-            android:textSize="14sp"/>
+            android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/txt_Ngaythongke_batdau"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:padding="@dimen/size10dp"
-            android:gravity="left"
-            android:text="dd/MM/yyyy"
-            android:textStyle="bold"
-            android:textSize="14sp"/>
-
-        <Button
-            android:id="@+id/btn_Chonngaybatdau_qlhd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/size10dp"
-            android:text="Chọn"
-            android:textSize="12sp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/edt_Thangthongke"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/size10dp"
             android:gravity="left"
-            android:text="Đến ngày:"
+            android:hint="MM/yyyy"
             android:textStyle="bold"
-            android:textSize="14sp"/>
-
-        <TextView
-            android:id="@+id/txt_Ngaythongke_ketthuc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/size10dp"
-            android:gravity="left"
-            android:text="dd/MM/yyyy"
-            android:textStyle="bold"
-            android:textSize="14sp"/>
-
-        <Button
-            android:id="@+id/btn_Chonngaykethuc_qlhd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity=""
-            android:layout_marginLeft="@dimen/size10dp"
-            android:text="Chọn"
-            android:textSize="12sp"/>
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
@@ -102,7 +57,7 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/txt_Tongtienthongke"
+            android:id="@+id/txt_Tongtienthongke_thang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/size10dp"
@@ -113,15 +68,31 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_Thoatthongke"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="@dimen/size20dp"
-        android:backgroundTint="#ff00"
-        android:text="Thoát"
-        android:textSize="12sp"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_Xacnhanthang_qlhd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/size20dp"
+            android:text="Xác nhận"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btn_Thoatthongke_thang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/size10dp"
+            android:backgroundTint="#ff00"
+            android:text="Thoát"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,9 +46,12 @@ public class Quanly_HoaDon extends Fragment {
     HoaDonDTO hoaDonDTO;
     ArrayList<HoaDonDTO> listHoaDon;
     QuanLyHoaDonAdapter adapter;
-    Button btn_Thongkedoanhthu, btn_Thoatthongke, btn_Chonngay_qlhd;
+    Button btn_Thongkedoanhthu, btn_Thoatthongke, btn_Chonngay_qlhd, btn_Xacnhanthang_qlhd, btn_Xacnhannam_qlhd;
     String strNgay = null;
+    String strThang = null;
+    String strNam = null;
     TextView txt_Tongtienthongke, txt_Ngaythongke;
+    EditText edt_Thangthongke, edt_Namthongke;
     int Doanhthu;
 
 
@@ -148,6 +152,24 @@ public class Quanly_HoaDon extends Fragment {
         txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
     }
 
+    private void Tongdoanhthu_thang() {
+        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE THANGDAT = '"
+                + strThang + "'");
+        cursor.moveToNext();
+        Doanhthu = cursor.getInt(0);
+
+        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
+    }
+
+    private void Tongdoanhthu_nam() {
+        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NAMDAT = '"
+                + strNam + "'");
+        cursor.moveToNext();
+        Doanhthu = cursor.getInt(0);
+
+        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
+    }
+
     private void AnhXa() {
         recV_DanhSachSanPham_qlhd = view.findViewById(R.id.recV_DanhSachSanPham_qlhd);
         btn_Thongkedoanhthu = view.findViewById(R.id.btnThongkedoanhthu);
@@ -167,7 +189,7 @@ public class Quanly_HoaDon extends Fragment {
                 btn_Thongketheonam_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DialogThongkeThang();
+                        DialogThongkeNam();
                     }
                 });
 
@@ -194,12 +216,70 @@ public class Quanly_HoaDon extends Fragment {
 
     }
 
+    private void DialogThongkeNam() {
+        Dialog dialog_nam = new Dialog(getActivity());
+        dialog_nam.setContentView(R.layout.dialog_custom_qlhd_nam);
+
+        edt_Namthongke = dialog_nam.findViewById(R.id.edt_Namthongke);
+        txt_Tongtienthongke = dialog_nam.findViewById(R.id.txt_Tongtienthongke_nam);
+        btn_Thoatthongke = dialog_nam.findViewById(R.id.btn_Thoatthongke_nam);
+        btn_Xacnhannam_qlhd = dialog_nam.findViewById(R.id.btn_Xacnhannam_qlhd);
+
+
+        btn_Xacnhannam_qlhd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strNam = edt_Namthongke.getText().toString();
+                if (strNam.isEmpty()) {
+                    Toast.makeText(getActivity(), "Hãy nhập năm cần thống kê !", Toast.LENGTH_SHORT).show();
+                } else {
+                    Tongdoanhthu_nam();
+                }
+            }
+        });
+
+
+        btn_Thoatthongke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_nam.cancel();
+                dialog_nam.dismiss();
+            }
+        });
+
+        dialog_nam.show();
+    }
+
 
 
     private void DialogThongkeThang() {
         Dialog dialog_thang = new Dialog(getActivity());
-        dialog_thang.setContentView(R.layout.dialog_custom_qlhd_2);
+        dialog_thang.setContentView(R.layout.dialog_custom_qlhd_thang);
 
+        edt_Thangthongke = dialog_thang.findViewById(R.id.edt_Thangthongke);
+        txt_Tongtienthongke = dialog_thang.findViewById(R.id.txt_Tongtienthongke_thang);
+        btn_Thoatthongke = dialog_thang.findViewById(R.id.btn_Thoatthongke_thang);
+        btn_Xacnhanthang_qlhd = dialog_thang.findViewById(R.id.btn_Xacnhanthang_qlhd);
+
+        btn_Xacnhanthang_qlhd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strThang = edt_Thangthongke.getText().toString();
+                if (strThang.isEmpty()) {
+                    Toast.makeText(getActivity(), "Hãy nhập tháng cần thống kê !", Toast.LENGTH_SHORT).show();
+                } else {
+                    Tongdoanhthu_thang();
+                }
+            }
+        });
+
+        btn_Thoatthongke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_thang.cancel();
+                dialog_thang.dismiss();
+            }
+        });
 
         dialog_thang.show();
     }
