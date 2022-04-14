@@ -2,9 +2,9 @@ package nhattan.lnt.clothesshop.DTO;
 
 public class HoaDonDTO {
     int IDHOADON,TONGTIEN,IDCTHOADON,IDTAIKHOAN;
-    String GHICHU,DIACHI,TENTAIKHOAN,NGAYDAT;
+    String GHICHU,DIACHI,TENTAIKHOAN,NGAYDAT,THANGDAT,NAMDAT;
 
-    public HoaDonDTO(int IDHOADON, int IDTAIKHOAN, String TENTAIKHOAN, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String DIACHI, String GHICHI  ) {
+    public HoaDonDTO(int IDHOADON, int IDTAIKHOAN, String TENTAIKHOAN, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHI  ) {
         this.IDHOADON = IDHOADON;
         this.TONGTIEN = TONGTIEN;
         this.IDCTHOADON = IDCTHOADON;
@@ -13,6 +13,8 @@ public class HoaDonDTO {
         this.IDTAIKHOAN = IDTAIKHOAN;
         this.TENTAIKHOAN = TENTAIKHOAN;
         this.NGAYDAT = NGAYDAT;
+        this.THANGDAT = THANGDAT;
+        this.NAMDAT = NAMDAT;
     }
 
     public int getIDHOADON() {
@@ -63,8 +65,6 @@ public class HoaDonDTO {
         this.IDTAIKHOAN = IDTAIKHOAN;
     }
 
-
-
     public String getTENTAIKHOAN() {
         return TENTAIKHOAN;
     }
@@ -80,4 +80,21 @@ public class HoaDonDTO {
     public void setNGAYDAT(String NGAYDAT) {
         this.NGAYDAT = NGAYDAT;
     }
+
+    public String getTHANGDAT() {
+        return THANGDAT;
+    }
+
+    public void setTHANGDAT(String THANGDAT) {
+        this.THANGDAT = THANGDAT;
+    }
+
+    public String getNAMDAT() {
+        return NAMDAT;
+    }
+
+    public void setNAMDAT(String NAMDAT) {
+        this.NAMDAT = NAMDAT;
+    }
+
 }

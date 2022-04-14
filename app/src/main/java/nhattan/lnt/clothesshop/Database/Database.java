@@ -67,7 +67,7 @@ public class Database extends SQLiteOpenHelper {
         // CHUA ID HOA DON
     }
 
-    public void INSERT_HOADON(int IDTK,String TenTK, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String DIACHI, String GHICHU)
+    public void INSERT_HOADON(int IDTK,String TenTK, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHU)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_HOADON +
                 " ( "
@@ -76,9 +76,12 @@ public class Database extends SQLiteOpenHelper {
                 + CreateDatabase.tbl_HOADON_IDCTHOADON + " , "
                 + CreateDatabase.tbl_HOADON_TONGTIEN + " , "
                 + CreateDatabase.tbl_HOADON_NGAYDAT + " , "
+                + CreateDatabase.tbl_HOADON_THANGDAT + " , "
+                + CreateDatabase.tbl_HOADON_NAMDAT + " , "
                 + CreateDatabase.tbl_HOADON_DIACHI + " , "
                 + CreateDatabase.tbl_HOADON_GHICHU +
-                " ) VALUES ('" + IDTK + "', '" + TenTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + NGAYDAT + "', '" + DIACHI + "', '" + GHICHU + "') ");
+                " ) VALUES ('" + IDTK + "', '" + TenTK + "', '" + IDCTHOADON + "', '" + TONGTIEN + "', '" + NGAYDAT + "', '"
+                + THANGDAT + "', '" + NAMDAT + "', '" + DIACHI + "', '" + GHICHU + "') ");
     }
 
     public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, int tonghoadon, String ghichu, String diachi, String size)
@@ -414,7 +417,9 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getString(6),
-                    cursor.getString(7)
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9)
             ));
         }
         return list;

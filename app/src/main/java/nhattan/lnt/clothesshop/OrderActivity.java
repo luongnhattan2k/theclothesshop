@@ -45,6 +45,7 @@ public class OrderActivity extends AppCompatActivity {
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int idcthd;
+    String dateString_ngay, dateString_thang, dateString_nam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,9 +123,16 @@ public class OrderActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                                String dateString = sdf.format(date);
-                                tdate.setText(dateString);
+                                SimpleDateFormat sdf_ngay = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat sdf_thang = new SimpleDateFormat("MM/yyyy");
+                                SimpleDateFormat sdf_nam = new SimpleDateFormat("yyyy");
+                                dateString_ngay = sdf_ngay.format(date);
+                                dateString_thang = sdf_thang.format(date);
+                                dateString_nam = sdf_nam.format(date);
+//                                Log.d("Ngày: ", dateString_ngay);
+//                                Log.d("Tháng: ", dateString_thang);
+//                                Log.d("Năm: ", dateString_nam);
+                                tdate.setText(dateString_ngay);
                             }
                         });
                     }
@@ -141,6 +149,8 @@ public class OrderActivity extends AppCompatActivity {
                 String diachi =  edt_Diachigiaohang.getText().toString();
                 String ghichu = edt_Ghichu.getText().toString();
                 String ngaydat = tdate.getText().toString();
+                String thangdat = dateString_thang;
+                String namdat = dateString_nam;
 
                 if(database.HoaDonChuaCoTrongHD()){
                     idcthd = 1;
@@ -157,7 +167,7 @@ public class OrderActivity extends AppCompatActivity {
                             ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Tongtiensp, ghichu, diachi, themhoadon.getSIZE());
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
-                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Tongtiensp, ngaydat, diachi, ghichu);
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Tongtiensp, ngaydat, thangdat, namdat, diachi, ghichu);
                 for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
                     database.DELETE_GIOHANGALL(gioHangDAO.mangmuahang.get(i).getIDGIOHANG());
                 }

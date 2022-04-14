@@ -214,9 +214,11 @@ public class Quanly_HoaDon extends Fragment {
         btn_Chonngay_qlhd = dialog_ngay.findViewById(R.id.btn_Chonngay_qlhd);
 
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year_now = calendar.get(Calendar.YEAR);
+        int month_now = calendar.get(Calendar.MONTH);
+        int day_now = calendar.get(Calendar.DAY_OF_MONTH);
+
+
 
         btn_Chonngay_qlhd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,9 +231,13 @@ public class Quanly_HoaDon extends Fragment {
                         chonNgay.set(year, month, dayOfMonth);
                         strNgay = simpleDateFormat.format(chonNgay.getTime());
                         txt_Ngaythongke.setText(strNgay);
+                        Log.d("Ngày: ", String.valueOf(dayOfMonth));
+                        Log.d("Tháng: ", String.valueOf(month + 1));
+                        Log.d("Năm: ", String.valueOf(year));
                         Tongdoanhthu();
+
                     }
-                }, year, month, day );
+                }, year_now, month_now, day_now );
                 datePickerDialog.show();
             }
         });

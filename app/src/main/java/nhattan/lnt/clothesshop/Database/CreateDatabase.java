@@ -49,6 +49,8 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_HOADON_TONGTIEN = "TONGTIEN";
     public static String tbl_HOADON_DIACHI = "DIACHI";
     public static String tbl_HOADON_NGAYDAT = "NGAYDAT";
+    public static String tbl_HOADON_THANGDAT = "THANGDAT";
+    public static String tbl_HOADON_NAMDAT = "NAMDAT";
     public static String tbl_HOADON_GHICHU = "GHICHU";
     public static String tbl_HOADON_SIZE = "SIZE";
 
@@ -104,7 +106,8 @@ public class CreateDatabase extends SQLiteOpenHelper {
 
         String HOADON = "CREATE TABLE " + tbl_HOADON + "(" + tbl_HOADON_IDHOADON + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_HOADON_IDTAIKHOAN + " INTEGER, " + tbl_HOADON_TENTAIKHOAN + " TEXT, " + tbl_HOADON_IDCTHOADON + " INTEGER, " + tbl_HOADON_TONGTIEN + " INTEGER, "
-                + tbl_HOADON_DIACHI + " TEXT," + tbl_HOADON_NGAYDAT + " DATE, " + tbl_HOADON_GHICHU + " TEXT, " + tbl_HOADON_SIZE + " TEXT)";
+                + tbl_HOADON_DIACHI + " TEXT," + tbl_HOADON_NGAYDAT + " DATE," + tbl_HOADON_THANGDAT + " DATE," + tbl_HOADON_NAMDAT + " DATE, "
+                + tbl_HOADON_GHICHU + " TEXT, " + tbl_HOADON_SIZE + " TEXT)";
 
         String CTHOADON = "CREATE TABLE " + tbl_CHITIETHOADON + "(" + tbl_CHITIETHOADON_IDCTHOADON + " INTEGER, "
                 + tbl_CHITIETHOADON_IDSANPHAM + " INTEGER, " + tbl_CHITIETHOADON_IDTAIKHOAN + " INTEGER, " + tbl_CHITIETHOADON_TENTAIKHOAN + " TEXT, " + tbl_CHITIETHOADON_TENSANPHAM + " TEXT, "
