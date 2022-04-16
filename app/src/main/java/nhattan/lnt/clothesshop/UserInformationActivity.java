@@ -1,9 +1,5 @@
 package nhattan.lnt.clothesshop;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -11,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,17 +16,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
-import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
-import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
-import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 
 public class UserInformationActivity extends AppCompatActivity {
@@ -107,7 +101,6 @@ public class UserInformationActivity extends AppCompatActivity {
                 String Email = edt_Email.getText().toString();
                 String DiaChi = edt_Diachi.getText().toString();
 
-
                 if (isEnabled){
                     btn_Capnhat.setText("Lưu");
                 }
@@ -149,10 +142,6 @@ public class UserInformationActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.iCamera:
-                Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(iCamera,REQUEST_CODE_CAMERA);
-                return true;
             case R.id.iFolder:
                 Intent iFolder = new Intent(Intent.ACTION_PICK);
                 iFolder.setType("image/*");
@@ -187,16 +176,6 @@ public class UserInformationActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
-            case REQUEST_CODE_CAMERA:
-                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED)
-                {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent,REQUEST_CODE_CAMERA);
-                }else
-                {
-                    Toast.makeText(UserInformationActivity.this," Bạn không cho phép mở camera", Toast.LENGTH_LONG).show();
-                }
-                break;
             case REQUEST_CODE_FOLDER:
                 if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED)
                 {

@@ -167,8 +167,16 @@ public class Database extends SQLiteOpenHelper {
     public void UPDATE_GIOHANG(int IDSP, int SL)
     {
         QueryData("UPDATE " + CreateDatabase.tbl_GIOHANG + " SET "
-                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + SL +
+                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = " + CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + SL +
                 " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP)
+        ;
+    }
+
+    public void UPDATE_LOAITK(int IDTK, String Loaitk)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_TAIKHOAN + " SET "
+                + CreateDatabase.tbl_TAIKHOAN_LOAITK + " = '" + Loaitk +
+                "' WHERE " + CreateDatabase.tbl_TAIKHOAN_IDTK + " = " + IDTK)
         ;
     }
 
@@ -225,7 +233,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getInt(8)
+                    cursor.getString(8)
             );
         }
         return null;
@@ -321,7 +329,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getInt(8)
+                    cursor.getString(8)
             ));
         }
         return list;
@@ -343,16 +351,16 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getInt(8)
+                    cursor.getString(8)
             );
         }
         return null;
     }
 
-    public void CapNhatTaiKhoan_ADMIN(int IDTAIKHOAN, String TENTAIKHOAN, String MATKHAU, byte[] BACKGROUND, int SDT, String EMAIL, String DIACHI, int QUYEN){
+    public void CapNhatTaiKhoan_ADMIN(int IDTAIKHOAN, String TENTAIKHOAN, String MATKHAU, byte[] BACKGROUND, int SDT, String EMAIL, String DIACHI, int QUYEN, String LOAITK){
         QueryData("UPDATE TAIKHOAN SET TENTAIKHOAN = '" + TENTAIKHOAN + "' , MATKHAU ='" + MATKHAU + "', SDT = '" + SDT
-                + "', EMAIL = '" + EMAIL + "', DIACHI = '" + DIACHI
-                + "', QUYEN = '" + QUYEN + "'  WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
+                + "', EMAIL = '" + EMAIL + "', DIACHI = '" + DIACHI + "', QUYEN = '" + QUYEN
+                + "', LOAITK = '" + LOAITK + "'  WHERE IDTAIKHOAN = '" + IDTAIKHOAN + "'");
 
         String sql = "UPDATE TAIKHOAN SET HINHANH = ? WHERE IDTAIKHOAN= " + IDTAIKHOAN ;
         SQLiteDatabase database = getWritableDatabase();

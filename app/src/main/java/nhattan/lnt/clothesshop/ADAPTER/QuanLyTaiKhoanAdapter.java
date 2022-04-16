@@ -59,7 +59,8 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
             holder.imgV_Hinh_qlTaikhoan.setImageBitmap(bitmap);
         }
         holder.txtV_Tentaikhoan_qlTaikhoan.setText(taiKhoan.getTENTK());
-        holder.itemView .setOnClickListener(new View.OnClickListener() {
+        holder.txtV_loaitk_qlTaikhoan.setText(taiKhoan.getLOAITK());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setPosition(holder.getPosition());
@@ -90,12 +91,13 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
 
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         ImageView imgV_Hinh_qlTaikhoan;
-        TextView txtV_Tentaikhoan_qlTaikhoan;
+        TextView txtV_Tentaikhoan_qlTaikhoan, txtV_loaitk_qlTaikhoan;
         CardView viewholder_qltaikhoan;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             txtV_Tentaikhoan_qlTaikhoan = itemView.findViewById(R.id.txtV_Noidung_qltaikhoan);
+            txtV_loaitk_qlTaikhoan = itemView.findViewById(R.id.txtV_loaitk_qlTaikhoan);
             imgV_Hinh_qlTaikhoan = itemView.findViewById(R.id.imgV_Hinh_qltaikhoan);
             viewholder_qltaikhoan = itemView.findViewById(R.id.viewholder_qltaikhoan);
 

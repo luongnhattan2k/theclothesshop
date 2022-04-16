@@ -25,7 +25,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_TAIKHOAN_EMAIL = "EMAIL";
     public static String tbl_TAIKHOAN_DIACHI = "DIACHI";
     public static String tbl_TAIKHOAN_QUYEN = "QUYEN";
-    public static String tbl_TAIKHOAN_SLM = "SLM";
+    public static String tbl_TAIKHOAN_LOAITK = "LOAITK";
 
     public static String tbl_QUYEN_IDQUYEN = "MAQUYEN";
     public static String tbl_QUYEN_TENQUYEN = "TENQUYEN";
@@ -91,7 +91,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String TAIKHOAN = "CREATE TABLE " + tbl_TAIKHOAN + " (" + tbl_TAIKHOAN_IDTK + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_TAIKHOAN_TENTAIKHOAN + " TEXT , " + tbl_TAIKHOAN_MATKHAU + " TEXT, " + tbl_TAIKHOAN_HINHANH + " BLOB, " + tbl_TAIKHOAN_SDT + " INTEGER, "
-                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, " + tbl_TAIKHOAN_QUYEN + " INTEGER, " + tbl_TAIKHOAN_SLM + " INTEGER )";
+                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, " + tbl_TAIKHOAN_QUYEN + " INTEGER, " + tbl_TAIKHOAN_LOAITK + " TEXT )";
 
         String QUYEN = "CREATE TABLE " + tbl_QUYEN + "(" + tbl_QUYEN_IDQUYEN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_QUYEN_TENQUYEN + " TEXT )";

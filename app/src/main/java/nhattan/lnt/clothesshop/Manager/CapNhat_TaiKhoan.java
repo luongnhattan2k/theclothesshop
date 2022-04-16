@@ -1,9 +1,5 @@
 package nhattan.lnt.clothesshop.Manager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -21,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -33,7 +33,7 @@ import nhattan.lnt.clothesshop.R;
 
 public class CapNhat_TaiKhoan extends AppCompatActivity {
 
-    EditText edtIDTK_QLTK, edtTENTK_QLTK, edtNGAYSINH_QLTK, edtEMAIL_QLTK, edtSDT_QLTK,
+    EditText edtIDTK_QLTK, edtTENTK_QLTK, edtLOAITK_QLTK, edtEMAIL_QLTK, edtSDT_QLTK,
             edtMATKHAU_QLTK, edtQUYEN_QLTK, edtDIACHI_QLTK;
     Button btnCAPNHAT_QLTK;
     CircleImageView img_HINHANH_QLTK;
@@ -68,6 +68,7 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtDIACHI_QLTK.setText(taiKhoan.getDIACHI());
         edtQUYEN_QLTK.setText(String.valueOf(taiKhoan.getQUYEN()));
         edtEMAIL_QLTK.setText(taiKhoan.getEMAIL());
+        edtLOAITK_QLTK.setText(taiKhoan.getLOAITK());
 
         if (Login.taiKhoanDTO.getHINHANH() == null){
             img_HINHANH_QLTK.setImageResource(R.drawable.baseline_account_circle_24);
@@ -85,6 +86,7 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtEMAIL_QLTK.setEnabled(isEnabled);
         edtDIACHI_QLTK.setEnabled(isEnabled);
         edtQUYEN_QLTK.setEnabled(isEnabled);
+        edtLOAITK_QLTK.setEnabled(isEnabled);
     }
 
     private void AnhXa() {
@@ -97,6 +99,7 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtEMAIL_QLTK = findViewById(R.id.edt_mail_ql_taikhoan);
         edtDIACHI_QLTK = findViewById(R.id.edt_diachi_ql_taikhoan);
         edtQUYEN_QLTK = findViewById(R.id.edt_quyen_ql_taikhoan);
+        edtLOAITK_QLTK = findViewById(R.id.edt_loaitk_ql_taikhoan);
         enableControl();
 
         registerForContextMenu(img_HINHANH_QLTK);
@@ -140,10 +143,11 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
                     String matkhau = edtMATKHAU_QLTK.getText().toString();
                     int quyen = Integer.parseInt(edtQUYEN_QLTK.getText().toString());
                     String diachi = edtDIACHI_QLTK.getText().toString();
+                    String loaitk = edtLOAITK_QLTK.getText().toString();
 
                     if (edtSDT_QLTK.getText().length() != 0 && edtEMAIL_QLTK.getText().length() != 0
-                            && edtMATKHAU_QLTK.getText().length() != 0 && edtDIACHI_QLTK.getText().length() !=0 && edtQUYEN_QLTK.getText().length() !=0) {
-                        database.CapNhatTaiKhoan_ADMIN(idtk, tentaikhoan, matkhau, hinhAnh, sdt, email, diachi, quyen);
+                            && edtMATKHAU_QLTK.getText().length() != 0 && edtLOAITK_QLTK.getText().length() !=0 && edtQUYEN_QLTK.getText().length() !=0) {
+                        database.CapNhatTaiKhoan_ADMIN(idtk, tentaikhoan, matkhau, hinhAnh, sdt, email, diachi, quyen, loaitk);
                         Toast.makeText(CapNhat_TaiKhoan.this, "Đã lưu tài khoản !", Toast.LENGTH_SHORT).show();
                         onBackPressed();
                     } else {

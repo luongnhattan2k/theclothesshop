@@ -29,29 +29,24 @@ import com.google.android.material.navigation.NavigationView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
-import nhattan.lnt.clothesshop.FragmentApp.MenClothesFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoKhoacFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoThunFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpSoMiFragment;
 import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
-import nhattan.lnt.clothesshop.FragmentApp.WomenClothesFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     static final float END_SCALE = 0.7f;
 
     private static final int FRAGMENT_HOME = 1;
-    private static final int FRAGMENT_MEN = 2;
-    private static final int FRAGMENT_WOMEN = 3;
-    private static final int FRAGMENT_AOTHUN = 4;
-    private static final int FRAGMENT_AOKHOAC = 5;
-    private static final int FRAGMENT_AOSOMI = 6;
-    private static final int FRAGMENT_NEWBORN = 7;
-    private static final int FRAGMENT_PROFILE = 8;
-    private static final int FRAGMENT_MYCART = 9;
-    private static final int FRAGMENT_SETTING = 10;
+    private static final int FRAGMENT_AOTHUN = 2;
+    private static final int FRAGMENT_AOKHOAC = 3;
+    private static final int FRAGMENT_AOSOMI = 4;
+    private static final int FRAGMENT_PROFILE = 5;
+    private static final int FRAGMENT_MYCART = 6;
+    private static final int FRAGMENT_SETTING = 7;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -196,16 +191,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             if (FRAGMENT_HOME != currentFragment) {
                 replaceFragment(new HomeFragment());
                 currentFragment = FRAGMENT_HOME;
-            }
-        }else if (id == R.id.nav_men) {
-            if (FRAGMENT_MEN != currentFragment) {
-                replaceFragment(new MenClothesFragment());
-                currentFragment = FRAGMENT_MEN;
-            }
-        }else if (id == R.id.nav_women) {
-            if (FRAGMENT_WOMEN != currentFragment) {
-                replaceFragment(new WomenClothesFragment());
-                currentFragment = FRAGMENT_WOMEN;
             }
         }else if (id == R.id.nav_Aothun) {
             if (FRAGMENT_AOTHUN != currentFragment) {

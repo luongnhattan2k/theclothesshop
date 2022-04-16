@@ -12,14 +12,6 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_men"
-                    android:icon="@drawable/baseline_product_vest_24"
-                    android:title="@string/men" />
-                <item
-                    android:id="@+id/nav_women"
-                    android:icon="@drawable/baseline_dress_24"
-                    android:title="@string/women" />
-                <item
                     android:id="@+id/nav_Aothun"
                     android:icon="@drawable/baseline_product_aothun_24"
                     android:title="Áo Thun" />

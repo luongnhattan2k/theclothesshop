@@ -53,7 +53,7 @@
         <Spinner
             android:id="@+id/spn_category_dathang"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
@@ -75,7 +75,7 @@
             <EditText
                 android:id="@+id/edtNgayDat"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -101,7 +101,7 @@
             <EditText
                 android:id="@+id/edtDiachigiaohang"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -127,7 +127,7 @@
             <EditText
                 android:id="@+id/edtGhichu"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginRight="@dimen/size30dp"
@@ -140,6 +140,93 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/txt_tienhang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_input_ghichu"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:text="Tiền hàng: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTienhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size10dp"
+                android:text="số tiền"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/txt_tienship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tienhang"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:text="Phí giao hàng: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTienshiphang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size10dp"
+                android:text="số tiền"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/txt_tienloaitk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tienship"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size30dp"
+                android:text="Phiếu giảm giá: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTiengiamgia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size10dp"
+                android:text="số tiền"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

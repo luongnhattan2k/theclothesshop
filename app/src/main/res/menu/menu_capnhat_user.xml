@@ -2,10 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/iCamera"
-            android:title="Chụp Ảnh Từ Camera" />
-
-        <item
             android:id="@+id/iFolder"
             android:title="Chọn Ảnh Từ Thư Viện"/>
     </group>

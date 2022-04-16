@@ -39,13 +39,17 @@ public class OrderActivity extends AppCompatActivity {
     public static Database database;
     Button btn_Dathangkt;
     ImageButton ibtn_Exit;
-    TextView txt_Tongtiendathang;
+    TextView txt_Tongtiendathang, txt_Tienhang, txt_Tienship, txt_Tiengiamgia;
     EditText edt_Diachigiaohang, edt_Ghichu;
     int Tongtiensp = 0;
+    int Tienship = 0;
+    int Tiengiamgia;
+    int Thanhtien = 0;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int idcthd;
     String dateString_ngay, dateString_thang, dateString_nam;
+    String ship = "Giao hàng nhanh";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,9 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(OrderActivity.this, "Bạn chọn hình thức giao hàng " + categoryDAO.getItem(position).getName(), Toast.LENGTH_SHORT).show();
+                ship = categoryDAO.getItem(position).getName();
+                GetData();
+                Toast.makeText(OrderActivity.this, "Loại tài khoản " + Login.taiKhoanDTO.getLOAITK(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -76,15 +83,6 @@ public class OrderActivity extends AppCompatActivity {
 
     private void NgayHienTai() {
 
-    }
-
-    private List<CategoryDTO> getListCategort() {
-        List<CategoryDTO> list = new ArrayList<>();
-
-        list.add(new CategoryDTO("Giao hàng nhanh - Free Ship", "1"));
-        list.add(new CategoryDTO("Giao hàng tiết kiệm - Free Ship","2"));
-
-        return list;
     }
 
     @Override
@@ -103,12 +101,15 @@ public class OrderActivity extends AppCompatActivity {
         for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
             Tongtiensp = Tongtiensp + (gioHangDAO.mangmuahang.get(i).getTHANHTIEN()* gioHangDAO.mangmuahang.get(i).getSOLUONG());
         }
-        txt_Tongtiendathang.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tongtiensp) + " VNĐ"));
+
     }
 
     private void AnhXa() {
         spnCategory = findViewById(R.id.spn_category_dathang);
         txt_Tongtiendathang = findViewById(R.id.txtTongtiendathang);
+        txt_Tienhang = findViewById(R.id.txtTienhang);
+        txt_Tienship = findViewById(R.id.txtTienshiphang);
+        txt_Tiengiamgia = findViewById(R.id.txtTiengiamgia);
         edt_Diachigiaohang = findViewById(R.id.edtDiachigiaohang);
         edt_Ghichu = findViewById(R.id.edtGhichu);
         TextView tdate = findViewById(R.id.edtNgayDat);
@@ -164,10 +165,10 @@ public class OrderActivity extends AppCompatActivity {
                 {
                     GioHangDTO themhoadon = gioHangDAO.mangmuahang.get(position);
                     database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Tongtiensp, ghichu, diachi, themhoadon.getSIZE());
+                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Thanhtien, ghichu, diachi, themhoadon.getSIZE());
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
-                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Tongtiensp, ngaydat, thangdat, namdat, diachi, ghichu);
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Thanhtien, ngaydat, thangdat, namdat, diachi, ghichu);
                 for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
                     database.DELETE_GIOHANGALL(gioHangDAO.mangmuahang.get(i).getIDGIOHANG());
                 }
@@ -193,8 +194,32 @@ public class OrderActivity extends AppCompatActivity {
 
     }
 
+    private List<CategoryDTO> getListCategort() {
+        List<CategoryDTO> list = new ArrayList<>();
+        list.add(new CategoryDTO("Giao hàng nhanh (2 - 3 ngày)", "1"));
+        list.add(new CategoryDTO("Giao hàng tiết kiệm (5 - 6 ngày)", "2"));
+        return list;
+    }
+
     private void GetData() {
         String Diachi = Login.taiKhoanDTO.getDIACHI();
+        String LoaiTk = Login.taiKhoanDTO.getLOAITK();
+
+        if (ship == "Giao hàng nhanh (2 - 3 ngày)") {
+            Tienship = 30000;
+        } else if (ship == "Giao hàng tiết kiệm (5 - 6 ngày)") {
+            Tienship = 20000;
+        } else if (LoaiTk == "VIP") {
+            Tiengiamgia = 30000;
+        } else if (LoaiTk == "NOR") {
+            Tiengiamgia = 0;
+        }
+
         edt_Diachigiaohang.setText(Diachi);
+        txt_Tienhang.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tongtiensp)));
+        txt_Tienship.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tienship)));
+        txt_Tiengiamgia.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tiengiamgia)));
+        Thanhtien = Tongtiensp + Tienship - Tiengiamgia;
+        txt_Tongtiendathang.setText("Tổng tiền: " + (NumberFormat.getNumberInstance(Locale.US).format(Thanhtien) + " VNĐ"));
     }
 }

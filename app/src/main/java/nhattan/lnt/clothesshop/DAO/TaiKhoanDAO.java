@@ -41,6 +41,7 @@ public class TaiKhoanDAO extends BaseAdapter {
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_SDT,taiKhoanDTO.getSDT());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_EMAIL,taiKhoanDTO.getEMAIL());
         contentValues.put(CreateDatabase.tbl_TAIKHOAN_QUYEN,"1");
+        contentValues.put(CreateDatabase.tbl_TAIKHOAN_LOAITK,"NOR");
 
         long kiemtra = database.insert(CreateDatabase.tbl_TAIKHOAN, null, contentValues);
         return kiemtra;
@@ -63,7 +64,7 @@ public class TaiKhoanDAO extends BaseAdapter {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getInt(8)
+                    cursor.getString(8)
             );
         }
         return null;

@@ -25,6 +25,7 @@ import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.SliderItem;
 import nhattan.lnt.clothesshop.Database.Database;
+import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.ProductionActivity;
 import nhattan.lnt.clothesshop.R;
 
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment{
     Handler sliderHandler = new Handler();
     ArrayList<SanPhamDTO> sanPhamDTOArrayList_new, sanPhamDTOArrayList_hot;
     SanPhamDAO adapter_new, adapter_hot;
+    int tong = 0;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -122,6 +124,25 @@ public class HomeFragment extends Fragment{
         //End Auto Scroll background
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        Load();
+        super.onStart();
+    }
+
+    private void Load() {
+        Cursor cursor = HomeFragment.database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE IDTAIKHOAN = "
+                + Login.taiKhoanDTO.getMATK());
+        cursor.moveToNext();
+        tong = cursor.getInt(0);
+
+        if (tong > 1000000) {
+            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), "VIP");
+        } else {
+            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), "NOR");
+        }
     }
 
     private Runnable slideRunnable = new Runnable() {

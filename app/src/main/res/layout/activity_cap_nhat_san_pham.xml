@@ -124,7 +124,7 @@
 
                 <EditText
                     android:id="@+id/edtMota"
-                    android:layout_width="match_parent"
+                    android:layout_width="390dp"
                     android:layout_height="150dp"
                     android:ems="10"
                     android:hint="Mô Tả"
