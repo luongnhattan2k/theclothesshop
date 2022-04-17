@@ -39,17 +39,17 @@ public class OrderActivity extends AppCompatActivity {
     public static Database database;
     Button btn_Dathangkt;
     ImageButton ibtn_Exit;
-    TextView txt_Tongtiendathang, txt_Tienhang, txt_Tienship, txt_Tiengiamgia;
+    TextView txt_Tongtiendathang, txt_Tienhang, txt_Tienship, txt_Tienvoucher, txt_Loaitaikhoan, txt_Freeship;
     EditText edt_Diachigiaohang, edt_Ghichu;
     int Tongtiensp = 0;
     int Tienship = 0;
-    int Tiengiamgia;
-    int Thanhtien = 0;
+    double Tienvoucher = 0;
+    double Thanhtien = 0;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int idcthd;
     String dateString_ngay, dateString_thang, dateString_nam;
-    String ship = "Giao hàng nhanh";
+    String ship;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class OrderActivity extends AppCompatActivity {
         database = new Database(OrderActivity.this,"ClothesDatabase",null,2);
 
         AnhXa();
+        GetData();
         NgayHienTai();
 
         categoryDAO = new CategoryDAO(this, R.layout.item_selected, getListCategort());
@@ -69,7 +70,6 @@ public class OrderActivity extends AppCompatActivity {
                 Toast.makeText(OrderActivity.this, "Bạn chọn hình thức giao hàng " + categoryDAO.getItem(position).getName(), Toast.LENGTH_SHORT).show();
                 ship = categoryDAO.getItem(position).getName();
                 GetData();
-                Toast.makeText(OrderActivity.this, "Loại tài khoản " + Login.taiKhoanDTO.getLOAITK(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -78,7 +78,7 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
-        GetData();
+
     }
 
     private void NgayHienTai() {
@@ -109,8 +109,11 @@ public class OrderActivity extends AppCompatActivity {
         txt_Tongtiendathang = findViewById(R.id.txtTongtiendathang);
         txt_Tienhang = findViewById(R.id.txtTienhang);
         txt_Tienship = findViewById(R.id.txtTienshiphang);
-        txt_Tiengiamgia = findViewById(R.id.txtTiengiamgia);
+        txt_Tienvoucher = findViewById(R.id.txt_Tienvoucher);
+        txt_Loaitaikhoan = findViewById(R.id.txt_Loaitaikhoan);
+        txt_Freeship = findViewById(R.id.txt_Freeship);
         edt_Diachigiaohang = findViewById(R.id.edtDiachigiaohang);
+        btn_Dathangkt= findViewById(R.id.btnDathangkt);
         edt_Ghichu = findViewById(R.id.edtGhichu);
         TextView tdate = findViewById(R.id.edtNgayDat);
 
@@ -142,7 +145,7 @@ public class OrderActivity extends AppCompatActivity {
         };
         t.start();
 
-        btn_Dathangkt= findViewById(R.id.btnDathangkt);
+
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,8 +158,7 @@ public class OrderActivity extends AppCompatActivity {
 
                 if(database.HoaDonChuaCoTrongHD()){
                     idcthd = 1;
-                }
-                else {
+                } else {
                     Cursor cursor = database.Getdata("SELECT IDCTHOADON FROM CHITIETHOADON ORDER BY IDCTHOADON DESC");
                     cursor.moveToNext();
                     idcthd = cursor.getInt(0) + 1;
@@ -190,8 +192,6 @@ public class OrderActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
     }
 
     private List<CategoryDTO> getListCategort() {
@@ -203,23 +203,41 @@ public class OrderActivity extends AppCompatActivity {
 
     private void GetData() {
         String Diachi = Login.taiKhoanDTO.getDIACHI();
-        String LoaiTk = Login.taiKhoanDTO.getLOAITK();
 
         if (ship == "Giao hàng nhanh (2 - 3 ngày)") {
-            Tienship = 30000;
-        } else if (ship == "Giao hàng tiết kiệm (5 - 6 ngày)") {
-            Tienship = 20000;
-        } else if (LoaiTk == "VIP") {
-            Tiengiamgia = 30000;
-        } else if (LoaiTk == "NOR") {
-            Tiengiamgia = 0;
+            if (Login.taiKhoanDTO.getLOAITK() == 2) {
+                txt_Loaitaikhoan.setText("(VIP)");
+                txt_Freeship.setText("-  FreeShip");
+                txt_Tienvoucher.setText("- 10%");
+                Tienvoucher = (Thanhtien*0.1);
+                Tienship = 0;
+            } else {
+                txt_Loaitaikhoan.setText("(Thường)");
+                txt_Freeship.setText("");
+                txt_Tienvoucher.setText("0");
+                Tienvoucher = 0;
+                Tienship = 36000;
+            }
+        } else {
+            if (Login.taiKhoanDTO.getLOAITK() == 2) {
+                txt_Loaitaikhoan.setText("(VIP)");
+                txt_Freeship.setText("-  FreeShip");
+                txt_Tienvoucher.setText("- 10%");
+                Tienvoucher = (Thanhtien*0.1);
+                Tienship = 0;
+            } else {
+                txt_Loaitaikhoan.setText("(Thường)");
+                txt_Freeship.setText("");
+                txt_Tienvoucher.setText("0");
+                Tienvoucher = 0;
+                Tienship = 24000;
+            }
         }
 
         edt_Diachigiaohang.setText(Diachi);
         txt_Tienhang.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tongtiensp)));
         txt_Tienship.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tienship)));
-        txt_Tiengiamgia.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Tiengiamgia)));
-        Thanhtien = Tongtiensp + Tienship - Tiengiamgia;
+        Thanhtien = Tongtiensp + Tienship - Tienvoucher;
         txt_Tongtiendathang.setText("Tổng tiền: " + (NumberFormat.getNumberInstance(Locale.US).format(Thanhtien) + " VNĐ"));
     }
 }

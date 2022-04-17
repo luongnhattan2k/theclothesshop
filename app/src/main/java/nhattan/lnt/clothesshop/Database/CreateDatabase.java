@@ -91,7 +91,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String TAIKHOAN = "CREATE TABLE " + tbl_TAIKHOAN + " (" + tbl_TAIKHOAN_IDTK + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_TAIKHOAN_TENTAIKHOAN + " TEXT , " + tbl_TAIKHOAN_MATKHAU + " TEXT, " + tbl_TAIKHOAN_HINHANH + " BLOB, " + tbl_TAIKHOAN_SDT + " INTEGER, "
-                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, " + tbl_TAIKHOAN_QUYEN + " INTEGER, " + tbl_TAIKHOAN_LOAITK + " TEXT )";
+                + tbl_TAIKHOAN_EMAIL + " TEXT, "+ tbl_TAIKHOAN_DIACHI + " TEXT, " + tbl_TAIKHOAN_QUYEN + " INTEGER, " + tbl_TAIKHOAN_LOAITK + " INTEGER )";
 
         String QUYEN = "CREATE TABLE " + tbl_QUYEN + "(" + tbl_QUYEN_IDQUYEN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_QUYEN_TENQUYEN + " TEXT )";

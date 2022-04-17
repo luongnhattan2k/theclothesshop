@@ -67,7 +67,7 @@ public class Database extends SQLiteOpenHelper {
         // CHUA ID HOA DON
     }
 
-    public void INSERT_HOADON(int IDTK,String TenTK, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHU)
+    public void INSERT_HOADON(int IDTK,String TenTK, int IDCTHOADON, double TONGTIEN, String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHU)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_HOADON +
                 " ( "
@@ -84,7 +84,7 @@ public class Database extends SQLiteOpenHelper {
                 + THANGDAT + "', '" + NAMDAT + "', '" + DIACHI + "', '" + GHICHU + "') ");
     }
 
-    public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, int tonghoadon, String ghichu, String diachi, String size)
+    public void INSERT_CTHOADON(int IDCTHOADON, int IDTK, String TenTK, int IDSP, String TenSP, String NgayDat, int Soluong, int thanhtien, double tonghoadon, String ghichu, String diachi, String size)
     {
         QueryData("INSERT INTO " + CreateDatabase.tbl_CHITIETHOADON +
                 " ( "
@@ -172,7 +172,7 @@ public class Database extends SQLiteOpenHelper {
         ;
     }
 
-    public void UPDATE_LOAITK(int IDTK, String Loaitk)
+    public void UPDATE_LOAITK(int IDTK, int Loaitk)
     {
         QueryData("UPDATE " + CreateDatabase.tbl_TAIKHOAN + " SET "
                 + CreateDatabase.tbl_TAIKHOAN_LOAITK + " = '" + Loaitk +
@@ -233,7 +233,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getString(8)
+                    cursor.getInt(8)
             );
         }
         return null;
@@ -329,7 +329,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getString(8)
+                    cursor.getInt(8)
             ));
         }
         return list;
@@ -351,7 +351,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(5),
                     cursor.getString(6),
                     cursor.getInt(7),
-                    cursor.getString(8)
+                    cursor.getInt(8)
             );
         }
         return null;

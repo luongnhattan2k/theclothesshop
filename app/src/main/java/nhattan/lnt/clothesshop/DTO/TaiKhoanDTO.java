@@ -1,8 +1,8 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class TaiKhoanDTO {
-    int MATK,QUYEN,SDT;
-    String TENTK,MATKHAU,EMAIL,DIACHI,LOAITK;
+    int MATK,QUYEN,SDT,LOAITK;
+    String TENTK,MATKHAU,EMAIL,DIACHI;
     byte[] HINHANH;
 
     public TaiKhoanDTO(){
@@ -10,7 +10,7 @@ public class TaiKhoanDTO {
     }
 
 
-    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, byte[] HINHANH, int SDT, String EMAIL, String DIACHI, int QUYEN, String LOAITK) {
+    public TaiKhoanDTO(int MATK, String TENTK, String MATKHAU, byte[] HINHANH, int SDT, String EMAIL, String DIACHI, int QUYEN, int LOAITK) {
         this.MATK = MATK;
         this.TENTK = TENTK;
         this.MATKHAU = MATKHAU;
@@ -87,11 +87,11 @@ public class TaiKhoanDTO {
         this.HINHANH = HINHANH;
     }
 
-    public String getLOAITK() {
+    public int getLOAITK() {
         return LOAITK;
     }
 
-    public void setLOAITK(String LOAITK) {
+    public void setLOAITK(int LOAITK) {
         this.LOAITK = LOAITK;
     }
 

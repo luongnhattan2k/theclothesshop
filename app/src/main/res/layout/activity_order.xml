@@ -141,16 +141,29 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Tổng Tiền Hàng"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_input_ghichu" />
+
         <LinearLayout
             android:id="@+id/txt_tienhang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_input_ghichu"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -186,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/size30dp"
-                android:text="Phí giao hàng: "
+                android:text="Phí vận chuyển: "
                 android:textSize="16sp" />
 
             <TextView
@@ -195,6 +208,14 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
                 android:text="số tiền"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_Freeship"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size10dp"
+                android:text="freeship"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -219,11 +240,19 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txtTiengiamgia"
+                android:id="@+id/txt_Tienvoucher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
                 android:text="số tiền"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_Loaitaikhoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size10dp"
+                android:text="Loại tài khoản"
                 android:textSize="16sp" />
 
         </LinearLayout>

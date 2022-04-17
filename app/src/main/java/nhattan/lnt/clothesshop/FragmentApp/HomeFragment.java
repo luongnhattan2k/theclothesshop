@@ -139,9 +139,9 @@ public class HomeFragment extends Fragment{
         tong = cursor.getInt(0);
 
         if (tong > 1000000) {
-            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), "VIP");
+            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), 2);
         } else {
-            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), "NOR");
+            HomeFragment.database.UPDATE_LOAITK(Login.taiKhoanDTO.getMATK(), 1);
         }
     }
 
