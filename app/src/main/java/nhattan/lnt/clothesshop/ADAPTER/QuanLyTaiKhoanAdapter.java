@@ -59,7 +59,11 @@ public class QuanLyTaiKhoanAdapter extends RecyclerView.Adapter<QuanLyTaiKhoanAd
             holder.imgV_Hinh_qlTaikhoan.setImageBitmap(bitmap);
         }
         holder.txtV_Tentaikhoan_qlTaikhoan.setText(taiKhoan.getTENTK());
-        holder.txtV_loaitk_qlTaikhoan.setText(taiKhoan.getLOAITK());
+        if (taiKhoan.getLOAITK() == 2) {
+            holder.txtV_loaitk_qlTaikhoan.setText("VIP");
+        } else {
+            holder.txtV_loaitk_qlTaikhoan.setText("Thường");
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

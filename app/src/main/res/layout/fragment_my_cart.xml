@@ -29,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|left"
+            android:fontFamily="serif"
             android:paddingLeft="@dimen/size20dp"
             android:text="Tổng: "
             android:textSize="15dp"/>
@@ -39,6 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:background="#4D8C9EFF"
+            android:fontFamily="serif"
             android:text="Đặt Hàng"
             android:textColor="@color/black"
             android:textSize="15dp"/>
