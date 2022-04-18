@@ -17,6 +17,8 @@
             android:id="@+id/ibtnExit_login"
             android:layout_width="@dimen/size40dp"
             android:layout_height="@dimen/size40dp"
+            android:layout_marginTop="@dimen/size10dp"
+            android:layout_marginLeft="@dimen/size10dp"
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

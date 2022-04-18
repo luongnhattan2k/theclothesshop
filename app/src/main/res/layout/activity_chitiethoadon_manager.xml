@@ -30,6 +30,7 @@
             android:gravity="center|left"
             android:text="Chi tiết hóa đơn"
             android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
             android:textStyle="bold"/>
 
     </LinearLayout>

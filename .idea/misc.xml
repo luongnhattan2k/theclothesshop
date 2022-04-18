@@ -47,10 +47,10 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_home_manager.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_introduct.xml" value="0.33" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_my_cart.xml" value="0.209375" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_order.xml" value="0.5" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_order.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_product.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_production.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/activity_register.xml" value="0.209375" />
@@ -99,8 +99,8 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/layout_bottom_sheet_qlhd.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_quanly_hoadon.xml" value="0.33" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_transaction_history_details.xml" value="0.33" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_trasaction_history.xml" value="0.209375" />
-        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_layout.xml" value="0.20833333333333334" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/list_trasaction_history.xml" value="0.33" />
+        <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_layout.xml" value="0.5" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_layout_hot.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_layout_moi.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/ClothesShop/app/src/main/res/layout/product_manage_gopy.xml" value="0.33" />

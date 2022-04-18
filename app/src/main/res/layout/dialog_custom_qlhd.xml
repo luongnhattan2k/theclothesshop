@@ -12,6 +12,7 @@
         android:text="Thống Kê Doanh Thu"
         android:textStyle="bold"
         android:textSize="24sp"
+        android:fontFamily="serif"
         android:textColor="#ff00"/>
 
     <LinearLayout
@@ -26,6 +27,7 @@
             android:padding="@dimen/size10dp"
             android:gravity="left"
             android:text="Ngày:"
+            android:fontFamily="serif"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/size10dp"
             android:gravity="left"
+            android:fontFamily="serif"
             android:text="dd/MM/yyyy"
             android:textStyle="bold"
             android:textSize="18sp"/>
@@ -54,6 +57,7 @@
             android:gravity="left"
             android:text="Doanh thu:"
             android:textStyle="bold"
+            android:fontFamily="serif"
             android:textSize="18sp"/>
 
         <TextView
@@ -64,6 +68,7 @@
             android:gravity="left"
             android:text="0 VNĐ"
             android:textStyle="bold"
+            android:fontFamily="serif"
             android:textSize="18sp"/>
 
     </LinearLayout>
@@ -78,19 +83,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/size20dp"
+            android:layout_margin="@dimen/size30dp"
             android:text="Chọn ngày"
-            android:textSize="16sp"/>
+            android:fontFamily="serif"
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/btn_Thoatthongke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/size10dp"
+            android:layout_margin="15dp"
             android:backgroundTint="#ff00"
             android:text="Thoát"
-            android:textSize="16sp"/>
+            android:fontFamily="serif"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 

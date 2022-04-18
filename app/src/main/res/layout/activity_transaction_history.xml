@@ -30,6 +30,7 @@
             android:gravity="center|left"
             android:text="Lịch sử giao dịch"
             android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -37,6 +38,6 @@
     <ListView
         android:id="@+id/lv_lichsugiaodich"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

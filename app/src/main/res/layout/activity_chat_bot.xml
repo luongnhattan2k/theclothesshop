@@ -29,6 +29,7 @@
             android:gravity="center|left"
             android:text="Hỗ Trợ Khách Hàng"
             android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
             android:textStyle="bold"/>
 
 

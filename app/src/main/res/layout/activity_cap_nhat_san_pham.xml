@@ -29,6 +29,7 @@
             android:gravity="center|left"
             android:text="Cập Nhật Sản Phẩm"
             android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
             android:textStyle="bold"/>
 
     </LinearLayout>

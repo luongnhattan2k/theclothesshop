@@ -34,10 +34,9 @@ public class ProductionActivity extends AppCompatActivity {
 
     SanPhamDTO sanPhamDTO;
     CategoryDTO categoryDTO;
-    TextView productName, productPrice, productContent;
+    TextView productName, productPrice, productContent, txt_Themgiohang;
     ImageView productImage;
     ImageButton ibtn_Exit;
-    Button btn_Themgiohang;
     int id, idtk;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
@@ -114,13 +113,13 @@ public class ProductionActivity extends AppCompatActivity {
         productPrice = findViewById(R.id.product_price_ct);
         productImage = findViewById(R.id.product_image_ct);
         spnCategory = findViewById(R.id.spn_category);
-        btn_Themgiohang = findViewById(R.id.btnThemvaogiohang);
+        txt_Themgiohang = findViewById(R.id.txtThemvaogiohang);
         ibtn_Exit = findViewById(R.id.ibtnExit);
 
     }
 
     private void SuKien(){
-        btn_Themgiohang.setOnClickListener(new View.OnClickListener() {
+        txt_Themgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(ProductionActivity.this, R.style.BottomSheetDialogTheme);

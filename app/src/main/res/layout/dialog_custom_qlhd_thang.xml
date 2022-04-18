@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -12,6 +13,7 @@
         android:text="Thống Kê Doanh Thu"
         android:textStyle="bold"
         android:textSize="24sp"
+        android:fontFamily="serif"
         android:textColor="#ff00"/>
 
     <LinearLayout
@@ -27,17 +29,20 @@
             android:gravity="left"
             android:text="Nhập tháng:"
             android:textStyle="bold"
+            android:fontFamily="serif"
             android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/edt_Thangthongke"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/size10dp"
+            android:fontFamily="serif"
             android:gravity="left"
             android:hint="MM/yyyy"
+            android:padding="@dimen/size10dp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
@@ -54,6 +59,7 @@
             android:gravity="left"
             android:text="Doanh thu:"
             android:textStyle="bold"
+            android:fontFamily="serif"
             android:textSize="18sp"/>
 
         <TextView
@@ -64,6 +70,7 @@
             android:gravity="left"
             android:text="0 VNĐ"
             android:textStyle="bold"
+            android:fontFamily="serif"
             android:textSize="18sp"/>
 
     </LinearLayout>
@@ -78,19 +85,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/size20dp"
+            android:layout_margin="@dimen/size30dp"
             android:text="Xác nhận"
-            android:textSize="16sp"/>
+            android:fontFamily="serif"
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/btn_Thoatthongke_thang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/size10dp"
+            android:layout_margin="15dp"
             android:backgroundTint="#ff00"
             android:text="Thoát"
-            android:textSize="16sp"/>
+            android:fontFamily="serif"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 

@@ -30,6 +30,7 @@
             android:gravity="center|left"
             android:text="Kiểm tra"
             android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -42,7 +43,7 @@
         android:text="Thông Tin Đơn Hàng"
         android:textSize="24dp"
         android:textStyle="bold"
-        />
+        android:fontFamily="serif" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
