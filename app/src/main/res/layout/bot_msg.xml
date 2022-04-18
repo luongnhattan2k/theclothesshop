@@ -31,6 +31,7 @@
             android:layout_margin="5dp"
             android:padding="3dp"
             android:text="Bot message"
+            android:fontFamily="serif"
             android:textColor="@color/black" />
 
     </LinearLayout>

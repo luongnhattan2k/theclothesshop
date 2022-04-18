@@ -13,8 +13,9 @@
         android:gravity="center"
         android:padding="15dp"
         android:text="Chọn thời gian"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:fontFamily="serif"
         android:textColor="@color/black" />
 
     <View
@@ -33,7 +34,8 @@
         android:backgroundTint="@color/xanh_nhat"
         android:text="Thống kê theo ngày"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/btn_Thongketheothang_qlhd"
@@ -44,7 +46,8 @@
         android:backgroundTint="@color/xanh_nhat"
         android:text="Thống kê theo tháng"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/btn_Thongketheonam_qlhd"
@@ -55,7 +58,8 @@
         android:backgroundTint="@color/xanh_nhat"
         android:text="Thống kê theo năm"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:fontFamily="serif"/>
 
 
 

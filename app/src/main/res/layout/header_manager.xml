@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size20dp"
         android:layout_gravity="center"
-        android:fontFamily="serif-monospace"
+        android:fontFamily="serif"
         android:hint="Tên Khách Hàng"
         android:paddingLeft="@dimen/size10dp"
         android:textColorHint="@color/white"

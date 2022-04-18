@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/size10dp"
         android:gravity="center"
+        android:fontFamily="serif"
         android:text="Quản Lý Góp Ý"
         android:textSize="24dp"
         android:textColor="@color/black"

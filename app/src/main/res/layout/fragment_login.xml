@@ -24,7 +24,8 @@
             android:id="@+id/edtTaikhoan_dn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            android:fontFamily="serif"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:maxLength="50"
             android:password="true"
+            android:fontFamily="serif"
             tools:ignore="Deprecated" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +66,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Lưu mật khẩu"
-            android:textSize="16dp"/>
+            android:textSize="16dp"
+            android:fontFamily="serif"/>
 
         <TextView
             android:id="@+id/txtQuenmk"
@@ -76,7 +79,8 @@
             android:gravity="right"
             android:text="Quên mật khẩu"
             android:textSize="16dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:fontFamily="serif"/>
 
     </LinearLayout>
 
@@ -90,7 +94,7 @@
         android:text="Đăng Nhập"
         android:textSize="16dp"
         android:textStyle="bold"
-        />
+        android:fontFamily="serif"/>
 
 
 </LinearLayout>

@@ -59,6 +59,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:background="@color/white"
+            android:fontFamily="serif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -82,6 +83,7 @@
                 android:layout_marginRight="@dimen/size30dp"
                 android:background="@color/white"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="Ngày đặt hàng"
                 android:inputType="textPersonName"
                 android:paddingLeft="@dimen/size20dp"
@@ -108,6 +110,7 @@
                 android:layout_marginRight="@dimen/size30dp"
                 android:background="@color/white"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="Nhập địa chỉ giao hàng"
                 android:inputType="textPersonName"
                 android:paddingLeft="@dimen/size20dp"
@@ -134,6 +137,7 @@
                 android:layout_marginRight="@dimen/size30dp"
                 android:background="@color/white"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="Nhập nội dung ghi chú"
                 android:inputType="textPersonName"
                 android:paddingLeft="@dimen/size20dp"
@@ -151,6 +155,7 @@
             android:text="Tổng Tiền Hàng"
             android:textSize="24dp"
             android:textStyle="bold"
+            android:fontFamily="serif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_input_ghichu" />
@@ -171,6 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/size30dp"
+                android:fontFamily="serif"
                 android:text="Tiền hàng: "
                 android:textSize="16sp" />
 
@@ -179,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:text="số tiền"
                 android:textSize="16sp" />
 
@@ -200,6 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/size30dp"
+                android:fontFamily="serif"
                 android:text="Phí vận chuyển: "
                 android:textSize="16sp" />
 
@@ -208,6 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:text="số tiền"
                 android:textSize="16sp" />
 
@@ -216,6 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:text="freeship"
                 android:textSize="16sp" />
 
@@ -237,6 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/size30dp"
+                android:fontFamily="serif"
                 android:text="Phiếu giảm giá: "
                 android:textSize="16sp" />
 
@@ -245,6 +256,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:text="số tiền"
                 android:textSize="16sp" />
 
@@ -253,6 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:text="Loại tài khoản"
                 android:textSize="16sp" />
 
@@ -275,6 +288,7 @@
                 android:gravity="center|left"
                 android:paddingLeft="@dimen/size20dp"
                 android:text=" "
+                android:fontFamily="serif"
                 android:textSize="15dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -284,6 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="#4D8C9EFF"
+                android:fontFamily="serif"
                 android:text="Đặt Hàng"
                 android:textColor="@color/black"
                 android:textSize="15dp" />

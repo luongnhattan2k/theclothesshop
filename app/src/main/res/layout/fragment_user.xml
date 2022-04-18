@@ -27,6 +27,7 @@
             android:text="Thông Tin Khách Hàng"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
         <TextView
@@ -41,6 +42,7 @@
             android:text="Đổi Mật Khẩu"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
         <TextView
@@ -55,6 +57,7 @@
             android:text="Lịch Sử Giao Dịch"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
     </LinearLayout>

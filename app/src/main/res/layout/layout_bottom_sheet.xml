@@ -13,27 +13,28 @@
         android:gravity="center"
         android:padding="15dp"
         android:text="Chọn sản phẩm"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:fontFamily="serif"
         android:textColor="@color/black" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/size10dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:paddingLeft="5dp" >
 
         <ImageView
             android:id="@+id/img_sanpham_sheet"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="@dimen/size10dp"
+            android:layout_margin="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo" />
 
@@ -51,7 +52,8 @@
                 android:layout_marginBottom="@dimen/size10dp"
                 android:text="Tên sản phẩm"
                 android:textColor="@color/black"
-                android:textSize="17sp"
+                android:textSize="16sp"
+                android:fontFamily="serif"
                 android:textStyle="bold" />
 
             <TextView
@@ -60,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:text="Giá sản phẩm"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="16sp"
+                android:fontFamily="serif" />
 
         </LinearLayout>
 
@@ -69,7 +72,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/size10dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/white"/>
 
     <LinearLayout
@@ -79,7 +82,7 @@
         android:clickable="true"
         android:focusable="true"
         android:layout_gravity="center_vertical"
-        android:padding="5dp" >
+        android:paddingLeft="5dp" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +91,8 @@
             android:paddingLeft="16dp"
             android:text="Chọn size: "
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="serif"/>
 
 
         <Spinner
@@ -106,12 +110,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="@dimen/size10dp"
+        android:layout_marginTop="5dp"
         android:clickable="true"
         android:focusable="true"
-        android:minHeight="48dp"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:paddingLeft="12dp"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -120,7 +123,8 @@
             android:paddingLeft="@dimen/size10dp"
             android:text="Chọn số lượng: "
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="serif"/>
 
         <ImageView
             android:id="@+id/img_Xoasl_sheet"
@@ -154,12 +158,13 @@
     <Button
         android:id="@+id/btn_Themvaogiohang_sheet"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="@dimen/size20dp"
         android:backgroundTint="@color/xam"
         android:text="Xác Nhận"
         android:textColor="@color/black"
+        android:fontFamily="serif"
         android:textSize="12sp" />
 
 </LinearLayout>

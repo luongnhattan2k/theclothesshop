@@ -42,7 +42,8 @@
                 android:paddingLeft="@dimen/size20dp"
                 android:text="Tên Sản Phẩm"
                 android:textSize="14sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:fontFamily="serif"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -70,6 +71,7 @@
                     android:text="Số lượng"
                     android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <ImageButton
@@ -91,6 +93,7 @@
                     android:text=","
                     android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -103,6 +106,7 @@
                     android:text="Size"
                     android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
@@ -117,6 +121,7 @@
                 android:text="Thành Tiền"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                android:fontFamily="serif"
                 tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>

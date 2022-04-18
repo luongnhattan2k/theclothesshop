@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:fontFamily="serif"
                 android:text="Thông Tin Đơn Hàng"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Mã hóa đơn: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Tên người đặt: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,6 +123,7 @@
                     android:layout_height="match_parent"
                     android:hint="Ngày đặt hàng: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,6 +146,7 @@
                     android:layout_height="match_parent"
                     android:hint="Tổng hóa đơn: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -164,6 +169,7 @@
                     android:layout_height="match_parent"
                     android:hint="Địa chỉ: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -186,6 +192,7 @@
                     android:layout_height="match_parent"
                     android:hint="Nội dung ghi chú: "
                     android:textSize="15sp"
+                    android:fontFamily="serif"
                     tools:ignore="TouchTargetSizeCheck"/>
 
             </com.google.android.material.textfield.TextInputLayout>

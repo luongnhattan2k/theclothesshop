@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".ProductionActivity">
 
@@ -11,10 +12,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/xanh_nhat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/xanh_nhat">
 
         <ImageButton
             android:id="@+id/ibtnExit"
@@ -39,134 +37,150 @@
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="520dp"
-        android:background="@drawable/detail_page_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="620dp" >
 
-
-        <TextView
-            android:id="@+id/product_name_ct"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="120dp"
-            android:gravity="center"
-            android:text="Tên sản phẩm"
-            android:textColor="@color/black"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent"
+            android:background="@drawable/detail_page_bg" >
 
-        <TextView
-            android:id="@+id/product_price_ct"
-            android:layout_width="120dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="25dp"
-            android:gravity="center"
-            android:text="Giá"
-            android:textColor="#EF0A0A"
-            android:textSize="18sp"
-            android:fontFamily="serif"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:ignore="MissingConstraints" />
+            <ImageView
+                android:id="@+id/product_image_ct"
+                android:layout_width="290dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/product_content"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginTop="95dp"
-            android:paddingTop="@dimen/size10dp"
-            android:paddingLeft="@dimen/size30dp"
-            android:paddingRight="@dimen/size20dp"
-            android:text="Mô tả"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:fontFamily="serif"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_name_ct"
-            tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/product_name_ct"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="270dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Tên sản phẩm"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="120dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="25dp"
-            android:gravity="center"
-            android:text="Giá"
-            android:textSize="16sp"
-            android:fontFamily="serif"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_name_ct" />
+            <TextView
+                android:id="@+id/product_price_ct"
+                android:layout_width="120dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="25dp"
+                android:gravity="center"
+                android:text="Giá"
+                android:textColor="#EF0A0A"
+                android:textSize="18sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="100dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="112dp"
-            android:gravity="center"
-            android:text="Size"
-            android:textSize="16sp"
-            android:fontFamily="serif"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_name_ct"
-            tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/product_content"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="95dp"
+                android:paddingTop="@dimen/size10dp"
+                android:paddingLeft="@dimen/size30dp"
+                android:paddingRight="@dimen/size20dp"
+                android:text="Mô tả"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_name_ct"
+                tools:ignore="MissingConstraints" />
 
-        <Spinner
-            android:id="@+id/spn_category"
-            android:layout_width="100dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/product_price_ct"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/lv_binhluan"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="@dimen/size10dp"
+                android:paddingTop="@dimen/size10dp"
+                android:paddingLeft="@dimen/size30dp"
+                android:paddingRight="@dimen/size20dp"
+                android:text="Mô tả"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_content"
+                tools:ignore="MissingConstraints" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="120dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="25dp"
+                android:gravity="center"
+                android:text="Giá"
+                android:textSize="16sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_name_ct" />
 
-    <ImageView
-        android:id="@+id/product_image_ct"
-        android:layout_width="289dp"
-        android:layout_height="312dp"
-        android:layout_gravity="center"
-        android:background="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="100dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="112dp"
+                android:gravity="center"
+                android:text="Size"
+                android:textSize="16sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_name_ct"
+                tools:ignore="MissingConstraints" />
+
+            <Spinner
+                android:id="@+id/spn_category"
+                android:layout_width="100dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/product_price_ct"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <TextView
         android:id="@+id/txtThemvaogiohang"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/xam"
         android:gravity="center"
         android:text="Thêm vào giỏ hàng"
         android:fontFamily="serif"
         android:textSize="15sp"
         android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

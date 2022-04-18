@@ -27,6 +27,7 @@
             android:text="Giới Thiệu"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
 
@@ -42,6 +43,7 @@
             android:text="Góp Ý"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
 
@@ -57,6 +59,7 @@
             android:text="Hỗ Trợ Khách Hàng"
             android:textSize="16dp"
             android:textColor="@color/black"
+            android:fontFamily="serif"
             android:drawableRight="@drawable/baseline_chevron_right_36"/>
 
     </LinearLayout>

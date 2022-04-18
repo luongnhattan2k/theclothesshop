@@ -61,6 +61,7 @@
                     android:id="@+id/edt_idtk_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:hint="ID Tài Khoản"
                     android:inputType="number"
                     android:minHeight="48dp"
@@ -78,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tên Tài Khoản"
+                    android:fontFamily="serif"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -96,6 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:hint="Mật Khẩu"
+                    android:fontFamily="serif"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -113,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:hint="Số Điện Thoại"
+                    android:fontFamily="serif"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -129,6 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mail"
+                    android:fontFamily="serif"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -145,6 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:hint="Địa Chỉ"
+                    android:fontFamily="serif"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -161,6 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Quyền"
+                    android:fontFamily="serif"
                     android:inputType="number"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -177,6 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Loại tài khoản"
+                    android:fontFamily="serif"
                     android:inputType="number"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -193,6 +201,7 @@
                 android:text="Cập nhật"
                 android:textColor="#FFFF"
                 android:textStyle="bold"
+                android:fontFamily="serif"
                 android:backgroundTint="@color/teal_200"/>
 
         </LinearLayout>

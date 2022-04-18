@@ -36,7 +36,7 @@
         android:id="@+id/txt_slogan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/antic"
+        android:fontFamily="serif"
         android:text="Khách Hàng Là Thượng Đế"
         android:textAlignment="center"
         android:textSize="20sp"

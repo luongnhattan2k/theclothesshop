@@ -17,7 +17,8 @@
         android:text="Quản Lý Tài Khoản"
         android:textSize="24dp"
         android:textColor="@color/black"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

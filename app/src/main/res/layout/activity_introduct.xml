@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/size10dp"
+                android:fontFamily="serif"
                 android:inputType="textMultiLine"
                 android:text="      Fashion Store ra đời từ 2021, khởi đầu ở một cửa hàng nhỏ trên phố TDM. Fashion Store những ngày đầu được gây dựng bởi 1 chàng trai trẻ tuổi, ôm trong mình hoài bão thay đổi xu hướng thời trang Việt Nam." />
 
@@ -66,6 +67,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/size10dp"
                 android:inputType="textMultiLine"
+                android:fontFamily="serif"
                 android:text="      Bằng đam mê với thời trang và bằng những cố gắng bền bỉ trong từng giây phút, Fashion Store đã tiên phong trong ngành thời trang, thay đổi tư duy khách hàng, trở thành thương hiệu Việt Nam lớn nhất trong thị phần thời trang may sẵn, là thương hiệu uy tín về đồ Âu cho nam và nữ ...." />
 
 
@@ -82,6 +84,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/size10dp"
                 android:inputType="textMultiLine"
+                android:fontFamily="serif"
                 android:text="      Với nhiều mặt hàng đa dạng và phong phú như áo thun, áo sơ mi, áo vest, đầm, váy, quần jean, quần tây,.... sẽ là sự lựa chọn tốt nhất cho phong cách thời của các bạn." />
 
 
@@ -91,6 +94,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/size10dp"
                 android:inputType="textMultiLine"
+                android:fontFamily="serif"
                 android:text="      Đặc biệt, hiện nay, shop đang hợp tác cùng với các xưởng thời trang công sở đặt may quần áo công sở theo số đo của quý khách và in áo đồng phục, áo nhóm số lượng lớn." />
 
             <TextView
@@ -100,6 +104,7 @@
                 android:layout_marginTop="@dimen/size10dp"
                 android:layout_marginBottom="@dimen/size30dp"
                 android:inputType="textMultiLine"
+                android:fontFamily="serif"
                 android:text="      Tuy Shop Thời Trang Fashion Store hiện chủ yếu chỉ bán hàng online nhưng luôn luôn đảm bảo uy tín và chất lượng sản phẩm (Nếu trong quá trình mua - bán hàng xảy ra lỗi từ phía shop, chúng tôi sẽ hoàn trả tiền và bồi thường thiệt hại cho quý khách)" />
 
         </LinearLayout>

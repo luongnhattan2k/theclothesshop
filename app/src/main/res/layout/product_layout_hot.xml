@@ -47,7 +47,8 @@
                 android:gravity="center"
                 android:text="Product Name"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:id="@+id/product_price"
@@ -59,7 +60,8 @@
                 android:text="Product Price"
                 android:textColor="#FF4444"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="serif"/>
 
         </LinearLayout>
 

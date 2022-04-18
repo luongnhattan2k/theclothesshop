@@ -63,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Tên Sản Phẩm"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
@@ -80,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Giá"
                     android:inputType="textPersonName"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -96,6 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Số Lượng"
                     android:inputType="textPersonName"
                     tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -112,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Mô Tả"
                     android:inputType="textPersonName"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -128,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Danh Mục"
                     android:inputType="textPersonName"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -142,7 +147,8 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/size20dp"
                 android:backgroundTint="@color/teal_200"
-                android:text="Thêm" />
+                android:text="Thêm"
+                android:fontFamily="serif"/>
 
         </LinearLayout>
 

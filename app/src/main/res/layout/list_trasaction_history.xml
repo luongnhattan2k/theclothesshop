@@ -29,7 +29,8 @@
             android:paddingLeft="@dimen/size20dp"
             android:text="Mã hóa đơn:"
             android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="serif"/>
 
         <TextView
             android:id="@+id/txtNgaydathoadon"
@@ -42,6 +43,7 @@
             android:text="Ngày đặt:"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:fontFamily="serif"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -55,6 +57,7 @@
             android:text="Tổng tiền hóa đơn:"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:fontFamily="serif"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>

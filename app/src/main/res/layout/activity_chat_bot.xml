@@ -59,6 +59,7 @@
             android:layout_weight="1"
             android:hint="Nhập nội dung"
             android:minHeight="60dp"
+            android:fontFamily="serif"
             android:paddingLeft="20dp" />
 
         <!--button to send message-->
@@ -69,7 +70,7 @@
             android:gravity="right"
             android:layout_marginLeft="@dimen/size10dp"
             android:layout_marginRight="@dimen/size10dp"
-            android:backgroundTint="@color/vang_nhat"
+            android:backgroundTint="@color/xanh_nhat"
             android:src="@android:drawable/ic_menu_send"
             tools:ignore="SpeakableTextPresentCheck" />
 
