@@ -1,10 +1,12 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class HoaDonDTO {
-    int IDHOADON,TONGTIEN,IDCTHOADON,IDTAIKHOAN;
+    int IDHOADON,TONGTIEN,IDCTHOADON,IDTAIKHOAN,TINHTRANG,SDT;
     String GHICHU,DIACHI,TENTAIKHOAN,NGAYDAT,THANGDAT,NAMDAT;
 
-    public HoaDonDTO(int IDHOADON, int IDTAIKHOAN, String TENTAIKHOAN, int IDCTHOADON, int TONGTIEN, String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHI  ) {
+    public HoaDonDTO(int IDHOADON, int IDTAIKHOAN, String TENTAIKHOAN, int IDCTHOADON, int TONGTIEN,
+                     String NGAYDAT, String THANGDAT, String NAMDAT, String DIACHI, String GHICHI,
+                     int TINHTRANG, int SDT) {
         this.IDHOADON = IDHOADON;
         this.TONGTIEN = TONGTIEN;
         this.IDCTHOADON = IDCTHOADON;
@@ -15,6 +17,8 @@ public class HoaDonDTO {
         this.NGAYDAT = NGAYDAT;
         this.THANGDAT = THANGDAT;
         this.NAMDAT = NAMDAT;
+        this.TINHTRANG = TINHTRANG;
+        this.SDT = SDT;
     }
 
     public int getIDHOADON() {
@@ -95,6 +99,22 @@ public class HoaDonDTO {
 
     public void setNAMDAT(String NAMDAT) {
         this.NAMDAT = NAMDAT;
+    }
+
+    public int getTINHTRANG() {
+        return TINHTRANG;
+    }
+
+    public void setTINHTRANG(int TINHTRANG) {
+        this.TINHTRANG = TINHTRANG;
+    }
+
+    public int getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(int SDT) {
+        this.SDT = SDT;
     }
 
 }

@@ -40,6 +40,17 @@
         android:layout_width="match_parent"
         android:layout_height="220dp" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:gravity="center"
+        android:fontFamily="serif"
+        android:text="Thông Tin Đơn Hàng"
+        android:textSize="20sp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -47,20 +58,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:fontFamily="serif"
-                android:text="Thông Tin Đơn Hàng"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt1"
@@ -70,17 +67,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                tools:ignore="MissingConstraints">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
                     android:id="@+id/txtMahoadon_ql"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:hint="Mã hóa đơn: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,10 +95,10 @@
                     android:id="@+id/txtTennguoidat_ql"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:hint="Tên người đặt: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,10 +117,10 @@
                     android:id="@+id/txtNgaydat_ql"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="serif"
                     android:hint="Ngày đặt hàng: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,10 +140,10 @@
                     android:id="@+id/txtTonghoadon_ql"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="serif"
                     android:hint="Tổng hóa đơn: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,13 +163,12 @@
                     android:id="@+id/txtDiachidathang_ql"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="serif"
                     android:hint="Địa chỉ: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt6"
@@ -184,18 +179,77 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt5"
+                tools:ignore="MissingConstraints"  >
+
+                <EditText
+                    android:id="@+id/txtSdtnguoidat_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:hint="Số điện thoại: "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt6"
                 tools:ignore="MissingConstraints" >
 
                 <EditText
                     android:id="@+id/txtNoidungghichu_ql"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="serif"
                     android:hint="Nội dung ghi chú: "
                     android:textSize="15sp"
-                    android:fontFamily="serif"
-                    tools:ignore="TouchTargetSizeCheck"/>
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt7"
+                tools:ignore="MissingConstraints" >
+
+                <EditText
+                    android:id="@+id/txtTinhtrangdonhang_ql"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:hint="Tình trạng đơn hàng (0 - 4): "
+                    android:textSize="15sp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnCapNhat_hoadon"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/size10dp"
+                android:backgroundTint="@color/xanh_nhat"
+                android:fontFamily="serif"
+                android:text="Cập Nhật "
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

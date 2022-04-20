@@ -68,7 +68,12 @@ public class CapNhat_TaiKhoan extends AppCompatActivity {
         edtDIACHI_QLTK.setText(taiKhoan.getDIACHI());
         edtQUYEN_QLTK.setText(String.valueOf(taiKhoan.getQUYEN()));
         edtEMAIL_QLTK.setText(taiKhoan.getEMAIL());
-        edtLOAITK_QLTK.setText(taiKhoan.getLOAITK());
+        if (taiKhoan.getLOAITK() == 2) {
+            edtLOAITK_QLTK.setText("VIP");
+        } else {
+            edtLOAITK_QLTK.setText("Thường");
+        }
+
 
         if (Login.taiKhoanDTO.getHINHANH() == null){
             img_HINHANH_QLTK.setImageResource(R.drawable.baseline_account_circle_24);

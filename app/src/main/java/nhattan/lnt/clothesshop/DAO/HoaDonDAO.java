@@ -47,7 +47,7 @@ public class HoaDonDAO extends BaseAdapter {
     }
 
     static class ViewHolder{
-        TextView txtTongTien,txtNgaydat,txtMahoadon;
+        TextView txtTongTien,txtNgaydat,txtMahoadon,txtTinhtrang;
         ListView listView;
     }
 
@@ -64,6 +64,7 @@ public class HoaDonDAO extends BaseAdapter {
             holder.txtTongTien = (TextView) view.findViewById(R.id.txtTongtienhoadon);
             holder.txtNgaydat = (TextView) view.findViewById(R.id.txtNgaydathoadon);
             holder.txtMahoadon = (TextView) view.findViewById(R.id.txtMahoadon);
+            holder.txtTinhtrang = (TextView) view.findViewById(R.id.txtTinhtrangnhoadon);
             holder.listView = (ListView) view.findViewById(R.id.lv_lichsugiaodich);
             view.setTag(holder);
         } else {
@@ -71,6 +72,20 @@ public class HoaDonDAO extends BaseAdapter {
         }
 
         HoaDonDTO hoaDon = ListHoaDon.get(i);
+
+        if (hoaDon.getTINHTRANG() == 0) {
+            holder.txtTinhtrang.setText("Tình trạng: Chờ duyệt đơn");
+        } else if (hoaDon.getTINHTRANG() == 1) {
+            holder.txtTinhtrang.setText("Tình trạng: Đang đóng hàng");
+        } else if (hoaDon.getTINHTRANG() == 2) {
+            holder.txtTinhtrang.setText("Tình trạng: Xuất đơn hàng");
+        } else if (hoaDon.getTINHTRANG() == 3) {
+            holder.txtTinhtrang.setText("Tình trạng: Đang giao");
+        } else if (hoaDon.getTINHTRANG() == 4) {
+            holder.txtTinhtrang.setText("Tình trạng: Đã giao hàng");
+        } else {
+            holder.txtTinhtrang.setText("Tình trạng: Đã hủy");
+        }
 
         holder.txtMahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDon.getIDHOADON());
         holder.txtNgaydat.setText("Ngày đặt: " + hoaDon.getNGAYDAT());

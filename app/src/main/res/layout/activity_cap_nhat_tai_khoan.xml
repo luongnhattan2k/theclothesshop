@@ -194,15 +194,14 @@
             <Button
                 android:id="@+id/btn_capnhat_ql_taikhoan"
                 android:layout_width="170dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size60dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:text="Cập nhật"
-                android:textColor="#FFFF"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:fontFamily="serif"
-                android:backgroundTint="@color/teal_200"/>
+                android:backgroundTint="@color/xanh_nhat"/>
 
         </LinearLayout>
 

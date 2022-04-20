@@ -81,7 +81,9 @@ public class TransactionHistoryActivity extends AppCompatActivity {
                     cursor.getString(6),
                     cursor.getString(7),
                     cursor.getString(8),
-                    cursor.getString(9)
+                    cursor.getString(9),
+                    cursor.getInt(10),
+                    cursor.getInt(11)
 
             ));
         }

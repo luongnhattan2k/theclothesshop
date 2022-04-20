@@ -1,65 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-
-    <ImageView
-        android:padding="10dp"
-        android:id="@+id/imageHinhCustom"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:src="@drawable/logo"
-        />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/txtMahoadon"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center|left"
-            android:paddingLeft="@dimen/size20dp"
-            android:text="Mã hóa đơn:"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:fontFamily="serif"/>
+        <ImageView
+            android:padding="10dp"
+            android:id="@+id/imageHinhCustom"
+            android:layout_width="250dp"
+            android:layout_height="135dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo"
+            />
 
-        <TextView
-            android:id="@+id/txtNgaydathoadon"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center|left"
-            android:inputType="text"
-            android:paddingLeft="@dimen/size20dp"
-            android:text="Ngày đặt:"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="serif"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtTongtienhoadon"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center|left"
-            android:inputType="text"
-            android:paddingLeft="@dimen/size20dp"
-            android:text="Tổng tiền hóa đơn:"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="serif"
-            tools:ignore="TouchTargetSizeCheck" />
+            <TextView
+                android:id="@+id/txtMahoadon"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Mã hóa đơn:"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:id="@+id/txtNgaydathoadon"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Ngày đặt:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="serif"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/txtTongtienhoadon"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Tổng tiền hóa đơn:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="serif"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/txtTinhtrangnhoadon"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:paddingLeft="@dimen/size20dp"
+                android:text="Tình trạng:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="serif"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

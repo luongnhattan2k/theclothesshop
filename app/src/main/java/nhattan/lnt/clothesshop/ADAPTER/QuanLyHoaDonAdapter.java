@@ -52,6 +52,19 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
         holder.txt_Mahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDonDTO.getIDHOADON());
         holder.txt_Ngaydat.setText("Ngày đặt: " + hoaDonDTO.getNGAYDAT());
         holder.txt_Tongtien.setText("Tổng tiền: " + String.valueOf(hoaDonDTO.getTONGTIEN()) + " VND");
+        if (hoaDonDTO.getTINHTRANG() == 0) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Chờ duyệt đơn");
+        } else if (hoaDonDTO.getTINHTRANG() == 1) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang đóng hàng");
+        } else if (hoaDonDTO.getTINHTRANG() == 2) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Xuất đơn hàng");
+        } else if (hoaDonDTO.getTINHTRANG() == 3) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang giao");
+        } else if (hoaDonDTO.getTINHTRANG() == 4) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã giao hàng");
+        } else {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã hủy");
+        }
 
         holder.itemView .setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +86,7 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
 
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         ImageView img_Hinhanh;
-        TextView txt_Mahoadon, txt_Ngaydat, txt_Tongtien;
+        TextView txt_Mahoadon, txt_Ngaydat, txt_Tongtien, txt_Tinhtranghoadon;
         CardView product_hoadon;
 
         public Viewholder(@NonNull View itemView) {
@@ -81,6 +94,7 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
             txt_Mahoadon = itemView.findViewById(R.id.txtMahoadon_qlhd);
             txt_Ngaydat = itemView.findViewById(R.id.txtNgaydathang_qlhd);
             txt_Tongtien = itemView.findViewById(R.id.txtTongtienhoadon_qlhd);
+            txt_Tinhtranghoadon = itemView.findViewById(R.id.txtTinhtrangnhoadon_qlhd);
             img_Hinhanh = itemView.findViewById(R.id.imageHinhCustom_qlhd);
             product_hoadon = itemView.findViewById(R.id.product_hoadon);
 

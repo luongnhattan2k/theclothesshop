@@ -166,11 +166,14 @@ public class OrderActivity extends AppCompatActivity {
                 for (int position = 0; position<gioHangDAO.mangmuahang.size(); position++)
                 {
                     GioHangDTO themhoadon = gioHangDAO.mangmuahang.get(position);
-                    database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), themhoadon.getIDSP(), themhoadon.getTENSANPHAM(),
-                            ngaydat ,themhoadon.getSOLUONG(), themhoadon.getTHANHTIEN(), Thanhtien, ghichu, diachi, themhoadon.getSIZE());
+                    database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(),
+                            themhoadon.getIDSP(), themhoadon.getTENSANPHAM(), ngaydat ,themhoadon.getSOLUONG(),
+                            themhoadon.getTHANHTIEN(), Thanhtien, ghichu, diachi, themhoadon.getSIZE(), 0,
+                            Login.taiKhoanDTO.getSDT());
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
-                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd, Thanhtien, ngaydat, thangdat, namdat, diachi, ghichu);
+                database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd,
+                        Thanhtien, ngaydat, thangdat, namdat, diachi, ghichu, 0, Login.taiKhoanDTO.getSDT());
                 for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
                     database.DELETE_GIOHANGALL(gioHangDAO.mangmuahang.get(i).getIDGIOHANG());
                 }

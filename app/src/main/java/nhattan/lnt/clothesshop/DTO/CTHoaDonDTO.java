@@ -1,13 +1,12 @@
 package nhattan.lnt.clothesshop.DTO;
 
 public class CTHoaDonDTO {
-    int IDCTHOADON, IDSANPHAM,IDTAIKHOAN,SOLUONG,THANHTIEN,TONGHOADON;
+    int IDCTHOADON, IDSANPHAM,IDTAIKHOAN,SOLUONG,THANHTIEN,TONGHOADON,TINHTRANG,SDT;
     String TENSANPHAM, NGAYDAT, GHICHU, TENTAIKHOAN, DIACHI, SIZE;
 
-
-
-    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENTAIKHOAN, String TENSANPHAM, String NGAYDAT, int SOLUONG,
-                       int THANHTIEN, int TONGHOADON, String GHICHU, String DIACHI, String SIZE) {
+    public CTHoaDonDTO(int IDCTHOADON, int IDSANPHAM, int IDTAIKHOAN, String TENTAIKHOAN,
+                       String TENSANPHAM, String NGAYDAT, int SOLUONG, int THANHTIEN, int TONGHOADON,
+                       String GHICHU, String DIACHI, String SIZE, int TINHTRANG, int SDT) {
         this.IDCTHOADON = IDCTHOADON;
         this.IDSANPHAM = IDSANPHAM;
         this.IDTAIKHOAN = IDTAIKHOAN;
@@ -20,6 +19,8 @@ public class CTHoaDonDTO {
         this.GHICHU = GHICHU;
         this.DIACHI = DIACHI;
         this.SIZE = SIZE;
+        this.TINHTRANG = TINHTRANG;
+        this.SDT = SDT;
     }
 
     public CTHoaDonDTO() {
@@ -120,5 +121,21 @@ public class CTHoaDonDTO {
 
     public void setSIZE(String SIZE) {
         this.SIZE = SIZE;
+    }
+
+    public int getTINHTRANG() {
+        return TINHTRANG;
+    }
+
+    public void setTINHTRANG(int TINHTRANG) {
+        this.TINHTRANG = TINHTRANG;
+    }
+
+    public int getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(int SDT) {
+        this.SDT = SDT;
     }
 }

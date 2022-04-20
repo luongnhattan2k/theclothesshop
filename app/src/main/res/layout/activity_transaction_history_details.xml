@@ -138,6 +138,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtTonghoadon" />
 
             <TextView
+                android:id="@+id/txtSdtdathang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="Số điện thoại: "
+                android:textSize="15sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDiachidathang" />
+
+            <TextView
                 android:id="@+id/txtNoidungghichu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -150,8 +165,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDiachidathang" />
+                app:layout_constraintTop_toBottomOf="@+id/txtSdtdathang" />
 
+            <TextView
+                android:id="@+id/txtTinhtrangdonhang_chitiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="Tình trạng đơn hàng: "
+                android:textSize="15sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNoidungghichu" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

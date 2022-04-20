@@ -29,7 +29,8 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
     ArrayList<CTHoaDonDTO> ctHoaDonDTOArrayList;
     CTHoaDonDAO adapter;
     int IDCTHOADON;
-    TextView txt_Mahoadon,txt_Tonghoadon, txt_Tennguoidat, txt_Ngaydat, txt_Noidungghichu, txt_Diachidathang;
+    TextView txt_Mahoadon,txt_Tonghoadon, txt_Tennguoidat, txt_Sdtdathang,
+            txt_Ngaydat, txt_Noidungghichu, txt_Diachidathang, txtTinhtrangdonhang_chitiet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,9 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
                     cursor.getInt(8),
                     cursor.getString(9),
                     cursor.getString(10),
-                    cursor.getString(11)
+                    cursor.getString(11),
+                    cursor.getInt(12),
+                    cursor.getInt(13)
             ));
         }
         adapter.notifyDataSetChanged();
@@ -84,6 +87,20 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
         txt_Ngaydat.setText("Ngày đặt: " + ctHoaDonDTO.getNGAYDAT());
         txt_Noidungghichu.setText("Ghi chú: " + ctHoaDonDTO.getGHICHU());
         txt_Diachidathang.setText("Địa chỉ: " + ctHoaDonDTO.getDIACHI());
+        txt_Sdtdathang.setText("Số điện thoại: 0" + ctHoaDonDTO.getSDT());
+        if (ctHoaDonDTO.getTINHTRANG() == 0) {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Chờ duyệt đơn");
+        } else if (ctHoaDonDTO.getTINHTRANG() == 1) {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đang đóng hàng");
+        } else if (ctHoaDonDTO.getTINHTRANG() == 2) {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Xuất đơn hàng");
+        } else if (ctHoaDonDTO.getTINHTRANG() == 3) {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đang giao");
+        } else if (ctHoaDonDTO.getTINHTRANG() == 4) {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đã giao hàng");
+        } else {
+            txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đơn hàng đã bị hủy");
+        }
     }
 
     private void AnhXa() {
@@ -93,6 +110,8 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
         txt_Ngaydat = findViewById(R.id.txtNgaydat);
         txt_Noidungghichu = findViewById(R.id.txtNoidungghichu);
         txt_Diachidathang = findViewById(R.id.txtDiachidathang);
+        txt_Sdtdathang = findViewById(R.id.txtSdtdathang);
+        txtTinhtrangdonhang_chitiet = findViewById(R.id.txtTinhtrangdonhang_chitiet);
 
         ImageButton ibtn_Exit = findViewById(R.id.ibtnExitchitiethoadon);
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {

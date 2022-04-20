@@ -163,8 +163,9 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/size20dp"
-                android:backgroundTint="@color/teal_200"
+                android:backgroundTint="@color/xanh_nhat"
                 android:text="Cập Nhật "
+                android:textColor="@color/black"
                 android:fontFamily="serif"/>
 
         </LinearLayout>
