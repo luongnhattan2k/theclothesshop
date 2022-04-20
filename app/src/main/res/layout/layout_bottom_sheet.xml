@@ -113,18 +113,20 @@
         android:layout_marginTop="5dp"
         android:clickable="true"
         android:focusable="true"
+        android:minHeight="30dp"
+        android:orientation="horizontal"
         android:paddingLeft="12dp"
-        android:orientation="horizontal" >
+        tools:ignore="TouchTargetSizeCheck">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:fontFamily="serif"
             android:paddingLeft="@dimen/size10dp"
             android:text="Chọn số lượng: "
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="serif"/>
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/img_Xoasl_sheet"
