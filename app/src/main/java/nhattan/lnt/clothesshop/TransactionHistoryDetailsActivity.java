@@ -125,6 +125,9 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
                 txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đã nhận hàng");
                 stateProgressBar.setAllStatesCompleted(true);
                 break;
+            default:
+                txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đơn đã hủy");
+                break;
         }
     }
 
@@ -156,6 +159,13 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
         txt_Noidungghichu.setText("Ghi chú: " + ctHoaDonDTO.getGHICHU());
         txt_Diachidathang.setText("Địa chỉ: " + ctHoaDonDTO.getDIACHI());
         txt_Sdtdathang.setText("Số điện thoại: 0" + ctHoaDonDTO.getSDT());
+
+        btn_Huydonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDialog_HuyHang();
+            }
+        });
 
         btn_Danhanduochang.setOnClickListener(new View.OnClickListener() {
             @Override
