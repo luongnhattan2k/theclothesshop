@@ -173,7 +173,7 @@ public class OrderActivity extends AppCompatActivity {
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
                 database.INSERT_HOADON(Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(), idcthd,
-                        Thanhtien, ngaydat, thangdat, namdat, diachi, ghichu, 0, Login.taiKhoanDTO.getSDT());
+                        Thanhtien, ngaydat, thangdat, namdat, diachi, ghichu, 1, Login.taiKhoanDTO.getSDT());
                 for (int i = 0; i < gioHangDAO.mangmuahang.size(); i++) {
                     database.DELETE_GIOHANGALL(gioHangDAO.mangmuahang.get(i).getIDGIOHANG());
                 }

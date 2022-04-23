@@ -447,6 +447,29 @@ public class Database extends SQLiteOpenHelper {
         return list;
     }
 
+    //region Video
+    public ArrayList<HoaDonDTO> QuanLyHoaDon_TimKiem(String IDHOADON){
+        ArrayList<HoaDonDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM HOADON WHERE IDHOADON LIKE '%" + IDHOADON +"%'");
+        while (cursor.moveToNext()){
+            list.add(new HoaDonDTO(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getInt(10),
+                    cursor.getInt(11)
+            ));
+        }
+        return list;
+    }
+
     public boolean isTonTaiSanPham(int IDSP){
         Cursor cursor = Getdata("SELECT * FROM SANPHAM WHERE IDSP = '" + IDSP + "'");
         while (cursor.moveToNext()){
@@ -477,6 +500,15 @@ public class Database extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    public void CapNhatHoaDon_NguoiDung(int IDCTHD, int TINHTRANG){
+        QueryData("UPDATE HOADON SET TINHTRANG = '" + TINHTRANG + "' WHERE IDCTHOADON = '" + IDCTHD + "'");
+    }
+
+    public void CapNhatCTHoaDon_NguoiDung(int IDCTHD, int TINHTRANG){
+        QueryData("UPDATE CHITIETHOADON SET TINHTRANG = '" + TINHTRANG + "' WHERE IDCTHOADON = '" + IDCTHD + "'");
+    }
+
 
     public void CapNhatHoaDon(int IDCTHD, String GHICHU, String DIACHI, int TINHTRANG, int SDT){
         QueryData("UPDATE HOADON SET DIACHI = '" + DIACHI + "' , GHICHU = '" + GHICHU

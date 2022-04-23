@@ -73,23 +73,25 @@ public class HoaDonDAO extends BaseAdapter {
 
         HoaDonDTO hoaDon = ListHoaDon.get(i);
 
-        if (hoaDon.getTINHTRANG() == 0) {
+        if (hoaDon.getTINHTRANG() == 1) {
             holder.txtTinhtrang.setText("Tình trạng: Chờ duyệt đơn");
-        } else if (hoaDon.getTINHTRANG() == 1) {
-            holder.txtTinhtrang.setText("Tình trạng: Đang đóng hàng");
         } else if (hoaDon.getTINHTRANG() == 2) {
-            holder.txtTinhtrang.setText("Tình trạng: Xuất đơn hàng");
+            holder.txtTinhtrang.setText("Tình trạng: Đang đóng hàng");
         } else if (hoaDon.getTINHTRANG() == 3) {
-            holder.txtTinhtrang.setText("Tình trạng: Đang giao");
+            holder.txtTinhtrang.setText("Tình trạng: Xuất đơn hàng");
         } else if (hoaDon.getTINHTRANG() == 4) {
-            holder.txtTinhtrang.setText("Tình trạng: Đã giao hàng");
+            holder.txtTinhtrang.setText("Tình trạng: Đang giao");
+        } else if (hoaDon.getTINHTRANG() == 5) {
+            holder.txtTinhtrang.setText("Tình trạng: Giao thành công");
+        } else if (hoaDon.getTINHTRANG() == 6) {
+            holder.txtTinhtrang.setText("Tình trạng: Đã nhận hàng");
         } else {
             holder.txtTinhtrang.setText("Tình trạng: Đã hủy");
         }
 
         holder.txtMahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDon.getIDHOADON());
         holder.txtNgaydat.setText("Ngày đặt: " + hoaDon.getNGAYDAT());
-        holder.txtTongTien.setText("Tổng tiền: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
+        holder.txtTongTien.setText("Tổng tiền: " + (NumberFormat.getNumberInstance(Locale.US).format(hoaDon.getTONGTIEN())) + " VNĐ");
         id = hoaDon.getIDHOADON();
         idcthd = hoaDon.getIDCTHOADON();
 

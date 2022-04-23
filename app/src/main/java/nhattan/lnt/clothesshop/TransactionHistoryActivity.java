@@ -54,6 +54,12 @@ public class TransactionHistoryActivity extends AppCompatActivity {
         GetData();
     }
 
+    @Override
+    protected void onStart() {
+        GetData();
+        super.onStart();
+    }
+
     private void AnhXa() {
         ImageButton ibtn_Exit = findViewById(R.id.ibtnExitlichsugiaodich);
         ibtn_Exit.setOnClickListener(new View.OnClickListener() {

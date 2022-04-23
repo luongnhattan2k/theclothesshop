@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Fashion Store</string>
     <string name="username">Tên Tài Khoản</string>
     <string name="password">Mật Khẩu</string>
     <string name="repassword">Nhập Lại Mật Khẩu</string>

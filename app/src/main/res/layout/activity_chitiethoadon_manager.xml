@@ -231,7 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="serif"
-                    android:hint="Tình trạng đơn hàng (0 - 4): "
+                    android:hint="Tình trạng đơn hàng (1 - 5): "
                     android:textSize="15sp"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 

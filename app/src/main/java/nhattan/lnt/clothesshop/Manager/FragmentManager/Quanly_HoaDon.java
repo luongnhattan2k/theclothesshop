@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -51,7 +53,7 @@ public class Quanly_HoaDon extends Fragment {
     String strThang = null;
     String strNam = null;
     TextView txt_Tongtienthongke, txt_Ngaythongke;
-    EditText edt_Thangthongke, edt_Namthongke;
+    EditText edt_Thangthongke, edt_Namthongke, edt_timkiemhoadon;
     int Doanhthu;
 
 
@@ -84,6 +86,12 @@ public class Quanly_HoaDon extends Fragment {
     private void Load() {
         listHoaDon.clear();
         listHoaDon.addAll(database.QuanLyHoaDon());
+        adapter.notifyDataSetChanged();
+    }
+
+    private void Load_TimKiem() {
+        listHoaDon.clear();
+        listHoaDon.addAll(database.QuanLyHoaDon_TimKiem(edt_timkiemhoadon.getText().toString()));
         adapter.notifyDataSetChanged();
     }
 
@@ -173,6 +181,23 @@ public class Quanly_HoaDon extends Fragment {
     private void AnhXa() {
         recV_DanhSachSanPham_qlhd = view.findViewById(R.id.recV_DanhSachSanPham_qlhd);
         btn_Thongkedoanhthu = view.findViewById(R.id.btnThongkedoanhthu);
+        edt_timkiemhoadon = view.findViewById(R.id.edt_timkiemhoadon);
+
+        edt_timkiemhoadon.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Load();
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Load_TimKiem();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         btn_Thongkedoanhthu.setOnClickListener(new View.OnClickListener() {
             @Override

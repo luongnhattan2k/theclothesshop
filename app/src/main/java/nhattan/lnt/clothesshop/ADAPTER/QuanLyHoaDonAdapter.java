@@ -51,17 +51,20 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
         holder.img_Hinhanh.setImageResource(R.drawable.logo);
         holder.txt_Mahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDonDTO.getIDHOADON());
         holder.txt_Ngaydat.setText("Ngày đặt: " + hoaDonDTO.getNGAYDAT());
-        holder.txt_Tongtien.setText("Tổng tiền: " + String.valueOf(hoaDonDTO.getTONGTIEN()) + " VND");
-        if (hoaDonDTO.getTINHTRANG() == 0) {
+        holder.txt_Tongtien.setText("Tổng tiền: " + (hoaDonDTO.getTONGTIEN()) + " VND");
+
+        if (hoaDonDTO.getTINHTRANG() == 1) {
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Chờ duyệt đơn");
-        } else if (hoaDonDTO.getTINHTRANG() == 1) {
-            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang đóng hàng");
         } else if (hoaDonDTO.getTINHTRANG() == 2) {
-            holder.txt_Tinhtranghoadon.setText("Tình trạng: Xuất đơn hàng");
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang đóng hàng");
         } else if (hoaDonDTO.getTINHTRANG() == 3) {
-            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang giao");
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Xuất đơn hàng");
         } else if (hoaDonDTO.getTINHTRANG() == 4) {
-            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã giao hàng");
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đang giao");
+        } else if (hoaDonDTO.getTINHTRANG() == 5) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Giao thành công");
+        } else if (hoaDonDTO.getTINHTRANG() == 6) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã nhận hàng");
         } else {
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã hủy");
         }
