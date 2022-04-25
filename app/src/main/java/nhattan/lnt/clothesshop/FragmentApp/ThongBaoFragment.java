@@ -60,7 +60,7 @@ public class ThongBaoFragment extends Fragment {
 
     private void GetData() {
         //get data
-        Cursor cursor = database.Getdata("SELECT * FROM TINTUC");
+        Cursor cursor = database.Getdata("SELECT * FROM TINTUC ORDER BY IDTINTUC DESC");
         while (cursor.moveToNext())
         {
             tinTucDTOArrayList.add(new TinTucDTO(
