@@ -32,6 +32,10 @@
         android:layout_height="match_parent"
         android:layout_marginTop="245dp"
         android:background="@color/white"
-        android:numColumns="2"/>
+        android:numColumns="2"
+        android:columnWidth="@dimen/size10dp"
+        android:horizontalSpacing="@dimen/size10dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/size10dp"/>
 
 </FrameLayout>

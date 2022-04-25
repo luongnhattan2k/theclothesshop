@@ -4,20 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="56dp"
+    android:background="@color/xam"
     tools:context=".FragmentApp.ThongBaoFragment">
 
-    <TextView
+    <GridView
+        android:id="@+id/gridviewTinTuc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:text="Thong báo đây chứ đâu"
-        android:textSize="24sp"/>
-
-<!--    <GridView-->
-<!--        android:id="@+id/gridviewSanPham"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_margin="@dimen/size10dp"/>-->
+        android:layout_margin="@dimen/size10dp"
+        android:columnWidth="@dimen/size10dp"
+        android:horizontalSpacing="@dimen/size10dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/size10dp"/>
 
 </FrameLayout>

@@ -16,6 +16,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_CHITIETHOADON = "CHITIETHOADON";
     public static String tbl_GIOHANG = "GIOHANG";
     public static String tbl_GOPY = "GOPY";
+    public static String tbl_TINTUC = "TINTUC";
 
     public static String tbl_TAIKHOAN_IDTK = "IDTAIKHOAN";
     public static String tbl_TAIKHOAN_TENTAIKHOAN = "TENTAIKHOAN";
@@ -85,6 +86,13 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_GOPY_SDT = "SDT";
     public static String tbl_GOPY_NOIDUNG = "NOIDUNG";
 
+    public static String tbl_TINTUC_IDTINTUC = "IDTINTUC";
+    public static String tbl_TINTUC_TIEUDE = "TIEUDE";
+    public static String tbl_TINTUC_NOIDUNG = "NOIDUNG";
+    public static String tbl_TINTUC_HINHANH = "HINHANH";
+    public static String tbl_TINTUC_NGAYDANG = "NGAYDANG";
+    public static String tbl_TINTUC_TINMOI = "TINMOI";
+
 
     public CreateDatabase(@Nullable Context context) {
         super(context, "ClothesDatabase", null, 2);
@@ -127,6 +135,10 @@ public class CreateDatabase extends SQLiteOpenHelper {
         String GOPY = "CREATE TABLE " + tbl_GOPY + "(" + tbl_GOPY_IDGOPY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_GOPY_TENTAIKHOAN + " TEXT, " + tbl_GOPY_SDT + " INTEGER, " + tbl_GOPY_NOIDUNG + " TEXT )";
 
+        String TINTUC = "CREATE TABLE " + tbl_TINTUC + "(" + tbl_TINTUC_IDTINTUC + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + tbl_TINTUC_TIEUDE + " TEXT, " + tbl_TINTUC_NOIDUNG + " TEXT, " + tbl_TINTUC_HINHANH + " BLOB, "
+                + tbl_TINTUC_NGAYDANG + " DATE , " + tbl_TINTUC_TINMOI + " INTEGER)";
+
         db.execSQL(TAIKHOAN);
         db.execSQL(QUYEN);
         db.execSQL(SANPHAM);
@@ -135,6 +147,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
         db.execSQL(CTHOADON);
         db.execSQL(GIOHANG);
         db.execSQL(GOPY);
+        db.execSQL(TINTUC);
 
     }
 

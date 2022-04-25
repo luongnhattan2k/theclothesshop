@@ -2,9 +2,6 @@ package nhattan.lnt.clothesshop.FragmentApp;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import nhattan.lnt.clothesshop.DAO.TaiKhoanDAO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
@@ -77,6 +76,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
                 if (sTaiKhoan == null || sTaiKhoan.isEmpty()){
                     Toast.makeText(getActivity(), "Vui Lòng Nhập Tài Khoản !", Toast.LENGTH_SHORT).show();
+                } else if (HomeFragment.database.isTonTaiTaiKhoan(sTaiKhoan)) {
+                    Toast.makeText(getActivity(), "Tên tài khoản đã tồn tại !", Toast.LENGTH_SHORT).show();
                 } else if (sMatKhau == null || sMatKhau.isEmpty()) {
                     Toast.makeText(getActivity(), "Vui Lòng Nhập Mật Khẩu !", Toast.LENGTH_SHORT).show();
                 } else if (sEmail == null || sEmail.isEmpty()) {

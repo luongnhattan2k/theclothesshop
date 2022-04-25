@@ -28,6 +28,7 @@ import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Gopy;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_HoaDon;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Sanpham;
 import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_Taikhoan;
+import nhattan.lnt.clothesshop.Manager.FragmentManager.Quanly_TinTuc;
 import nhattan.lnt.clothesshop.R;
 
 public class HomeManager extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -37,7 +38,7 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
     private static final int FRAGMENT_QL_SANPHAM = 1;
     private static final int FRAGMENT_QL_TAIKHOAN = 2;
     private static final int FRAGMENT_QL_HOADON = 3;
-    private static final int FRAGMENT_QL_THONGKE = 4;
+    private static final int FRAGMENT_QL_TINTUC = 4;
     private static final int FRAGMENT_QL_GOPY = 5;
 
     private int currentFragment = FRAGMENT_QL_SANPHAM;
@@ -162,6 +163,11 @@ public class HomeManager extends AppCompatActivity implements NavigationView.OnN
             if (FRAGMENT_QL_HOADON != currentFragment) {
                 replaceFragment(new Quanly_HoaDon());
                 currentFragment = FRAGMENT_QL_HOADON;
+            }
+        }else if (id == R.id.nav_quanly_tintuc) {
+            if (FRAGMENT_QL_TINTUC != currentFragment) {
+                replaceFragment(new Quanly_TinTuc());
+                currentFragment = FRAGMENT_QL_TINTUC;
             }
         }else if (id == R.id.nav_quanly_gopy) {
             if (FRAGMENT_QL_GOPY != currentFragment) {

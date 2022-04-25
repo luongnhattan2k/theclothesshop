@@ -17,6 +17,7 @@ import nhattan.lnt.clothesshop.DTO.GopYDTO;
 import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
+import nhattan.lnt.clothesshop.DTO.TinTucDTO;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -406,6 +407,7 @@ public class Database extends SQLiteOpenHelper {
         return list;
     }
 
+
     public void XoaHD(int IDTHOADON){
         QueryData("DELETE FROM HOADON WHERE IDHOADON = '" + IDTHOADON + "'");
     }
@@ -468,6 +470,14 @@ public class Database extends SQLiteOpenHelper {
             ));
         }
         return list;
+    }
+
+    public boolean isTonTaiTaiKhoan(String TENTAIKHOAN){
+        Cursor cursor = Getdata("SELECT * FROM TAIKHOAN WHERE TENTAIKHOAN = '" + TENTAIKHOAN + "'");
+        while (cursor.moveToNext()){
+            return true;
+        }
+        return false;
     }
 
     public boolean isTonTaiSanPham(int IDSP){
@@ -600,6 +610,37 @@ public class Database extends SQLiteOpenHelper {
             );
         }
         return null;
+    }
+
+    public void ThemTinTuc(byte[] hinh, String tieude, String noidung, String ngaydang ) throws SQLiteException {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new  ContentValues();
+        cv.put(CreateDatabase.tbl_TINTUC_HINHANH, hinh);
+        cv.put(CreateDatabase.tbl_TINTUC_TIEUDE, tieude);
+        cv.put(CreateDatabase.tbl_TINTUC_NOIDUNG, noidung);
+        cv.put(CreateDatabase.tbl_TINTUC_NGAYDANG, ngaydang);
+        cv.put(CreateDatabase.tbl_TINTUC_TINMOI, 1);
+
+        database.insert( CreateDatabase.tbl_TINTUC, null, cv );
+    }
+
+    public ArrayList<TinTucDTO> QuanLyTinTuc(){
+        ArrayList<TinTucDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM TINTUC");
+        while (cursor.moveToNext()){
+            list.add(new TinTucDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4)
+            ));
+        }
+        return list;
+    }
+
+    public void XoaTinTuc(int IDTINTUC){
+        QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
     }
 
     public void XoaGY(int IDGY){

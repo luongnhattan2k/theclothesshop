@@ -14,17 +14,32 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/size10dp"
         android:gravity="center"
-        android:text="Quản Lý Tài Khoản"
+        android:fontFamily="serif"
+        android:text="Quản Lý Tin Tức"
         android:textSize="24dp"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnThemtinmoi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/xanh_nhat"
+        android:text="Thêm mới"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="serif"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recV_DanhSachTaikhoan"
+        android:id="@+id/recV_DanhSachTinTuc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp" />
+        android:layout_margin="@dimen/size10dp"
+        android:numColumns="2"/>
+
 
 </LinearLayout>

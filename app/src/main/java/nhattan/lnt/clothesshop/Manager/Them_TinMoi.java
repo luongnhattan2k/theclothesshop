@@ -25,94 +25,104 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.R;
 
-public class Them_SanPham extends AppCompatActivity {
-    EditText edtTensanpham_add, edtGia_add, edtSoluong_add, edtMota_add, edtDanhmuc_add;
-    ImageView img_HinhAnh_add;
-    ImageButton ibtn_Exit_add;
-    Button btnThemSP;
+public class Them_TinMoi extends AppCompatActivity {
+
+    EditText edtTieudetintuc_add, edtNgaydangtintuc_add, edtNoidungtintuc_add;
+    ImageView img_HinhAnhTinTuc_add;
+    ImageButton ibtn_Exitthemtin_add;
+    Button btnThemtintuc;
     private boolean isEnabled;
     Database database;
     final int REQUEST_CODE_CAMERA=123;
     final int REQUEST_CODE_FOLDER=456;
+    String Ngaydang, Tieude, Noidung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_san_pham);
+        setContentView(R.layout.activity_them_tin_moi);
 
         AnhXa();
-
     }
 
     private void AnhXa() {
         database = new Database(this);
-        img_HinhAnh_add = findViewById(R.id.img_Hinhanh_Add);
-        edtTensanpham_add = findViewById(R.id.edtTensanpham_Add);
-        edtGia_add = findViewById(R.id.edtGia_Add);
-        edtSoluong_add = findViewById(R.id.edtSL_Add);
-        edtMota_add = findViewById(R.id.edtMota_Add);
-        edtDanhmuc_add = findViewById(R.id.edtDanhmuc_Add);
-        ibtn_Exit_add = findViewById(R.id.ibtnExitthemsp);
-        btnThemSP = findViewById(R.id.btnThemSP);
+        img_HinhAnhTinTuc_add = findViewById(R.id.img_Hinhanhtintuc_Add);
+        edtTieudetintuc_add = findViewById(R.id.edtTieudetintuc_Add);
+        edtNgaydangtintuc_add = findViewById(R.id.edtNgaydangtintuc_Add);
+        edtNoidungtintuc_add = findViewById(R.id.edtNoidungtintuc_Add);
+        ibtn_Exitthemtin_add = findViewById(R.id.ibtnExitthemtintuc);
+        btnThemtintuc = findViewById(R.id.btnThemtintuc);
 
-        registerForContextMenu(img_HinhAnh_add);
-        img_HinhAnh_add.setOnClickListener(new View.OnClickListener() {
+        registerForContextMenu(img_HinhAnhTinTuc_add);
+
+        Thread t = new Thread() {
+            @Override
+            public void run () {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                long date = System.currentTimeMillis();
+                                SimpleDateFormat sdf_ngay = new SimpleDateFormat("dd/MM/yyyy");
+                                Ngaydang = sdf_ngay.format(date);
+                                edtNgaydangtintuc_add.setText(Ngaydang);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e ) { }
+            }
+        };
+        t.start();
+
+        img_HinhAnhTinTuc_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                img_HinhAnh_add.showContextMenu();
+                img_HinhAnhTinTuc_add.showContextMenu();
             }
         });
 
-        ibtn_Exit_add.setOnClickListener(new View.OnClickListener() {
+        ibtn_Exitthemtin_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        btnThemSP.setOnClickListener(new View.OnClickListener() {
+        btnThemtintuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) img_HinhAnh_add.getDrawable();
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) img_HinhAnhTinTuc_add.getDrawable();
                 Bitmap bitmap = bitmapDrawable.getBitmap();
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
                 byte[] hinhAnh = byteArray.toByteArray();
 
-                String TenSanPham = edtTensanpham_add.getText().toString().trim();
-                int Gia = Integer.parseInt(edtGia_add.getText().toString().trim());
-                int SoLuong = Integer.parseInt(edtSoluong_add.getText().toString().trim());
-                String MoTa = edtMota_add.getText().toString().trim();
-                int DanhMuc = Integer.parseInt(edtDanhmuc_add.getText().toString().trim());
-                int SpNew = 1;
+                Tieude = edtTieudetintuc_add.getText().toString().trim();
+                Noidung = edtNoidungtintuc_add.getText().toString().trim();
+                if (edtTieudetintuc_add.getText().length() != 0 && edtNoidungtintuc_add.getText().length() != 0) {
 
-                if (edtTensanpham_add.getText().length() != 0 && edtGia_add.getText().length() != 0 && edtSoluong_add.getText().length() != 0
-                        && edtMota_add.getText().length() != 0 && edtDanhmuc_add.getText().length() !=0) {
-//                    database.ThemSanPham(hinhAnh, TenSanPham, Gia, SoLuong, MoTa, DanhMuc, SpNew);
-
-                    HomeFragment.database.ThemSanPham(
+                    HomeFragment.database.ThemTinTuc(
                             hinhAnh,
-                            TenSanPham,
-                            Gia,
-                            SoLuong,
-                            MoTa,
-                            DanhMuc,
-                            SpNew
+                            Tieude,
+                            Noidung,
+                            Ngaydang
                     );
-
-                    Toast.makeText(Them_SanPham.this, "Thêm Sản Phẩm Thành Công !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Them_TinMoi.this, "Thêm Tin Mới Thành Công !", Toast.LENGTH_SHORT).show();
                     onBackPressed();
                 } else {
-                    Toast.makeText(Them_SanPham.this, "Thêm Sản Phẩm Thất Bại !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Them_TinMoi.this, " Thất Bại !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 
     @Override
@@ -125,7 +135,7 @@ public class Them_SanPham extends AppCompatActivity {
                     startActivityForResult(intent,REQUEST_CODE_CAMERA);
                 }else
                 {
-                    Toast.makeText(Them_SanPham.this,"Không cho phép mở Camera", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Them_TinMoi.this,"Không cho phép mở Camera", Toast.LENGTH_LONG).show();
                 }
                 break;
             case REQUEST_CODE_FOLDER:
@@ -136,7 +146,7 @@ public class Them_SanPham extends AppCompatActivity {
                     startActivityForResult(intent,REQUEST_CODE_FOLDER);
                 }else
                 {
-                    Toast.makeText(Them_SanPham.this," Không cho phép mở folder", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Them_TinMoi.this," Không cho phép mở folder", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -148,7 +158,7 @@ public class Them_SanPham extends AppCompatActivity {
         if(requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            img_HinhAnh_add.setImageBitmap(bitmap);
+            img_HinhAnhTinTuc_add.setImageBitmap(bitmap);
         }
         if(requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null)
         {
@@ -156,7 +166,7 @@ public class Them_SanPham extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                img_HinhAnh_add.setImageBitmap(bitmap);
+                img_HinhAnhTinTuc_add.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

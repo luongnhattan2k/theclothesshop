@@ -17,6 +17,11 @@
             android:title="Quản Lý Hóa Đơn" />
 
         <item
+            android:id="@+id/nav_quanly_tintuc"
+            android:icon="@drawable/baseline_notifications_24"
+            android:title="Quản Lý Tin Tức" />
+
+        <item
             android:id="@+id/nav_quanly_gopy"
             android:icon="@drawable/baseline_contact_support_24"
             android:title="Quản Lý Góp Ý" />
