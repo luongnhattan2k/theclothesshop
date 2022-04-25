@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoKhoacFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpAoThunFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpSoMiFragment;
+import nhattan.lnt.clothesshop.FragmentApp.ThongBaoFragment;
 import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -47,6 +49,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_PROFILE = 5;
     private static final int FRAGMENT_MYCART = 6;
     private static final int FRAGMENT_SETTING = 7;
+    private static final int FRAGMENT_NOTIFICATION = 8;
 
     private int currentFragment = FRAGMENT_HOME;
 
@@ -62,6 +65,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
      TextView txt_TenTaiKhoan;
      CircleImageView cimg_User;
+     ImageView imgThongBao;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -106,6 +110,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         contentView = findViewById(R.id.content_View);
         toolbar = findViewById(R.id.toolbar);
         edtSearch = findViewById(R.id.edtSearch);
+        imgThongBao = findViewById(R.id.imgThongBao);
 
         setSupportActionBar(toolbar);
 
@@ -121,6 +126,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         replaceFragment(new HomeFragment());
 
         animateNavigation();
+
+        imgThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (FRAGMENT_NOTIFICATION != currentFragment) {
+                    replaceFragment(new ThongBaoFragment());
+                    currentFragment = FRAGMENT_NOTIFICATION;
+                }
+            }
+        });
 
     }
 
@@ -183,41 +198,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             startActivity(new Intent(this, Login.class));
             finish();
-        }else if (id == R.id.nav_logout){
+        } else if (id == R.id.nav_logout){
             Intent intent = new Intent(this, HomeActivity.class);
             Login.taiKhoanDTO = new TaiKhoanDTO();
             startActivity(intent);
-        }else if (id == R.id.nav_home) {
+        } else if (id == R.id.nav_home) {
             if (FRAGMENT_HOME != currentFragment) {
                 replaceFragment(new HomeFragment());
                 currentFragment = FRAGMENT_HOME;
             }
-        }else if (id == R.id.nav_Aothun) {
+        } else if (id == R.id.nav_Aothun) {
             if (FRAGMENT_AOTHUN != currentFragment) {
                 replaceFragment(new SpAoThunFragment());
                 currentFragment = FRAGMENT_AOTHUN;
             }
-        }else if (id == R.id.nav_Aokhoac) {
+        } else if (id == R.id.nav_Aokhoac) {
             if (FRAGMENT_AOKHOAC != currentFragment) {
                 replaceFragment(new SpAoKhoacFragment());
                 currentFragment = FRAGMENT_AOKHOAC;
             }
-        }else if (id == R.id.nav_Aosomi) {
+        } else if (id == R.id.nav_Aosomi) {
             if (FRAGMENT_AOSOMI != currentFragment) {
                 replaceFragment(new SpSoMiFragment());
                 currentFragment = FRAGMENT_AOSOMI;
             }
-        }else if (id == R.id.nav_profile) {
+        } else if (id == R.id.nav_profile) {
             if (FRAGMENT_PROFILE != currentFragment) {
                 replaceFragment(new UserFragment());
                 currentFragment = FRAGMENT_PROFILE;
             }
-        }else if (id == R.id.nav_mycart) {
+        } else if (id == R.id.nav_mycart) {
             if (FRAGMENT_MYCART != currentFragment) {
                 replaceFragment(new MyCartFragment());
                 currentFragment = FRAGMENT_MYCART;
             }
-        }else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_setting) {
             if (FRAGMENT_SETTING != currentFragment) {
                 replaceFragment(new SettingFragment());
                 currentFragment = FRAGMENT_SETTING;

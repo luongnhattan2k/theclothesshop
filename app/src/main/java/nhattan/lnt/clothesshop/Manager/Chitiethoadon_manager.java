@@ -88,7 +88,7 @@ public class Chitiethoadon_manager extends AppCompatActivity {
                 if (isEnabled){
                     btnCapNhat_hoadon.setText("Lưu");
                 }
-                else{
+                else {
                     btnCapNhat_hoadon.setText("Cập nhật");
                     int idchitiethoadon = Integer.parseInt(String.valueOf(IDCTHOADON));
                     String diachi = txt_Diachidathang_ql.getText().toString();
@@ -96,15 +96,18 @@ public class Chitiethoadon_manager extends AppCompatActivity {
                     int sdt = Integer.parseInt(txtSdtnguoidat_ql.getText().toString());
                     int tinhtrang = Integer.parseInt(txtTinhtrangdonhang_ql.getText().toString());
 
-                    if (diachi.isEmpty() || ghichu.isEmpty())
-                    {
-                        Toast.makeText(Chitiethoadon_manager.this, "Vui lòng thử lại !", Toast.LENGTH_SHORT).show();
-                    } else {
-                        HomeFragment.database.CapNhatCTHoaDon(idchitiethoadon, ghichu, diachi, tinhtrang, sdt);
-                        HomeFragment.database.CapNhatHoaDon(idchitiethoadon, ghichu, diachi, tinhtrang, sdt);
-                        Toast.makeText(Chitiethoadon_manager.this, "Thành công !", Toast.LENGTH_SHORT).show();
-                        onBackPressed();
-                    }
+                    HomeFragment.database.CapNhatCTHoaDon(idchitiethoadon, ghichu, diachi, tinhtrang, sdt);
+                    HomeFragment.database.CapNhatHoaDon(idchitiethoadon, ghichu, diachi, tinhtrang, sdt);
+                    Toast.makeText(Chitiethoadon_manager.this, "Thành công !", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+
+//                    if (diachi.isEmpty()) {
+//                        Toast.makeText(Chitiethoadon_manager.this, "Vui lòng thử lại !", Toast.LENGTH_SHORT).show();
+//                    } else if (ghichu.isEmpty()) {
+//                        Toast.makeText(Chitiethoadon_manager.this, "Vui lòng thử lại !", Toast.LENGTH_SHORT).show();
+//                    } else {
+//
+//                    }
                 }
             }
         });

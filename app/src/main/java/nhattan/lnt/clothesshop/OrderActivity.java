@@ -1,7 +1,10 @@
 package nhattan.lnt.clothesshop;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,13 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import nhattan.lnt.clothesshop.ADAPTER.MyApplication;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.DatHangDAO;
 import nhattan.lnt.clothesshop.DAO.GioHangDAO;
@@ -31,6 +38,7 @@ import nhattan.lnt.clothesshop.Database.Database;
 
 public class OrderActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_ID = 1;
     ListView Listview_Kiemtra;
     ArrayList<DatHangDTO> datHangDTOS;
     ArrayList<GioHangDTO> gioHangDTOArrayList;
@@ -149,7 +157,7 @@ public class OrderActivity extends AppCompatActivity {
         btn_Dathangkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sendNotification();
                 String diachi =  edt_Diachigiaohang.getText().toString();
                 String ghichu = edt_Ghichu.getText().toString();
                 String ngaydat = tdate.getText().toString();
@@ -168,7 +176,7 @@ public class OrderActivity extends AppCompatActivity {
                     GioHangDTO themhoadon = gioHangDAO.mangmuahang.get(position);
                     database.INSERT_CTHOADON(idcthd, Login.taiKhoanDTO.getMATK(), Login.taiKhoanDTO.getTENTK(),
                             themhoadon.getIDSP(), themhoadon.getTENSANPHAM(), ngaydat ,themhoadon.getSOLUONG(),
-                            themhoadon.getTHANHTIEN(), Thanhtien, ghichu, diachi, themhoadon.getSIZE(), 0,
+                            themhoadon.getTHANHTIEN(), Thanhtien, ghichu, diachi, themhoadon.getSIZE(), 1,
                             Login.taiKhoanDTO.getSDT());
                     database.UPDATE_SOLUONG(themhoadon.getIDSP(),themhoadon.getSOLUONG());
                 }
@@ -185,6 +193,7 @@ public class OrderActivity extends AppCompatActivity {
                 Toast.makeText(OrderActivity.this, "Đặt hàng thành công !", Toast.LENGTH_SHORT).show();
 //                Toast.makeText(OrderActivity.this, " ssss : " + idcthd , Toast.LENGTH_SHORT).show();
                 startActivity(iHome);
+
             }
         });
 
@@ -195,6 +204,25 @@ public class OrderActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    private void sendNotification() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+
+        Notification notification = new NotificationCompat.Builder(this, MyApplication.CHANNEL_ID)
+                .setContentTitle("Thông báo !")
+                .setContentText("Đặt hàng thành công !")
+                .setSmallIcon(R.drawable.logo)
+                .setLargeIcon(bitmap)
+                .build();
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(getNotificatonId(), notification);
+
+    }
+
+    private int getNotificatonId() {
+        return (int) new Date().getTime();
     }
 
     private List<CategoryDTO> getListCategort() {
