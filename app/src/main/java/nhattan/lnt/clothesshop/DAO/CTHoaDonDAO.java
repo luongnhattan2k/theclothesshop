@@ -52,7 +52,6 @@ public class CTHoaDonDAO extends BaseAdapter {
     static class ViewHolder{
         TextView txt_TenSP, txt_Tongtien, txt_SLSP, txt_Size;
         ImageView img_HinhAnh;
-        TextView txt_Tonghoadon, txt_Tennguoidat, txt_Ngaydat, txt_Noidungghichu;
 
     }
 
@@ -80,8 +79,8 @@ public class CTHoaDonDAO extends BaseAdapter {
         CTHoaDonDTO ctHoaDonDTO = ListCTHoaDon.get(i);
 
         holder.txt_TenSP.setText(ctHoaDonDTO.getTENSANPHAM());
-        holder.txt_SLSP.setText("Sl: " + String.valueOf(ctHoaDonDTO.getSOLUONG()));
-        holder.txt_Tongtien.setText("Giá: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
+        holder.txt_SLSP.setText("Sl: " + (ctHoaDonDTO.getSOLUONG()));
+        holder.txt_Tongtien.setText("Giá: " + (NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTHANHTIEN())) + " VNĐ");
         holder.txt_Size.setText(ctHoaDonDTO.getSIZE());
         id = ctHoaDonDTO.getIDCTHOADON();
 

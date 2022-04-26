@@ -65,6 +65,8 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Giao thành công");
         } else if (hoaDonDTO.getTINHTRANG() == 6) {
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã nhận hàng");
+        } else if (hoaDonDTO.getTINHTRANG() == 7) {
+            holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã gửi đánh giá");
         } else {
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Đã hủy");
         }

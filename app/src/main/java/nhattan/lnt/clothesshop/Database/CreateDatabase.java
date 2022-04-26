@@ -17,6 +17,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_GIOHANG = "GIOHANG";
     public static String tbl_GOPY = "GOPY";
     public static String tbl_TINTUC = "TINTUC";
+    public static String tbl_DANHGIA = "DANHGIA";
 
     public static String tbl_TAIKHOAN_IDTK = "IDTAIKHOAN";
     public static String tbl_TAIKHOAN_TENTAIKHOAN = "TENTAIKHOAN";
@@ -93,6 +94,13 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_TINTUC_NGAYDANG = "NGAYDANG";
     public static String tbl_TINTUC_TINMOI = "TINMOI";
 
+    public static String getTbl_DANHGIA_IDDANHGIA = "IDDANHGIA";
+    public static String getTbl_DANHGIA_IDTAIKHOAN = "IDTAIKHOAN";
+    public static String getTbl_DANHGIA_IDSANPHAM = "IDSANPHAM";
+    public static String getTbl_DANHGIA_DANHGIA = "DANHGIA";
+    public static String getTbl_DANHGIA_NOIDUNG = "NOIDUNG";
+    public static String getTbl_DANHGIA_THOIGIAN = "THOIGIAN";
+
 
     public CreateDatabase(@Nullable Context context) {
         super(context, "ClothesDatabase", null, 2);
@@ -139,6 +147,10 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_TINTUC_TIEUDE + " TEXT, " + tbl_TINTUC_NOIDUNG + " TEXT, " + tbl_TINTUC_HINHANH + " BLOB, "
                 + tbl_TINTUC_NGAYDANG + " DATE , " + tbl_TINTUC_TINMOI + " INTEGER)";
 
+        String DANHGIA = "CREATE TABLE " + tbl_DANHGIA + "(" + getTbl_DANHGIA_IDDANHGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + getTbl_DANHGIA_IDTAIKHOAN + " INTEGER, " + getTbl_DANHGIA_IDSANPHAM + " INTEGER, " + getTbl_DANHGIA_DANHGIA + " DOUBLE, "
+                + getTbl_DANHGIA_NOIDUNG + " TEXT , " + getTbl_DANHGIA_THOIGIAN + " DATE)";
+
         db.execSQL(TAIKHOAN);
         db.execSQL(QUYEN);
         db.execSQL(SANPHAM);
@@ -148,6 +160,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
         db.execSQL(GIOHANG);
         db.execSQL(GOPY);
         db.execSQL(TINTUC);
+        db.execSQL(DANHGIA);
 
     }
 

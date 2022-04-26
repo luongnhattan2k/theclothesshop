@@ -85,6 +85,8 @@ public class HoaDonDAO extends BaseAdapter {
             holder.txtTinhtrang.setText("Tình trạng: Giao thành công");
         } else if (hoaDon.getTINHTRANG() == 6) {
             holder.txtTinhtrang.setText("Tình trạng: Đã nhận hàng");
+        } else if (hoaDon.getTINHTRANG() == 7) {
+            holder.txtTinhtrang.setText("Tình trạng: Đã gửi đánh giá");
         } else {
             holder.txtTinhtrang.setText("Tình trạng: Đã hủy");
         }

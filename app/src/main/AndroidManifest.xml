@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesShop">
         <activity
+            android:name=".DanhGiaActivity"
+            android:exported="true" />
+        <activity
             android:name=".Manager.CapNhat_TinTuc"
             android:exported="true" />
         <activity

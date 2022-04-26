@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -125,10 +126,16 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
                 txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đã nhận hàng");
                 stateProgressBar.setAllStatesCompleted(true);
                 break;
+            case 7:
+                txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đã gửi đánh giá");
+                stateProgressBar.setAllStatesCompleted(true);
+                break;
             default:
                 txtTinhtrangdonhang_chitiet.setText("Tình trạng đơn hàng: Đơn đã hủy");
                 break;
+
         }
+
     }
 
     private void AnhXa() {
@@ -153,12 +160,23 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
         if (ctHoaDonDTO == null)
             return;
         txt_Mahoadon.setText("Mã hóa đơn: " + "FASH" + ctHoaDonDTO.getIDCTHOADON());
-        txt_Tonghoadon.setText("Tổng hóa đơn: " + String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTONGHOADON())) + " VNĐ");
+        txt_Tonghoadon.setText("Tổng hóa đơn: " + NumberFormat.getNumberInstance(Locale.US).format(ctHoaDonDTO.getTONGHOADON()) + " VNĐ");
         txt_Tennguoidat.setText("Tên người đặt: " + ctHoaDonDTO.getTENTAIKHOAN());
         txt_Ngaydat.setText("Ngày đặt: " + ctHoaDonDTO.getNGAYDAT());
         txt_Noidungghichu.setText("Ghi chú: " + ctHoaDonDTO.getGHICHU());
         txt_Diachidathang.setText("Địa chỉ: " + ctHoaDonDTO.getDIACHI());
         txt_Sdtdathang.setText("Số điện thoại: 0" + ctHoaDonDTO.getSDT());
+
+        btn_Danhgiasanpham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransactionHistoryDetailsActivity.this, DanhGiaActivity.class);
+                IDCTHOADON = ctHoaDonDTO.getIDCTHOADON();
+                intent.putExtra("IDCTHOADON", IDCTHOADON);
+                Toast.makeText(TransactionHistoryDetailsActivity.this, "ID " + ctHoaDonDTO.getIDCTHOADON(), Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
 
         btn_Huydonhang.setOnClickListener(new View.OnClickListener() {
             @Override

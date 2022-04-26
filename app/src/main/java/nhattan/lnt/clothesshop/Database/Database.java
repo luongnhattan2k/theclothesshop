@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -642,6 +643,27 @@ public class Database extends SQLiteOpenHelper {
     public void XoaTinTuc(int IDTINTUC){
         QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
     }
+
+    public void ThemDanhGia(int IDTK, int IDSP, double DANHGIA, String NoiDung, String ThoiGian){
+        Log.e("Tag","INSERT INTO BINHLUAN (IDTK,IDVD,NOIDUNG,THOIGIAN) VALUES (" +IDTK + ",'" +
+                IDSP + "','" + NoiDung+"','" + ThoiGian + "')");
+        QueryData("INSERT INTO DANHGIA (IDTAIKHOAN, IDSANPHAM, DANHGIA, NOIDUNG, THOIGIAN) VALUES (" + IDTK + ",'" +
+                IDSP + "','" + DANHGIA +"','" + NoiDung +"','" + ThoiGian + "')");
+    }
+
+//    public ArrayList<BinhLuan> LayBinhLuan(String idvd){
+//        ArrayList<BinhLuan> list = new ArrayList<>();
+//        Cursor tro = db.Get("SELECT A.IDTK,B.HINHDAIDIEN,A.NOIDUNG,A.THOIGIAN FROM binhluan A,TAIKHOAN B WHERE A.IDTK = B.IDTK AND A.IDVD ='" + idvd +"'");
+//        while (tro.moveToNext()){
+//            list.add(new BinhLuan(
+//                    tro.getInt(0),
+//                    tro.getBlob(1),
+//                    tro.getString(2),
+//                    tro.getString(3)
+//            ));
+//        }
+//        return list;
+//    }
 
     public void XoaGY(int IDGY){
         QueryData("DELETE FROM GOPY WHERE IDGOPY = '" + IDGY + "'");
