@@ -645,16 +645,16 @@ public class Database extends SQLiteOpenHelper {
         QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
     }
 
-    public void ThemDanhGia(int IDTK, int IDSP, double DANHGIA, String NoiDung, String ThoiGian){
-        Log.e("Tag","INSERT INTO BINHLUAN (IDTK,IDVD,NOIDUNG,THOIGIAN) VALUES (" +IDTK + ",'" +
+    public void ThemDanhGia(int IDTK, int IDSP, double DANHGIA, String NoiDung, String ThoiGian, String SIZE){
+        Log.e("Tag","INSERT INTO BINHLUAN (IDTK,IDVD,NOIDUNG,THOIGIAN,SIZE) VALUES (" +IDTK + ",'" +
                 IDSP + "','" + NoiDung+"','" + ThoiGian + "')");
-        QueryData("INSERT INTO DANHGIA (IDTAIKHOAN, IDSANPHAM, DANHGIA, NOIDUNG, THOIGIAN) VALUES (" + IDTK + ",'" +
-                IDSP + "','" + DANHGIA +"','" + NoiDung +"','" + ThoiGian + "')");
+        QueryData("INSERT INTO DANHGIA (IDTAIKHOAN, IDSANPHAM, DANHGIA, NOIDUNG, THOIGIAN, SIZE) VALUES (" + IDTK + ",'" +
+                IDSP + "','" + DANHGIA +"','" + NoiDung +"','" + ThoiGian + "','" + SIZE + "')");
     }
 
     public ArrayList<BinhLuanDTO> LayBinhLuan(int idsp){
         ArrayList<BinhLuanDTO> list = new ArrayList<>();
-        Cursor tro = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,C.SIZE FROM DANHGIA A,TAIKHOAN B, CHITIETHOADON C WHERE A.IDTAIKHOAN = B.IDTAIKHOAN AND A.IDSANPHAM = C.IDSANPHAM AND A.IDTAIKHOAN = C.IDTAIKHOAN AND A.IDSANPHAM =" + idsp);
+        Cursor tro = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = " + idsp);
         while (tro.moveToNext()){
             list.add(new BinhLuanDTO(
                     tro.getInt(0),

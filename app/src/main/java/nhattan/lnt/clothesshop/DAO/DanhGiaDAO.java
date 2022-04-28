@@ -111,7 +111,7 @@ public class DanhGiaDAO extends BaseAdapter {
                             @Override
                             public void run() {
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf_ngay = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat sdf_ngay = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                 dateString_ngay = sdf_ngay.format(date);
                             }
                         });
@@ -124,14 +124,12 @@ public class DanhGiaDAO extends BaseAdapter {
         holder.btn_Guidanhgiasanpham_dg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idtk = Login.taiKhoanDTO.getMATK();
-                int masp = ctHoaDonDTO.getIDSANPHAM();
-                double danhgia = holder.rb_saodanhgia_dg.getRating();
                 String noidung = String.valueOf(holder.edt_Noidungdanhgia_dg.getText());
                 if (noidung.isEmpty()) {
                     Toast.makeText(context.getApplicationContext(),  "Hãy nhập nội dung đánh giá !!", Toast.LENGTH_SHORT).show();
                 } else {
-                    HomeFragment.database.ThemDanhGia(idtk, masp, danhgia, noidung, dateString_ngay);
+                    HomeFragment.database.ThemDanhGia(Login.taiKhoanDTO.getMATK(), ctHoaDonDTO.getIDSANPHAM(),
+                            holder.rb_saodanhgia_dg.getRating(), noidung, dateString_ngay, ctHoaDonDTO.getSIZE());
                     Toast.makeText(context.getApplicationContext(),  "Thành công !", Toast.LENGTH_SHORT).show();
                     holder.btn_Guidanhgiasanpham_dg.setText("Đã đánh giá");
                     holder.btn_Guidanhgiasanpham_dg.setEnabled(false);

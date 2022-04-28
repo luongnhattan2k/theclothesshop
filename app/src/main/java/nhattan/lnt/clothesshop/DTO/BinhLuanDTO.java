@@ -9,7 +9,7 @@ public class BinhLuanDTO {
     String NoidungBL;
     String ThoiGianBL;
     String Size;
-
+    int IDSANPHAM;
 
     public BinhLuanDTO(int IDTAIKHOAN, String TENTAIKHOAN, float danhgia, byte[] hinhdaidien, String noidungBL, String thoiGianBL, String Size) {
         this.IDTAIKHOAN = IDTAIKHOAN;
@@ -75,6 +75,14 @@ public class BinhLuanDTO {
 
     public void setSize(String size) {
         Size = size;
+    }
+
+    public int getIDSANPHAM() {
+        return IDSANPHAM;
+    }
+
+    public void setIDSANPHAM(int IDSANPHAM) {
+        this.IDSANPHAM = IDSANPHAM;
     }
 
 }
