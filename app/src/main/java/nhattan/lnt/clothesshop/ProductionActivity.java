@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -23,21 +25,28 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import nhattan.lnt.clothesshop.ADAPTER.BinhLuanAdapter;
 import nhattan.lnt.clothesshop.ADAPTER.SearchAdapter;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
+import nhattan.lnt.clothesshop.DTO.BinhLuanDTO;
 import nhattan.lnt.clothesshop.DTO.CategoryDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
+import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 
 public class ProductionActivity extends AppCompatActivity {
 
     SanPhamDTO sanPhamDTO;
-    CategoryDTO categoryDTO;
+    BinhLuanDTO binhLuanDTO;
+    Database database;
+    ArrayList<BinhLuanDTO> listBL;
+    BinhLuanAdapter binhLuanAdapter;
     TextView productName, productPrice, productContent, txt_Themgiohang;
     ImageView productImage;
     ImageButton ibtn_Exit;
-    int id, idtk;
+    RecyclerView rev_Binhluan_sanpham;
+    int id, idtk, idsp;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int SLM = 0;
@@ -69,6 +78,7 @@ public class ProductionActivity extends AppCompatActivity {
         {
             sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
         }
+        GetData();
         super.onStart();
     }
 
@@ -93,10 +103,15 @@ public class ProductionActivity extends AppCompatActivity {
         }
 
         //get data
+        idsp = sanPhamDTO.getMaSP();
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
         String gia = "" + sanPhamDTO.getGiaSP();
 
+        listBL = HomeFragment.database.LayBinhLuan(idsp);
+        binhLuanAdapter = new BinhLuanAdapter(listBL);
+        rev_Binhluan_sanpham.setAdapter(binhLuanAdapter);
+        rev_Binhluan_sanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.VERTICAL,false));
 
         productName.setText(ten);
         productContent.setText(mota);
@@ -115,6 +130,7 @@ public class ProductionActivity extends AppCompatActivity {
         spnCategory = findViewById(R.id.spn_category);
         txt_Themgiohang = findViewById(R.id.txtThemvaogiohang);
         ibtn_Exit = findViewById(R.id.ibtnExit);
+        rev_Binhluan_sanpham = findViewById(R.id.rev_Binhluan_sanpham);
 
     }
 

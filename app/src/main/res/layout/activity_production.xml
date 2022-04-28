@@ -92,11 +92,12 @@
             <TextView
                 android:id="@+id/product_content"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="95dp"
                 android:paddingTop="@dimen/size10dp"
                 android:paddingLeft="@dimen/size30dp"
                 android:paddingRight="@dimen/size20dp"
+                android:paddingBottom="@dimen/size10dp"
                 android:text="Mô tả"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -108,14 +109,15 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/lv_binhluan"
+                android:id="@+id/txt_binhluan"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size10dp"
                 android:paddingTop="@dimen/size10dp"
                 android:paddingLeft="@dimen/size30dp"
                 android:paddingRight="@dimen/size20dp"
-                android:text="Mô tả"
+                android:background="@color/white"
+                android:text="Đánh giá"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:fontFamily="serif"
@@ -124,6 +126,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_content"
                 tools:ignore="MissingConstraints" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rev_Binhluan_sanpham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_binhluan"
+                tools:ignore="MissingConstraints"/>
 
             <TextView
                 android:id="@+id/textView"

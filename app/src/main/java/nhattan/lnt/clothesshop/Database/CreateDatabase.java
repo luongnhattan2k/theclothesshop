@@ -96,6 +96,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
 
     public static String getTbl_DANHGIA_IDDANHGIA = "IDDANHGIA";
     public static String getTbl_DANHGIA_IDTAIKHOAN = "IDTAIKHOAN";
+    public static String getTbl_DANHGIA_HINHDAIDIEN = "HINHDAIDIEN";
     public static String getTbl_DANHGIA_IDSANPHAM = "IDSANPHAM";
     public static String getTbl_DANHGIA_DANHGIA = "DANHGIA";
     public static String getTbl_DANHGIA_NOIDUNG = "NOIDUNG";
@@ -148,8 +149,8 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_TINTUC_NGAYDANG + " DATE , " + tbl_TINTUC_TINMOI + " INTEGER)";
 
         String DANHGIA = "CREATE TABLE " + tbl_DANHGIA + "(" + getTbl_DANHGIA_IDDANHGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + getTbl_DANHGIA_IDTAIKHOAN + " INTEGER, " + getTbl_DANHGIA_IDSANPHAM + " INTEGER, " + getTbl_DANHGIA_DANHGIA + " DOUBLE, "
-                + getTbl_DANHGIA_NOIDUNG + " TEXT , " + getTbl_DANHGIA_THOIGIAN + " DATE)";
+                + getTbl_DANHGIA_IDTAIKHOAN + " INTEGER, " + getTbl_DANHGIA_HINHDAIDIEN + " BLOB, " + getTbl_DANHGIA_IDSANPHAM + " INTEGER, "
+                + getTbl_DANHGIA_DANHGIA + " DOUBLE, " + getTbl_DANHGIA_NOIDUNG + " TEXT , " + getTbl_DANHGIA_THOIGIAN + " DATE)";
 
         db.execSQL(TAIKHOAN);
         db.execSQL(QUYEN);

@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import nhattan.lnt.clothesshop.DTO.BinhLuanDTO;
 import nhattan.lnt.clothesshop.DTO.CTHoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.GopYDTO;
 import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
@@ -651,19 +652,22 @@ public class Database extends SQLiteOpenHelper {
                 IDSP + "','" + DANHGIA +"','" + NoiDung +"','" + ThoiGian + "')");
     }
 
-//    public ArrayList<BinhLuan> LayBinhLuan(String idvd){
-//        ArrayList<BinhLuan> list = new ArrayList<>();
-//        Cursor tro = db.Get("SELECT A.IDTK,B.HINHDAIDIEN,A.NOIDUNG,A.THOIGIAN FROM binhluan A,TAIKHOAN B WHERE A.IDTK = B.IDTK AND A.IDVD ='" + idvd +"'");
-//        while (tro.moveToNext()){
-//            list.add(new BinhLuan(
-//                    tro.getInt(0),
-//                    tro.getBlob(1),
-//                    tro.getString(2),
-//                    tro.getString(3)
-//            ));
-//        }
-//        return list;
-//    }
+    public ArrayList<BinhLuanDTO> LayBinhLuan(int idsp){
+        ArrayList<BinhLuanDTO> list = new ArrayList<>();
+        Cursor tro = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,C.SIZE FROM DANHGIA A,TAIKHOAN B, CHITIETHOADON C WHERE A.IDTAIKHOAN = B.IDTAIKHOAN AND A.IDSANPHAM = C.IDSANPHAM AND A.IDTAIKHOAN = C.IDTAIKHOAN AND A.IDSANPHAM =" + idsp);
+        while (tro.moveToNext()){
+            list.add(new BinhLuanDTO(
+                    tro.getInt(0),
+                    tro.getString(1),
+                    tro.getInt(2),
+                    tro.getBlob(3),
+                    tro.getString(4),
+                    tro.getString(5),
+                    tro.getString(6)
+            ));
+        }
+        return list;
+    }
 
     public void XoaGY(int IDGY){
         QueryData("DELETE FROM GOPY WHERE IDGOPY = '" + IDGY + "'");
