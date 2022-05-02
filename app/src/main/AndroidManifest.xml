@@ -18,6 +18,9 @@
         android:theme="@style/Theme.ClothesShop"
         tools:replace="android:icon">
         <activity
+            android:name=".Manager.ThongKe_Nam"
+            android:exported="true" />
+        <activity
             android:name=".Manager.ThongKe_Thang"
             android:exported="true" />
         <activity

@@ -74,7 +74,8 @@ public class DanhGiaActivity extends AppCompatActivity {
 
     private void GetData() {
         //get data
-        Cursor cursor = HomeFragment.database.Getdata("SELECT * FROM CHITIETHOADON WHERE IDCTHOADON = " + IDCTHOADON);
+        Cursor cursor = HomeFragment.database.Getdata("SELECT * FROM CHITIETHOADON WHERE IDCTHOADON = "
+                + IDCTHOADON );
         ctHoaDonDTOArrayList.clear();
         while (cursor.moveToNext())
         {

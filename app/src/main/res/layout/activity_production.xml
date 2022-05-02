@@ -259,6 +259,7 @@
                 android:layout_height="49dp"
                 android:layout_marginStart="54dp"
                 android:layout_marginTop="4dp"
+                app:circularflow_defaultRadius="1dp"
                 android:backgroundTint="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/product_price_ct"
                 app:layout_constraintHorizontal_bias="0.0"

@@ -24,25 +24,39 @@
                 android:id="@+id/edtSearch"
                 android:layout_width="200dp"
                 android:layout_height="@dimen/size30dp"
-                android:layout_marginRight="@dimen/size30dp"
                 android:layout_gravity="center"
+                android:layout_marginRight="@dimen/size30dp"
                 android:background="@drawable/bo_tron_bon_goc"
+                android:drawableRight="@drawable/baseline_search_24"
+                android:ems="10"
+                android:hint="Tìm kiếm..."
+                android:inputType="textPersonName"
                 android:paddingLeft="@dimen/size10dp"
                 android:paddingRight="5dp"
-                android:ems="10"
-                android:drawableRight="@drawable/baseline_search_24"
-                android:inputType="textPersonName"
-                android:hint="Tìm kiếm..."
-                android:textSize="14dp"/>
+                android:textSize="14dp"
+                tools:ignore="TouchTargetSizeCheck" />
 
 
-            <ImageView
+<!--            <ImageView-->
+<!--                android:id="@+id/imgThongBao"-->
+<!--                android:layout_width="@dimen/size30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_gravity="right"-->
+<!--                android:layout_marginRight="15dp"-->
+<!--                app:srcCompat="@drawable/baseline_notifications_24" />-->
+
+            <ru.nikartm.support.ImageBadgeView
                 android:id="@+id/imgThongBao"
                 android:layout_width="@dimen/size30dp"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/size30dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="15dp"
-                app:srcCompat="@drawable/baseline_notifications_24" />
+                app:ibv_badgePadding="4dp"
+                app:ibv_badgeTextColor="@color/black"
+                app:ibv_badgeColor="@color/vang_nhat"
+                app:ibv_visibleBadge="true"
+                app:ibv_badgeLimitValue="true"
+                android:src="@drawable/ic_baseline_notifications_24" />
 
         </androidx.appcompat.widget.Toolbar>
 

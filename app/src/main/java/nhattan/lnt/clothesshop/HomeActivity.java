@@ -3,15 +3,16 @@ package nhattan.lnt.clothesshop;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
+import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.FragmentApp.MyCartFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SettingFragment;
@@ -37,6 +39,8 @@ import nhattan.lnt.clothesshop.FragmentApp.SpAoThunFragment;
 import nhattan.lnt.clothesshop.FragmentApp.SpSoMiFragment;
 import nhattan.lnt.clothesshop.FragmentApp.ThongBaoFragment;
 import nhattan.lnt.clothesshop.FragmentApp.UserFragment;
+import ru.nikartm.support.BadgePosition;
+import ru.nikartm.support.ImageBadgeView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -63,9 +67,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton fab;
     // Drawer
 
-     TextView txt_TenTaiKhoan;
-     CircleImageView cimg_User;
-     ImageView imgThongBao;
+    TextView txt_TenTaiKhoan;
+    CircleImageView cimg_User;
+    ImageBadgeView imgThongBao;
+    Database database;
+    int dem_thongba;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -73,6 +79,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        database = new Database(HomeActivity.this);
+        Soluong_TinTuc();
         AnhXa();
 
         Intent intent = getIntent();
@@ -137,6 +145,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        imgThongBao.setBadgeValue(dem_thongba)
+                .setBadgeOvalAfterFirst(true)
+                .setBadgeTextSize(8)
+                .setMaxBadgeValue(999)
+                .setBadgeBackground(getResources().getDrawable(R.drawable.rectangle_rounded))
+                .setBadgePosition(BadgePosition.TOP_RIGHT)
+                .setBadgeTextStyle(Typeface.NORMAL)
+                .setShowCounter(true);
+
+    }
+
+    private void Soluong_TinTuc(){
+        Cursor cursor = database.Getdata("SELECT COUNT ( IDTINTUC ) FROM TINTUC");
+        cursor.moveToNext();
+        dem_thongba = cursor.getInt(0);
     }
 
     private void animateNavigation() {

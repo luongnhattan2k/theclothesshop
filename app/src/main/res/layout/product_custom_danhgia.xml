@@ -117,6 +117,7 @@
             android:layout_marginBottom="5dp"
             android:numStars="5"
             android:rating="5"
+            android:theme="@style/RatingBar1"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.textfield.TextInputLayout

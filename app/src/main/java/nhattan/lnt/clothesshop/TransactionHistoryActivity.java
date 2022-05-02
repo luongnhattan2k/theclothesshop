@@ -73,7 +73,8 @@ public class TransactionHistoryActivity extends AppCompatActivity {
 
     private void GetData() {
         //get data
-        Cursor cursor = HomeFragment.database.Getdata("SELECT * FROM HOADON WHERE IDTAIKHOAN = " + Login.taiKhoanDTO.getMATK());
+        Cursor cursor = HomeFragment.database.Getdata("SELECT * FROM HOADON WHERE IDTAIKHOAN = " +
+                Login.taiKhoanDTO.getMATK() + " ORDER BY IDHOADON DESC");
         hoaDonArrayList.clear();
         while (cursor.moveToNext())
         {
