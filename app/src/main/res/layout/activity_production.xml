@@ -109,6 +109,7 @@
                 tools:ignore="MissingConstraints" />
 
             <LinearLayout
+                android:id="@+id/ln_danhgia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -188,17 +189,40 @@
                     android:layout_marginTop="@dimen/size10dp"
                     android:background="@color/xam"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rev_Binhluan_sanpham"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingLeft="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"/>
-
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_Chuacodanhgia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size10dp"
+                android:paddingBottom="@dimen/size10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="Chưa có đánh giá"
+                android:textSize="12sp"
+                android:fontFamily="serif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
+                tools:ignore="MissingConstraints"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rev_Binhluan_sanpham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
+                tools:ignore="MissingConstraints"/>
+
 
             <TextView
                 android:id="@+id/textView"

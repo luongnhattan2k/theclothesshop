@@ -44,7 +44,8 @@ public class ProductionActivity extends AppCompatActivity {
     Database database;
     ArrayList<BinhLuanDTO> listBL;
     BinhLuanAdapter binhLuanAdapter;
-    TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh, txt_sobinhluan;
+    TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh,
+            txt_sobinhluan, txt_Chuacodanhgia;
     ImageView productImage;
     ImageButton ibtn_Exit;
     RecyclerView rev_Binhluan_sanpham;
@@ -112,15 +113,20 @@ public class ProductionActivity extends AppCompatActivity {
 
         //get data
         idsp = sanPhamDTO.getMaSP();
-
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
         String gia = "" + sanPhamDTO.getGiaSP();
 
         listBL = HomeFragment.database.LayBinhLuan(idsp);
-        binhLuanAdapter = new BinhLuanAdapter(listBL);
-        rev_Binhluan_sanpham.setAdapter(binhLuanAdapter);
-        rev_Binhluan_sanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.VERTICAL,false));
+
+        if (listBL == null) {
+            txt_Chuacodanhgia.setEnabled(false);
+        } else {
+            txt_Chuacodanhgia.setEnabled(true);
+            binhLuanAdapter = new BinhLuanAdapter(listBL);
+            rev_Binhluan_sanpham.setAdapter(binhLuanAdapter);
+            rev_Binhluan_sanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.VERTICAL,false));
+        }
 
         productName.setText(ten);
         productContent.setText(mota);
@@ -162,6 +168,7 @@ public class ProductionActivity extends AppCompatActivity {
         rab_sosaotrungbinh = findViewById(R.id.rab_sosaotrungbinh);
         txt_sosaotrungbinh = findViewById(R.id.txt_sosaotrungbinh);
         txt_sobinhluan = findViewById(R.id.txt_sobinhluan);
+        txt_Chuacodanhgia = findViewById(R.id.txt_Chuacodanhgia);
     }
 
     private void SuKien(){
