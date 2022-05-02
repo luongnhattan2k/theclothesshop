@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="RatingBar1" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#A2A8A7</item>
+        <item name="colorControlActivated">@color/red</item>
+    </style>
 </resources>

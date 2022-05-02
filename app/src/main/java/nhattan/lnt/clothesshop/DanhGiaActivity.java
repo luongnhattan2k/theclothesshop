@@ -59,7 +59,7 @@ public class DanhGiaActivity extends AppCompatActivity {
                 HomeFragment.database.CapNhatHoaDon_NguoiDung(IDCTHOADON, 7);
                 Toast.makeText(DanhGiaActivity.this, "Hoàn tất đánh giá !", Toast.LENGTH_SHORT).show();
                 GetData();
-                onBackPressed();
+                startActivity(new Intent(DanhGiaActivity.this, HomeActivity.class));
             }
         });
 

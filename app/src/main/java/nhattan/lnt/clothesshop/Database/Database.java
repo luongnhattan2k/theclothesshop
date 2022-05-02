@@ -43,7 +43,6 @@ public class Database extends SQLiteOpenHelper {
         return database.rawQuery(sql,null);
     }
 
-
     public boolean SPChuaCoTrongGH(int IDTK, int IDSP){
         Cursor cursor = Getdata("SELECT * FROM GIOHANG WHERE IDTK = " + IDTK + " AND IDSP = " + IDSP );
         while (cursor.moveToNext()) {
@@ -252,7 +251,6 @@ public class Database extends SQLiteOpenHelper {
             );
         }
         return null;
-
     }
 
     public void INSERT_GOPY(String tentaikhoan, int sdt, String noidung){
@@ -431,7 +429,7 @@ public class Database extends SQLiteOpenHelper {
     //region Video
     public ArrayList<HoaDonDTO> QuanLyHoaDon(){
         ArrayList<HoaDonDTO> list = new ArrayList<>();
-        Cursor cursor = Getdata("SELECT * FROM HOADON");
+        Cursor cursor = Getdata("SELECT * FROM HOADON ORDER BY IDHOADON DESC");
         while (cursor.moveToNext()){
             list.add(new HoaDonDTO(
                     cursor.getInt(0),
@@ -512,6 +510,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return null;
     }
+
 
     public void CapNhatHoaDon_NguoiDung(int IDCTHD, int TINHTRANG){
         QueryData("UPDATE HOADON SET TINHTRANG = '" + TINHTRANG + "' WHERE IDCTHOADON = '" + IDCTHD + "'");
@@ -654,16 +653,16 @@ public class Database extends SQLiteOpenHelper {
 
     public ArrayList<BinhLuanDTO> LayBinhLuan(int idsp){
         ArrayList<BinhLuanDTO> list = new ArrayList<>();
-        Cursor tro = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = " + idsp);
-        while (tro.moveToNext()){
+        Cursor cursor = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = " + idsp);
+        while (cursor.moveToNext()){
             list.add(new BinhLuanDTO(
-                    tro.getInt(0),
-                    tro.getString(1),
-                    tro.getInt(2),
-                    tro.getBlob(3),
-                    tro.getString(4),
-                    tro.getString(5),
-                    tro.getString(6)
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6)
             ));
         }
         return list;

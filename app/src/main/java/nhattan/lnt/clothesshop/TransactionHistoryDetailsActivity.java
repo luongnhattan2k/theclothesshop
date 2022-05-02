@@ -155,6 +155,7 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
         btn_Huydonhang.setEnabled(false);
         stateProgressBar = (StateProgressBar) findViewById(R.id.stapro_menu);
         stateProgressBar.setStateDescriptionData(descriptionData);
+        stateProgressBar.setStateDescriptionSize(12f);
 
         ctHoaDonDTO = HomeFragment.database.LoadCTHD(IDCTHOADON);
         if (ctHoaDonDTO == null)

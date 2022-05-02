@@ -25,9 +25,9 @@
         android:layout_marginLeft="@dimen/size10dp"
         android:layout_gravity="center"
         android:numStars="5"
+        android:theme="@style/RatingBar1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView

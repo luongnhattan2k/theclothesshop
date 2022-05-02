@@ -1,6 +1,7 @@
 package nhattan.lnt.clothesshop;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,15 +44,17 @@ public class ProductionActivity extends AppCompatActivity {
     Database database;
     ArrayList<BinhLuanDTO> listBL;
     BinhLuanAdapter binhLuanAdapter;
-    TextView productName, productPrice, productContent, txt_Themgiohang;
+    TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh, txt_sobinhluan;
     ImageView productImage;
     ImageButton ibtn_Exit;
     RecyclerView rev_Binhluan_sanpham;
-    int id, idtk, idsp;
+    RatingBar rab_sosaotrungbinh;
+    int id, idtk, idsp, slbl;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int SLM = 0;
     String size = "S";
+    double danhgiatrungbinh;
 
 
     @Override
@@ -58,6 +62,7 @@ public class ProductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_production);
 
+        database = new Database(ProductionActivity.this);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",1);
         idtk = intent.getIntExtra("idtk",2);
@@ -67,6 +72,8 @@ public class ProductionActivity extends AppCompatActivity {
         spnCategory.setAdapter(categoryDAO);
 
         GetData();
+        Trungbinh_Danhgia();
+        Soluong_Danhgia();
         SuKien();
     }
 
@@ -79,6 +86,7 @@ public class ProductionActivity extends AppCompatActivity {
             sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
         }
         GetData();
+
         super.onStart();
     }
 
@@ -104,6 +112,7 @@ public class ProductionActivity extends AppCompatActivity {
 
         //get data
         idsp = sanPhamDTO.getMaSP();
+
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
         String gia = "" + sanPhamDTO.getGiaSP();
@@ -122,6 +131,24 @@ public class ProductionActivity extends AppCompatActivity {
 
     }
 
+    private void Trungbinh_Danhgia(){
+        Cursor cursor = database.Getdata("SELECT AVG ( DANHGIA ) FROM DANHGIA WHERE IDSANPHAM = " + idsp);
+        cursor.moveToNext();
+        danhgiatrungbinh = cursor.getInt(0);
+
+        String sosaodanhgia = String.valueOf(danhgiatrungbinh);
+        rab_sosaotrungbinh.setRating((float) danhgiatrungbinh);
+        txt_sosaotrungbinh.setText(sosaodanhgia);
+    }
+
+    private void Soluong_Danhgia(){
+        Cursor cursor = database.Getdata("SELECT COUNT ( DANHGIA ) FROM DANHGIA WHERE IDSANPHAM = " + idsp);
+        cursor.moveToNext();
+        slbl = cursor.getInt(0);
+
+        txt_sobinhluan.setText("("+slbl+" đánh giá)");
+    }
+
     private void Anhxa() {
         productName = findViewById(R.id.product_name_ct);
         productContent = findViewById(R.id.product_content);
@@ -132,6 +159,9 @@ public class ProductionActivity extends AppCompatActivity {
         ibtn_Exit = findViewById(R.id.ibtnExit);
         rev_Binhluan_sanpham = findViewById(R.id.rev_Binhluan_sanpham);
 
+        rab_sosaotrungbinh = findViewById(R.id.rab_sosaotrungbinh);
+        txt_sosaotrungbinh = findViewById(R.id.txt_sosaotrungbinh);
+        txt_sobinhluan = findViewById(R.id.txt_sobinhluan);
     }
 
     private void SuKien(){
@@ -261,5 +291,6 @@ public class ProductionActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

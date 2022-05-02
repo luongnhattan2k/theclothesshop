@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xanh_nhat">
+
+        <ImageButton
+            android:id="@+id/ibtnExitdathang"
+            android:layout_width="@dimen/size50dp"
+            android:layout_height="@dimen/size50dp"
+            android:background="@null"
+            android:src="?attr/actionModeCloseDrawable"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size20dp"
+            android:gravity="center|left"
+            android:text="Thống kê theo tháng"
+            android:textSize="@dimen/size20dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size20dp"
+            android:text="Chọn năm: "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:id="@+id/txt_Namchon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/size10dp"
+            android:text="yyyy "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="serif" />
+
+        <Button
+            android:id="@+id/btn_Namchon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size10dp"
+            android:text="Chọn"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/xanh_nhat" />
+
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size10dp"/>
+
+</LinearLayout>

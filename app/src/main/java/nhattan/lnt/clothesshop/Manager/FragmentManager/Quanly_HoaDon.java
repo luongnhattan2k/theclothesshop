@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -37,6 +38,7 @@ import nhattan.lnt.clothesshop.ADAPTER.QuanLyHoaDonAdapter;
 import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.Manager.Chitiethoadon_manager;
+import nhattan.lnt.clothesshop.Manager.ThongKe_Thang;
 import nhattan.lnt.clothesshop.R;
 
 
@@ -127,8 +129,8 @@ public class Quanly_HoaDon extends Fragment {
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getContext(), "Xóa thành công ! " + hoaDonDTO.getIDHOADON(), Toast.LENGTH_SHORT).show();
                 database.XoaHD(hoaDonDTO.getIDHOADON());
-                Toast.makeText(getContext(), "Xóa thành công !", Toast.LENGTH_SHORT).show();
                 Load();
             }
         });
@@ -154,15 +156,6 @@ public class Quanly_HoaDon extends Fragment {
     private void Tongdoanhthu() {
         Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NGAYDAT = '"
                 + strNgay + "'");
-        cursor.moveToNext();
-        Doanhthu = cursor.getInt(0);
-
-        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
-    }
-
-    private void Tongdoanhthu_thang() {
-        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE THANGDAT = '"
-                + strThang + "'");
         cursor.moveToNext();
         Doanhthu = cursor.getInt(0);
 
@@ -221,10 +214,9 @@ public class Quanly_HoaDon extends Fragment {
                 btn_Thongketheothang_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DialogThongkeThang();
+                        startActivity(new Intent(getActivity(), ThongKe_Thang.class));
                     }
                 });
-
 
                 btn_Thongketheongay_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -254,12 +246,25 @@ public class Quanly_HoaDon extends Fragment {
         btn_Xacnhannam_qlhd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                strNam = edt_Namthongke.getText().toString();
-                if (strNam.isEmpty()) {
-                    Toast.makeText(getActivity(), "Hãy nhập năm cần thống kê !", Toast.LENGTH_SHORT).show();
-                } else {
-                    Tongdoanhthu_nam();
-                }
+                final Calendar today = Calendar.getInstance();
+                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(),
+                        new MonthPickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(int selectedMonth, int selectedYear) { // on date set
+                                edt_Namthongke.setText(String.valueOf(selectedYear));
+                                strNam = edt_Namthongke.getText().toString();
+                                Tongdoanhthu_nam();
+                            }
+
+                        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+
+                builder.setActivatedMonth(Calendar.JULY)
+                        .setMinYear(1990)
+                        .setActivatedYear(today.get(Calendar.YEAR))
+                        .setMaxYear(2030)
+                        .setTitle("Select year")
+                        .showYearOnly()
+                        .build().show();
             }
         });
 
@@ -275,40 +280,6 @@ public class Quanly_HoaDon extends Fragment {
         dialog_nam.show();
     }
 
-
-
-    private void DialogThongkeThang() {
-        Dialog dialog_thang = new Dialog(getActivity());
-        dialog_thang.setContentView(R.layout.dialog_custom_qlhd_thang);
-
-        edt_Thangthongke = dialog_thang.findViewById(R.id.edt_Thangthongke);
-        txt_Tongtienthongke = dialog_thang.findViewById(R.id.txt_Tongtienthongke_thang);
-        btn_Thoatthongke = dialog_thang.findViewById(R.id.btn_Thoatthongke_thang);
-        btn_Xacnhanthang_qlhd = dialog_thang.findViewById(R.id.btn_Xacnhanthang_qlhd);
-
-        btn_Xacnhanthang_qlhd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strThang = edt_Thangthongke.getText().toString();
-                if (strThang.isEmpty()) {
-                    Toast.makeText(getActivity(), "Hãy nhập tháng cần thống kê !", Toast.LENGTH_SHORT).show();
-                } else {
-                    Tongdoanhthu_thang();
-                }
-            }
-        });
-
-        btn_Thoatthongke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog_thang.cancel();
-                dialog_thang.dismiss();
-            }
-        });
-
-        dialog_thang.show();
-    }
-
     private void DialogThongkeNgay() {
         Dialog dialog_ngay = new Dialog(getActivity());
         dialog_ngay.setContentView(R.layout.dialog_custom_qlhd);
@@ -322,8 +293,6 @@ public class Quanly_HoaDon extends Fragment {
         int year_now = calendar.get(Calendar.YEAR);
         int month_now = calendar.get(Calendar.MONTH);
         int day_now = calendar.get(Calendar.DAY_OF_MONTH);
-
-
 
         btn_Chonngay_qlhd.setOnClickListener(new View.OnClickListener() {
             @Override
