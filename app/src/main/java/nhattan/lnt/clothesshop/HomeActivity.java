@@ -83,12 +83,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Soluong_TinTuc();
         AnhXa();
 
-        Intent intent = getIntent();
-        int GioHangFra = intent.getIntExtra("DenGioHang", R.id.nav_home);
-        if(GioHangFra == R.id.nav_mycart){
-            navigationView.setCheckedItem(GioHangFra);
-            replaceFragment(new MyCartFragment());
-        }
+//        Intent intent = getIntent();
+//        int GioHangFra = intent.getIntExtra("DenGioHang", R.id.nav_home);
+//        if(GioHangFra == R.id.nav_mycart){
+//            navigationView.setCheckedItem(GioHangFra);
+//            replaceFragment(new MyCartFragment());
+//        }
 
         HienThiTen();
         edtSearch.setOnClickListener(new View.OnClickListener() {

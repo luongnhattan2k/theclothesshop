@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,7 +56,7 @@ public class ProductionActivity extends AppCompatActivity {
     CategoryDAO categoryDAO;
     int SLM = 0;
     String size = "S";
-    double danhgiatrungbinh;
+    float danhgiatrungbinh;
 
 
     @Override
@@ -140,11 +141,11 @@ public class ProductionActivity extends AppCompatActivity {
     private void Trungbinh_Danhgia(){
         Cursor cursor = database.Getdata("SELECT AVG ( DANHGIA ) FROM DANHGIA WHERE IDSANPHAM = " + idsp);
         cursor.moveToNext();
-        danhgiatrungbinh = cursor.getInt(0);
+        danhgiatrungbinh = cursor.getFloat(0);
+        Log.d("tb", String.valueOf(danhgiatrungbinh));
 
-        String sosaodanhgia = String.valueOf(danhgiatrungbinh);
-        rab_sosaotrungbinh.setRating((float) danhgiatrungbinh);
-        txt_sosaotrungbinh.setText(sosaodanhgia);
+        rab_sosaotrungbinh.setRating(danhgiatrungbinh);
+        txt_sosaotrungbinh.setText(String.valueOf(danhgiatrungbinh));
     }
 
     private void Soluong_Danhgia(){
@@ -280,9 +281,7 @@ public class ProductionActivity extends AppCompatActivity {
                             );
 
                             Toast.makeText(ProductionActivity.this," Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
-                            Intent iGiohang = new Intent(ProductionActivity.this, HomeActivity.class);
-                            iGiohang.putExtra("DenGioHang", R.id.nav_mycart);
-                            startActivity(iGiohang);
+                            onBackPressed();
                         }
                     }
                 });
