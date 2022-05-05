@@ -3,14 +3,13 @@ package nhattan.lnt.clothesshop.FragmentApp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -75,9 +74,7 @@ public class SpSoMiFragment extends Fragment {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7),
-                    cursor.getInt(8),
-                    cursor.getInt(9)
+                    cursor.getInt(7)
             ));
         }
         adapter.notifyDataSetChanged();

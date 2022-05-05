@@ -42,7 +42,7 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.viewho
         holder.txtV_ThoiGian_binhluan.setText(String.valueOf(binhLuanDTO.getThoiGianBL()));
         holder.txtV_Tennguoidung_binhluan.setText(String.valueOf(binhLuanDTO.getTENTAIKHOAN()));
         holder.txtV_Phanloai_binhluan.setText("Phân loại: " + binhLuanDTO.getSize());
-        holder.rb_saodanhgia_binhluan.setRating(binhLuanDTO.getDanhgia());
+        holder.rb_saodanhgia_binhluan.setRating((float) binhLuanDTO.getDanhgia());
     }
 
     @Override

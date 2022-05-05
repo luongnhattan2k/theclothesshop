@@ -10,8 +10,6 @@ public class SanPhamDTO {
     String MotaSP;
     int ID_DANHMUC;
     int SP_New;
-    int SP_HOT;
-    int GT;
 
     public SanPhamDTO() {
 
@@ -25,7 +23,7 @@ public class SanPhamDTO {
         this.MotaSP = motaSP;
     }
 
-    public SanPhamDTO(int maSP, byte[] imageSP, String tenSP, int giaSP, int sl_SP, String motaSP, int ID_DANHMUC, int SP_New, int SP_HOT, int GT) {
+    public SanPhamDTO(int maSP, byte[] imageSP, String tenSP, int giaSP, int sl_SP, String motaSP, int ID_DANHMUC, int SP_New) {
         this.MaSP = maSP;
         this.TenSP = tenSP;
         this.GiaSP = giaSP;
@@ -34,8 +32,6 @@ public class SanPhamDTO {
         this.Sl_SP = sl_SP;
         this.ID_DANHMUC = ID_DANHMUC;
         this.SP_New = SP_New;
-        this.SP_HOT = SP_HOT;
-        this.GT = GT;
     }
 
 
@@ -101,22 +97,6 @@ public class SanPhamDTO {
 
     public void setSP_New(int SP_New) {
         this.SP_New = SP_New;
-    }
-
-    public int getSP_HOT() {
-        return SP_HOT;
-    }
-
-    public void setSP_HOT(int SP_HOT) {
-        this.SP_HOT = SP_HOT;
-    }
-
-    public int getGT() {
-        return GT;
-    }
-
-    public void setGT(int GT) {
-        this.GT = GT;
     }
 
 }

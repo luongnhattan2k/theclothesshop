@@ -286,9 +286,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7),
-                    cursor.getInt(8),
-                    cursor.getInt(9)
+                    cursor.getInt(7)
             );
 
         }
@@ -399,9 +397,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7),
-                    cursor.getInt(8),
-                    cursor.getInt(9)
+                    cursor.getInt(7)
             ));
         }
         return list;
@@ -503,9 +499,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7),
-                    cursor.getInt(8),
-                    cursor.getInt(9)
+                    cursor.getInt(7)
             );
         }
         return null;
@@ -653,7 +647,8 @@ public class Database extends SQLiteOpenHelper {
 
     public ArrayList<BinhLuanDTO> LayBinhLuan(int idsp){
         ArrayList<BinhLuanDTO> list = new ArrayList<>();
-        Cursor cursor = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = " + idsp);
+        Cursor cursor = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = "
+                + idsp + " ORDER BY A.IDDANHGIA DESC");
         while (cursor.moveToNext()){
             list.add(new BinhLuanDTO(
                     cursor.getInt(0),

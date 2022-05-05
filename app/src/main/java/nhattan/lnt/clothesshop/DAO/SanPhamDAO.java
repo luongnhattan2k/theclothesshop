@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.Database.CreateDatabase;
@@ -80,7 +82,7 @@ public class SanPhamDAO extends BaseAdapter {
 
         SanPhamDTO sanPhamDTO = sanPhamDTOList.get(i);
         holder.txt_TenSP.setText(sanPhamDTO.getTenSP());
-        holder.txt_GiaSP.setText(String.valueOf(sanPhamDTO.getGiaSP()) + " VNĐ");
+        holder.txt_GiaSP.setText((NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP()) + " VNĐ"));
         id = sanPhamDTO.getMaSP();
 
         // chuyen byte[] -> ve bitmap

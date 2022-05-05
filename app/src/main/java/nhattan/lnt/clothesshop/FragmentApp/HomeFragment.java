@@ -180,9 +180,7 @@ public class HomeFragment extends Fragment{
                     cursor.getInt(4),
                     cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getInt(7),
-                    cursor.getInt(8),
-                    cursor.getInt(9)
+                    cursor.getInt(7)
             ));
         }
         adapter_new.notifyDataSetChanged();

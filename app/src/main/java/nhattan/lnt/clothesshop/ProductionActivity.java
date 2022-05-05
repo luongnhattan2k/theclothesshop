@@ -25,8 +25,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.ByteArrayOutputStream;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.ADAPTER.BinhLuanAdapter;
 import nhattan.lnt.clothesshop.ADAPTER.SearchAdapter;
@@ -116,7 +118,7 @@ public class ProductionActivity extends AppCompatActivity {
         idsp = sanPhamDTO.getMaSP();
         String ten = sanPhamDTO.getTenSP();
         String mota = sanPhamDTO.getMotaSP();
-        String gia = "" + sanPhamDTO.getGiaSP();
+        String gia = (NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP()) + " VNĐ");
 
         listBL = HomeFragment.database.LayBinhLuan(idsp);
 
@@ -131,7 +133,7 @@ public class ProductionActivity extends AppCompatActivity {
 
         productName.setText(ten);
         productContent.setText(mota);
-        productPrice.setText(gia + " VNĐ");
+        productPrice.setText(gia);
         byte[] hinhAnh = sanPhamDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         productImage.setImageBitmap(bitmap);
@@ -142,10 +144,10 @@ public class ProductionActivity extends AppCompatActivity {
         Cursor cursor = database.Getdata("SELECT AVG ( DANHGIA ) FROM DANHGIA WHERE IDSANPHAM = " + idsp);
         cursor.moveToNext();
         danhgiatrungbinh = cursor.getFloat(0);
-        Log.d("tb", String.valueOf(danhgiatrungbinh));
+        Log.d("tb", String.valueOf(Math.floor(danhgiatrungbinh)));
 
-        rab_sosaotrungbinh.setRating(danhgiatrungbinh);
-        txt_sosaotrungbinh.setText(String.valueOf(danhgiatrungbinh));
+        rab_sosaotrungbinh.setRating((float) Math.floor(danhgiatrungbinh*10)/10);
+        txt_sosaotrungbinh.setText(String.valueOf((double) Math.floor(danhgiatrungbinh*10)/10));
     }
 
     private void Soluong_Danhgia(){
