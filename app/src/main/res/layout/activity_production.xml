@@ -108,12 +108,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/product_name_ct"
                 tools:ignore="MissingConstraints" />
 
-            <LinearLayout
-                android:id="@+id/ln_danhgia"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,108 +119,165 @@
                 tools:ignore="MissingConstraints">
 
                 <LinearLayout
+                    android:id="@+id/ln_danhgia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size10dp"
-                    android:orientation="horizontal" >
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/txt_binhluan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/size30dp"
+                            android:paddingRight="@dimen/size20dp"
+                            android:background="@color/white"
+                            android:text="Đánh giá"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:fontFamily="serif" />
+
+                        <RatingBar
+                            android:id="@+id/rab_sosaotrungbinh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/size20dp"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:background="@color/white"
+                            android:numStars="5"
+                            android:theme="@style/RatingBar1"/>
+
+                        <TextView
+                            android:id="@+id/txt_sosaotrungbinh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center"
+                            android:background="@color/white"
+                            android:text="0"
+                            android:textSize="12sp"
+                            android:fontFamily="serif" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@color/white"
+                            android:text="/5.0"
+                            android:textSize="12sp"
+                            android:fontFamily="serif" />
+
+                        <TextView
+                            android:id="@+id/txt_sobinhluan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/size10dp"
+                            android:background="@color/white"
+                            android:text="( 0 đánh giá )"
+                            android:textSize="12sp"
+                            android:fontFamily="serif" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="@dimen/size10dp"
+                        android:background="@color/xam"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_Chuacodanhgia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/size10dp"
+                    android:paddingBottom="@dimen/size10dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Chưa có đánh giá"
+                    android:textSize="12sp"
+                    android:fontFamily="serif"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
+                    tools:ignore="MissingConstraints"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rev_Binhluan_sanpham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
+                    tools:ignore="MissingConstraints" />
+
+
+                <LinearLayout
+                    android:id="@+id/ln_goiy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size30dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rev_Binhluan_sanpham"
+                    tools:ignore="MissingConstraints">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/size10dp"
+                        android:background="@color/xam"/>
 
                     <TextView
-                        android:id="@+id/txt_binhluan"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_goiy"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/size30dp"
-                        android:paddingRight="@dimen/size20dp"
-                        android:background="@color/white"
-                        android:text="Đánh giá"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="30dp"
+                        android:text="Gợi ý sản phẩm"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:fontFamily="serif" />
 
-                    <RatingBar
-                        android:id="@+id/rab_sosaotrungbinh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/size20dp"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:background="@color/white"
-                        android:numStars="5"
-                        android:theme="@style/RatingBar1"/>
-
-                    <TextView
-                        android:id="@+id/txt_sosaotrungbinh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_gravity="center"
-                        android:background="@color/white"
-                        android:text="0"
-                        android:textSize="12sp"
-                        android:fontFamily="serif" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@color/white"
-                        android:text="/5.0"
-                        android:textSize="12sp"
-                        android:fontFamily="serif" />
-
-                    <TextView
-                        android:id="@+id/txt_sobinhluan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/size10dp"
-                        android:background="@color/white"
-                        android:text="( 0 đánh giá )"
-                        android:textSize="12sp"
-                        android:fontFamily="serif" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="@dimen/size10dp"
+                        android:background="@color/xam"/>
 
                 </LinearLayout>
 
-                <View
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rev_Goiysanpham"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="@dimen/size10dp"
-                    android:background="@color/xam"/>
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/size30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ln_goiy"
+                    tools:ignore="MissingConstraints" />
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txt_Chuacodanhgia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size10dp"
-                android:paddingBottom="@dimen/size10dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="Chưa có đánh giá"
-                android:textSize="12sp"
-                android:fontFamily="serif"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
-                tools:ignore="MissingConstraints"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rev_Binhluan_sanpham"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingLeft="30dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ln_danhgia"
-                tools:ignore="MissingConstraints"/>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/textView"

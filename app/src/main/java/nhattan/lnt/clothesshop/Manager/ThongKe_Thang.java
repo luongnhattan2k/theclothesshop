@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
@@ -30,8 +31,8 @@ import nhattan.lnt.clothesshop.R;
 
 public class ThongKe_Thang extends AppCompatActivity{
 
-    private BarChart chart;
-    ArrayList<BarEntry> barEntryArrayList;
+    private LineChart chart;
+    ArrayList<Entry> barEntryArrayList;
     ArrayList<String> labelNames;
     ArrayList<ThongKe_ThangDTO> thongKe_thangs = new ArrayList<>();
     Database database;
@@ -96,13 +97,13 @@ public class ThongKe_Thang extends AppCompatActivity{
                                 labelNames.add(month);
                             }
 
-                            BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Thống kê theo tháng");
-                            barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                            LineDataSet lineDataSet = new LineDataSet(barEntryArrayList, "Thống kê theo tháng");
+                            lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                             Description description = new Description();
                             description.setText("Tháng");
                             chart.setDescription(description);
-                            BarData barData = new BarData(barDataSet);
-                            chart.setData(barData);
+                            LineData lineData = new LineData(lineDataSet);
+                            chart.setData(lineData);
 
                             XAxis xAxis = chart.getXAxis();
                             xAxis.setValueFormatter(new IndexAxisValueFormatter(labelNames));

@@ -505,6 +505,13 @@ public class Database extends SQLiteOpenHelper {
         return null;
     }
 
+    public void UPDATE_HuyHoaDon(int IDSP, int sl)
+    {
+        QueryData("UPDATE " + CreateDatabase.tbl_SANPHAM + " SET "
+                + CreateDatabase.tbl_GIOHANG_SOLUONG + " = "+CreateDatabase.tbl_GIOHANG_SOLUONG + " + " + sl +
+                " WHERE " + CreateDatabase.tbl_GIOHANG_IDSP + " = " + IDSP + "")
+        ;
+    }
 
     public void CapNhatHoaDon_NguoiDung(int IDCTHD, int TINHTRANG){
         QueryData("UPDATE HOADON SET TINHTRANG = '" + TINHTRANG + "' WHERE IDCTHOADON = '" + IDCTHD + "'");
@@ -648,7 +655,7 @@ public class Database extends SQLiteOpenHelper {
     public ArrayList<BinhLuanDTO> LayBinhLuan(int idsp){
         ArrayList<BinhLuanDTO> list = new ArrayList<>();
         Cursor cursor = Getdata("SELECT A.IDTAIKHOAN,B.TENTAIKHOAN,A.DANHGIA,B.HINHANH,A.NOIDUNG,A.THOIGIAN,A.SIZE FROM DANHGIA A,TAIKHOAN B WHERE A.IDTAIKHOAN = B.IDTAIKHOAN  AND A.IDSANPHAM = "
-                + idsp + " ORDER BY A.IDDANHGIA DESC");
+                + idsp + " ORDER BY A.IDDANHGIA DESC LIMIT 5");
         while (cursor.moveToNext()){
             list.add(new BinhLuanDTO(
                     cursor.getInt(0),

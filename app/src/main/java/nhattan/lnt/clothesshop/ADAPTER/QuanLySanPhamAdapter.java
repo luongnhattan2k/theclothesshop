@@ -14,7 +14,9 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.R;
@@ -53,7 +55,7 @@ public class QuanLySanPhamAdapter extends RecyclerView.Adapter<QuanLySanPhamAdap
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         holder.img_Hinhanh.setImageBitmap(bitmap);
         holder.txt_Tensp.setText(sanPhamDTO.getTenSP());
-        holder.txt_Giasp.setText(String.valueOf(sanPhamDTO.getGiaSP()) + " VND");
+        holder.txt_Giasp.setText((NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP()) + " VNĐ"));
 
         holder.itemView .setOnClickListener(new View.OnClickListener() {
             @Override

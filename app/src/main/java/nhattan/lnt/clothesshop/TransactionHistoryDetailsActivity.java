@@ -245,6 +245,9 @@ public class TransactionHistoryDetailsActivity extends AppCompatActivity {
                 btn_Danhgiasanpham.setBackgroundTintList(ContextCompat.getColorStateList(TransactionHistoryDetailsActivity.this, R.color.red));
                 HomeFragment.database.CapNhatCTHoaDon_NguoiDung(ctHoaDonDTO.getIDCTHOADON(), 0);
                 HomeFragment.database.CapNhatHoaDon_NguoiDung(ctHoaDonDTO.getIDCTHOADON(), 0);
+                for (int i = 0; i < ctHoaDonDTOArrayList.size(); i++) {
+                    HomeFragment.database.UPDATE_HuyHoaDon(ctHoaDonDTOArrayList.get(i).getIDSANPHAM(), ctHoaDonDTOArrayList.get(i).getSOLUONG());
+                }
                 GetData();
                 onBackPressed();
             }

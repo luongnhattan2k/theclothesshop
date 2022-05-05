@@ -49,18 +49,4 @@
         android:textSize="12sp"
         android:fontFamily="serif"/>
 
-    <Button
-        android:id="@+id/btn_Thongketheonam_qlhd"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="@dimen/size10dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/xanh_nhat"
-        android:text="Thống kê theo năm"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="12sp"
-        android:fontFamily="serif"/>
-
-
-
 </LinearLayout>

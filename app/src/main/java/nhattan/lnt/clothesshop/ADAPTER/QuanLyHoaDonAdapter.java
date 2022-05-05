@@ -12,7 +12,9 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.R;
@@ -49,9 +51,9 @@ public class QuanLyHoaDonAdapter extends RecyclerView.Adapter<QuanLyHoaDonAdapte
         HoaDonDTO hoaDonDTO = listHoaDon.get(position);
 
         holder.img_Hinhanh.setImageResource(R.drawable.logo);
-        holder.txt_Mahoadon.setText("Mã hóa đơn: " + "FASH" + hoaDonDTO.getIDHOADON());
-        holder.txt_Ngaydat.setText("Ngày đặt: " + hoaDonDTO.getNGAYDAT());
-        holder.txt_Tongtien.setText("Tổng tiền: " + (hoaDonDTO.getTONGTIEN()) + " VND");
+        holder.txt_Mahoadon.setText(("Mã hóa đơn: " + "FASH" + hoaDonDTO.getIDHOADON()));
+        holder.txt_Ngaydat.setText(("Ngày đặt: " + hoaDonDTO.getNGAYDAT()));
+        holder.txt_Tongtien.setText(("Tổng tiền: " + (NumberFormat.getNumberInstance(Locale.US).format(hoaDonDTO.getTONGTIEN()) + " VNĐ")));
 
         if (hoaDonDTO.getTINHTRANG() == 1) {
             holder.txt_Tinhtranghoadon.setText("Tình trạng: Chờ duyệt đơn");

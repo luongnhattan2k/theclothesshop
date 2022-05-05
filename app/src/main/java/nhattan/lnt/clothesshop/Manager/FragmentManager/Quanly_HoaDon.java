@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -154,7 +153,7 @@ public class Quanly_HoaDon extends Fragment {
     }
 
     private void Tongdoanhthu() {
-        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NGAYDAT = '"
+        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE TINHTRANG >= 5 AND  NGAYDAT = '"
                 + strNgay + "'");
         cursor.moveToNext();
         Doanhthu = cursor.getInt(0);
@@ -202,14 +201,6 @@ public class Quanly_HoaDon extends Fragment {
 
                 Button btn_Thongketheongay_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheongay_qlhd);
                 Button btn_Thongketheothang_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheothang_qlhd);
-                Button btn_Thongketheonam_qlhd = bottomSheetView.findViewById(R.id.btn_Thongketheonam_qlhd);
-
-                btn_Thongketheonam_qlhd.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        DialogThongkeNam();
-                    }
-                });
 
                 btn_Thongketheothang_qlhd.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -231,53 +222,6 @@ public class Quanly_HoaDon extends Fragment {
             }
         });
 
-    }
-
-    private void DialogThongkeNam() {
-        Dialog dialog_nam = new Dialog(getActivity());
-        dialog_nam.setContentView(R.layout.dialog_custom_qlhd_nam);
-
-        edt_Namthongke = dialog_nam.findViewById(R.id.edt_Namthongke);
-        txt_Tongtienthongke = dialog_nam.findViewById(R.id.txt_Tongtienthongke_nam);
-        btn_Thoatthongke = dialog_nam.findViewById(R.id.btn_Thoatthongke_nam);
-        btn_Xacnhannam_qlhd = dialog_nam.findViewById(R.id.btn_Xacnhannam_qlhd);
-
-
-        btn_Xacnhannam_qlhd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar today = Calendar.getInstance();
-                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(),
-                        new MonthPickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(int selectedMonth, int selectedYear) { // on date set
-                                edt_Namthongke.setText(String.valueOf(selectedYear));
-                                strNam = edt_Namthongke.getText().toString();
-                                Tongdoanhthu_nam();
-                            }
-
-                        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-
-                builder.setActivatedMonth(Calendar.JULY)
-                        .setMinYear(1990)
-                        .setActivatedYear(today.get(Calendar.YEAR))
-                        .setMaxYear(2030)
-                        .setTitle("Select year")
-                        .showYearOnly()
-                        .build().show();
-            }
-        });
-
-
-        btn_Thoatthongke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog_nam.cancel();
-                dialog_nam.dismiss();
-            }
-        });
-
-        dialog_nam.show();
     }
 
     private void DialogThongkeNgay() {

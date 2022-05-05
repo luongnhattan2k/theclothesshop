@@ -21,8 +21,10 @@ import androidx.fragment.app.Fragment;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.EventBus.TinhTongEvent;
 import nhattan.lnt.clothesshop.DTO.GioHangDTO;
@@ -103,7 +105,7 @@ public class GioHangDAO extends BaseAdapter {
         holder.txt_TenSP.setText(gioHang.getTENSANPHAM());
         holder.txt_SLSP.setText(String.valueOf(gioHang.getSOLUONG()));
         holder.txt_Size.setText(gioHang.getSIZE());
-        holder.txt_GiaSP.setText(gioHang.getTHANHTIEN() + " VNĐ" );
+        holder.txt_GiaSP.setText((NumberFormat.getNumberInstance(Locale.US).format(gioHang.getTHANHTIEN()) + " VNĐ"));
 
         holder.img_Truslsp.setOnClickListener(new View.OnClickListener() {
             @Override

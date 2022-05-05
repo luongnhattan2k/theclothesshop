@@ -48,7 +48,7 @@ public class ProductionActivity extends AppCompatActivity {
     ArrayList<BinhLuanDTO> listBL;
     BinhLuanAdapter binhLuanAdapter;
     TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh,
-            txt_sobinhluan, txt_Chuacodanhgia;
+            txt_sobinhluan, txt_Chuacodanhgia, tv_goiy;
     ImageView productImage;
     ImageButton ibtn_Exit;
     RecyclerView rev_Binhluan_sanpham;
@@ -83,14 +83,7 @@ public class ProductionActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        if(idtk==2){
-            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
-        }else
-        {
-            sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
-        }
         GetData();
-
         super.onStart();
     }
 
@@ -113,7 +106,6 @@ public class ProductionActivity extends AppCompatActivity {
         {
             sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
         }
-
         //get data
         idsp = sanPhamDTO.getMaSP();
         String ten = sanPhamDTO.getTenSP();
@@ -121,22 +113,38 @@ public class ProductionActivity extends AppCompatActivity {
         String gia = (NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP()) + " VNĐ");
 
         listBL = HomeFragment.database.LayBinhLuan(idsp);
-
-        if (listBL == null) {
-            txt_Chuacodanhgia.setEnabled(false);
-        } else {
-            txt_Chuacodanhgia.setEnabled(true);
-            binhLuanAdapter = new BinhLuanAdapter(listBL);
-            rev_Binhluan_sanpham.setAdapter(binhLuanAdapter);
-            rev_Binhluan_sanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.VERTICAL,false));
-        }
+        binhLuanAdapter = new BinhLuanAdapter(listBL);
+        rev_Binhluan_sanpham.setAdapter(binhLuanAdapter);
+        rev_Binhluan_sanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.VERTICAL,false));
 
         productName.setText(ten);
         productContent.setText(mota);
         productPrice.setText(gia);
+        txt_Chuacodanhgia.setText("Chưa có đánh giá");
         byte[] hinhAnh = sanPhamDTO.getImageSP();
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         productImage.setImageBitmap(bitmap);
+
+//        if(Login.taiKhoanDTO.getMATK() == -1){
+//
+//        } else {
+//            if (!Python.isStarted()) {
+//                Python.start(new AndroidPlatform(this));
+//            }
+//            Python py = Python.getInstance();
+//            final PyObject pyobj = py.getModule("BCTN_HTGY");
+//            PyObject obj = pyobj.callAttr("BCTN_HTGY", sanPhamDTO.getTenSP());
+//            String goiy = "";
+//            List<PyObject> list = obj.asList();
+//            for (int i = 0; i < list.size(); i++) {
+//                goiy = String.valueOf(list.get(i));
+//            }
+//            if(Login.taiKhoanDTO.getMATK() == 0){
+//                tv_goiy.setText("Không có dữ liệu");
+//            }else {
+//                tv_goiy.setText(goiy);
+//            }
+//        }
 
     }
 
@@ -172,6 +180,7 @@ public class ProductionActivity extends AppCompatActivity {
         txt_sosaotrungbinh = findViewById(R.id.txt_sosaotrungbinh);
         txt_sobinhluan = findViewById(R.id.txt_sobinhluan);
         txt_Chuacodanhgia = findViewById(R.id.txt_Chuacodanhgia);
+//        tv_goiy = findViewById(R.id.tv_goiy);
     }
 
     private void SuKien(){
