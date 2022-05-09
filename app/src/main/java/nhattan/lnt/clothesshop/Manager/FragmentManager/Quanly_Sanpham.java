@@ -174,7 +174,7 @@ public class Quanly_Sanpham extends Fragment {
         ArrayList<CategoryDTO> list = new ArrayList<>();
 
         list.add(new CategoryDTO("Áo Thun","1"));
-        list.add(new CategoryDTO("Áo Khác","2"));
+        list.add(new CategoryDTO("Áo Khoác","2"));
         list.add(new CategoryDTO("Áo Sơ Mi","3"));
 
         return list;

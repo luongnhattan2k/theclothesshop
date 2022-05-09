@@ -628,7 +628,7 @@ public class Database extends SQLiteOpenHelper {
 
     public ArrayList<TinTucDTO> QuanLyTinTuc(){
         ArrayList<TinTucDTO> list = new ArrayList<>();
-        Cursor cursor = Getdata("SELECT * FROM TINTUC");
+        Cursor cursor = Getdata("SELECT * FROM TINTUC ORDER BY IDTINTUC DESC");
         while (cursor.moveToNext()){
             list.add(new TinTucDTO(
                     cursor.getInt(0),

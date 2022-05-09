@@ -161,15 +161,6 @@ public class Quanly_HoaDon extends Fragment {
         txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
     }
 
-    private void Tongdoanhthu_nam() {
-        Cursor cursor = database.Getdata("SELECT SUM ( TONGTIEN ) FROM HOADON WHERE NAMDAT = '"
-                + strNam + "'");
-        cursor.moveToNext();
-        Doanhthu = cursor.getInt(0);
-
-        txt_Tongtienthongke.setText(String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(Doanhthu) + " VNĐ"));
-    }
-
     private void AnhXa() {
         recV_DanhSachSanPham_qlhd = view.findViewById(R.id.recV_DanhSachSanPham_qlhd);
         btn_Thongkedoanhthu = view.findViewById(R.id.btnThongkedoanhthu);
