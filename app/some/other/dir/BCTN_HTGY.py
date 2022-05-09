@@ -7,7 +7,7 @@ from os.path import dirname, join,abspath
 link = abspath("/data/data/nhattan.lnt.clothesshop/databases/ClothesDatabase")
 conn = sqlite3.connect(link, isolation_level=None,
                        detect_types=sqlite3.PARSE_COLNAMES)
-db_df = pd.read_sql_query("SELECT IDTAIKHOAN ,IDSANPHAM, DANHGIA FROM DANHGIA", conn)
+db_df = pd.read_sql_query("SELECT A.IDTAIKHOAN AS IDTAIKHOAN, B.TENSANPHAM AS TENSANPHAM, A.DANHGIA AS DANHGIA FROM DANHGIA A, SANPHAM B WHERE A.IDSANPHAM = B.IDSP", conn)
 
 df = db_df
 
@@ -17,21 +17,21 @@ df.info()
 df['DANHGIA'] = df['DANHGIA'].astype(float)
 
 from scipy.sparse import csr_matrix
-columns = df[['IDTAIKHOAN', 'IDSANPHAM', 'DANHGIA']]
+columns = df[['IDTAIKHOAN', 'TENSANPHAM', 'DANHGIA']]
 df_new = columns
 
-ratingCount = (df_new. groupby(by=['IDSANPHAM'])['DANHGIA'].count().reset_index().rename(columns={'DANHGIA': 'totalRatingCount'})[['IDSANPHAM', 'totalRatingCount']])
+ratingCount = (df_new. groupby(by=['TENSANPHAM'])['DANHGIA'].count().reset_index().rename(columns={'DANHGIA': 'totalRatingCount'})[['TENSANPHAM', 'totalRatingCount']])
 
 x = ratingCount.groupby('totalRatingCount').count()
 plt.hist(ratingCount['totalRatingCount'], bins=20, edgecolor='black')
 # plt.show()
-rating_with_totalRatingCount = df_new.merge(ratingCount, left_on = 'IDSANPHAM', right_on = 'IDSANPHAM', how = 'left')
+rating_with_totalRatingCount = df_new.merge(ratingCount, left_on = 'TENSANPHAM', right_on = 'TENSANPHAM', how = 'left')
 
 popularity_threshold = 10
 rating_popular = rating_with_totalRatingCount.query('totalRatingCount >= @popularity_threshold')
 
 
-user_rating_pivot = rating_popular.pivot_table(index='IDTAIKHOAN', columns='IDSANPHAM', values='DANHGIA').fillna(0)
+user_rating_pivot = rating_popular.pivot_table(index='TENSANPHAM', columns='IDTAIKHOAN', values='DANHGIA').fillna(0)
 user_rating_matrix = csr_matrix(user_rating_pivot.values)
 
 def BCTN_HTGY(address):

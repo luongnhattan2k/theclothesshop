@@ -22,6 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.ByteArrayOutputStream;
@@ -48,7 +51,7 @@ public class ProductionActivity extends AppCompatActivity {
     ArrayList<BinhLuanDTO> listBL;
     BinhLuanAdapter binhLuanAdapter;
     TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh,
-            txt_sobinhluan, txt_Chuacodanhgia, tv_goiy;
+            txt_sobinhluan, txt_Chuacodanhgia, txt_Goiysanpham;
     ImageView productImage;
     ImageButton ibtn_Exit;
     RecyclerView rev_Binhluan_sanpham;
@@ -125,26 +128,26 @@ public class ProductionActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0, hinhAnh.length);
         productImage.setImageBitmap(bitmap);
 
-//        if(Login.taiKhoanDTO.getMATK() == -1){
-//
-//        } else {
-//            if (!Python.isStarted()) {
-//                Python.start(new AndroidPlatform(this));
-//            }
-//            Python py = Python.getInstance();
-//            final PyObject pyobj = py.getModule("BCTN_HTGY");
-//            PyObject obj = pyobj.callAttr("BCTN_HTGY", sanPhamDTO.getTenSP());
-//            String goiy = "";
-//            List<PyObject> list = obj.asList();
-//            for (int i = 0; i < list.size(); i++) {
-//                goiy = String.valueOf(list.get(i));
-//            }
-//            if(Login.taiKhoanDTO.getMATK() == 0){
-//                tv_goiy.setText("Không có dữ liệu");
-//            }else {
-//                tv_goiy.setText(goiy);
-//            }
-//        }
+        if(Login.taiKhoanDTO.getMATK() == -1){
+
+        } else {
+            if (!Python.isStarted()) {
+                Python.start(new AndroidPlatform(this));
+            }
+            Python py = Python.getInstance();
+            final PyObject pyobj = py.getModule("BCTN_HTGY");
+            PyObject obj = pyobj.callAttr("BCTN_HTGY", sanPhamDTO.getTenSP());
+            String goiy = "";
+            List<PyObject> list = obj.asList();
+            for (int i = 0; i < list.size(); i++) {
+                goiy = String.valueOf(list.get(i));
+            }
+            if(Login.taiKhoanDTO.getMATK() == 0){
+                txt_Goiysanpham.setText("Không có dữ liệu");
+            }else {
+                txt_Goiysanpham.setText(goiy);
+            }
+        }
 
     }
 
@@ -180,7 +183,7 @@ public class ProductionActivity extends AppCompatActivity {
         txt_sosaotrungbinh = findViewById(R.id.txt_sosaotrungbinh);
         txt_sobinhluan = findViewById(R.id.txt_sobinhluan);
         txt_Chuacodanhgia = findViewById(R.id.txt_Chuacodanhgia);
-//        tv_goiy = findViewById(R.id.tv_goiy);
+        txt_Goiysanpham = findViewById(R.id.txt_Goiysanpham);
     }
 
     private void SuKien(){

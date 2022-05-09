@@ -264,18 +264,31 @@
 
                 </LinearLayout>
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rev_Goiysanpham"
+                <TextView
+                    android:id="@+id/txt_Goiysanpham"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:paddingLeft="@dimen/size30dp"
+                    android:gravity="center"
+                    android:text="Chưa có dữ liệu"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ln_goiy"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"/>
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rev_Goiysanpham"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/white"-->
+<!--                    android:paddingLeft="@dimen/size30dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.0"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/ln_goiy"-->
+<!--                    tools:ignore="MissingConstraints" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
