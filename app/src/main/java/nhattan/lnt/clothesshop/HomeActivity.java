@@ -83,12 +83,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Soluong_TinTuc();
         AnhXa();
 
-//        Intent intent = getIntent();
-//        int GioHangFra = intent.getIntExtra("DenGioHang", R.id.nav_home);
-//        if(GioHangFra == R.id.nav_mycart){
-//            navigationView.setCheckedItem(GioHangFra);
-//            replaceFragment(new MyCartFragment());
-//        }
+        Intent intent = getIntent();
+        int TintucFrag = intent.getIntExtra("Tintuc", R.id.nav_home);
+        if(TintucFrag == R.id.nav_Tintuc){
+            navigationView.setCheckedItem(TintucFrag);
+            replaceFragment(new ThongBaoFragment());
+        }
 
         HienThiTen();
         edtSearch.setOnClickListener(new View.OnClickListener() {
@@ -102,11 +102,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_Tintuc).setVisible(false);
         if(Login.taiKhoanDTO.getMATK() == -1){
             menu.findItem(R.id.nav_logout).setVisible(false);
         }else {
             menu.findItem(R.id.nav_logging).setVisible(false);
         }
+        Soluong_TinTuc();
         super.onStart();
     }
 

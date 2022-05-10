@@ -28,6 +28,7 @@ public class ThongBaoFragment extends Fragment {
     GridView gridView_Tintuc;
     ArrayList<TinTucDTO> tinTucDTOArrayList;
     TinTucDAO adapter;
+    int IDTHONGTINTINTUC;
 
     public ThongBaoFragment() {
         // Required empty public constructor
@@ -40,9 +41,6 @@ public class ThongBaoFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_thong_bao, container, false);
 
         database = new Database(getActivity(),"ClothesDatabase",null,2);
-//        database.QueryData("CREATE TABLE IF NOT EXISTS DoAn(Id INTEGER PRIMARY KEY AUTOINCREMENT" +
-//                ", Ten VARCHAR(150), MoTa VARCHAR(250), HinhAnh BLOB)");
-
         gridView_Tintuc = view.findViewById(R.id.gridviewTinTuc);
         tinTucDTOArrayList = new ArrayList<>();
         adapter = new TinTucDAO(ThongBaoFragment.this, R.layout.product_custom_tintuc, tinTucDTOArrayList);
@@ -52,29 +50,36 @@ public class ThongBaoFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(HomeFragment.database.TinTucMoi(
                         Login.taiKhoanDTO.getMATK(),
-                        adapter.ListTinTuc.get(i).getTIEUDE()))
+                        adapter.ListTinTuc.get(i).getIDTINTUC()))
                 {
                     HomeFragment.database.TinTucCu(
                             Login.taiKhoanDTO.getMATK(),
-                            adapter.ListTinTuc.get(i).getTIEUDE());
+                            adapter.ListTinTuc.get(i).getIDTINTUC());
                 }
 
 
                 Intent intent = new Intent(getActivity(), ThongBaoChiTietActivity.class);
-                intent.putExtra("thongbaoct", i);
+                TinTucDTO tinTucDTO = adapter.ListTinTuc.get(i);
+                IDTHONGTINTINTUC = tinTucDTO.getIDTINTUC();
+                intent.putExtra("IDTHONGBAOTINTUC", IDTHONGTINTINTUC);
                 startActivity(intent);
             }
         });
-        registerForContextMenu(gridView_Tintuc);
-
         GetData();
-
+        registerForContextMenu(gridView_Tintuc);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        GetData();
+        super.onStart();
     }
 
     private void GetData() {
         //get data
         Cursor cursor = database.Getdata("SELECT * FROM TINTUC ORDER BY IDTINTUC DESC");
+        tinTucDTOArrayList.clear();
         while (cursor.moveToNext())
         {
             tinTucDTOArrayList.add(new TinTucDTO(

@@ -160,7 +160,7 @@
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/theclothesshop/app/src/main/res/layout/product_mycart.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky1/UngDungDiDong/theclothesshop/app/src/main/res/layout/toolbar.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/activity_production.xml" value="0.33" />
-        <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/activity_thong_bao_chi_tiet.xml" value="0.209375" />
+        <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/activity_thong_bao_chi_tiet.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/activity_thong_ke_thang.xml" value="0.25" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/dialog_custom_qlhd_nam.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/fragment_quanly__danh_gia.xml" value="0.209375" />
@@ -169,6 +169,7 @@
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/layout_bottom_sheet_qlhd.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/list_thongbaotintuc.xml" value="0.209375" />
         <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/layout/product_custom_tintuc.xml" value="0.75" />
+        <entry key="..\:/Nam4/Ky2/BaoCaoTotNghiep/ClothesShop/app/src/main/res/menu/list_menu.xml" value="0.209375" />
       </map>
     </option>
   </component>

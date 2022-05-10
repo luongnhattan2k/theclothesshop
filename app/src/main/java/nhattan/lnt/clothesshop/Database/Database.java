@@ -621,7 +621,6 @@ public class Database extends SQLiteOpenHelper {
         cv.put(CreateDatabase.tbl_TINTUC_TIEUDE, tieude);
         cv.put(CreateDatabase.tbl_TINTUC_NOIDUNG, noidung);
         cv.put(CreateDatabase.tbl_TINTUC_NGAYDANG, ngaydang);
-        cv.put(CreateDatabase.tbl_TINTUC_TINMOI, 1);
 
         database.insert( CreateDatabase.tbl_TINTUC, null, cv );
     }
@@ -645,9 +644,9 @@ public class Database extends SQLiteOpenHelper {
         QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
     }
 
-    public boolean TinTucMoi(int IDTK, String TIEUDE){
+    public boolean TinTucMoi(int IDTK, int IDTINTUC){
         Cursor cursor = Getdata("SELECT B.TIEUDE FROM TINTUCMOI A,TINTUC B WHERE IDTAIKHOAN = "
-                + IDTK + " AND '" + TIEUDE + "' = A.TIEUDE");
+                + IDTK + " AND '" + IDTINTUC + "' = A.IDTINTUC");
         while (cursor.moveToNext())
         {
             return true;
@@ -655,17 +654,34 @@ public class Database extends SQLiteOpenHelper {
         return false;
     }
 
-    public void TinTucCu(int IDTK,String TIEUDE){
-        QueryData(" DELETE FROM TINTUCMOI WHERE IDTAIKHOAN = " + IDTK + " AND TIEUDE = '" + TIEUDE + "' " );
+    public void TinTucCu(int IDTK,int IDTINTUC){
+        QueryData(" DELETE FROM TINTUCMOI WHERE IDTAIKHOAN = " + IDTK + " AND IDTINTUC = '" + IDTINTUC + "' " );
     }
 
-    public void ThemTinTucAll(String NOIDUNG, int IDTK, String TIEUDE){
+    public void ThemTinTucAll(String NOIDUNG, int IDTK, String TIEUDE, int IDTINTUC){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new  ContentValues();
         cv.put("NOIDUNG",   NOIDUNG);
         cv.put("IDTAIKHOAN",IDTK);
         cv.put("TIEUDE",TIEUDE);
+        cv.put("IDTINTUC",IDTINTUC);
         database.insert( "TINTUCMOI", null, cv );
+    }
+
+    public TinTucDTO LoadTinTuc(int IDTINTUC)
+    {
+        Cursor cursor = Getdata("SELECT * FROM TINTUC WHERE IDTINTUC = " + IDTINTUC );
+        while (cursor.moveToNext()) {
+            return new TinTucDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4)
+            );
+        }
+        return null;
+
     }
 
     public ArrayList<TaiKhoanDTO> LayTatCaTaiKhoan(){

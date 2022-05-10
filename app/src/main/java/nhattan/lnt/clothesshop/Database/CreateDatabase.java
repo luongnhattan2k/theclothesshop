@@ -17,6 +17,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_GIOHANG = "GIOHANG";
     public static String tbl_GOPY = "GOPY";
     public static String tbl_TINTUC = "TINTUC";
+    public static String tbl_TINTUCMOI = "TINTUCMOI";
     public static String tbl_DANHGIA = "DANHGIA";
 
     public static String tbl_TAIKHOAN_IDTK = "IDTAIKHOAN";
@@ -92,7 +93,12 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_TINTUC_NOIDUNG = "NOIDUNG";
     public static String tbl_TINTUC_HINHANH = "HINHANH";
     public static String tbl_TINTUC_NGAYDANG = "NGAYDANG";
-    public static String tbl_TINTUC_TINMOI = "TINMOI";
+
+    public static String tbl_TINTUCMOI_IDTINTUCMOI = "IDTINTUC";
+    public static String tbl_TINTUCMOI_IDTAIKHOAN = "IDTAIKHOAN";
+    public static String tbl_TINTUCMOI_TIEUDE = "TIEUDE";
+    public static String tbl_TINTUCMOI_NOIDUNG = "NOIDUNG";
+    public static String tbl_TINTUCMOI_IDTINTUC = "IDTINTUC";
 
     public static String getTbl_DANHGIA_IDDANHGIA = "IDDANHGIA";
     public static String getTbl_DANHGIA_IDTAIKHOAN = "IDTAIKHOAN";
@@ -146,7 +152,11 @@ public class CreateDatabase extends SQLiteOpenHelper {
 
         String TINTUC = "CREATE TABLE " + tbl_TINTUC + "(" + tbl_TINTUC_IDTINTUC + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + tbl_TINTUC_TIEUDE + " TEXT, " + tbl_TINTUC_NOIDUNG + " TEXT, " + tbl_TINTUC_HINHANH + " BLOB, "
-                + tbl_TINTUC_NGAYDANG + " DATE , " + tbl_TINTUC_TINMOI + " INTEGER)";
+                + tbl_TINTUC_NGAYDANG + " DATE)";
+
+        String TINTUCMOI = "CREATE TABLE " + tbl_TINTUCMOI + "(" + tbl_TINTUCMOI_IDTINTUCMOI + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + tbl_TINTUCMOI_TIEUDE + " TEXT, " + tbl_TINTUCMOI_NOIDUNG + " TEXT, " + tbl_TINTUCMOI_IDTAIKHOAN + " INTEGER, "
+                + tbl_TINTUCMOI_IDTINTUC + " INTEGER)";
 
         String DANHGIA = "CREATE TABLE " + tbl_DANHGIA + "(" + getTbl_DANHGIA_IDDANHGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + getTbl_DANHGIA_IDTAIKHOAN + " INTEGER, " + getTbl_DANHGIA_HINHDAIDIEN + " BLOB, " + getTbl_DANHGIA_IDSANPHAM + " INTEGER, "
@@ -161,6 +171,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
         db.execSQL(GIOHANG);
         db.execSQL(GOPY);
         db.execSQL(TINTUC);
+        db.execSQL(TINTUCMOI);
         db.execSQL(DANHGIA);
 
     }

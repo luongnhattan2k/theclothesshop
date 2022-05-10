@@ -16,7 +16,7 @@
         android:background="@color/xanh_nhat">
 
         <ImageButton
-            android:id="@+id/ibtnExit"
+            android:id="@+id/ibtnExit_tintuc"
             android:layout_width="@dimen/size50dp"
             android:layout_height="@dimen/size50dp"
             android:background="@null"
@@ -41,15 +41,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <GridView
-
-            android:id="@+id/gv_thongtintintuc"
+        <TextView
+            android:id="@+id/txt_Bantinso"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:numColumns="1" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size10dp"
+            android:gravity="center"
+            android:text="Bản tin số: "
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:id="@+id/txt_Ngaydangtintuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size10dp"
+            android:gravity="center"
+            android:text="Ngày đăng tin"
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:id="@+id/txt_Tieudetintuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size10dp"
+            android:gravity="center"
+            android:text="Tiêu đề"
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
+        <ImageView
+            android:id="@+id/img_Hinhanhtintuc"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/txt_Noidungtintuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size10dp"
+            android:gravity="center"
+            android:text="Nội dung tin tức"
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
     </LinearLayout>
 
 </LinearLayout>

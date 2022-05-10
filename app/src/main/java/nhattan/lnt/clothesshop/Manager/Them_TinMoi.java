@@ -2,6 +2,7 @@ package nhattan.lnt.clothesshop.Manager;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -46,15 +47,24 @@ public class Them_TinMoi extends AppCompatActivity {
     final int REQUEST_CODE_CAMERA=123;
     final int REQUEST_CODE_FOLDER=456;
     String Ngaydang, Tieude, Noidung;
+    int IDTINTUC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_tin_moi);
 
+        GetData();
         AnhXa();
         taiKhoanList = new ArrayList<>();
         taiKhoanList = HomeFragment.database.LayTatCaTaiKhoan();
+
+    }
+
+    private void GetData() {
+        Cursor cursor = HomeFragment.database.Getdata("SELECT IDTINTUC FROM TINTUC ORDER BY IDTINTUC DESC");
+        cursor.moveToNext();
+        IDTINTUC = cursor.getInt(0) + 1;
     }
 
     private void AnhXa() {
@@ -126,7 +136,8 @@ public class Them_TinMoi extends AppCompatActivity {
                         HomeFragment.database.ThemTinTucAll(
                                 Noidung,
                                 taiKhoanList.get(i).getMATK(),
-                                Tieude);
+                                Tieude,
+                                IDTINTUC);
                     }
                     Toast.makeText(Them_TinMoi.this, "Thêm Tin Mới Thành Công !", Toast.LENGTH_SHORT).show();
                     onBackPressed();
