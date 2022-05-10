@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,8 @@ import java.util.List;
 
 import nhattan.lnt.clothesshop.DTO.TinTucDTO;
 import nhattan.lnt.clothesshop.Database.CreateDatabase;
+import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
+import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
 
 public class TinTucDAO extends BaseAdapter {
@@ -53,6 +56,7 @@ public class TinTucDAO extends BaseAdapter {
 
     static class ViewHolder{
         TextView txt_Tieude, txt_noidung, txt_Ngaydang;
+        ImageView img_thongbaotintuc;
     }
 
     @Override
@@ -67,12 +71,22 @@ public class TinTucDAO extends BaseAdapter {
             holder.txt_Tieude = (TextView) view.findViewById(R.id.txtV_Tieude);
             holder.txt_noidung = (TextView) view.findViewById(R.id.txtV_Noidung);
             holder.txt_Ngaydang = (TextView) view.findViewById(R.id.txtV_Ngaydang);
+            holder.img_thongbaotintuc = (ImageView) view.findViewById(R.id.img_thongbaotintuc);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
         TinTucDTO tinTucDTO = ListTinTuc.get(i);
+        if(HomeFragment.database.TinTucMoi(Login.taiKhoanDTO.getMATK(),tinTucDTO.getTIEUDE()))
+        {
+            holder.img_thongbaotintuc.setImageResource(R.drawable.ic_baseline_notifications_24);
+        }
+        else
+        {
+            holder.img_thongbaotintuc.setBackgroundResource(R.color.white);
+        }
+
         holder.txt_Tieude.setText(tinTucDTO.getTIEUDE());
         holder.txt_noidung.setText(tinTucDTO.getNOIDUNG());
         holder.txt_Ngaydang.setText(tinTucDTO.getNGAYDANG());

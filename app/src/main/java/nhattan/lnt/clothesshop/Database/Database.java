@@ -645,6 +645,49 @@ public class Database extends SQLiteOpenHelper {
         QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
     }
 
+    public boolean TinTucMoi(int IDTK, String TIEUDE){
+        Cursor cursor = Getdata("SELECT B.TIEUDE FROM TINTUCMOI A,TINTUC B WHERE IDTAIKHOAN = "
+                + IDTK + " AND '" + TIEUDE + "' = A.TIEUDE");
+        while (cursor.moveToNext())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void TinTucCu(int IDTK,String TIEUDE){
+        QueryData(" DELETE FROM TINTUCMOI WHERE IDTAIKHOAN = " + IDTK + " AND TIEUDE = '" + TIEUDE + "' " );
+    }
+
+    public void ThemTinTucAll(String NOIDUNG, int IDTK, String TIEUDE){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new  ContentValues();
+        cv.put("NOIDUNG",   NOIDUNG);
+        cv.put("IDTAIKHOAN",IDTK);
+        cv.put("TIEUDE",TIEUDE);
+        database.insert( "TINTUCMOI", null, cv );
+    }
+
+    public ArrayList<TaiKhoanDTO> LayTatCaTaiKhoan(){
+        ArrayList<TaiKhoanDTO> list = new ArrayList<>();
+        Cursor cursor = Getdata("SELECT * FROM TAIKHOAN WHERE QUYEN = 1 ");
+        while (cursor.moveToNext()){
+            list.add(new TaiKhoanDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getInt(7),
+                    cursor.getInt(8)
+            ));
+        }
+
+        return list;
+    }
+
     public void ThemDanhGia(int IDTK, int IDSP, double DANHGIA, String NoiDung, String ThoiGian, String SIZE){
         Log.e("Tag","INSERT INTO BINHLUAN (IDTK,IDVD,NOIDUNG,THOIGIAN,SIZE) VALUES (" +IDTK + ",'" +
                 IDSP + "','" + NoiDung+"','" + ThoiGian + "')");

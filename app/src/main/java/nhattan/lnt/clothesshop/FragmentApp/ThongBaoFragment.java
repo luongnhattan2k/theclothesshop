@@ -1,10 +1,12 @@
 package nhattan.lnt.clothesshop.FragmentApp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +16,9 @@ import java.util.ArrayList;
 import nhattan.lnt.clothesshop.DAO.TinTucDAO;
 import nhattan.lnt.clothesshop.DTO.TinTucDTO;
 import nhattan.lnt.clothesshop.Database.Database;
+import nhattan.lnt.clothesshop.Login;
 import nhattan.lnt.clothesshop.R;
+import nhattan.lnt.clothesshop.ThongBaoChiTietActivity;
 
 public class ThongBaoFragment extends Fragment {
 
@@ -43,14 +47,24 @@ public class ThongBaoFragment extends Fragment {
         tinTucDTOArrayList = new ArrayList<>();
         adapter = new TinTucDAO(ThongBaoFragment.this, R.layout.product_custom_tintuc, tinTucDTOArrayList);
         gridView_Tintuc.setAdapter(adapter);
-//        gridView_Tintuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int id, long l) {
-//                Intent intent = new Intent(getActivity(), ProductionActivity.class);
-//                intent.putExtra("idtintuc", id);
-//                startActivity(intent);
-//            }
-//        });
+        gridView_Tintuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(HomeFragment.database.TinTucMoi(
+                        Login.taiKhoanDTO.getMATK(),
+                        adapter.ListTinTuc.get(i).getTIEUDE()))
+                {
+                    HomeFragment.database.TinTucCu(
+                            Login.taiKhoanDTO.getMATK(),
+                            adapter.ListTinTuc.get(i).getTIEUDE());
+                }
+
+
+                Intent intent = new Intent(getActivity(), ThongBaoChiTietActivity.class);
+                intent.putExtra("thongbaoct", i);
+                startActivity(intent);
+            }
+        });
         registerForContextMenu(gridView_Tintuc);
 
         GetData();

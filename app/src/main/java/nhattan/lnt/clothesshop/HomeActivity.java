@@ -157,7 +157,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void Soluong_TinTuc(){
-        Cursor cursor = database.Getdata("SELECT COUNT ( IDTINTUC ) FROM TINTUC");
+        Cursor cursor = database.Getdata("SELECT COUNT ( IDTINTUCMOI ) FROM TINTUCMOI WHERE IDTAIKHOAN = "
+                + Login.taiKhoanDTO.getMATK());
         cursor.moveToNext();
         dem_thongba = cursor.getInt(0);
     }

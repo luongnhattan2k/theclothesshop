@@ -26,7 +26,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
+import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 import nhattan.lnt.clothesshop.R;
@@ -37,6 +40,7 @@ public class Them_TinMoi extends AppCompatActivity {
     ImageView img_HinhAnhTinTuc_add;
     ImageButton ibtn_Exitthemtin_add;
     Button btnThemtintuc;
+    List<TaiKhoanDTO> taiKhoanList;
     private boolean isEnabled;
     Database database;
     final int REQUEST_CODE_CAMERA=123;
@@ -49,6 +53,8 @@ public class Them_TinMoi extends AppCompatActivity {
         setContentView(R.layout.activity_them_tin_moi);
 
         AnhXa();
+        taiKhoanList = new ArrayList<>();
+        taiKhoanList = HomeFragment.database.LayTatCaTaiKhoan();
     }
 
     private void AnhXa() {
@@ -109,13 +115,19 @@ public class Them_TinMoi extends AppCompatActivity {
                 Tieude = edtTieudetintuc_add.getText().toString().trim();
                 Noidung = edtNoidungtintuc_add.getText().toString().trim();
                 if (edtTieudetintuc_add.getText().length() != 0 && edtNoidungtintuc_add.getText().length() != 0) {
-
                     HomeFragment.database.ThemTinTuc(
                             hinhAnh,
                             Tieude,
                             Noidung,
                             Ngaydang
                     );
+                    for (int i = 0; i < taiKhoanList.size(); i++)
+                    {
+                        HomeFragment.database.ThemTinTucAll(
+                                Noidung,
+                                taiKhoanList.get(i).getMATK(),
+                                Tieude);
+                    }
                     Toast.makeText(Them_TinMoi.this, "Thêm Tin Mới Thành Công !", Toast.LENGTH_SHORT).show();
                     onBackPressed();
                 } else {
