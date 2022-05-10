@@ -124,17 +124,14 @@
             android:id="@+id/edtDiachi"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:gravity="center|left|top"
+            android:paddingTop="@dimen/size10dp"
             android:layout_marginLeft="@dimen/size30dp"
             android:layout_marginTop="@dimen/size20dp"
             android:layout_marginRight="@dimen/size30dp"
             android:background="@color/white"
-            android:ems="10"
             android:fontFamily="serif"
-            android:hint="@string/diachi"
-            android:inputType="textPersonName"
-            android:paddingLeft="@dimen/size20dp"
-            android:paddingTop="@dimen/size20dp"
+            android:hint="Địa chỉ"
+            android:textSize="15sp"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>

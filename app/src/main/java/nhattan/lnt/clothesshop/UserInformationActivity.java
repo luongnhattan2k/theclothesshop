@@ -116,7 +116,7 @@ public class UserInformationActivity extends AppCompatActivity {
                     HomeFragment.database.CapNhatTaiKhoan(Login.taiKhoanDTO.getMATK(), hinhAnh, Sdt, Email, DiaChi);
                     Toast.makeText(UserInformationActivity.this, "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
                     Intent iHome = new Intent(UserInformationActivity.this, HomeActivity.class);
-                    Login.taiKhoanDTO = new TaiKhoanDTO();
+                    iHome.putExtra("Thongtinnguoidung", R.id.nav_profile);
                     startActivity(iHome);
                 }
             }

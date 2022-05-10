@@ -59,7 +59,6 @@
                 android:fontFamily="serif"
                 android:hint="@string/username"
                 android:inputType="textPersonName"
-                android:paddingLeft="@dimen/size20dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,7 +82,6 @@
                 android:hint="@string/sdt"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:paddingLeft="@dimen/size20dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,17 +94,15 @@
             <EditText
                 android:id="@+id/edtNoidunggopy_ql"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/size30dp"
                 android:layout_marginTop="@dimen/size20dp"
                 android:layout_marginRight="@dimen/size30dp"
                 android:background="@color/white"
-                android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Nhập nội dung ..."
-                android:inputType="textPersonName"
-                android:paddingLeft="@dimen/size20dp"
-                android:paddingTop="@dimen/size20dp"
+                android:hint="Nội dung: "
+                android:textSize="15sp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>

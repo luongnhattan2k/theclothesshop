@@ -89,6 +89,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(TintucFrag);
             replaceFragment(new ThongBaoFragment());
         }
+        int UserFrag = intent.getIntExtra("Thongtinnguoidung", R.id.nav_home);
+        if(UserFrag == R.id.nav_profile){
+            navigationView.setCheckedItem(UserFrag);
+            replaceFragment(new UserFragment());
+        }
 
         HienThiTen();
         edtSearch.setOnClickListener(new View.OnClickListener() {

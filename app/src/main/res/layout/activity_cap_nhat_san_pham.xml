@@ -129,12 +129,11 @@
 
                 <EditText
                     android:id="@+id/edtMota"
-                    android:layout_width="390dp"
-                    android:layout_height="150dp"
-                    android:ems="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:fontFamily="serif"
-                    android:hint="Mô Tả"
-                    android:inputType="textPersonName"
+                    android:hint="Mô tả: "
+                    android:textSize="15sp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>

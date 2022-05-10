@@ -39,23 +39,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_margin="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_marginBottom="30dp"
                 android:id="@+id/img_user_ql_taikhoan"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_marginBottom="30dp"
                 android:src="@drawable/baseline_person_24"
-                android:layout_gravity="center"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_user_ql_taikhoan"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_idtk_ql_taikhoan"
@@ -70,16 +79,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_1"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_tentaikhoan_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tên Tài Khoản"
                     android:fontFamily="serif"
+                    android:hint="Tên Tài Khoản"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -88,17 +103,23 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_2"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_matkhau_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
-                    android:hint="Mật Khẩu"
                     android:fontFamily="serif"
+                    android:hint="Mật Khẩu"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -106,17 +127,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_3"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_sdt_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
-                    android:hint="Số Điện Thoại"
                     android:fontFamily="serif"
+                    android:hint="Số Điện Thoại"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -124,50 +151,66 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_4"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_mail_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mail"
                     android:fontFamily="serif"
+                    android:hint="Mail"
                     android:inputType="textEmailAddress"
-                    android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_5"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_diachi_ql_taikhoan"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:hint="Địa Chỉ"
+                    android:layout_height="match_parent"
                     android:fontFamily="serif"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
+                    android:hint="Địa chỉ: "
+                    android:textSize="15sp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_6"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_quyen_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Quyền"
                     android:fontFamily="serif"
+                    android:hint="Quyền"
                     android:inputType="number"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -175,16 +218,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_7"
+                tools:ignore="MissingConstraints">
 
                 <EditText
                     android:id="@+id/edt_loaitk_ql_taikhoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Loại tài khoản"
                     android:fontFamily="serif"
+                    android:hint="Loại tài khoản"
                     android:inputType="number"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -195,18 +244,23 @@
                 android:id="@+id/btn_capnhat_ql_taikhoan"
                 android:layout_width="170dp"
                 android:layout_height="@dimen/size60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/xanh_nhat"
+                android:fontFamily="serif"
                 android:text="Cập nhật"
                 android:textColor="@color/black"
-                android:fontFamily="serif"
-                android:backgroundTint="@color/xanh_nhat"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_8"
+                tools:ignore="MissingConstraints" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
 
 
 </LinearLayout>

@@ -117,7 +117,7 @@ public class Quanly_TinTuc extends Fragment {
                 database.XoaTinTuc(tinTucDTO.getIDTINTUC());
 //                getActivity().onBackPressed();
                 Load();
-                Toast.makeText(getActivity(), "Bạn vừa xóa " + tinTucDTO.getIDTINTUC(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Bạn vừa xóa tin " + tinTucDTO.getIDTINTUC(), Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

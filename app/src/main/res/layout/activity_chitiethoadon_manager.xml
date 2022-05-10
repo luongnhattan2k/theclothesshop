@@ -166,7 +166,7 @@
                     android:fontFamily="serif"
                     android:hint="Địa chỉ: "
                     android:textSize="15sp"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -242,10 +242,12 @@
                 android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="@dimen/size10dp"
+                android:layout_marginBottom="@dimen/size30dp"
                 android:backgroundTint="@color/xanh_nhat"
                 android:fontFamily="serif"
                 android:text="Cập Nhật "
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
