@@ -98,7 +98,6 @@ public class CreateDatabase extends SQLiteOpenHelper {
     public static String tbl_TINTUCMOI_IDTAIKHOAN = "IDTAIKHOAN";
     public static String tbl_TINTUCMOI_TIEUDE = "TIEUDE";
     public static String tbl_TINTUCMOI_NOIDUNG = "NOIDUNG";
-    public static String tbl_TINTUCMOI_IDTINTUC = "IDTINTUC";
 
     public static String getTbl_DANHGIA_IDDANHGIA = "IDDANHGIA";
     public static String getTbl_DANHGIA_IDTAIKHOAN = "IDTAIKHOAN";
@@ -155,8 +154,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
                 + tbl_TINTUC_NGAYDANG + " DATE)";
 
         String TINTUCMOI = "CREATE TABLE " + tbl_TINTUCMOI + "(" + tbl_TINTUCMOI_IDTINTUCMOI + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + tbl_TINTUCMOI_TIEUDE + " TEXT, " + tbl_TINTUCMOI_NOIDUNG + " TEXT, " + tbl_TINTUCMOI_IDTAIKHOAN + " INTEGER, "
-                + tbl_TINTUCMOI_IDTINTUC + " INTEGER)";
+                + tbl_TINTUCMOI_TIEUDE + " TEXT, " + tbl_TINTUCMOI_NOIDUNG + " TEXT, " + tbl_TINTUCMOI_IDTAIKHOAN + " INTEGER)";
 
         String DANHGIA = "CREATE TABLE " + tbl_DANHGIA + "(" + getTbl_DANHGIA_IDDANHGIA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + getTbl_DANHGIA_IDTAIKHOAN + " INTEGER, " + getTbl_DANHGIA_HINHDAIDIEN + " BLOB, " + getTbl_DANHGIA_IDSANPHAM + " INTEGER, "

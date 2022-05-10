@@ -614,6 +614,34 @@ public class Database extends SQLiteOpenHelper {
         return null;
     }
 
+    public TinTucDTO TTTINTUC(int IDTINTUC){
+        Cursor cursor = Getdata("SELECT * FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
+        while (cursor.moveToNext()){
+            return new TinTucDTO(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getBlob(3),
+                    cursor.getString(4)
+            );
+        }
+        return null;
+    }
+
+    public void CapNhatTinTuc(int IDTINTUC, String TIEUDE, String NOIDUNG, byte[] HINHANH, String NGAYDANG){
+        QueryData("UPDATE TINTUC SET TIEUDE = '" + TIEUDE
+                + "' , NOIDUNG ='" + NOIDUNG + "', NGAYDANG = '" + NGAYDANG
+                + "'  WHERE IDTINTUC = '" + IDTINTUC + "'");
+
+        String sql = "UPDATE TINTUC SET HINHANH = ? WHERE IDTINTUC = " + IDTINTUC ;
+        SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,HINHANH);
+        statement.executeInsert();
+    }
+
     public void ThemTinTuc(byte[] hinh, String tieude, String noidung, String ngaydang ) throws SQLiteException {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new  ContentValues();
@@ -641,12 +669,16 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public void XoaTinTuc(int IDTINTUC){
-        QueryData("DELETE FROM TINTUC WHERE IDTINTUC = '" + IDTINTUC + "'");
+        QueryData("DELETE FROM TINTUC WHERE IDTINTUC = " + IDTINTUC );
     }
 
-    public boolean TinTucMoi(int IDTK, int IDTINTUC){
+    public void XoaTinTucMoi(String TIEUDE){
+        QueryData("DELETE FROM TINTUCMOI WHERE TIEUDE = '" + TIEUDE + "'");
+    }
+
+    public boolean TinTucMoi(int IDTK, String TIEUDE){
         Cursor cursor = Getdata("SELECT B.TIEUDE FROM TINTUCMOI A,TINTUC B WHERE IDTAIKHOAN = "
-                + IDTK + " AND '" + IDTINTUC + "' = A.IDTINTUC");
+                + IDTK + " AND '" + TIEUDE + "' = A.TIEUDE");
         while (cursor.moveToNext())
         {
             return true;
@@ -654,17 +686,16 @@ public class Database extends SQLiteOpenHelper {
         return false;
     }
 
-    public void TinTucCu(int IDTK,int IDTINTUC){
-        QueryData(" DELETE FROM TINTUCMOI WHERE IDTAIKHOAN = " + IDTK + " AND IDTINTUC = '" + IDTINTUC + "' " );
+    public void TinTucCu(int IDTK, String TIEUDE){
+        QueryData(" DELETE FROM TINTUCMOI WHERE IDTAIKHOAN = " + IDTK + " AND TIEUDE = '" + TIEUDE + "' " );
     }
 
-    public void ThemTinTucAll(String NOIDUNG, int IDTK, String TIEUDE, int IDTINTUC){
+    public void ThemTinTucAll(String NOIDUNG, int IDTK, String TIEUDE){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new  ContentValues();
         cv.put("NOIDUNG",   NOIDUNG);
         cv.put("IDTAIKHOAN",IDTK);
         cv.put("TIEUDE",TIEUDE);
-        cv.put("IDTINTUC",IDTINTUC);
         database.insert( "TINTUCMOI", null, cv );
     }
 

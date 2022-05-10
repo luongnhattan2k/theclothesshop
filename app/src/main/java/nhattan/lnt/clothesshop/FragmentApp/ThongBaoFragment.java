@@ -50,11 +50,11 @@ public class ThongBaoFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(HomeFragment.database.TinTucMoi(
                         Login.taiKhoanDTO.getMATK(),
-                        adapter.ListTinTuc.get(i).getIDTINTUC()))
+                        adapter.ListTinTuc.get(i).getTIEUDE()))
                 {
                     HomeFragment.database.TinTucCu(
                             Login.taiKhoanDTO.getMATK(),
-                            adapter.ListTinTuc.get(i).getIDTINTUC());
+                            adapter.ListTinTuc.get(i).getTIEUDE());
                 }
 
 

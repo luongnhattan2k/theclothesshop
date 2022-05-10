@@ -136,8 +136,7 @@ public class Them_TinMoi extends AppCompatActivity {
                         HomeFragment.database.ThemTinTucAll(
                                 Noidung,
                                 taiKhoanList.get(i).getMATK(),
-                                Tieude,
-                                IDTINTUC);
+                                Tieude);
                     }
                     Toast.makeText(Them_TinMoi.this, "Thêm Tin Mới Thành Công !", Toast.LENGTH_SHORT).show();
                     onBackPressed();

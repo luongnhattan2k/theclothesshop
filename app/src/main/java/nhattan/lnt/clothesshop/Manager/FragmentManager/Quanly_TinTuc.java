@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import nhattan.lnt.clothesshop.ADAPTER.QuanLySanPhamAdapter;
 import nhattan.lnt.clothesshop.ADAPTER.QuanLyTinTucAdapter;
 import nhattan.lnt.clothesshop.DTO.TinTucDTO;
 import nhattan.lnt.clothesshop.Database.Database;
@@ -53,10 +52,10 @@ public class Quanly_TinTuc extends Fragment {
         recV_DanhSachTinTuc = view.findViewById(R.id.recV_DanhSachTinTuc);
         registerForContextMenu(recV_DanhSachTinTuc);
 
+
         listTinTuc = new ArrayList<>();
         adapter = new QuanLyTinTucAdapter(this, listTinTuc);
         Load();
-
         recV_DanhSachTinTuc.setLayoutManager( new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
         recV_DanhSachTinTuc.setAdapter(adapter);
 
@@ -87,16 +86,17 @@ public class Quanly_TinTuc extends Fragment {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = -1;
         try {
-            position = QuanLySanPhamAdapter.getPosition();
+            position = QuanLyTinTucAdapter.getPosition();
         } catch (Exception e) {
             Log.d("TAG", e.getLocalizedMessage(), e);
             return super.onContextItemSelected(item);
         }
         switch (item.getItemId()) {
             case R.id.iSua:
-                Intent iCapnhatsp = new Intent(getActivity(), CapNhat_TinTuc.class);
-                iCapnhatsp.putExtra("IDTINTUC", listTinTuc.get(position).getIDTINTUC());
-                startActivity(iCapnhatsp);
+                Intent iCapnhattintuc = new Intent(getActivity(), CapNhat_TinTuc.class);
+                iCapnhattintuc.putExtra("IDTINTUC", listTinTuc.get(position).getIDTINTUC());
+                startActivity(iCapnhattintuc);
+                Toast.makeText(getActivity(), "Tin tức số: " + listTinTuc.get(position).getIDTINTUC(), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.iXoa:
                 tinTucDTO = listTinTuc.get(position);
@@ -115,6 +115,7 @@ public class Quanly_TinTuc extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 database.XoaTinTuc(tinTucDTO.getIDTINTUC());
+                database.XoaTinTucMoi(tinTucDTO.getTIEUDE());
 //                getActivity().onBackPressed();
                 Load();
                 Toast.makeText(getActivity(), "Bạn vừa xóa tin " + tinTucDTO.getIDTINTUC(), Toast.LENGTH_SHORT).show();

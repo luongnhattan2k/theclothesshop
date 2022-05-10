@@ -78,7 +78,7 @@ public class TinTucDAO extends BaseAdapter {
         }
 
         TinTucDTO tinTucDTO = ListTinTuc.get(i);
-        if(HomeFragment.database.TinTucMoi(Login.taiKhoanDTO.getMATK(),tinTucDTO.getIDTINTUC()))
+        if(HomeFragment.database.TinTucMoi(Login.taiKhoanDTO.getMATK(),tinTucDTO.getTIEUDE()))
         {
             holder.img_thongbaotintuc.setImageResource(R.drawable.ic_baseline_notifications_24);
         }

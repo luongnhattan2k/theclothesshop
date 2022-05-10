@@ -88,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if(TintucFrag == R.id.nav_Tintuc){
             navigationView.setCheckedItem(TintucFrag);
             replaceFragment(new ThongBaoFragment());
+            Soluong_TinTuc();
         }
         int UserFrag = intent.getIntExtra("Thongtinnguoidung", R.id.nav_home);
         if(UserFrag == R.id.nav_profile){
@@ -106,6 +107,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onStart() {
+        Soluong_TinTuc();
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_Tintuc).setVisible(false);
         if(Login.taiKhoanDTO.getMATK() == -1){
@@ -113,7 +115,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }else {
             menu.findItem(R.id.nav_logging).setVisible(false);
         }
-        Soluong_TinTuc();
         super.onStart();
     }
 

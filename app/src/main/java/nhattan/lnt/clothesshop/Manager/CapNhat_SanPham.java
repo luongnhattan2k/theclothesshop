@@ -1,9 +1,5 @@
 package nhattan.lnt.clothesshop.Manager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -22,6 +18,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -31,10 +31,11 @@ import nhattan.lnt.clothesshop.Database.Database;
 import nhattan.lnt.clothesshop.R;
 
 public class CapNhat_SanPham extends AppCompatActivity {
+
     EditText edt_Idsp ,edt_Tensanpham, edt_Gia, edt_Soluong, edt_Mota, edt_Danhmuc;
     ImageView img_HinhAnh;
     ImageButton ibtn_Exit;
-    Button btn_CapNhatSP;
+    Button btn_CapNhatSP, btnHuy_qltt;
     private boolean isEnabled;
     Database database;
     final int REQUEST_CODE_CAMERA=123;
@@ -53,6 +54,7 @@ public class CapNhat_SanPham extends AppCompatActivity {
         if (String.valueOf(IDSANPHAM) == null){
             return;
         }
+
         SanPhamDTO sanPhamDTO = database.TTSANPHAM(IDSANPHAM);
 
         edt_Idsp.setText(String.valueOf(IDSANPHAM));
