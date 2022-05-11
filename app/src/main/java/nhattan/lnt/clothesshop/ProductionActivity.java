@@ -151,7 +151,7 @@ public class ProductionActivity extends AppCompatActivity {
             }
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("BCTN_HTGY");
-            PyObject obj = pyobj.callAttr("BCTN_HTGY", sanPhamDTO.getTenSP());
+            PyObject obj = pyobj.callAttr("BCTN_HTGY", Login.taiKhoanDTO.getMATK());
             List<PyObject> list = obj.asList();
             listSanPham = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
