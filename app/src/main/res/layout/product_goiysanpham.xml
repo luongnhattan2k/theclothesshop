@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_layout_goiy"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/size10dp">
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size10dp"
+        android:layout_marginBottom="@dimen/size10dp"
+        android:background="@drawable/vien_den"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/product_image_goiy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                tools:ignore="ImageContrastCheck"
+                android:contentDescription="TODO" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_name_goiy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="Product Name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:id="@+id/product_price_goiy"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Product Price"
+                android:textColor="#FF4444"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

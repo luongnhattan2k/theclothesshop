@@ -20,6 +20,7 @@ import nhattan.lnt.clothesshop.DTO.HoaDonDTO;
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.DTO.TaiKhoanDTO;
 import nhattan.lnt.clothesshop.DTO.TinTucDTO;
+import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -758,6 +759,23 @@ public class Database extends SQLiteOpenHelper {
             ));
         }
         return list;
+    }
+
+    public SanPhamDTO LayGoiY(String IDSP) {
+        Cursor cursor = HomeFragment.database.Getdata("SELECT * FROM SANPHAM WHERE IDSP = " + IDSP);
+        while (cursor.moveToNext()){
+            return new SanPhamDTO(
+                    cursor.getInt(0),
+                    cursor.getBlob(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7)
+            );
+        }
+        return null;
     }
 
     public void XoaGY(int IDGY){

@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 import nhattan.lnt.clothesshop.ADAPTER.BinhLuanAdapter;
+import nhattan.lnt.clothesshop.ADAPTER.GoiYSanPhamAdapter;
 import nhattan.lnt.clothesshop.ADAPTER.SearchAdapter;
 import nhattan.lnt.clothesshop.DAO.CategoryDAO;
 import nhattan.lnt.clothesshop.DAO.SanPhamDAO;
@@ -46,21 +47,26 @@ import nhattan.lnt.clothesshop.FragmentApp.HomeFragment;
 public class ProductionActivity extends AppCompatActivity {
 
     SanPhamDTO sanPhamDTO;
+    SanPhamDAO sanPhamDAO;
+    ArrayList<SanPhamDTO> listSanPham;
     BinhLuanDTO binhLuanDTO;
     Database database;
     ArrayList<BinhLuanDTO> listBL;
     BinhLuanAdapter binhLuanAdapter;
+    GoiYSanPhamAdapter goiYSanPhamAdapter;
     TextView productName, productPrice, productContent, txt_Themgiohang, txt_sosaotrungbinh,
-            txt_sobinhluan, txt_Chuacodanhgia, txt_Goiysanpham;
+            txt_sobinhluan, txt_Chuacodanhgia;
     ImageView productImage;
     ImageButton ibtn_Exit;
-    RecyclerView rev_Binhluan_sanpham;
+    RecyclerView rev_Binhluan_sanpham, rev_Goiysanpham;
     RatingBar rab_sosaotrungbinh;
     int id, idtk, idsp, slbl;
+    int idsanphamgoiy;
     Spinner spnCategory;
     CategoryDAO categoryDAO;
     int SLM = 0;
     String size = "S";
+    String idspgoiy = "";
     float danhgiatrungbinh;
 
 
@@ -73,6 +79,14 @@ public class ProductionActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id",1);
         idtk = intent.getIntExtra("idtk",2);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        sanPhamDTO = (SanPhamDTO) bundle.get("idsanphamgoiy");
+
+
         Anhxa();
 
         categoryDAO = new CategoryDAO(this, R.layout.item_selected, getListCategort());
@@ -105,9 +119,10 @@ public class ProductionActivity extends AppCompatActivity {
     private void GetData() {
         if(idtk==2){
             sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(id);
-        }else
-        {
+        } else if (id == 1) {
             sanPhamDTO = SearchAdapter.sanPhamDTOList.get(idtk);
+        } else {
+            sanPhamDTO = SanPhamDAO.sanPhamDTOList.get(sanPhamDTO.getMaSP());
         }
         //get data
         idsp = sanPhamDTO.getMaSP();
@@ -137,16 +152,14 @@ public class ProductionActivity extends AppCompatActivity {
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("BCTN_HTGY");
             PyObject obj = pyobj.callAttr("BCTN_HTGY", sanPhamDTO.getTenSP());
-            String goiy = "";
             List<PyObject> list = obj.asList();
+            listSanPham = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                goiy = String.valueOf(list.get(i));
+                listSanPham.add(HomeFragment.database.LayGoiY(String.valueOf(list.get(i))));
             }
-            if(Login.taiKhoanDTO.getMATK() == 0){
-                txt_Goiysanpham.setText("Không có dữ liệu");
-            }else {
-                txt_Goiysanpham.setText(goiy);
-            }
+            goiYSanPhamAdapter = new GoiYSanPhamAdapter(listSanPham);
+            rev_Goiysanpham.setLayoutManager(new LinearLayoutManager(ProductionActivity.this,LinearLayoutManager.HORIZONTAL,false));
+            rev_Goiysanpham.setAdapter(goiYSanPhamAdapter);
         }
 
     }
@@ -183,7 +196,7 @@ public class ProductionActivity extends AppCompatActivity {
         txt_sosaotrungbinh = findViewById(R.id.txt_sosaotrungbinh);
         txt_sobinhluan = findViewById(R.id.txt_sobinhluan);
         txt_Chuacodanhgia = findViewById(R.id.txt_Chuacodanhgia);
-        txt_Goiysanpham = findViewById(R.id.txt_Goiysanpham);
+        rev_Goiysanpham = findViewById(R.id.rev_Goiysanpham);
     }
 
     private void SuKien(){
