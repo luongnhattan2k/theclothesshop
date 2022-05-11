@@ -13,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import nhattan.lnt.clothesshop.DTO.SanPhamDTO;
 import nhattan.lnt.clothesshop.R;
@@ -41,7 +43,7 @@ public class GoiYSanPhamAdapter extends RecyclerView.Adapter<GoiYSanPhamAdapter.
         Bitmap bitmap = BitmapFactory.decodeByteArray(sanPhamDTO.getImageSP(),0,sanPhamDTO.getImageSP().length);
         holder.product_image_goiy.setImageBitmap(bitmap);
         holder.product_name_goiy.setText(sanPhamDTO.getTenSP());
-        holder.product_price_goiy.setText(String.valueOf(sanPhamDTO.getGiaSP()));
+        holder.product_price_goiy.setText((NumberFormat.getNumberInstance(Locale.US).format(sanPhamDTO.getGiaSP()) + " VNĐ"));
 
 //        holder.product_layout_goiy.setOnClickListener(new View.OnClickListener() {
 //            @Override
